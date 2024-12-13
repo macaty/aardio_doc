@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - web.view( WebView2 浏览器控件) - 调用 JS 函数'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - web.view( WebView2 浏览器控件) - 调用 JS 函数</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: web.view( WebView2 浏览器控件) - 调用 JS 函数</h1><pre><code class="aardio language-aardio">//web.view( WebView2 浏览器控件) - 调用 JS 函数
+import win.ui;
+/*DSG{{*/
+var winform = win.form(text=&quot;WebView2 - 调用 JS 函数&quot;;right=966;bottom=622)
+winform.add(
+btnCallJavaScript={cls=&quot;button&quot;;text=&quot;调用 JS 函数&quot;;left=615;top=537;right=869;bottom=606;color=14120960;db=1;dr=1;font=LOGFONT(h=-14);note=&quot;在 aardio 中调用 JavaScript 函数。&quot;;z=2};
+static={cls=&quot;static&quot;;left=8;top=6;right=956;bottom=503;db=1;dl=1;dr=1;dt=1;z=1}
+)
+/*}}*/
+
+import web.view;
+var wb = web.view(winform.static);
+
+wb.html = /**
+&lt;!DOCTYPE html&gt;&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt; 
+    &lt;script&gt;!function(e,n){&quot;object&quot;==typeof exports&amp;&amp;&quot;undefined&quot;!=typeof module?module.exports=n():&quot;function&quot;==typeof define&amp;&amp;define.amd?define(n):(e=e||self).mitt=n()}(this,function(){return function(e){return{all:e=e||new Map,on:function(n,t){var f=e.get(n);f?f.push(t):e.set(n,[t])},off:function(n,t){var f=e.get(n);f&amp;&amp;(t?f.splice(f.indexOf(t)&gt;&gt;&gt;0,1):e.set(n,[]))},emit:function(n,t){var f=e.get(n);f&amp;&amp;f.slice().map(function(e){e(t)}),(f=e.get(&quot;*&quot;))&amp;&amp;f.slice().map(function(e){e(n,t)})}}}});
+    emitter = mitt();//github.com/developit/mitt &lt;/script&gt; 
+&lt;/head&gt;
+&lt;body&gt;  
+
+&lt;script&gt; 
+
+    //响应事件
+    emitter.on(&quot;setData&quot;, function(v){
+        document.body.insertAdjacentHTML(&quot;beforeEnd&quot;, JSON.stringify(v) + &quot;&lt;br&gt;&quot; )
+    } );
+
+    //定义全局函数
+    window.setData = function(v){
+        document.body.insertAdjacentHTML(&quot;beforeEnd&quot;, JSON.stringify(v) + &quot;&lt;br&gt;&quot; )
+    } 
+
+&lt;/script&gt;
+
+&lt;/body&gt; 
+**/
+
+// aardio 按钮事件
+winform.btnCallJavaScript.oncommand = function(id,event){
+
+    /*
+    注意 wb.invoke, wb.doScript 都是非阻塞异步调用 JS。
+    但 wb.eval, wb.xcall 都会阻塞等待 JS 返回值。
+
+    在被网页回调的 aardio 函数内部调用 wb.eval, wb.xcall 可能阻塞后续调用。
+    应改用非阻塞的 wb.invoke, wb.doScript 。
+    或者通过 winform.setTimeout 异步调用 wb.invoke, wb.doScript。
+    */
+
+    /*
+    调用 JS 全局函数，参数 @1 指定函数名，
+    可传任意个数参数（参数用 JSON 转换为纯 JS 对象）。
+    */
+    wb.xcall(&quot;setData&quot;,{
+        name = &quot;测试1&quot;;
+        passowrd = &quot;123456&quot;
+    }); 
+
+    /*
+    调用 JS 全局对象的成员函数。
+    如果参数@1 不包含回车、换行、分号、大括号，圆括号，
+    则最后一个点号前的对象设为被调用函数的 this 参数。
+    */
+    wb.xcall(&quot;emitter.emit&quot;,
+        &quot;setData&quot;,{
+        name = &quot;测试2&quot;;
+        passowrd = &quot;123456&quot;
+    }); 
+
+    //参数 @1 可以指定返回函数对象的 JS 表达式。 
+    wb.xcall(&quot;function(args){
+        emitter.emit(&#39;setData&#39;,args)
+    }&quot;, {
+        name = &quot;测试3&quot;;
+        passowrd = &quot;123456&quot;
+    });  
+}
+
+winform.show();
+win.loopMessage();
+</code></pre>
+<a href="javascript:if(confirm('https://www.aardio.com/zh-cn/doc/example/WebUI/web.view/xcall.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������������ʵ��ļ������صġ�  \n\n�����ڷ������ϴ���?'))window.location='https://www.aardio.com/zh-cn/doc/example/WebUI/web.view/xcall.md'" tppabs="https://www.aardio.com/zh-cn/doc/example/WebUI/web.view/xcall.md">Markdown 格式</a>
+</body> 
+</html>

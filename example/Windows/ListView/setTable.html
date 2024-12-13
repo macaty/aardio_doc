@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - 列表视图（listview）控件 - 数据表'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - 列表视图（listview）控件 - 数据表</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 列表视图（listview）控件 - 数据表</h1><pre><code class="aardio language-aardio">//列表视图（listview）控件 - 数据表
+import win.ui;
+/*DSG{{*/
+var winform = win.form(text=&quot;listview 加载并显示行列数据表&quot;;right=757;bottom=467)
+winform.add(
+listview={cls=&quot;listview&quot;;left=11;top=11;right=737;bottom=393;z=1}
+)
+/*}}*/
+
+//加载数据表，数据行是数组
+winform.listview.setTable({
+    {&quot;a&quot;,&quot;b&quot;,&quot;c&quot;},
+    {&quot;d&quot;,&quot;e&quot;,1234567}
+})
+
+//加载数据表，数据行是键值对
+winform.listview.setTable({
+    {&quot;a&quot;:12,&quot;b&quot;:45,&quot;c&quot;:78},
+    {&quot;a&quot;:123,&quot;b&quot;:456,&quot;c&quot;:789}
+}) 
+
+winform.show();
+
+win.loopMessage();
+</code></pre>
+<a href="javascript:if(confirm('https://www.aardio.com/zh-cn/doc/example/Windows/ListView/setTable.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������������ʵ��ļ������صġ�  \n\n�����ڷ������ϴ���?'))window.location='https://www.aardio.com/zh-cn/doc/example/Windows/ListView/setTable.md'" tppabs="https://www.aardio.com/zh-cn/doc/example/Windows/ListView/setTable.md">Markdown 格式</a>
+</body> 
+</html>

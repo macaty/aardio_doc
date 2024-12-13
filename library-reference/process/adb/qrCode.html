@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - process.adb.qrCode 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - process.adb.qrCode 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>process.adb.qrCode 库模块帮助文档</h1>
+
+<p><a id="process"></a></p>
+
+<h2>process 成员列表</h2>
+
+<p><a id="process.adb"></a></p>
+
+<h3>process.adb()</h3>
+
+<p><a href="#libqrencodebitmapObject">返回对象:libqrencodebitmapObject</a></p>
+
+<p><a id="process.adb"></a></p>
+
+<h2>process.adb 成员列表</h2>
+
+<p><a id="process.adb.qrCode"></a></p>
+
+<h3>process.adb.qrCode</h3>
+
+<p>生成自动配对二维码</p>
+
+<p><a id="process.adb.qrCode"></a></p>
+
+<h3>process.adb.qrCode(winform,name,code,version,level,casesensitive)</h3>
+
+<p>生成自动配对二维码，返回 qrencode.bitmap 对象。<br>
+如果 winform 参数不是 null，配对成功或失败回调 winform.onAdbPair 函数。<br>
+配对成功则回调参数 @1 为设备信息的表对象，否则为 null。<br>
+如果 winform.onAdbPair 返回 true 则继续等待扫码配对。<br>
+无论有没有扫码，winform.onAdbPair 都会数秒回调一次  </p>
+
+<p>可选用 @name 指定 mDNS 查询名称，可选用 code 指定配对码，<br>
+不指定则自动生成随机字符串。  </p>
+
+<p>其他参数可省略，用法参考 qrencode.bitma</p>
+
+<p><a href="qrCode.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/process/adb/qrCode.md">Markdown 格式</a></p>
+
+</body> 
+</html>

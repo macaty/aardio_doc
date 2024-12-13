@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - CDP 事件 - 自动关闭对话框'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - CDP 事件 - 自动关闭对话框</title> 
+<link rel="stylesheet" href="../../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: CDP 事件 - 自动关闭对话框</h1><pre><code class="aardio language-aardio">//自动关闭弹框
+import win.ui;
+/*DSG{{*/
+var winform = win.form(text=&quot;CDP 事件 - 自动关闭对话框&quot;;right=818;bottom=507)
+winform.add()
+/*}}*/
+
+import web.view; 
+var wb = web.view(winform);
+winform.show();
+
+//允许监听页面事件
+wb.cdp(&quot;Page.enable&quot;);
+
+//订阅 CDP 事件
+//https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-javascriptDialogOpening
+wb.cdpSubscribe(&quot;Page.javascriptDialogOpening&quot;,function(dlg){
+    /*
+    dlg.message 是对话框文本。
+    dlg.type 是对话框类型
+    dlg.url 对话框所在页面网址
+    */
+
+    //为避免阻塞导致某些网页出现异常，应返回异步执行的函数关闭弹框。
+    return function(){
+        //自动关闭弹框
+        wb.cdp(&quot;Page.handleJavaScriptDialog&quot;,{accept=true})
+    } 
+})
+
+wb.html = /**
+&lt;script type=&quot;text/javascript&quot;&gt;alert(&quot;测试弹框&quot;)&lt;/script&gt;
+**/
+win.loopMessage();
+</code></pre>
+<a href="javascript:if(confirm('https://www.aardio.com/zh-cn/doc/example/WebUI/web.view/DevTools/dlg.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������������ʵ��ļ������صġ�  \n\n�����ڷ������ϴ���?'))window.location='https://www.aardio.com/zh-cn/doc/example/WebUI/web.view/DevTools/dlg.md'" tppabs="https://www.aardio.com/zh-cn/doc/example/WebUI/web.view/DevTools/dlg.md">Markdown 格式</a>
+</body> 
+</html>

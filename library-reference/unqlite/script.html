@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - unqlite.script 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - unqlite.script 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>unqlite.script 库模块帮助文档</h1>
+
+<p><a id="unqliteJx9Object"></a></p>
+
+<h2>unqliteJx9Object 成员列表</h2>
+
+<p><a id="unqliteJx9Object.configErrLog"></a></p>
+
+<h3>unqliteJx9Object.configErrLog()</h3>
+
+<p>返回错误信息</p>
+
+<p><a id="unqliteJx9Object.configImportPath"></a></p>
+
+<h3>unqliteJx9Object.configImportPath(&quot;搜索路径&quot;)</h3>
+
+<p>设置include,import搜索路径<br>
+默认为应用程序目录</p>
+
+<p><a id="unqliteJx9Object.configOutput"></a></p>
+
+<h3>unqliteJx9Object.configOutput(回调函数)</h3>
+
+<pre><code class="aardio language-aardio">unqliteJx9Object.configOutput( function( output ){  
+    io.print( &quot;脚本输出&quot;, output )  
+} )
+</code></pre>
+
+<p><a id="unqliteJx9Object.context"></a></p>
+
+<h3>unqliteJx9Object.context()</h3>
+
+<p><a href="#unqliteJx9contextObject">返回对象:unqliteJx9contextObject</a></p>
+
+<p><a id="unqliteJx9Object.context"></a></p>
+
+<h3>unqliteJx9Object.context(pCtx)</h3>
+
+<p>用于自定义函数中创建context对象</p>
+
+<p><a id="unqliteJx9Object.createFunction"></a></p>
+
+<h3>unqliteJx9Object.createFunction(函数名,回调函数)</h3>
+
+<pre><code class="aardio language-aardio">unqliteJx9Object.createFunction(&quot;/*指定函数名*/&quot;,function(pCtx,...){  
+    var ctx = unqliteJx9Object.context(pCtx);  
+
+} )
+</code></pre>
+
+<p><a id="unqliteJx9Object.deleteFunction"></a></p>
+
+<h3>unqliteJx9Object.deleteFunction(&quot;函数名&quot;)</h3>
+
+<p>删除自定义函数</p>
+
+<p><a id="unqliteJx9Object.exec"></a></p>
+
+<h3>unqliteJx9Object.exec()</h3>
+
+<p>执行脚本</p>
+
+<p><a id="unqliteJx9Object.extractVariable"></a></p>
+
+<h3>unqliteJx9Object.extractVariable(&quot;变量名&quot;)</h3>
+
+<p>获取变量的值</p>
+
+<p><a id="unqliteJx9Object.release"></a></p>
+
+<h3>unqliteJx9Object.release()</h3>
+
+<p>关闭虚拟机</p>
+
+<p><a id="unqliteJx9Object.reset"></a></p>
+
+<h3>unqliteJx9Object.reset()</h3>
+
+<p>重置</p>
+
+<p><a id="unqliteJx9contextObject"></a></p>
+
+<h2>unqliteJx9contextObject 成员列表</h2>
+
+<p><a id="unqliteJx9contextObject.functionName"></a></p>
+
+<h3>unqliteJx9contextObject.functionName()</h3>
+
+<p>返回当前函数名</p>
+
+<p><a id="unqliteJx9contextObject.print"></a></p>
+
+<h3>unqliteJx9contextObject.print(&quot;信息&quot;, ... )</h3>
+
+<p>用于输出信息,<br>
+等价于在Jx9脚本中调用print函数</p>
+
+<p><a id="unqliteJx9contextObject.rand"></a></p>
+
+<h3>unqliteJx9contextObject.rand()</h3>
+
+<p>返回随机数</p>
+
+<p><a id="unqliteJx9contextObject.randStr"></a></p>
+
+<h3>unqliteJx9contextObject.randStr(长度)</h3>
+
+<p>返回随机字符串</p>
+
+<p><a id="unqliteJx9contextObject.throwError"></a></p>
+
+<h3>unqliteJx9contextObject.throwError(&quot;错误信息&quot;,错误代码 )</h3>
+
+<p>抛出Jx9脚本异常,<br>
+参数2以 <em>SXERR</em> 前缀常量指定错误代码</p>
+
+<p><a href="script.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/unqlite/script.md">Markdown 格式</a></p>
+
+</body> 
+</html>

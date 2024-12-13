@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - process.cmdline 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - process.cmdline 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>process.cmdline 库模块帮助文档</h1>
+
+<p><a id="process"></a></p>
+
+<h2>process 成员列表</h2>
+
+<p><a id="process.cmdline"></a></p>
+
+<h3>process.cmdline()</h3>
+
+<p>参数指定进程ID,返回进程的启动命令行,<br>
+用 process.wmi(pid).CommandLine 也可以获得启动参数,<br>
+但是在无法获取启动命令行时 process.cmdline 会以返回启动文件路径,<br>
+如果目标进程以管理权限启动但当前进程没有管理权限会失败,<br>
+此函数失败返回 null,<br>
+不指定参数或参数为0直接返回 null</p>
+
+<p><a href="cmdline.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/process/cmdline.md">Markdown 格式</a></p>
+
+</body> 
+</html>

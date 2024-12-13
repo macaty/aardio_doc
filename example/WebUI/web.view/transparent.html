@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - web.view( WebView2 浏览器控件) - 透明 3D'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - web.view( WebView2 浏览器控件) - 透明 3D</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: web.view( WebView2 浏览器控件) - 透明 3D</h1><pre><code class="aardio language-aardio">//web.view( WebView2 浏览器控件) - 透明 3D
+import win.ui;
+/*DSG{{*/
+var winform = win.form(text=&quot;WebView2 - 透明3D&quot;;right=757;bottom=467;border=&quot;none&quot;)
+winform.add()
+/*}}*/
+
+import web.view;
+var wb = web.view(winform);
+
+//窗口透明
+winform.transparent(true);
+
+//webView2 控件透明
+wb.defaultBackgroundColor = 0;
+
+wb.external = { 
+    winform = winform;
+}
+
+//因为要加载远程资源，第一次可能有点慢，实际开发使用本地文件即可
+wb.go(&quot;https://www.html5tricks.com/demo/html5-css3-3d-cube-puzzle/index2.html&quot;)
+
+//等待页面加载完成后，执行下面的Javascript
+wb.waitEle(&quot;body&quot;,&quot;
+
+//这里方便演示动态修改远程网页的 CSS 背景为透明色,直接改CSS可以更简单
+this.style.backgroundColor=&#39;#00000000&#39;
+
+//异步执行以刷新透明背景后显示
+setTimeout(()=&gt;{
+    aardio.winform.show()
+
+    //开始自动翻转
+    document.querySelector(&#39;.cubetwo-rotation-view&#39;).className = &#39;cubetwo-rotation-view spin&#39;
+},100);
+
+this.onmouseup= function(e){
+    //按鼠标右键退出
+   if(e.button == 2){
+      aardio.winform.close();
+   } 
+}&quot;);
+
+
+win.loopMessage();
+</code></pre>
+<a href="javascript:if(confirm('https://www.aardio.com/zh-cn/doc/example/WebUI/web.view/transparent.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������������ʵ��ļ������صġ�  \n\n�����ڷ������ϴ���?'))window.location='https://www.aardio.com/zh-cn/doc/example/WebUI/web.view/transparent.md'" tppabs="https://www.aardio.com/zh-cn/doc/example/WebUI/web.view/transparent.md">Markdown 格式</a>
+</body> 
+</html>

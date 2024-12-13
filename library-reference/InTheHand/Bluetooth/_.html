@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - InTheHand.Bluetooth 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - InTheHand.Bluetooth 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>InTheHand.Bluetooth 库模块帮助文档</h1>
+
+<p><a id="InTheHand.Bluetooth"></a></p>
+
+<h2>InTheHand.Bluetooth 成员列表</h2>
+
+<p>.NET 名字空间 InTheHand.Bluetooth 。<br>
+最低要求 .NET 4.6.2 ，Win10 1607 开始系统自带 。<br>
+自 InTheHand.BluetoothLE 程序集加载，用于低耗电蓝牙。<br>
+普通蓝牙请使用 InTheHand.Net 库</p>
+
+<p><a id="InTheHand.Bluetooth.?"></a></p>
+
+<h3>InTheHand.Bluetooth.?</h3>
+
+<p>.NET 名字空间、类、结构体的成员，<br>
+可访问成员名字空间、类、枚举、静态属性或字段，<br>
+导入的类可用于构造 .NET 对象，传回 .NET 则自动转为该类的 Type 对象  </p>
+
+<p><a href="javascript:if(confirm('https://www.aardio.com/zh-cn/doc/library-reference/dotNet/appDomain.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������������ʵ��ļ������صġ�  \n\n�����ڷ������ϴ���?'))window.location='https://www.aardio.com/zh-cn/doc/library-reference/dotNet/appDomain.html#dotNetNameSpaceObject'" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/dotNet/appDomain.html#dotNetNameSpaceObject">返回对象:dotNetNameSpaceObject</a></p>
+
+<p><a id="InTheHand.Bluetooth.assembly"></a></p>
+
+<h3>InTheHand.Bluetooth.assembly</h3>
+
+<p>导入此 .NET 名字空间的程序集对象。  </p>
+
+<p><a href="#dotNetCrlAssemblyObject">返回对象:dotNetCrlAssemblyObject</a></p>
+
+<p><a id="InTheHand.Bluetooth.eachDevice"></a></p>
+
+<h3>InTheHand.Bluetooth.eachDevice()</h3>
+
+<p><a href="#InTheHandBluetoothBleDevObject">返回对象:InTheHandBluetoothBleDevObject</a></p>
+
+<p><a id="InTheHand.Bluetooth.eachDevice"></a></p>
+
+<h3>InTheHand.Bluetooth.eachDevice(winform,options,cancelToken)</h3>
+
+<pre><code class="aardio language-aardio">for i,deviceInfo in InTheHand.Bluetooth.eachDevice(winform){
+    /*winform 参数必须指定窗体对象，其他为可选参数。  
+deviceInfo 为发现的蓝牙设备。*/
+}
+</code></pre>
+
+<p><a id="InTheHandBluetoothBleDevObject"></a></p>
+
+<h2>InTheHandBluetoothBleDevObject 成员列表</h2>
+
+<p><a id="InTheHandBluetoothBleDevObject.Id"></a></p>
+
+<h3>InTheHandBluetoothBleDevObject.Id</h3>
+
+<p>设备 ID</p>
+
+<p><a id="InTheHandBluetoothBleDevObject.IsPaired"></a></p>
+
+<h3>InTheHandBluetoothBleDevObject.IsPaired</h3>
+
+<p>是否已配对</p>
+
+<p><a id="InTheHandBluetoothBleDevObject.Name"></a></p>
+
+<h3>InTheHandBluetoothBleDevObject.Name</h3>
+
+<p>设备名</p>
+
+<p><a id="InTheHandBluetoothBleDevObject.Gatt"></a></p>
+
+<h2>InTheHandBluetoothBleDevObject.Gatt 成员列表</h2>
+
+<p><a id="InTheHandBluetoothBleDevObject.Gatt.ConnectAsync"></a></p>
+
+<h3>InTheHandBluetoothBleDevObject.Gatt.ConnectAsync()</h3>
+
+<p>连接，返回异步任务</p>
+
+<p><a id="InTheHandBluetoothBleDevObject.Gatt.GetPrimaryServicesAsync"></a></p>
+
+<h3>InTheHandBluetoothBleDevObject.Gatt.GetPrimaryServicesAsync()</h3>
+
+<p>获取主要服务列表，返回异步任务</p>
+
+<p><a href="_.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/InTheHand/Bluetooth/_.md">Markdown 格式</a></p>
+
+</body> 
+</html>

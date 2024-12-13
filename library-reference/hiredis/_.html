@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - hiredis 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - hiredis 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>hiredis 库模块帮助文档</h1>
+
+<p><a id="hiredis"></a></p>
+
+<h2>hiredis 成员列表</h2>
+
+<p>Redis 客户端组件</p>
+
+<p><a id="hiredis()"></a></p>
+
+<h3>hiredis()</h3>
+
+<p><a href="#hiredisObject">返回对象:hiredisObject</a></p>
+
+<p><a id="hiredis(IP,端口)"></a></p>
+
+<h3>hiredis(IP,端口)</h3>
+
+<p>所有参数可选,默认连接到 localhost,6379 端口<br>
+返回客户端对象</p>
+
+<p><a id="hiredisObject"></a></p>
+
+<h2>hiredisObject 成员列表</h2>
+
+<p><a id="hiredisObject.?"></a></p>
+
+<h3>hiredisObject.?</h3>
+
+<p>使用 get 函数读取键值,或使用 set 函数设置键值</p>
+
+<p><a id="hiredisObject.appendf"></a></p>
+
+<h3>hiredisObject.appendf(&quot;字符串参数&quot;)</h3>
+
+<p>格式化一个或多个参数并添加字符串命令<br>
+可在后面用reply函数执行并获取结果</p>
+
+<p><a id="hiredisObject.command"></a></p>
+
+<h3>hiredisObject.command(&quot;字符串参数&quot;)</h3>
+
+<p>执行命令,参数可以是任意多个字符串参数,或直接指定一个字符串数组<br>
+并由redis执行并返回replyObject对象,如果执行失败返回值为空</p>
+
+<p><a id="hiredisObject.command"></a></p>
+
+<h3>hiredisObject.command()</h3>
+
+<p><a href="#hiredisreplayObject">返回对象:hiredisreplayObject</a></p>
+
+<p><a id="hiredisObject.commandf"></a></p>
+
+<h3>hiredisObject.commandf(&quot;字符串参数&quot;)</h3>
+
+<p>格式化一个或多个参数并执行字符串命令<br>
+格式化语法类似string.format，但注意%b对应的是二进制数据,以及数据的长度2个参数,<br>
+返回replyObject对象,如果执行失败返回值为空</p>
+
+<p><a id="hiredisObject.commandf"></a></p>
+
+<h3>hiredisObject.commandf()</h3>
+
+<p><a href="#hiredisreplayObject">返回对象:hiredisreplayObject</a></p>
+
+<p><a id="hiredisObject.del"></a></p>
+
+<h3>hiredisObject.del(&quot;字符串参数&quot;)</h3>
+
+<p>删除键</p>
+
+<p><a id="hiredisObject.enableKeepAlive"></a></p>
+
+<h3>hiredisObject.enableKeepAlive()</h3>
+
+<p>允许保持连接</p>
+
+<p><a id="hiredisObject.format"></a></p>
+
+<h3>hiredisObject.format(&quot;字符串参数&quot;)</h3>
+
+<p>格式化一个或多个参数并返回字符串命令<br>
+格式化语法类似string.format，但注意%b对应的是二进制数据,以及数据的长度2个参数,\</p>
+
+<p><a id="hiredisObject.get"></a></p>
+
+<h3>hiredisObject.get(&quot;字符串参数&quot;)</h3>
+
+<p>读取值</p>
+
+<p><a id="hiredisObject.reply"></a></p>
+
+<h3>hiredisObject.reply()</h3>
+
+<p>用于appendf函数后获取应答结果  </p>
+
+<p><a href="#hiredisreplayObject">返回对象:hiredisreplayObject</a></p>
+
+<p><a id="hiredisObject.replyFromReadery"></a></p>
+
+<h3>hiredisObject.replyFromReadery()</h3>
+
+<p>用于appendf函数后使用redisReader的API获取应答结果</p>
+
+<p><a id="hiredisObject.set"></a></p>
+
+<h3>hiredisObject.set(&quot;键&quot;,&quot;值&quot;)</h3>
+
+<p>写入值</p>
+
+<p><a id="hiredisObject.setTimeout"></a></p>
+
+<h3>hiredisObject.setTimeout(秒,毫秒)</h3>
+
+<p>设置超时</p>
+
+<p><a id="hiredisObject.setex"></a></p>
+
+<h3>hiredisObject.setex(&quot;键&quot;,&quot;值&quot;,生存时间)</h3>
+
+<p>写入值并指定生存时间</p>
+
+<p><a id="hiredisObject.setnx"></a></p>
+
+<h3>hiredisObject.setnx(&quot;键&quot;,&quot;值&quot;)</h3>
+
+<p>写入值但不覆盖已存在的值,<br>
+setnx是SET if Not eXists的缩写</p>
+
+<p><a id="hiredisreplayObject"></a></p>
+
+<h2>hiredisreplayObject 成员列表</h2>
+
+<p><a id="hiredisreplayObject.dval"></a></p>
+
+<h3>hiredisreplayObject.dval</h3>
+
+<p>double 类型浮点数</p>
+
+<p><a id="hiredisreplayObject.element"></a></p>
+
+<h3>hiredisreplayObject.element</h3>
+
+<p>数组值,成员都是replyObject对象</p>
+
+<p><a id="hiredisreplayObject.integer"></a></p>
+
+<h3>hiredisreplayObject.integer</h3>
+
+<p>数值</p>
+
+<p><a id="hiredisreplayObject.str"></a></p>
+
+<h3>hiredisreplayObject.str</h3>
+
+<p>字符串</p>
+
+<p><a id="hiredisreplayObject.type"></a></p>
+
+<h3>hiredisreplayObject.type</h3>
+
+<p>类型</p>
+
+<p><a id="hiredisreplayObject.vtype"></a></p>
+
+<h3>hiredisreplayObject.vtype</h3>
+
+<p>类别字符串,例如 &quot;md&quot; 表示 markdown</p>
+
+<h3>自动完成常量</h3>
+
+<p>_REDIS_REPLY_ARRAY=2<br>
+_REDIS_REPLY_ERROR=6<br>
+_REDIS_REPLY_INTEGER=3<br>
+_REDIS_REPLY_NIL=4<br>
+_REDIS_REPLY_STATUS=5<br>
+_REDIS_REPLY_STRING=1  </p>
+
+<p><a href="_.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/hiredis/_.md">Markdown 格式</a></p>
+
+</body> 
+</html>

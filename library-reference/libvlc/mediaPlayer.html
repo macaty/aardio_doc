@@ -1,0 +1,306 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - libvlc.mediaPlayer 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - libvlc.mediaPlayer 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>libvlc.mediaPlayer 库模块帮助文档</h1>
+
+<p><a id="libvlcplayerObject"></a></p>
+
+<h2>libvlcplayerObject 成员列表</h2>
+
+<p><a id="libvlcplayerObject.audioChannel"></a></p>
+
+<h3>libvlcplayerObject.audioChannel</h3>
+
+<p>声道</p>
+
+<p><a id="libvlcplayerObject.audioDelay"></a></p>
+
+<h3>libvlcplayerObject.audioDelay</h3>
+
+<p>音频延迟时间，单位毫秒</p>
+
+<p><a id="libvlcplayerObject.audioTrack"></a></p>
+
+<h3>libvlcplayerObject.audioTrack</h3>
+
+<p>音轨</p>
+
+<p><a id="libvlcplayerObject.fullscreen"></a></p>
+
+<h3>libvlcplayerObject.fullscreen</h3>
+
+<p>是否全屏</p>
+
+<p><a id="libvlcplayerObject.getAudioTrackCount"></a></p>
+
+<h3>libvlcplayerObject.getAudioTrackCount()</h3>
+
+<p>获取音轨总数</p>
+
+<p><a id="libvlcplayerObject.getAudioTrackDescription"></a></p>
+
+<h3>libvlcplayerObject.getAudioTrackDescription()</h3>
+
+<p>获取音轨描述</p>
+
+<p><a id="libvlcplayerObject.getEventManager"></a></p>
+
+<h3>libvlcplayerObject.getEventManager()</h3>
+
+<p>获取事件管理器  </p>
+
+<p><a href="#vlcEventManagerObject">返回对象:vlcEventManagerObject</a></p>
+
+<p><a id="libvlcplayerObject.getMedia"></a></p>
+
+<h3>libvlcplayerObject.getMedia()</h3>
+
+<p>返回媒体文件描述对象  </p>
+
+<p><a href="#libvlcmediaObject">返回对象:libvlcmediaObject</a></p>
+
+<p><a id="libvlcplayerObject.getVideoAdjustFloat"></a></p>
+
+<h3>libvlcplayerObject.getVideoAdjustFloat(_libvlc_adjust)</h3>
+
+<p>获取视频调整设置</p>
+
+<p><a id="libvlcplayerObject.getVideoAdjustInt"></a></p>
+
+<h3>libvlcplayerObject.getVideoAdjustInt(_libvlc_adjust)</h3>
+
+<p>获取视频调整设置</p>
+
+<p><a id="libvlcplayerObject.height"></a></p>
+
+<h3>libvlcplayerObject.height</h3>
+
+<p>视频高度</p>
+
+<p><a id="libvlcplayerObject.isBuffering"></a></p>
+
+<h3>libvlcplayerObject.isBuffering()</h3>
+
+<p>视频是否正在缓冲</p>
+
+<p><a id="libvlcplayerObject.isEnded"></a></p>
+
+<h3>libvlcplayerObject.isEnded()</h3>
+
+<p>视频是否已结束</p>
+
+<p><a id="libvlcplayerObject.isError"></a></p>
+
+<h3>libvlcplayerObject.isError()</h3>
+
+<p>视频是否遇到错误</p>
+
+<p><a id="libvlcplayerObject.isOpening"></a></p>
+
+<h3>libvlcplayerObject.isOpening()</h3>
+
+<p>视频是否已打开</p>
+
+<p><a id="libvlcplayerObject.isPaused"></a></p>
+
+<h3>libvlcplayerObject.isPaused()</h3>
+
+<p>视频是否已暂停</p>
+
+<p><a id="libvlcplayerObject.isPlaying"></a></p>
+
+<h3>libvlcplayerObject.isPlaying()</h3>
+
+<p>视频是否正在播放</p>
+
+<p><a id="libvlcplayerObject.isStopped"></a></p>
+
+<h3>libvlcplayerObject.isStopped()</h3>
+
+<p>视频是否已停止</p>
+
+<p><a id="libvlcplayerObject.length"></a></p>
+
+<h3>libvlcplayerObject.length</h3>
+
+<p>视频总时长,单位毫秒</p>
+
+<p><a id="libvlcplayerObject.loadMedia"></a></p>
+
+<h3>libvlcplayerObject.loadMedia(&quot;媒体文件地址&quot;)</h3>
+
+<p>使用协议地址创建媒体文件描述对象</p>
+
+<p><a id="libvlcplayerObject.loadMedia"></a></p>
+
+<h3>libvlcplayerObject.loadMedia()</h3>
+
+<p><a href="#libvlcmediaObject">返回对象:libvlcmediaObject</a></p>
+
+<p><a id="libvlcplayerObject.loadMediaFile"></a></p>
+
+<h3>libvlcplayerObject.loadMediaFile(&quot;本体文件路径&quot;)</h3>
+
+<p>打开本地文件创建媒体文件描述对象</p>
+
+<p><a id="libvlcplayerObject.loadMediaFile"></a></p>
+
+<h3>libvlcplayerObject.loadMediaFile()</h3>
+
+<p><a href="#libvlcmediaObject">返回对象:libvlcmediaObject</a></p>
+
+<p><a id="libvlcplayerObject.mute"></a></p>
+
+<h3>libvlcplayerObject.mute</h3>
+
+<p>是否静音</p>
+
+<p><a id="libvlcplayerObject.pause"></a></p>
+
+<h3>libvlcplayerObject.pause()</h3>
+
+<p>暂停</p>
+
+<p><a id="libvlcplayerObject.play"></a></p>
+
+<h3>libvlcplayerObject.play()</h3>
+
+<p>播放</p>
+
+<p><a id="libvlcplayerObject.release"></a></p>
+
+<h3>libvlcplayerObject.release()</h3>
+
+<p>关闭播放器</p>
+
+<p><a id="libvlcplayerObject.resume"></a></p>
+
+<h3>libvlcplayerObject.resume()</h3>
+
+<p>继续</p>
+
+<p><a id="libvlcplayerObject.setMedia"></a></p>
+
+<h3>libvlcplayerObject.setMedia(媒体文件描述对象)</h3>
+
+<p>修改媒体文件描述对象</p>
+
+<p><a id="libvlcplayerObject.setVideoAdjustFloat"></a></p>
+
+<h3>libvlcplayerObject.setVideoAdjustFloat(_libvlc_adjust,)</h3>
+
+<p>修改视频调整设置</p>
+
+<p><a id="libvlcplayerObject.setVideoAdjustInt"></a></p>
+
+<h3>libvlcplayerObject.setVideoAdjustInt(_libvlc_adjust,)</h3>
+
+<p>修改视频调整设置</p>
+
+<p><a id="libvlcplayerObject.setWindow"></a></p>
+
+<h3>libvlcplayerObject.setWindow(winform)</h3>
+
+<p>指定输出视频的窗口对象</p>
+
+<p><a id="libvlcplayerObject.spu"></a></p>
+
+<h3>libvlcplayerObject.spu</h3>
+
+<p>当前字幕索引</p>
+
+<p><a id="libvlcplayerObject.spuDelay"></a></p>
+
+<h3>libvlcplayerObject.spuDelay</h3>
+
+<p>字幕延迟时间,单位毫秒</p>
+
+<p><a id="libvlcplayerObject.spuDescription"></a></p>
+
+<h3>libvlcplayerObject.spuDescription</h3>
+
+<p>返回字幕描述数组</p>
+
+<p>获取数组包含所有字幕条目描述</p>
+
+<p><a id="libvlcplayerObject.spuLoad"></a></p>
+
+<h3>libvlcplayerObject.spuLoad(&quot;字幕路径&quot;)</h3>
+
+<p>加载字幕</p>
+
+<p><a id="libvlcplayerObject.stop"></a></p>
+
+<h3>libvlcplayerObject.stop()</h3>
+
+<p>停止</p>
+
+<p><a id="libvlcplayerObject.takeSnapshot"></a></p>
+
+<h3>libvlcplayerObject.takeSnapshot(&quot;图像文件路径&quot;,宽度,高度)</h3>
+
+<p>截图<br>
+宽度高度参数可省略</p>
+
+<p><a id="libvlcplayerObject.time"></a></p>
+
+<h3>libvlcplayerObject.time</h3>
+
+<p>当前播放位置,单位毫秒</p>
+
+<p><a id="libvlcplayerObject.volume"></a></p>
+
+<h3>libvlcplayerObject.volume</h3>
+
+<p>音量,0到100范围的整数值<br>
+0为静音</p>
+
+<p><a id="libvlcplayerObject.width"></a></p>
+
+<h3>libvlcplayerObject.width</h3>
+
+<p>视频宽度</p>
+
+<h3>自动完成常量</h3>
+
+<p>_libvlc_Buffering=2<br>
+_libvlc_Ended=6<br>
+_libvlc_Error=7<br>
+_libvlc_NothingSpecial=0<br>
+_libvlc_Opening=1<br>
+_libvlc_Paused=4<br>
+_libvlc_Playing=3<br>
+_libvlc_Stopped=5<br>
+_libvlc_adjust_Brightness=2<br>
+_libvlc_adjust_Contrast=1<br>
+_libvlc_adjust_Enable=0<br>
+_libvlc_adjust_Gamma=5<br>
+_libvlc_adjust_Hue=3<br>
+_libvlc_adjust_Saturation=4<br>
+_libvlc_position_bottom=6<br>
+_libvlc_position_bottom_left=7<br>
+_libvlc_position_bottom_right=8<br>
+_libvlc_position_center=0<br>
+_libvlc_position_disable=-1<br>
+_libvlc_position_left=1<br>
+_libvlc_position_right=2<br>
+_libvlc_position_top=3<br>
+_libvlc_position_top_left=4<br>
+_libvlc_position_top_right=5  </p>
+
+<p><a href="mediaPlayer.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/libvlc/mediaPlayer.md">Markdown 格式</a></p>
+
+</body> 
+</html>

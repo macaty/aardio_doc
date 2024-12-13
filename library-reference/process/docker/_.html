@@ -1,0 +1,285 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - process.docker 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - process.docker 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>process.docker 库模块帮助文档</h1>
+
+<p><a id="process"></a></p>
+
+<h2>process 成员列表</h2>
+
+<p><a id="process.docker"></a></p>
+
+<h3>process.docker()</h3>
+
+<p><a href="#processDockerObject">返回对象:processDockerObject</a></p>
+
+<p><a id="process.docker"></a></p>
+
+<h3>process.docker(本地工作目录,远程仓库地址)</h3>
+
+<p>创建 docker 工具</p>
+
+<p><a id="processDockerObject"></a></p>
+
+<h2>processDockerObject 成员列表</h2>
+
+<p><a id="processDockerObject.bindVolume"></a></p>
+
+<h3>processDockerObject.bindVolume</h3>
+
+<pre><code class="aardio language-aardio">processDockerObject.bindVolume = {
+    &quot;/localpath:/root/containerPath&quot;
+}
+</code></pre>
+
+<p><a id="processDockerObject.bindVolumeLocal"></a></p>
+
+<h3>processDockerObject.bindVolumeLocal</h3>
+
+<pre><code class="aardio language-aardio">processDockerObject.bindVolumeLocal = {
+    &quot;.\localpath:/root/containerPath&quot;
+}
+</code></pre>
+
+<p><a id="processDockerObject.create"></a></p>
+
+<h3>processDockerObject.create()</h3>
+
+<p>本地创建镜像</p>
+
+<p><a id="processDockerObject.execLocal"></a></p>
+
+<h3>processDockerObject.execLocal(&quot;字符串参数&quot;)</h3>
+
+<p>在本地容器中运行命令,<br>
+参数可以是字符串或数组</p>
+
+<p><a id="processDockerObject.execLocal"></a></p>
+
+<h3>processDockerObject.execLocal(cmd)</h3>
+
+<p>本机容器运行shell脚本</p>
+
+<p><a id="processDockerObject.execServer"></a></p>
+
+<h3>processDockerObject.execServer(&quot;字符串参数&quot;)</h3>
+
+<p>在服务端容器中运行命令,<br>
+参数可以是字符串或数组</p>
+
+<p><a id="processDockerObject.execServer"></a></p>
+
+<h3>processDockerObject.execServer(cmd)</h3>
+
+<p>服务器容器运行shell脚本</p>
+
+<p><a id="processDockerObject.init"></a></p>
+
+<h3>processDockerObject.init(本地工作目录,远程仓库地址)</h3>
+
+<p>指定工作目录、远程仓库地址</p>
+
+<p><a id="processDockerObject.inspectLocal"></a></p>
+
+<h3>processDockerObject.inspectLocal(&#39;{{ .NetworkSettings.IPAddress }}&#39;)</h3>
+
+<p>获取本地容器信息，返回文本</p>
+
+<p><a id="processDockerObject.inspectLocal"></a></p>
+
+<h3>processDockerObject.inspectLocal(,true)</h3>
+
+<p>获取本地容器信息，返回对象</p>
+
+<p><a id="processDockerObject.inspectServer"></a></p>
+
+<h3>processDockerObject.inspectServer(&#39;{{ .NetworkSettings.IPAddress }}&#39;)</h3>
+
+<p>获取服务器容器信息，返回文本</p>
+
+<p><a id="processDockerObject.inspectServer"></a></p>
+
+<h3>processDockerObject.inspectServer(,true)</h3>
+
+<p>获取服务器容器信息，返回对象</p>
+
+<p><a id="processDockerObject.logger"></a></p>
+
+<h3>processDockerObject.logger</h3>
+
+<p>指定logResponse的默认回显对象<br>
+该对象必须有log或write成员函数用于输出回显</p>
+
+<p><a id="processDockerObject.password"></a></p>
+
+<h3>processDockerObject.password</h3>
+
+<p>容器仓库登录密码</p>
+
+<p><a id="processDockerObject.pruneImagesLocal"></a></p>
+
+<h3>processDockerObject.pruneImagesLocal()</h3>
+
+<p>本机清理镜像</p>
+
+<p><a id="processDockerObject.push"></a></p>
+
+<h3>processDockerObject.push()</h3>
+
+<p>推送到服务器</p>
+
+<p><a id="processDockerObject.removeContainerLocal"></a></p>
+
+<h3>processDockerObject.removeContainerLocal()</h3>
+
+<p>本机移除容器</p>
+
+<p><a id="processDockerObject.removeContainerServer"></a></p>
+
+<h3>processDockerObject.removeContainerServer()</h3>
+
+<p>服务器移除容器</p>
+
+<p><a id="processDockerObject.runLocal"></a></p>
+
+<h3>processDockerObject.runLocal(detached)</h3>
+
+<p>本机运行容器,<br>
+参数为true时后台运行</p>
+
+<p><a id="processDockerObject.runServer"></a></p>
+
+<h3>processDockerObject.runServer(detached)</h3>
+
+<p>服务器运行容器,<br>
+参数为true时后台运行</p>
+
+<p><a id="processDockerObject.setPort"></a></p>
+
+<h3>processDockerObject.setPort(&quot;127.0.0.1:80&quot;,&quot;8080/tcp&quot;)</h3>
+
+<p>设置容器端口,<br>
+参数@2 为容器内部端口<br>
+参数@1 为主机转发端口</p>
+
+<p><a id="processDockerObject.setPort"></a></p>
+
+<h3>processDockerObject.setPort(80,8080)</h3>
+
+<p>设置容器端口,<br>
+参数@2 为容器内部端口<br>
+参数@1 为主机转发端口<br>
+如果2个端口一样,可省略参数@2</p>
+
+<p><a id="processDockerObject.setPort"></a></p>
+
+<h3>processDockerObject.setPort(hostPort,containerPort)</h3>
+
+<p>设置容器端口,<br>
+@containerPort 为容器内部端口<br>
+@hostPort为主机转发端口<br>
+如果2个端口一样,可省略参数@hostPort</p>
+
+<p><a id="processDockerObject.sshKeyLocal"></a></p>
+
+<h3>processDockerObject.sshKeyLocal()</h3>
+
+<p>本机容器获取SSH Key</p>
+
+<p><a id="processDockerObject.sshKeyServer"></a></p>
+
+<h3>processDockerObject.sshKeyServer()</h3>
+
+<p>服务器容器获取SSH Key</p>
+
+<p><a id="processDockerObject.startLocalLog"></a></p>
+
+<h3>processDockerObject.startLocalLog(tail)</h3>
+
+<p>显示本机容器日志，参数指定条数<br>
+此函数会一直运行，调到调用stopLog函数,<br>
+此对象的大部分函数执行前会自动调用 stopLog 函数,<br>
+此函数不会阻塞界面</p>
+
+<p><a id="processDockerObject.startServerLog"></a></p>
+
+<h3>processDockerObject.startServerLog()</h3>
+
+<p><a href="../popen.html#processPopenObject" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/process/popen.html#processPopenObject">返回对象:processPopenObject</a></p>
+
+<p><a href="../popen.html#processPopenObject" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/process/popen.html#processPopenObject">返回对象:processPopenObject</a></p>
+
+<p><a id="processDockerObject.startServerLog"></a></p>
+
+<h3>processDockerObject.startServerLog(tail)</h3>
+
+<p>显示服务器容器日志，参数指定条数<br>
+此函数会一直运行，调到调用stopLog函数,<br>
+此对象的大部分函数执行前会自动调用 stopLog 函数,<br>
+此函数不会阻塞界面</p>
+
+<p><a id="processDockerObject.stopLog"></a></p>
+
+<h3>processDockerObject.stopLog()</h3>
+
+<p>停止显示日志,可重复调用,<br>
+此对象的大部分函数执行前会自动调用 stopLog 函数,</p>
+
+<p><a id="processDockerObject.terminalLocal"></a></p>
+
+<h3>processDockerObject.terminalLocal()</h3>
+
+<p>打开本地容器终端,<br>
+输入 exit 退出容器</p>
+
+<p><a id="processDockerObject.terminalServer"></a></p>
+
+<h3>processDockerObject.terminalServer(false)</h3>
+
+<p>打开服务端终端</p>
+
+<p><a id="processDockerObject.terminalServer"></a></p>
+
+<h3>processDockerObject.terminalServer(true)</h3>
+
+<p>打开服务端容器终端,<br>
+输入 exit 退出容器</p>
+
+<p><a id="processDockerObject.username"></a></p>
+
+<h3>processDockerObject.username</h3>
+
+<p>容器仓库登录用户名</p>
+
+<p><a id="processDockerObject.ssh"></a></p>
+
+<h2>processDockerObject.ssh 成员列表</h2>
+
+<p><a id="processDockerObject.ssh.host"></a></p>
+
+<h3>processDockerObject.ssh.host</h3>
+
+<p>服务器主机SSH用户名</p>
+
+<p><a id="processDockerObject.ssh.password"></a></p>
+
+<h3>processDockerObject.ssh.password</h3>
+
+<p>服务器主机SSH密码</p>
+
+<p><a href="_.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/process/docker/_.md">Markdown 格式</a></p>
+
+</body> 
+</html>

@@ -1,0 +1,578 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - nnmsg 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - nnmsg 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>nnmsg 库模块帮助文档</h1>
+
+<p><a id="nnmsg"></a></p>
+
+<h2>nnmsg 成员列表</h2>
+
+<p>nanomsg消息通信组件 v1.1.2<br>
+该组件主要用于服务端开发,不支持vista以下的操作系统</p>
+
+<p><a id="nnmsg.eachIn"></a></p>
+
+<h3>nnmsg.eachIn(套接字数组,超时)</h3>
+
+<pre><code class="aardio language-aardio">for(socket in nnmsg.eachIn({/*nnmsg.socket对象*/}) ){
+</code></pre>
+
+<p><a id="nnmsg.eachInOut"></a></p>
+
+<h3>nnmsg.eachInOut(套接字数组,超时)</h3>
+
+<pre><code class="aardio language-aardio">for(socket,revents in nnmsg.eachInOut({/*nnmsg.socket对象*/}) ){
+</code></pre>
+
+<p><a id="nnmsg.eachOut"></a></p>
+
+<h3>nnmsg.eachOut(套接字数组,超时)</h3>
+
+<pre><code class="aardio language-aardio">for(socket in nnmsg.eachOut({/*nnmsg.socket对象*/}) ){
+</code></pre>
+
+<p><a id="nnmsg.lasterr"></a></p>
+
+<h3>nnmsg.lasterr()</h3>
+
+<p>返回最后一次错误的错误信息,错误代码</p>
+
+<p><a id="nnmsg.lasterrno"></a></p>
+
+<h3>nnmsg.lasterrno()</h3>
+
+<p>返回最后一次错误的错误代码</p>
+
+<p><a id="nnmsg.poll"></a></p>
+
+<h3>nnmsg.poll(套接字事件数组,超时)</h3>
+
+<pre><code class="aardio language-aardio">nnmsg.poll( {   
+    { fd = /*nnmsg.socket对象*/; events=1/*_NN_POLLIN*/}  
+} )
+</code></pre>
+
+<p><a id="nnmsg.socket"></a></p>
+
+<h3>nnmsg.socket()</h3>
+
+<p><a href="#nnSocketObject">返回对象:nnSocketObject</a></p>
+
+<p><a id="nnmsg.socket"></a></p>
+
+<h3>nnmsg.socket(protocol,domain)</h3>
+
+<p>创建套接字<br>
+protocol必须指定,<br>
+domain为可选参数,默认为_AF_SP</p>
+
+<p><a id="nnmsg.term"></a></p>
+
+<h3>nnmsg.term()</h3>
+
+<p>关闭当前进程中的所有nanomsg套接字,解除所有阻塞执行的任务</p>
+
+<p><a id="nnmsg.version"></a></p>
+
+<h3>nnmsg.version</h3>
+
+<p>nanomsg.dll 版本号，字符串</p>
+
+<p><a id="global"></a></p>
+
+<h2>全局对象 成员列表</h2>
+
+<p><a id="     var str"></a></p>
+
+<h3>var str</h3>
+
+<pre><code class="aardio language-aardio">socket.recv();
+</code></pre>
+
+<p><a id="var str"></a></p>
+
+<h3>var str</h3>
+
+<pre><code class="aardio language-aardio">socket.recv();
+</code></pre>
+
+<p><a id="nnSocketObject"></a></p>
+
+<h2>nnSocketObject 成员列表</h2>
+
+<p><a id="nnSocketObject.bind"></a></p>
+
+<h3>nnSocketObject.bind(&quot;tcp://*:26666地址&quot;)</h3>
+
+<p>绑定<br>
+成功返回true，并设置端点ID到lastEndpointId</p>
+
+<p><a id="nnSocketObject.close"></a></p>
+
+<h3>nnSocketObject.close()</h3>
+
+<p>关闭socket</p>
+
+<p><a id="nnSocketObject.connect"></a></p>
+
+<h3>nnSocketObject.connect(&quot;tcp://localhost:26666地址&quot;)</h3>
+
+<p>连接<br>
+成功返回true，并设置端点ID到lastEndpointId</p>
+
+<p><a id="nnSocketObject.device"></a></p>
+
+<h3>nnSocketObject.device(socket对象)</h3>
+
+<p>创建路由设备在两个套接字间转发消息<br>
+此函数创建一个循环,直到返回错误代码</p>
+
+<p><a id="nnSocketObject.getStatistic"></a></p>
+
+<h3>nnSocketObject.getStatistic( _NN_STAT )</h3>
+
+<p>返回统计信息，该数据仅有参考意义<br>
+成功则返回math.size64对象</p>
+
+<p><a id="nnSocketObject.getopt"></a></p>
+
+<h3>nnSocketObject.getopt(选项,值,级别)</h3>
+
+<p>获取指定选项的值,<br>
+值如果是一个结构体，成功返回填充值的原结构体<br>
+值如果省略,则获取int类型的  </p>
+
+<p>级别参数可选，默认为_NN_SOL_SOCKET</p>
+
+<p><a id="nnSocketObject.lastEndpointId"></a></p>
+
+<h3>nnSocketObject.lastEndpointId</h3>
+
+<p>最后一次成功bind或connect的端点ID<br>
+可用于shutdown函数的调用参数</p>
+
+<p><a id="nnSocketObject.protocol"></a></p>
+
+<h3>nnSocketObject.protocol</h3>
+
+<p>当前套接字协议类型</p>
+
+<p><a id="nnSocketObject.recv"></a></p>
+
+<h3>nnSocketObject.recv()</h3>
+
+<p>接收符串消息<br>
+成功返回字符串</p>
+
+<p><a id="nnSocketObject.recv"></a></p>
+
+<h3>nnSocketObject.recv(1)</h3>
+
+<p>接收符串消息,消息未到达时不等待直接返回<br>
+接收符串消息<br>
+成功返回字符串</p>
+
+<p><a id="nnSocketObject.recvBuffer"></a></p>
+
+<h3>nnSocketObject.recvBuffer(缓冲区,长度)</h3>
+
+<p>接收消息帧<br>
+参数一可以是缓冲区、指针、结构体<br>
+如果是指针、结构体则必须指定长度<br>
+成功返回参数@1,以及接收长度</p>
+
+<p><a id="nnSocketObject.recvBuffer"></a></p>
+
+<h3>nnSocketObject.recvBuffer(缓冲区,长度,1)</h3>
+
+<p>接收消息帧,消息未到达时不等待直接返回<br>
+参数一可以是缓冲区、指针<br>
+如果是指针则必须指定长度<br>
+成功返回参数@1,以及接收长度</p>
+
+<p><a id="nnSocketObject.recvStruct"></a></p>
+
+<h3>nnSocketObject.recvStruct(结构体)</h3>
+
+<p>接收结构体<br>
+成功返回参数@1,以及接收长度</p>
+
+<p><a id="nnSocketObject.recvStruct"></a></p>
+
+<h3>nnSocketObject.recvStruct(结构体,1)</h3>
+
+<p>接收结构体,消息未到达时不等待直接返回<br>
+成功返回参数@1,以及接收长度</p>
+
+<p><a id="nnSocketObject.recvTable"></a></p>
+
+<h3>nnSocketObject.recvTable()</h3>
+
+<p>接收table对象<br>
+成功返回字符串</p>
+
+<p><a id="nnSocketObject.recvTable"></a></p>
+
+<h3>nnSocketObject.recvTable(1)</h3>
+
+<p>接收table对象,消息未到达时不等待直接返回<br>
+接收符串消息<br>
+成功返回字符串</p>
+
+<p><a id="nnSocketObject.send"></a></p>
+
+<h3>nnSocketObject.send(字符串)</h3>
+
+<p>发送字符串消息\参数一可以是字符串或缓冲区,<br>
+其他参数可选</p>
+
+<p><a id="nnSocketObject.send"></a></p>
+
+<h3>nnSocketObject.send(字符串,1)</h3>
+
+<p>发送符串消息,不等待直接返回\参数一可以是字符串或指针.<br>
+其他参数可选</p>
+
+<p><a id="nnSocketObject.sendBuffer"></a></p>
+
+<h3>nnSocketObject.sendBuffer(缓冲区,长度)</h3>
+
+<p>发送消息帧\参数一可以是缓冲区、字符串、指针、结构体<br>
+如果是指针、结构体则必须指定长度<br>
+成功返回发送长度</p>
+
+<p><a id="nnSocketObject.sendBuffer"></a></p>
+
+<h3>nnSocketObject.sendBuffer(缓冲区,长度,1)</h3>
+
+<p>发送消息帧,不等待直接返回\参数一可以是缓冲区、字符串、指针<br>
+如果是指针则必须指定长度<br>
+成功返回发送长度</p>
+
+<p><a id="nnSocketObject.sendStruct"></a></p>
+
+<h3>nnSocketObject.sendStruct(结构体)</h3>
+
+<p>发送结构体<br>
+成功返回发送长度</p>
+
+<p><a id="nnSocketObject.sendStruct"></a></p>
+
+<h3>nnSocketObject.sendStruct(结构体,1)</h3>
+
+<p>发送结构体,不等待直接返回<br>
+成功返回发送长度</p>
+
+<p><a id="nnSocketObject.sendTable"></a></p>
+
+<h3>nnSocketObject.sendTable(对象)</h3>
+
+<p>发送table对象\参数一可以是字符串或缓冲区,<br>
+其他参数可选</p>
+
+<p><a id="nnSocketObject.sendTable"></a></p>
+
+<h3>nnSocketObject.sendTable(对象,1)</h3>
+
+<p>发送table对象,不等待直接返回\参数一可以是字符串或指针.<br>
+其他参数可选</p>
+
+<p><a id="nnSocketObject.setopt"></a></p>
+
+<h3>nnSocketObject.setopt(选项,值,级别)</h3>
+
+<p>值可以是数值，字符串，缓冲区，或者一个结构体对象<br>
+成功返回true  </p>
+
+<p>级别参数可选，默认为_NN_SOL_SOCKET</p>
+
+<p><a id="nnSocketObject.shutdown"></a></p>
+
+<h3>nnSocketObject.shutdown()</h3>
+
+<p>关闭连接<br>
+参数可选设置端点ID，如果无参数则取lastEndpointId的值作为参数</p>
+
+<p><a id="nnSocketObject.subscribe"></a></p>
+
+<h3>nnSocketObject.subscribe(&quot;字符串参数&quot;)</h3>
+
+<p>用于sub套接字设置订阅的主题前缀<br>
+如果为空则订阅所有主题</p>
+
+<p><a id="nnSocketObject.unsubscribe"></a></p>
+
+<h3>nnSocketObject.unsubscribe(&quot;字符串参数&quot;)</h3>
+
+<p>用于sub套接字取消订阅的主题前缀<br>
+如果为空则订阅所有主题</p>
+
+<p><a id="nnmsg.socket"></a></p>
+
+<h2>nnmsg.socket 成员列表</h2>
+
+<p><a id="nnmsg.socket.bus"></a></p>
+
+<h3>nnmsg.socket.bus()</h3>
+
+<p>创建消息总线（bus）套接字,<br>
+连接到消息总线的任何一个套接字发送消息，消息总线上的其他套接字都能收到,<br>
+这种模式只适合在局域网内使用<br>
+<img src="../../../../../nanomsg.org/gettingstarted/bus.png" tppabs="http://nanomsg.org/gettingstarted/bus.png" alt="示意图"><br>
+!nn_socket</p>
+
+<p><a id="nnmsg.socket.pair"></a></p>
+
+<h3>nnmsg.socket.pair()</h3>
+
+<p>创建pair套接字，<br>
+服务端和客户端可以1对1的收发消息<br>
+<img src="../../../../../nanomsg.org/gettingstarted/pair.png" tppabs="http://nanomsg.org/gettingstarted/pair.png" alt="示意图">   </p>
+
+<p><a href="#nnSocketObject">返回对象:nnSocketObject</a></p>
+
+<p><a id="nnmsg.socket.pub"></a></p>
+
+<h3>nnmsg.socket.pub()</h3>
+
+<p>创建pub类型套接字 - 即用于发布消息的服务端,<br>
+nsub/pub套接字结合使用可实现消息广播模式（Topics &amp; Broadcast）<br>
+服务端只管发布，不管客户端是否连接，也不管是不是丢消息<br>
+但客户端连接上来以后就不会丢消息<br>
+<img src="../../../../../nanomsg.org/gettingstarted/pubsub.png" tppabs="http://nanomsg.org/gettingstarted/pubsub.png" alt="示意图">   </p>
+
+<p><a href="#nnSocketObject">返回对象:nnSocketObject</a></p>
+
+<p><a id="nnmsg.socket.pull"></a></p>
+
+<h3>nnmsg.socket.pull()</h3>
+
+<p>创建pull类型套接字 - 即用于拉消息的客户端,<br>
+push/pull套接字结合使用可实现消息队列的扇出模式，<br>
+这是一个1对多的模式，服务端不能有多个，但客户端可以多个，<br>
+服务端或客户端不管谁先启动，都会等待对方连接，中间绝不会丢弃消息,<br>
+服务端只发不收，客户端只收不发，一个消息不会重复发给多个客户端<br>
+一般用于任务分派、负载均衡<br>
+下面官网示意图是指传输方式为单向管道（Pipeline）<br>
+并不是指此模型只1对1的,请注意区分，<br>
+<img src="../../../../../nanomsg.org/gettingstarted/pipeline.png" tppabs="http://nanomsg.org/gettingstarted/pipeline.png" alt="官网示意图">   </p>
+
+<p><a href="#nnSocketObject">返回对象:nnSocketObject</a></p>
+
+<p><a id="nnmsg.socket.push"></a></p>
+
+<h3>nnmsg.socket.push()</h3>
+
+<p>创建push类型套接字 - 即用于推送消息的服务端,<br>
+push/pull套接字结合使用可实现消息队列的扇出模式，<br>
+这是一个1对多的模式，服务端不能有多个，但客户端可以多个，<br>
+服务端或客户端不管谁先启动，都会等待对方连接，中间绝不会丢弃消息,<br>
+服务端只发不收，客户端只收不发，一个消息不会重复发给多个客户端<br>
+一般用于任务分派、负载均衡<br>
+下面官网示意图是指传输方式为单向管道（Pipeline）<br>
+并不是指此模型只1对1的,请注意区分，<br>
+<img src="../../../../../nanomsg.org/gettingstarted/pipeline.png" tppabs="http://nanomsg.org/gettingstarted/pipeline.png" alt="官网示意图">   </p>
+
+<p><a href="#nnSocketObject">返回对象:nnSocketObject</a></p>
+
+<p><a id="nnmsg.socket.rawbus"></a></p>
+
+<h3>nnmsg.socket.rawbus()</h3>
+
+<p>创建原始消息总线（rawbus）套接字,<br>
+rawbus套接字不会发送消息给发送端<br>
+<img src="../../../../../250bpm.wdfiles.com/local--files/blog-17/bus5.png" tppabs="http://250bpm.wdfiles.com/local--files/blog:17/bus5.png" alt="示意图"><br>
+!nn_socket</p>
+
+<p><a id="nnmsg.socket.rep"></a></p>
+
+<h3>nnmsg.socket.rep()</h3>
+
+<p>创建rep类型套接字 - 即用于应答消息的服务端,<br>
+一个服务端对应多个客户端,<br>
+先由req客户端发出请求，rep服务端收到请求后进行应答  </p>
+
+<p><a href="#nnSocketObject">返回对象:nnSocketObject</a></p>
+
+<p><a id="nnmsg.socket.req"></a></p>
+
+<h3>nnmsg.socket.req()</h3>
+
+<p>创建req类型套接字 - 即用于应答消息的客户端,<br>
+一个服务端对应多个客户端,<br>
+先由req客户端发出请求，rep服务端收到请求后进行应答  </p>
+
+<p><a href="#nnSocketObject">返回对象:nnSocketObject</a></p>
+
+<p><a id="nnmsg.socket.respondent"></a></p>
+
+<h3>nnmsg.socket.respondent()</h3>
+
+<p>创建respondent套接字 - 即用于发出回应调查的客户端<br>
+surveyor/respondent套接字结合使用可实现调查模式<br>
+<img src="../../../../../nanomsg.org/gettingstarted/survey.png" tppabs="http://nanomsg.org/gettingstarted/survey.png" alt="示意图">   </p>
+
+<p><a href="#nnSocketObject">返回对象:nnSocketObject</a></p>
+
+<p><a id="nnmsg.socket.sub"></a></p>
+
+<h3>nnmsg.socket.sub()</h3>
+
+<p>创建sub类型套接字 - 即用于订阅消息的客户端,<br>
+sub/pub套接字结合使用可实现消息广播模式（Topics &amp; Broadcast）<br>
+服务端只管发布，不管客户端是否连接，也不管是不是丢消息<br>
+但客户端连接上来以后就不会丢消息<br>
+<img src="../../../../../nanomsg.org/gettingstarted/pubsub.png" tppabs="http://nanomsg.org/gettingstarted/pubsub.png" alt="示意图">   </p>
+
+<p><a href="#nnSocketObject">返回对象:nnSocketObject</a></p>
+
+<p><a id="nnmsg.socket.surveyor"></a></p>
+
+<h3>nnmsg.socket.surveyor()</h3>
+
+<p>创建surveyort套接字 - 即用于发出问询消息的服务端<br>
+surveyor/respondent套接字结合使用可实现调查模式<br>
+<img src="../../../../../nanomsg.org/gettingstarted/survey.png" tppabs="http://nanomsg.org/gettingstarted/survey.png" alt="示意图">   </p>
+
+<p><a href="#nnSocketObject">返回对象:nnSocketObject</a></p>
+
+<h3>自动完成常量</h3>
+
+<p>_AF_SP=1<br>
+_AF_SP_RAW=2<br>
+_NN_BUS=0x70<br>
+_NN_DOMAIN=0xC<br>
+_NN_DONTWAIT=1<br>
+_NN_EACCES=0x9523DD9<br>
+_NN_EADDRINUSE=0x9523DCD<br>
+_NN_EADDRNOTAVAIL=0x9523DCE<br>
+_NN_EAFNOSUPPORT=0x9523DD2<br>
+_NN_EAGAIN=0x9523DD4<br>
+_NN_EBADF=0x9523DD5<br>
+_NN_ECONNABORTED=0x9523DE0<br>
+_NN_ECONNREFUSED=0x9523DCF<br>
+_NN_ECONNRESET=0x9523DE1<br>
+_NN_EFAULT=0x9523DD8<br>
+_NN_EFSM=0x9523DFE<br>
+_NN_EHOSTUNREACH=0x9523DDC<br>
+_NN_EINPROGRESS=0x9523DD0<br>
+_NN_EINVAL=0x9523DD6<br>
+_NN_EISCONN=0x9523DE3<br>
+_NN_EMFILE=0x9523DD7<br>
+_NN_EMSGSIZE=0x9523DDE<br>
+_NN_ENETDOWN=0x9523DCC<br>
+_NN_ENETRESET=0x9523DDA<br>
+_NN_ENETUNREACH=0x9523DDB<br>
+_NN_ENOBUFS=0x9523DCB<br>
+_NN_ENOPROTOOPT=0x9523DE2<br>
+_NN_ENOTCONN=0x9523DDD<br>
+_NN_ENOTSOCK=0x9523DD1<br>
+_NN_ENOTSUP=0x9523DC9<br>
+_NN_EPROTO=0x9523DD3<br>
+_NN_EPROTONOSUPPORT=0x9523DCA<br>
+_NN_ETERM=0x9523DFD<br>
+_NN_ETIMEDOUT=0x9523DDF<br>
+_NN_HAUSNUMERO=0x9523DC8<br>
+_NN_INPROC=-1<br>
+_NN_IPC=-2<br>
+_NN_IPV4ONLY=0xE<br>
+_NN_LINGER=1<br>
+_NN_MAXTTL=0x11<br>
+_NN_NS_DOMAIN=2<br>
+_NN_NS_ERROR=0xB<br>
+_NN_NS_EVENT=0xD<br>
+_NN_NS_FLAG=0xA<br>
+_NN_NS_LIMIT=0xC<br>
+_NN_NS_NAMESPACE=0<br>
+_NN_NS_OPTION_LEVEL=5<br>
+_NN_NS_OPTION_TYPE=8<br>
+_NN_NS_OPTION_UNIT=9<br>
+_NN_NS_PROTOCOL=4<br>
+_NN_NS_SOCKET_OPTION=6<br>
+_NN_NS_STATISTIC=0xE<br>
+_NN_NS_TRANSPORT=3<br>
+_NN_NS_TRANSPORT_OPTION=7<br>
+_NN_NS_VERSION=1<br>
+_NN_PAIR=0x10<br>
+_NN_POLLIN=1<br>
+_NN_POLLOUT=2<br>
+_NN_PROTOCOL=0xD<br>
+_NN_PROTO_PAIR=1<br>
+_NN_PROTO_PIPELINE=5<br>
+_NN_PUB=0x20<br>
+_NN_PULL=0x51<br>
+_NN_PUSH=0x50<br>
+_NN_RCVBUF=3<br>
+_NN_RCVFD=0xB<br>
+_NN_RCVMAXSIZE=0x10<br>
+_NN_RCVPRIO=9<br>
+_NN_RCVTIMEO=5<br>
+_NN_RECONNECT_IVL=6<br>
+_NN_RECONNECT_IVL_MAX=7<br>
+_NN_REP=0x31<br>
+_NN_REQ=0x30<br>
+_NN_REQ_RESEND_IVL=1<br>
+_NN_RESPONDENT=0x63<br>
+_NN_SNDBUF=2<br>
+_NN_SNDFD=0xA<br>
+_NN_SNDPRIO=8<br>
+_NN_SNDTIMEO=4<br>
+_NN_SOCKADDR_MAX=0x80<br>
+_NN_SOCKET_NAME=0xF<br>
+_NN_SOL_SOCKET=0<br>
+_NN_STAT_ACCEPTED_CONNECTIONS=0x66<br>
+_NN_STAT_ACCEPT_ERRORS=0x6B<br>
+_NN_STAT_BIND_ERRORS=0x6A<br>
+_NN_STAT_BROKEN_CONNECTIONS=0x68<br>
+_NN_STAT_BYTES_RECEIVED=0x130<br>
+_NN_STAT_BYTES_SENT=0x12F<br>
+_NN_STAT_CONNECT_ERRORS=0x69<br>
+_NN_STAT_CURRENT_CONNECTIONS=0xC9<br>
+_NN_STAT_CURRENT_EP_ERRORS=0xCB<br>
+_NN_STAT_CURRENT_SND_PRIORITY=0x191<br>
+_NN_STAT_DROPPED_CONNECTIONS=0x67<br>
+_NN_STAT_ESTABLISHED_CONNECTIONS=0x65<br>
+_NN_STAT_INPROGRESS_CONNECTIONS=0xCA<br>
+_NN_STAT_MESSAGES_RECEIVED=0x12E<br>
+_NN_STAT_MESSAGES_SENT=0x12D<br>
+_NN_SUB=0x21<br>
+_NN_SUB_SUBSCRIBE=1<br>
+_NN_SUB_UNSUBSCRIBE=2<br>
+_NN_SURVEYOR=0x62<br>
+_NN_SURVEYOR_DEADLINE=1<br>
+_NN_TCP=-3<br>
+_NN_TCP_NODELAY=1<br>
+_NN_TYPE_INT=1<br>
+_NN_TYPE_NONE=0<br>
+_NN_TYPE_STR=2<br>
+_NN_UNIT_BOOLEAN=4<br>
+_NN_UNIT_BYTES=1<br>
+_NN_UNIT_COUNTER=6<br>
+_NN_UNIT_MESSAGES=5<br>
+_NN_UNIT_MILLISECONDS=2<br>
+_NN_UNIT_NONE=0<br>
+_NN_UNIT_PRIORITY=3<br>
+_NN_VERSION_AGE=0<br>
+_NN_VERSION_CURRENT=5<br>
+_NN_VERSION_REVISION=0<br>
+_NN_WS=-4<br>
+_NN_WS_MSG_TYPE=1<br>
+_NN_WS_MSG_TYPE_BINARY=2<br>
+_NN_WS_MSG_TYPE_TEXT=1  </p>
+
+<p><a href="_.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/nnmsg/_.md">Markdown 格式</a></p>
+
+</body> 
+</html>

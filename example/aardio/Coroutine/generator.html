@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - 纤程生成器'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - 纤程生成器</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 纤程生成器</h1><pre><code class="aardio language-aardio">//纤程生成器
+import console;  
+
+function fib(max){
+    var a, b = 1, 1;
+    while a &lt; max {
+        fiber.yield( a );
+        a, b = b, a+b;
+    }
+} 
+
+/*
+纤程与迭代器都是交换代码控制权、分离代码逻辑的方法,
+而纤程生成器则是两者结合的应用,使用 fiber.generator 将函数自动转换为纤程,
+并使用该纤程自动生成迭代器。
+*/
+for v in fiber.generator(fib,console.getNumber( &quot;请输入斐波那契数列范围:&quot; )) {
+    console.log( v )    
+}
+
+console.pause()
+</code></pre>
+<a href="generator.md" tppabs="https://www.aardio.com/zh-cn/doc/example/aardio/Coroutine/generator.md">Markdown 格式</a>
+</body> 
+</html>

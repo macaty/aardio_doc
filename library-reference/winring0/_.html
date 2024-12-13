@@ -1,0 +1,463 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - winring0 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - winring0 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>winring0 库模块帮助文档</h1>
+
+<p><a id="winring0"></a></p>
+
+<h2>winring0 成员列表</h2>
+
+<p>ver 1.0.0.5<br>
+支持win7，但需要管理员权限<br>
+可在启动a代码文件(例如main.aardio)首行加上以下代码启用管理权限<br>
+//RUNAS//</p>
+
+<p><a id="winring0.Cpuid"></a></p>
+
+<h3>winring0.Cpuid</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;Cpuid&quot;,&quot;bool(INT index,INT &amp;eax,INT &amp;ebx,INT &amp;ecx,INT &amp;edx)&quot;);
+</code></pre>
+
+<p><a id="winring0.CpuidPx"></a></p>
+
+<h3>winring0.CpuidPx</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;CpuidPx&quot;,&quot;bool(INT index,INT &amp;eax,INT &amp;ebx,INT &amp;ecx,INT &amp;edx,INT processAffinityMask)&quot;);
+</code></pre>
+
+<p><a id="winring0.CpuidTx"></a></p>
+
+<h3>winring0.CpuidTx</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;CpuidTx&quot;,&quot;bool(INT index,INT &amp;eax,INT &amp;ebx,INT &amp;ecx,INT &amp;edx,INT threadAffinityMask)&quot;);
+</code></pre>
+
+<p><a id="winring0.DeinitializeOls"></a></p>
+
+<h3>winring0.DeinitializeOls()</h3>
+
+<p>卸载驱动,库卸载时会自动调用该函数。</p>
+
+<p><a id="winring0.FindPciDeviceByClass"></a></p>
+
+<h3>winring0.FindPciDeviceByClass</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;FindPciDeviceByClass&quot;,&quot;INT( BYTE baseClass, BYTE subClass, BYTE programIf, BYTE index )&quot;);
+</code></pre>
+
+<p><a id="winring0.FindPciDeviceById"></a></p>
+
+<h3>winring0.FindPciDeviceById</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;FindPciDeviceById&quot;,&quot;INT( WORD vendorId, WORD deviceId, BYTE index )&quot;);
+</code></pre>
+
+<p><a id="winring0.GetDllStatus"></a></p>
+
+<h3>winring0.GetDllStatus()</h3>
+
+<p>返回DLL状态码,以_OLS_DLL_前缀的常量表示不同状态,<br>
+0/*_OLS_DLL_NO_ERROR*/表示加载驱动成功</p>
+
+<p><a id="winring0.GetDllVersion"></a></p>
+
+<h3>winring0.GetDllVersion()</h3>
+
+<p>返回版本号，返回四个值:<br>
+ version,major,minor,revision,release</p>
+
+<p><a id="winring0.GetDriverType"></a></p>
+
+<h3>winring0.GetDriverType()</h3>
+
+<p>返回驱动类型,<br>
+OLS_DRIVER_TYPE_前缀常量表示不同类型</p>
+
+<p><a id="winring0.GetDriverVersion"></a></p>
+
+<h3>winring0.GetDriverVersion()</h3>
+
+<p>返回驱动版本号，返回四个值:<br>
+ version,major,minor,revision,release</p>
+
+<p><a id="winring0.Hlt"></a></p>
+
+<h3>winring0.Hlt</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;Hlt&quot;,&quot;bool()&quot;);
+</code></pre>
+
+<p><a id="winring0.HltPx"></a></p>
+
+<h3>winring0.HltPx</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;HltPx&quot;,&quot;bool(INT processAffinityMask)&quot;);
+</code></pre>
+
+<p><a id="winring0.HltTx"></a></p>
+
+<h3>winring0.HltTx</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;HltTx&quot;,&quot;bool(INT threadAffinityMask)&quot;);
+</code></pre>
+
+<p><a id="winring0.InitializeOls"></a></p>
+
+<h3>winring0.InitializeOls()</h3>
+
+<p>加载驱动,成功返回true<br>
+导入库时会自动调用该函数</p>
+
+<p><a id="winring0.IsCpuid"></a></p>
+
+<h3>winring0.IsCpuid</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;IsCpuid&quot;,&quot;bool()&quot;);
+</code></pre>
+
+<p><a id="winring0.IsMsr"></a></p>
+
+<h3>winring0.IsMsr</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;IsMsr&quot;,&quot;bool()&quot;);
+</code></pre>
+
+<p><a id="winring0.IsTsc"></a></p>
+
+<h3>winring0.IsTsc</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;IsTsc&quot;,&quot;bool()&quot;);
+</code></pre>
+
+<p><a id="winring0.PciBusDevFunc"></a></p>
+
+<h3>winring0.PciBusDevFunc</h3>
+
+<pre><code class="aardio language-aardio">function(Bus, Dev, Func){
+    return (Bus&amp;0xFF)&lt;&lt;8) | ((Dev&amp;0x1F)&lt;&lt;3) | (Func&amp;7); 
+}
+</code></pre>
+
+<p><a id="winring0.PciGetBus"></a></p>
+
+<h3>winring0.PciGetBus</h3>
+
+<pre><code class="aardio language-aardio">function(address){
+    return ((address&gt;&gt;8) &amp; 0xFF)
+}
+</code></pre>
+
+<p><a id="winring0.PciGetDev"></a></p>
+
+<h3>winring0.PciGetDev</h3>
+
+<pre><code class="aardio language-aardio">function(address){
+    return ((address&gt;&gt;3) &amp; 0x1F)
+}
+</code></pre>
+
+<p><a id="winring0.PciGetFunc"></a></p>
+
+<h3>winring0.PciGetFunc</h3>
+
+<pre><code class="aardio language-aardio">function(address){
+    return (address&amp;7)
+}
+</code></pre>
+
+<p><a id="winring0.Rdmsr"></a></p>
+
+<h3>winring0.Rdmsr</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;Rdmsr&quot;,&quot;bool(INT index,INT &amp;eax,INT &amp;edx )&quot;);
+</code></pre>
+
+<p><a id="winring0.RdmsrPx"></a></p>
+
+<h3>winring0.RdmsrPx</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;RdmsrPx&quot;,&quot;bool(INT index,INT &amp; eax,INT &amp; edx, INT processAffinityMask)&quot;);
+</code></pre>
+
+<p><a id="winring0.RdmsrTx"></a></p>
+
+<h3>winring0.RdmsrTx</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;RdmsrTx&quot;,&quot;bool(INT index,INT &amp; eax,INT &amp; edx, INT threadAffinityMask)&quot;);
+</code></pre>
+
+<p><a id="winring0.Rdpmc"></a></p>
+
+<h3>winring0.Rdpmc</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;Rdpmc&quot;,&quot;bool(INT index,INT &amp; eax,INT &amp;edx )&quot;);
+</code></pre>
+
+<p><a id="winring0.RdpmcPx"></a></p>
+
+<h3>winring0.RdpmcPx</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;RdpmcPx&quot;,&quot;bool(INT index,INT &amp; eax,INT &amp;edx,INT processAffinityMask)&quot;);
+</code></pre>
+
+<p><a id="winring0.RdpmcTx"></a></p>
+
+<h3>winring0.RdpmcTx</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;RdpmcTx&quot;,&quot;bool(INT index,INT &amp; eax,INT &amp;edx,INT threadAffinityMask)&quot;);
+</code></pre>
+
+<p><a id="winring0.Rdtsc"></a></p>
+
+<h3>winring0.Rdtsc</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;Rdtsc&quot;,&quot;bool(INT &amp;eax,INT &amp;edx )&quot;);
+</code></pre>
+
+<p><a id="winring0.RdtscPx"></a></p>
+
+<h3>winring0.RdtscPx</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;RdtscPx&quot;,&quot;bool(INT &amp;eax,INT &amp; edx,INT processAffinityMask)&quot;);
+</code></pre>
+
+<p><a id="winring0.RdtscTx"></a></p>
+
+<h3>winring0.RdtscTx</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;RdtscTx&quot;,&quot;bool(INT &amp;eax,INT &amp;edx,INT threadAffinityMask)&quot;);
+</code></pre>
+
+<p><a id="winring0.ReadIoPortByte"></a></p>
+
+<h3>winring0.ReadIoPortByte</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;ReadIoPortByte&quot;,&quot;BYTE( WORD port )&quot;);
+</code></pre>
+
+<p><a id="winring0.ReadIoPortByteEx"></a></p>
+
+<h3>winring0.ReadIoPortByteEx</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;ReadIoPortByteEx&quot;,&quot;int( WORD port, BYTE&amp; value )&quot;);
+</code></pre>
+
+<p><a id="winring0.ReadIoPortDword"></a></p>
+
+<h3>winring0.ReadIoPortDword</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;ReadIoPortDword&quot;,&quot;INT( WORD port )&quot;);
+</code></pre>
+
+<p><a id="winring0.ReadIoPortDwordEx"></a></p>
+
+<h3>winring0.ReadIoPortDwordEx</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;ReadIoPortDwordEx&quot;,&quot;int( WORD port, INT value )&quot;);
+</code></pre>
+
+<p><a id="winring0.ReadIoPortWord"></a></p>
+
+<h3>winring0.ReadIoPortWord</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;ReadIoPortWord&quot;,&quot;WORD( WORD port )&quot;);
+</code></pre>
+
+<p><a id="winring0.ReadIoPortWordEx"></a></p>
+
+<h3>winring0.ReadIoPortWordEx</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;ReadIoPortWordEx&quot;,&quot;int( WORD port, WORD&amp; value )&quot;);
+</code></pre>
+
+<p><a id="winring0.ReadPciConfigByte"></a></p>
+
+<h3>winring0.ReadPciConfigByte</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;ReadPciConfigByte&quot;,&quot;BYTE(INT pciAddress, BYTE regAddress )&quot;);
+</code></pre>
+
+<p><a id="winring0.ReadPciConfigByteEx"></a></p>
+
+<h3>winring0.ReadPciConfigByteEx</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;ReadPciConfigByteEx&quot;,&quot;int(INT pciAddress, INT regAddress, BYTE&amp; value )&quot;);
+</code></pre>
+
+<p><a id="winring0.ReadPciConfigDword"></a></p>
+
+<h3>winring0.ReadPciConfigDword</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;ReadPciConfigDword&quot;,&quot;INT(INT pciAddress, BYTE regAddress )&quot;);
+</code></pre>
+
+<p><a id="winring0.ReadPciConfigDwordEx"></a></p>
+
+<h3>winring0.ReadPciConfigDwordEx</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;ReadPciConfigDwordEx&quot;,&quot;int(INT pciAddress, INT regAddress, INT value )&quot;);
+</code></pre>
+
+<p><a id="winring0.ReadPciConfigWord"></a></p>
+
+<h3>winring0.ReadPciConfigWord</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;ReadPciConfigWord&quot;,&quot;WORD(INT pciAddress, BYTE regAddress )&quot;);
+</code></pre>
+
+<p><a id="winring0.ReadPciConfigWordEx"></a></p>
+
+<h3>winring0.ReadPciConfigWordEx</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;ReadPciConfigWordEx&quot;,&quot;int(INT pciAddress, INT regAddress, WORD&amp; value )&quot;);
+</code></pre>
+
+<p><a id="winring0.SetPciMaxBusIndex"></a></p>
+
+<h3>winring0.SetPciMaxBusIndex</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;SetPciMaxBusIndex&quot;,&quot;void( BYTE max )&quot;);
+</code></pre>
+
+<p><a id="winring0.WriteIoPortByte"></a></p>
+
+<h3>winring0.WriteIoPortByte</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;WriteIoPortByte&quot;,&quot;void( WORD port, BYTE value )&quot;);
+</code></pre>
+
+<p><a id="winring0.WriteIoPortByteEx"></a></p>
+
+<h3>winring0.WriteIoPortByteEx</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;WriteIoPortByteEx&quot;,&quot;int( WORD port, BYTE value )&quot;);
+</code></pre>
+
+<p><a id="winring0.WriteIoPortDword"></a></p>
+
+<h3>winring0.WriteIoPortDword</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;WriteIoPortDword&quot;,&quot;void( WORD port, INT value )&quot;);
+</code></pre>
+
+<p><a id="winring0.WriteIoPortDwordEx"></a></p>
+
+<h3>winring0.WriteIoPortDwordEx</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;WriteIoPortDwordEx&quot;,&quot;int( WORD port, INT value )&quot;);
+</code></pre>
+
+<p><a id="winring0.WriteIoPortWord"></a></p>
+
+<h3>winring0.WriteIoPortWord</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;WriteIoPortWord&quot;,&quot;void( WORD port, WORD value )&quot;);
+</code></pre>
+
+<p><a id="winring0.WriteIoPortWordEx"></a></p>
+
+<h3>winring0.WriteIoPortWordEx</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;WriteIoPortWordEx&quot;,&quot;int( WORD port, WORD value )&quot;);
+</code></pre>
+
+<p><a id="winring0.WritePciConfigByte"></a></p>
+
+<h3>winring0.WritePciConfigByte</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;WritePciConfigByte&quot;,&quot;void(INT pciAddress, BYTE regAddress, BYTE value )&quot;);
+</code></pre>
+
+<p><a id="winring0.WritePciConfigByteEx"></a></p>
+
+<h3>winring0.WritePciConfigByteEx</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;WritePciConfigByteEx&quot;,&quot;int(INT pciAddress, INT regAddress, BYTE value )&quot;);
+</code></pre>
+
+<p><a id="winring0.WritePciConfigDword"></a></p>
+
+<h3>winring0.WritePciConfigDword</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;WritePciConfigDword&quot;,&quot;void(INT pciAddress, BYTE regAddress, INT value )&quot;);
+</code></pre>
+
+<p><a id="winring0.WritePciConfigDwordEx"></a></p>
+
+<h3>winring0.WritePciConfigDwordEx</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;WritePciConfigDwordEx&quot;,&quot;int(INT pciAddress, INT regAddress, INT value )&quot;);
+</code></pre>
+
+<p><a id="winring0.WritePciConfigWord"></a></p>
+
+<h3>winring0.WritePciConfigWord</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;WritePciConfigWord&quot;,&quot;void(INT pciAddress, BYTE regAddress, WORD value )&quot;);
+</code></pre>
+
+<p><a id="winring0.WritePciConfigWordEx"></a></p>
+
+<h3>winring0.WritePciConfigWordEx</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;WritePciConfigWordEx&quot;,&quot;int(INT pciAddress, INT regAddress, WORD value )&quot;);
+</code></pre>
+
+<p><a id="winring0.Wrmsr"></a></p>
+
+<h3>winring0.Wrmsr</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;Wrmsr&quot;,&quot;bool(INT index, INT eax, INT edx )&quot;);
+</code></pre>
+
+<p><a id="winring0.WrmsrPx"></a></p>
+
+<h3>winring0.WrmsrPx</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;WrmsrPx&quot;,&quot;bool(INT index, INT eax, INT edx,INT processAffinityMask)&quot;);
+</code></pre>
+
+<p><a id="winring0.WrmsrTx"></a></p>
+
+<h3>winring0.WrmsrTx</h3>
+
+<pre><code class="aardio language-aardio">dll.api(&quot;WrmsrTx&quot;,&quot;bool(INT index, INT eax, INT edx,INT threadAffinityMask)&quot;);
+</code></pre>
+
+<h3>自动完成常量</h3>
+
+<p>_OLS_DLL_DRIVER_NOT_FOUND=3<br>
+_OLS_DLL_DRIVER_NOT_LOADED=2<br>
+_OLS_DLL_DRIVER_NOT_LOADED_ON_NETWORK=5<br>
+_OLS_DLL_DRIVER_UNLOADED=4<br>
+_OLS_DLL_NO_ERROR=0<br>
+_OLS_DLL_UNKNOWN_ERROR=9<br>
+_OLS_DLL_UNSUPPORTED_PLATFORM=1<br>
+_OLS_DRIVER_TYPE_UNKNOWN=0<br>
+_OLS_DRIVER_TYPE_WIN_9X=1<br>
+_OLS_DRIVER_TYPE_WIN_NT=2<br>
+_OLS_DRIVER_TYPE_WIN_NT4=3<br>
+_OLS_DRIVER_TYPE_WIN_NT_IA64=5<br>
+_OLS_DRIVER_TYPE_WIN_NT_X64=4<br>
+_OLS_ERROR_PCI_BUS_NOT_EXIST=0xE0000001<br>
+_OLS_ERROR_PCI_NO_DEVICE=0xE0000002<br>
+_OLS_ERROR_PCI_READ_CONFIG=0xE0000004<br>
+_OLS_ERROR_PCI_WRITE_CONFIG=0xE0000003  </p>
+
+<p><a href="_.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/winring0/_.md">Markdown 格式</a></p>
+
+</body> 
+</html>

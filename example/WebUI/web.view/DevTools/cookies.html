@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - 获取 Cookies / CDP 协议'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - 获取 Cookies / CDP 协议</title> 
+<link rel="stylesheet" href="../../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 获取 Cookies / CDP 协议</h1><pre><code class="aardio language-aardio">//异步取 Cookies
+import win.ui;
+/*DSG{{*/
+var winform = win.form(text=&quot;获取 Cookies / CDP 协议&quot;;right=759;bottom=469;bgcolor=16777215)
+winform.add()
+/*}}*/
+
+import web.view;
+var wb = web.view(winform); 
+winform.show();
+
+//打开页面
+wb.go(&quot;https://bbs.aardio.com&quot;);
+
+//获取 Cookies 需要等待页面打开 
+wb.waitEle(&quot;body&quot;); //等待 CSS 选择器指定的节点
+
+//参数 @3 指定异步回调函数以获取结果。
+wb.cdp(&quot;Network.getCookies&quot;,
+    {urls={&quot;https://bbs.aardio.com&quot;}},//参数可省略
+    function(result){
+        //上面的 CDP 调用会立即返回，不会阻塞等待 CDP 调用结果
+        import console;
+        console.dumpJson(result.cookies);
+        //https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-getCookies
+    } 
+);
+
+/*
+web.rest 所有客户端可自动获取 web.view 的 Cookies ：
+
+import web.rest.jsonLiteClient;
+var http = web.rest.jsonLiteClient();
+http.setCookies(wb);
+*/
+
+winform.show();
+win.loopMessage();
+</code></pre>
+<a href="javascript:if(confirm('https://www.aardio.com/zh-cn/doc/example/WebUI/web.view/DevTools/cookies.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������������ʵ��ļ������صġ�  \n\n�����ڷ������ϴ���?'))window.location='https://www.aardio.com/zh-cn/doc/example/WebUI/web.view/DevTools/cookies.md'" tppabs="https://www.aardio.com/zh-cn/doc/example/WebUI/web.view/DevTools/cookies.md">Markdown 格式</a>
+</body> 
+</html>

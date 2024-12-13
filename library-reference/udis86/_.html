@@ -1,0 +1,440 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - udis86 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - udis86 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>udis86 库模块帮助文档</h1>
+
+<p><a id="udis86"></a></p>
+
+<h2>udis86 成员列表</h2>
+
+<p><a id="udis86()"></a></p>
+
+<h3>udis86()</h3>
+
+<p>创建udis86反汇编对象  </p>
+
+<p><a href="#udis86Object">返回对象:udis86Object</a></p>
+
+<p><a id="udis86Object"></a></p>
+
+<h2>udis86Object 成员列表</h2>
+
+<p><a id="udis86Object.addPc"></a></p>
+
+<h3>udis86Object.addPc(相对偏移值)</h3>
+
+<p>提供一个相对偏移修改程序指令地址</p>
+
+<p><a id="udis86Object.asm"></a></p>
+
+<h3>udis86Object.asm</h3>
+
+<p>返汇编代码</p>
+
+<p><a id="udis86Object.base"></a></p>
+
+<h3>udis86Object.base</h3>
+
+<p>指令起始位置</p>
+
+<p><a id="udis86Object.byteCode"></a></p>
+
+<h3>udis86Object.byteCode()</h3>
+
+<p>返回当前反编译的字节码</p>
+
+<p><a id="udis86Object.disassemble"></a></p>
+
+<h3>udis86Object.disassemble()</h3>
+
+<pre><code class="aardio language-aardio">while( udis86Object.disassemble() ){
+    io.print( &quot;汇编代码:&quot;,ud.asm )
+    io.print( &quot;指令长度:&quot;,ud.len )
+    io.print( &quot;PC:&quot;,ud.pc )
+    io.print(&quot;&quot;)
+}
+</code></pre>
+
+<p><a id="udis86Object.hexCode"></a></p>
+
+<h3>udis86Object.hexCode()</h3>
+
+<p>以16进制格式返回已处理的字节码</p>
+
+<p><a id="udis86Object.inputEnd"></a></p>
+
+<h3>udis86Object.inputEnd()</h3>
+
+<p>是否到输入尾</p>
+
+<p><a id="udis86Object.inputSkip"></a></p>
+
+<h3>udis86Object.inputSkip(节点数)</h3>
+
+<p>跳过输入字节数</p>
+
+<p><a id="udis86Object.len"></a></p>
+
+<h3>udis86Object.len</h3>
+
+<p>当前指令长度</p>
+
+<p><a id="udis86Object.operand"></a></p>
+
+<h3>udis86Object.operand()</h3>
+
+<p><a href="#udis86OperandObject">返回对象:udis86OperandObject</a></p>
+
+<p><a id="udis86Object.operand"></a></p>
+
+<h3>udis86Object.operand(操作数索引)</h3>
+
+<p>返回指定的操作数信息</p>
+
+<p><a id="udis86Object.pc"></a></p>
+
+<h3>udis86Object.pc</h3>
+
+<p>程序指令地址,即Program Counter</p>
+
+<p><a id="udis86Object.setInputBuffer"></a></p>
+
+<h3>udis86Object.setInputBuffer(机器码,长度,EIP)</h3>
+
+<p>设置需要反汇编的机器码,<br>
+参数一可以是字符串或缓冲区指针<br>
+其他参数可选</p>
+
+<p><a id="udis86Object.setMode"></a></p>
+
+<h3>udis86Object.setMode(32)</h3>
+
+<p>设置CPU模式,默认为32位</p>
+
+<p><a id="udis86Object.setPc"></a></p>
+
+<h3>udis86Object.setPc(EIP)</h3>
+
+<p>修改程序指令地址</p>
+
+<p><a id="udis86Object.setVendor"></a></p>
+
+<h3>udis86Object.setVendor( _UD_VENDOR )</h3>
+
+<p>设置CPU厂商</p>
+
+<p><a id="udis86Object.translateAtt"></a></p>
+
+<h3>udis86Object.translateAtt()</h3>
+
+<p>使用ATT汇编语法</p>
+
+<p><a id="udis86Object.translateIntel"></a></p>
+
+<h3>udis86Object.translateIntel()</h3>
+
+<p>使用intel汇编语法</p>
+
+<p><a id="udis86OperandObject"></a></p>
+
+<h2>udis86OperandObject 成员列表</h2>
+
+<p><a id="udis86OperandObject.BYTE oprcode"></a></p>
+
+<h3>udis86OperandObject.BYTE oprcode</h3>
+
+<pre><code class="aardio language-aardio">oprcode
+</code></pre>
+
+<p><a id="udis86OperandObject.LONG disp"></a></p>
+
+<h3>udis86OperandObject.LONG disp</h3>
+
+<pre><code class="aardio language-aardio">disp
+</code></pre>
+
+<p><a id="udis86OperandObject.base"></a></p>
+
+<h3>udis86OperandObject.base</h3>
+
+<p>值为 <em>UD</em> 前缀常量</p>
+
+<p><a id="udis86OperandObject.index"></a></p>
+
+<h3>udis86OperandObject.index</h3>
+
+<p>值为 <em>UD</em> 前缀常量</p>
+
+<p><a id="udis86OperandObject.offset"></a></p>
+
+<h3>udis86OperandObject.offset</h3>
+
+<pre><code class="aardio language-aardio">offset
+</code></pre>
+
+<p><a id="udis86OperandObject.scale"></a></p>
+
+<h3>udis86OperandObject.scale</h3>
+
+<pre><code class="aardio language-aardio">scale
+</code></pre>
+
+<p><a id="udis86OperandObject.size"></a></p>
+
+<h3>udis86OperandObject.size</h3>
+
+<pre><code class="aardio language-aardio">size
+</code></pre>
+
+<p><a id="udis86OperandObject.type"></a></p>
+
+<h3>udis86OperandObject.type</h3>
+
+<p>值为 <em>UD</em> 前缀常量</p>
+
+<p><a id="udis86OperandObject.lval"></a></p>
+
+<h2>udis86OperandObject.lval 成员列表</h2>
+
+<p><a id="udis86OperandObject.lval.sbyte"></a></p>
+
+<h3>udis86OperandObject.lval.sbyte</h3>
+
+<pre><code class="aardio language-aardio">sbyte
+</code></pre>
+
+<p><a id="udis86OperandObject.lval.sdword"></a></p>
+
+<h3>udis86OperandObject.lval.sdword</h3>
+
+<pre><code class="aardio language-aardio">sdword
+</code></pre>
+
+<p><a id="udis86OperandObject.lval.sqword"></a></p>
+
+<h3>udis86OperandObject.lval.sqword</h3>
+
+<pre><code class="aardio language-aardio">sqword
+</code></pre>
+
+<p><a id="udis86OperandObject.lval.sword"></a></p>
+
+<h3>udis86OperandObject.lval.sword</h3>
+
+<pre><code class="aardio language-aardio">sword
+</code></pre>
+
+<p><a id="udis86OperandObject.lval.ubyte"></a></p>
+
+<h3>udis86OperandObject.lval.ubyte</h3>
+
+<pre><code class="aardio language-aardio">ubyte
+</code></pre>
+
+<p><a id="udis86OperandObject.lval.udword"></a></p>
+
+<h3>udis86OperandObject.lval.udword</h3>
+
+<pre><code class="aardio language-aardio">udword
+</code></pre>
+
+<p><a id="udis86OperandObject.lval.uqword"></a></p>
+
+<h3>udis86OperandObject.lval.uqword</h3>
+
+<pre><code class="aardio language-aardio">uqword
+</code></pre>
+
+<p><a id="udis86OperandObject.lval.uword"></a></p>
+
+<h3>udis86OperandObject.lval.uword</h3>
+
+<pre><code class="aardio language-aardio">uword
+</code></pre>
+
+<p><a id="udis86OperandObject.lval.ptr"></a></p>
+
+<h2>udis86OperandObject.lval.ptr 成员列表</h2>
+
+<p><a id="udis86OperandObject.lval.ptr.off"></a></p>
+
+<h3>udis86OperandObject.lval.ptr.off</h3>
+
+<pre><code class="aardio language-aardio">off
+</code></pre>
+
+<p><a id="udis86OperandObject.lval.ptr.seg"></a></p>
+
+<h3>udis86OperandObject.lval.ptr.seg</h3>
+
+<pre><code class="aardio language-aardio">seg
+</code></pre>
+
+<h3>自动完成常量</h3>
+
+<p>_UD_NONE=0<br>
+_UD_OP_CONST=0x91<br>
+_UD_OP_IMM=0x8F<br>
+_UD_OP_JIMM=0x90<br>
+_UD_OP_MEM=0x8D<br>
+_UD_OP_PTR=0x8E<br>
+_UD_OP_REG=0x8C<br>
+_UD_R_AH=5<br>
+_UD_R_AL=1<br>
+_UD_R_AX=0x15<br>
+_UD_R_BH=8<br>
+_UD_R_BL=4<br>
+_UD_R_BP=0x1A<br>
+_UD_R_BPL=0xA<br>
+_UD_R_BX=0x18<br>
+_UD_R_CH=6<br>
+_UD_R_CL=2<br>
+_UD_R_CR0=0x4B<br>
+_UD_R_CR1=0x4C<br>
+_UD_R_CR10=0x55<br>
+_UD_R_CR11=0x56<br>
+_UD_R_CR12=0x57<br>
+_UD_R_CR13=0x58<br>
+_UD_R_CR14=0x59<br>
+_UD_R_CR15=0x5A<br>
+_UD_R_CR2=0x4D<br>
+_UD_R_CR3=0x4E<br>
+_UD_R_CR4=0x4F<br>
+_UD_R_CR5=0x50<br>
+_UD_R_CR6=0x51<br>
+_UD_R_CR7=0x52<br>
+_UD_R_CR8=0x53<br>
+_UD_R_CR9=0x54<br>
+_UD_R_CS=0x46<br>
+_UD_R_CX=0x16<br>
+_UD_R_DH=7<br>
+_UD_R_DI=0x1C<br>
+_UD_R_DIL=0xC<br>
+_UD_R_DL=3<br>
+_UD_R_DR0=0x5B<br>
+_UD_R_DR1=0x5C<br>
+_UD_R_DR10=0x65<br>
+_UD_R_DR11=0x66<br>
+_UD_R_DR12=0x67<br>
+_UD_R_DR13=0x68<br>
+_UD_R_DR14=0x69<br>
+_UD_R_DR15=0x6A<br>
+_UD_R_DR2=0x5D<br>
+_UD_R_DR3=0x5E<br>
+_UD_R_DR4=0x5F<br>
+_UD_R_DR5=0x60<br>
+_UD_R_DR6=0x61<br>
+_UD_R_DR7=0x62<br>
+_UD_R_DR8=0x63<br>
+_UD_R_DR9=0x64<br>
+_UD_R_DS=0x48<br>
+_UD_R_DX=0x17<br>
+_UD_R_EAX=0x25<br>
+_UD_R_EBP=0x2A<br>
+_UD_R_EBX=0x28<br>
+_UD_R_ECX=0x26<br>
+_UD_R_EDI=0x2C<br>
+_UD_R_EDX=0x27<br>
+_UD_R_ES=0x45<br>
+_UD_R_ESI=0x2B<br>
+_UD_R_ESP=0x29<br>
+_UD_R_FS=0x49<br>
+_UD_R_GS=0x4A<br>
+_UD_R_MM0=0x6B<br>
+_UD_R_MM1=0x6C<br>
+_UD_R_MM2=0x6D<br>
+_UD_R_MM3=0x6E<br>
+_UD_R_MM4=0x6F<br>
+_UD_R_MM5=0x70<br>
+_UD_R_MM6=0x71<br>
+_UD_R_MM7=0x72<br>
+_UD_R_R10=0x3F<br>
+_UD_R_R10B=0xF<br>
+_UD_R_R10D=0x2F<br>
+_UD_R_R10W=0x1F<br>
+_UD_R_R11=0x40<br>
+_UD_R_R11B=0x10<br>
+_UD_R_R11D=0x30<br>
+_UD_R_R11W=0x20<br>
+_UD_R_R12=0x41<br>
+_UD_R_R12B=0x11<br>
+_UD_R_R12D=0x31<br>
+_UD_R_R12W=0x21<br>
+_UD_R_R13=0x42<br>
+_UD_R_R13B=0x12<br>
+_UD_R_R13D=0x32<br>
+_UD_R_R13W=0x22<br>
+_UD_R_R14=0x43<br>
+_UD_R_R14B=0x13<br>
+_UD_R_R14D=0x33<br>
+_UD_R_R14W=0x23<br>
+_UD_R_R15=0x44<br>
+_UD_R_R15B=0x14<br>
+_UD_R_R15D=0x34<br>
+_UD_R_R15W=0x24<br>
+_UD_R_R8=0x3D<br>
+_UD_R_R8B=0xD<br>
+_UD_R_R8D=0x2D<br>
+_UD_R_R8W=0x1D<br>
+_UD_R_R9=0x3E<br>
+_UD_R_R9B=0xE<br>
+_UD_R_R9D=0x2E<br>
+_UD_R_R9W=0x1E<br>
+_UD_R_RAX=0x35<br>
+_UD_R_RBP=0x3A<br>
+_UD_R_RBX=0x38<br>
+_UD_R_RCX=0x36<br>
+_UD_R_RDI=0x3C<br>
+_UD_R_RDX=0x37<br>
+_UD_R_RIP=0x8B<br>
+_UD_R_RSI=0x3B<br>
+_UD_R_RSP=0x39<br>
+_UD_R_SI=0x1B<br>
+_UD_R_SIL=0xB<br>
+_UD_R_SP=0x19<br>
+_UD_R_SPL=9<br>
+_UD_R_SS=0x47<br>
+_UD_R_ST0=0x73<br>
+_UD_R_ST1=0x74<br>
+_UD_R_ST2=0x75<br>
+_UD_R_ST3=0x76<br>
+_UD_R_ST4=0x77<br>
+_UD_R_ST5=0x78<br>
+_UD_R_ST6=0x79<br>
+_UD_R_ST7=0x7A<br>
+_UD_R_XMM0=0x7B<br>
+_UD_R_XMM1=0x7C<br>
+_UD_R_XMM10=0x85<br>
+_UD_R_XMM11=0x86<br>
+_UD_R_XMM12=0x87<br>
+_UD_R_XMM13=0x88<br>
+_UD_R_XMM14=0x89<br>
+_UD_R_XMM15=0x8A<br>
+_UD_R_XMM2=0x7D<br>
+_UD_R_XMM3=0x7E<br>
+_UD_R_XMM4=0x7F<br>
+_UD_R_XMM5=0x80<br>
+_UD_R_XMM6=0x81<br>
+_UD_R_XMM7=0x82<br>
+_UD_R_XMM8=0x83<br>
+_UD_R_XMM9=0x84<br>
+_UD_VENDOR_AMD=0<br>
+_UD_VENDOR_ANY=2<br>
+_UD_VENDOR_INTEL=1  </p>
+
+<p><a href="_.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/udis86/_.md">Markdown 格式</a></p>
+
+</body> 
+</html>

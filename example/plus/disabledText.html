@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - 用 plus 控件创建动画文字图标'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - 用 plus 控件创建动画文字图标</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 用 plus 控件创建动画文字图标</h1><pre><code class="aardio language-aardio">//用 plus 控件创建动画文字图标
+import fonts.fontAwesome
+import win.ui;
+/*DSG{{*/
+var winform = win.form(text=&quot;动画文字图标&quot;;right=589;bottom=429)
+winform.add(
+btnStop={cls=&quot;plus&quot;;text=&quot;停止动画&quot;;left=180;top=342;right=356;bottom=389;align=&quot;left&quot;;bgcolor=-5197169;color=3145728;disabled=1;font=LOGFONT(h=-19);iconStyle={align=&quot;left&quot;;font=LOGFONT(h=-19;name=&#39;FontAwesome&#39;);padding={left=28}};iconText=&#39;\uF04D&#39;;notify=1;textPadding={left=60};z=6};
+groupbox={cls=&quot;groupbox&quot;;text=&quot;纯文本动画&quot;;left=269;top=31;right=505;bottom=308;edge=1;transparent=1;z=1};
+plus={cls=&quot;plus&quot;;text=&quot;启 动&quot;;left=56;top=65;right=215;bottom=112;align=&quot;left&quot;;bgcolor=-5197169;color=3145728;font=LOGFONT(h=-19);iconStyle={align=&quot;left&quot;;font=LOGFONT(h=-19;name=&#39;FontAwesome&#39;);padding={left=28}};iconText=&#39;\uF04B &#39;;notify=1;textPadding={left=60};z=2};
+plus1={cls=&quot;plus&quot;;text=&quot;启 动&quot;;left=307;top=65;right=466;bottom=112;bgcolor=-5197169;color=3145728;font=LOGFONT(h=-19);notify=1;z=3};
+plus2={cls=&quot;plus&quot;;text=&quot;启 动&quot;;left=306;top=139;right=465;bottom=186;bgcolor=-5197169;color=3145728;font=LOGFONT(h=-19);notify=1;z=4};
+plus3={cls=&quot;plus&quot;;text=&quot;启 动&quot;;left=306;top=219;right=465;bottom=266;bgcolor=-5197169;color=3145728;font=LOGFONT(h=-19);notify=1;z=5}
+)
+/*}}*/
+
+/*
+下面这个 plus 按钮是用 FontAwesome 图标字体实现动画,
+这有2种不同的方法:
+
+1、文本设为 FontAwesome 字体，图标与文本一起显示。
+2、文本为普通 FontAwesome 字体，图标文本单独设为 FontAwesome 字体，
+并且两个文本都设为左对齐，并分别设置合适的文本边距。这种很适合透明背景的
+无边框按钮，或者字体长度变化不大的按钮。居中不如第一种方便，但字体显示效果好。
+*/
+winform.plus.oncommand = function(id,event){
+    winform.plus.disabledText =  {&#39;\uF254&#39;;&#39;\uF251&#39;;&#39;\uF252&#39;;&#39;\uF253&#39;;&#39;\uF250&#39;;text=&quot;请稍候 ...&quot;};
+    winform.btnStop.disabledText = null;
+}
+
+/*
+下面所有 plus 按钮都没有用到  FontAwesome 图标字体，
+而是用的普通文本或 Unicode 图标，注意 text=&quot;请稍候 ...&quot; 这个是可选的，可以不指定。
+*/
+winform.plus1.oncommand = function(id,event){
+    winform.plus1.disabledText =  {&quot;✶&quot;;&quot;✸&quot;;&quot;✹&quot;;&quot;✺&quot;;&quot;✹&quot;;&quot;✷&quot;;text=&quot;请稍候 ...&quot;};
+    winform.btnStop.disabledText = null;
+}
+
+winform.plus2.oncommand = function(id,event){
+    winform.plus2.disabledText =  {&quot;◈◇◇&quot;;&quot;◇◈◇&quot;;&quot;◇◇◈&quot;;text=&quot;请稍候&quot;};
+    winform.btnStop.disabledText = null;
+}
+
+winform.plus3.oncommand = function(id,event){
+    winform.plus3.disabledText =  {&quot;◢&quot;;&quot;◣&quot;;&quot;◤&quot;;&quot;◥&quot;;text=&quot;请稍候&quot;};
+    winform.btnStop.disabledText = null;
+}
+
+winform.btnStop.oncommand = function(id,event){
+    for(name,ctrl in winform.eachControl(&quot;plus&quot;) ){
+        ctrl.disabledText = null;
+    }
+
+    owner.disabled = true;
+}
+
+for(name,ctrl in winform.eachControl(&quot;plus&quot;) ){
+    ctrl.skin({
+        background={
+            active=0xFF6F6987;
+            default=0xFF8FB2B0;
+            disabled=0xFFD4D4D4;
+            hover=0xFF928BB3
+        };
+        color={
+            active=0xFFE69417;
+            default=0xFF000030;
+            disabled=0xFF666666;
+            hover=0xFFFF9A00
+        }
+    })  
+}
+
+winform.show() 
+win.loopMessage();
+</code></pre>
+<a href="javascript:if(confirm('https://www.aardio.com/zh-cn/doc/example/plus/disabledText.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������������ʵ��ļ������صġ�  \n\n�����ڷ������ϴ���?'))window.location='https://www.aardio.com/zh-cn/doc/example/plus/disabledText.md'" tppabs="https://www.aardio.com/zh-cn/doc/example/plus/disabledText.md">Markdown 格式</a>
+</body> 
+</html>

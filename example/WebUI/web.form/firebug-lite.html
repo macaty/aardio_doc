@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - 请稍候正在加载 firebug-lite.js...... CDN 服务器较慢,建议先下载到本地'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - 请稍候正在加载 firebug-lite.js...... CDN 服务器较慢,建议先下载到本地</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 请稍候正在加载 firebug-lite.js...... CDN 服务器较慢,建议先下载到本地</h1><pre><code class="aardio language-aardio">//Firebug Lite
+import win.ui;
+/*DSG{{*/
+winform = win.form(text=&quot;请稍候正在加载 firebug-lite.js...... CDN 服务器较慢,建议先下载到本地&quot;;right=1095;bottom=687)
+winform.add()
+/*}}*/
+
+import web.form;
+var wb = web.form(winform);
+
+wb.onDocumentReady = function(url,mainFrameJSState,frameJSState){
+    winform.text = &quot;firebug-lite.js 已加载，请按 F12 试一试!&quot;
+}
+
+
+wb.html = /**
+&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; /&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/gh/aardio/firebug-lite@1.4.1/build/firebug-lite.js#startOpened&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;header&quot;&gt;现在主流的浏览器都提供开发工具，都可以通过按F12打开开发工具非常方便&lt;/div&gt;
+    &lt;div id=&quot;container&quot;&gt;
+        在 web.form 里只要简单的在代码中加上下面的代码也可以启动一个简单的开发工具：&lt;br&gt;&lt;br&gt;
+        &lt;xmp&gt;
+        &lt;script src=&quot;https://cdn.jsdelivr.net/gh/aardio/firebug-lite@1.4.1/build/firebug-lite.js#startOpened&quot;&gt;&lt;/script&gt;
+        &lt;/xmp&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+**/
+
+winform.show();
+win.loopMessage();
+
+/*
+firebug lite支持的参数如下：
+    saveCookies - false
+    startOpened - false
+    startInNewWindow - false
+    showIconWhenHidden - true
+    overrideConsole - true
+    ignoreFirebugElements - true
+    disableXHRListener - false
+    disableWhenFirebugActive - true
+    enableTrace - false
+    enablePersistent - false
+
+可以直接写在js网址后面，多个参数用逗号分开，例如：
+    path/to/firebug-lite.js#enableTrace=true,overrideConsole=false
+
+只写选项不写值默认就是(true)例如:
+    path/to/firebug-lite.js#enableTrace,overrideConsole=false
+
+也可以这样写：
+    &lt;script type=&quot;text/javascript&quot;
+    src=&quot;https://gcore.jsdelivr.net/gh/aardio/firebug-lite@1.4.1/build/firebug-lite.js&quot;&gt;
+    {
+        overrideConsole: false,
+        startInNewWindow: true,
+        startOpened: true,
+        enableTrace: true
+    }
+    &lt;/script&gt;
+
+注意：
+    不要改为压缩版 firebug-lite.min.js，这个JS压缩后会出错
+*/
+</code></pre>
+<a href="javascript:if(confirm('https://www.aardio.com/zh-cn/doc/example/WebUI/web.form/firebug-lite.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������������ʵ��ļ������صġ�  \n\n�����ڷ������ϴ���?'))window.location='https://www.aardio.com/zh-cn/doc/example/WebUI/web.form/firebug-lite.md'" tppabs="https://www.aardio.com/zh-cn/doc/example/WebUI/web.form/firebug-lite.md">Markdown 格式</a>
+</body> 
+</html>

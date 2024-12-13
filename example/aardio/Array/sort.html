@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - 内置排序'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - 内置排序</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 内置排序</h1><pre><code class="aardio language-aardio">//排序
+import console.int;
+
+//创建数组，可以用分号（或逗号）分隔数组成员。
+var array = {2,46,5,17,1,2,3};
+
+//table.sort() 函数用于排序数组。
+table.sort(array);
+console.dumpTable(array);
+
+//自定义排序
+table.sort(array,function(next){
+    //可以用 &gt; 或 &lt; 比较，但不能用 &gt;= 或 &lt;= ，元素相等不能返回 true。
+    return owner &gt; next;
+})
+console.dumpTable(array);
+
+/*
+排序数组用 table.sort() 函数就可以了。
+后面范例中收录的其他排序算法仅供参考。
+*/
+</code></pre>
+<a href="sort.md" tppabs="https://www.aardio.com/zh-cn/doc/example/aardio/Array/sort.md">Markdown 格式</a>
+</body> 
+</html>

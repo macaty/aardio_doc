@@ -1,0 +1,438 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - mpvPlayer 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - mpvPlayer 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>mpvPlayer 库模块帮助文档</h1>
+
+<p><a id="mpvPlayer"></a></p>
+
+<h2>mpvPlayer 成员列表</h2>
+
+<p>开源万能视频播放器</p>
+
+<p><a id="mpvPlayer()"></a></p>
+
+<h3>mpvPlayer()</h3>
+
+<p><a href="#mpvPlayerObject">返回对象:mpvPlayerObject</a></p>
+
+<p><a id="mpvPlayer(winform)"></a></p>
+
+<h3>mpvPlayer(winform)</h3>
+
+<p>创建 MPV 播放器控件,</p>
+
+<p><a id="mpvPlayerObject"></a></p>
+
+<h2>mpvPlayerObject 成员列表</h2>
+
+<p><a id="mpvPlayerObject.command"></a></p>
+
+<h3>mpvPlayerObject.command</h3>
+
+<p>发送命令</p>
+
+<p><a id="mpvPlayerObject.command"></a></p>
+
+<h3>mpvPlayerObject.command(...)</h3>
+
+<p>发送命令,<br>
+参数为一个或多个字符串参数,非字符串参数自动调用 tostring 转换为字符串<br>
+注意MPV组件的任何函数的字符串参数都是使用UTF8编码，与aardio默认编码一致</p>
+
+<p><a id="mpvPlayerObject.commandAsync"></a></p>
+
+<h3>mpvPlayerObject.commandAsync</h3>
+
+<p>异步发送命令</p>
+
+<p><a id="mpvPlayerObject.commandAsync"></a></p>
+
+<h3>mpvPlayerObject.commandAsync(reply,...)</h3>
+
+<p>异步发送命令,参数@1指定回调函数,<br>
+其他为一个或多个字符串参数,非字符串参数自动调用tostring转换为字符串</p>
+
+<p><a id="mpvPlayerObject.destroy"></a></p>
+
+<h3>mpvPlayerObject.destroy()</h3>
+
+<p>释放对象。<br>
+在窗口关闭时会自动调用此函数</p>
+
+<p><a id="mpvPlayerObject.eventName"></a></p>
+
+<h3>mpvPlayerObject.eventName(id)</h3>
+
+<p>使用参数指定的事件 ID 返回事件名称</p>
+
+<p><a id="mpvPlayerObject.getMediaTitle"></a></p>
+
+<h3>mpvPlayerObject.getMediaTitle()</h3>
+
+<p>返回视频文件标题</p>
+
+<p><a id="mpvPlayerObject.getProperty"></a></p>
+
+<h3>mpvPlayerObject.getProperty</h3>
+
+<p>获取属性</p>
+
+<p><a id="mpvPlayerObject.getProperty"></a></p>
+
+<h3>mpvPlayerObject.getProperty(name,value)</h3>
+
+<p>获取属性<br>
+value 参数可以是一个结构体,这时候返回值为结构体<br>
+value也可以使用&quot;string&quot;,&quot;bool&quot;,&quot;double&quot;,&quot;long&quot;,&quot;int&quot;等指定返回值类型,这时候直接返回对应的值  </p>
+
+<p>所有可用属性参考文档 <a href="javascript:if(confirm('http://mpv.io/manual/master/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://mpv.io/manual/master/#properties'" tppabs="http://mpv.io/manual/master/#properties">http://mpv.io/manual/master/#properties</a></p>
+
+<p><a id="mpvPlayerObject.getTrackCodec"></a></p>
+
+<h3>mpvPlayerObject.getTrackCodec(索引)</h3>
+
+<p>获取轨道解码器名称，例如h264</p>
+
+<p><a id="mpvPlayerObject.getTrackCount"></a></p>
+
+<h3>mpvPlayerObject.getTrackCount()</h3>
+
+<p>获取轨道数量</p>
+
+<p><a id="mpvPlayerObject.getTrackDecoderDesc"></a></p>
+
+<h3>mpvPlayerObject.getTrackDecoderDesc(索引)</h3>
+
+<p>获取轨道解码成功的友好的解码器名称</p>
+
+<p><a id="mpvPlayerObject.getTrackDefault "></a></p>
+
+<h3>mpvPlayerObject.getTrackDefault (索引)</h3>
+
+<p>是否默认轨道</p>
+
+<p><a id="mpvPlayerObject.getTrackDemuxChannelCount"></a></p>
+
+<h3>mpvPlayerObject.getTrackDemuxChannelCount(索引)</h3>
+
+<p>获取通道数</p>
+
+<p><a id="mpvPlayerObject.getTrackDemuxChannels"></a></p>
+
+<h3>mpvPlayerObject.getTrackDemuxChannels(索引)</h3>
+
+<p>获取通道</p>
+
+<p><a id="mpvPlayerObject.getTrackDemuxFps"></a></p>
+
+<h3>mpvPlayerObject.getTrackDemuxFps(索引)</h3>
+
+<p>获取轨道视频FPS</p>
+
+<p><a id="mpvPlayerObject.getTrackDemuxSamplerate"></a></p>
+
+<h3>mpvPlayerObject.getTrackDemuxSamplerate(索引)</h3>
+
+<p>获取轨道音频采样率</p>
+
+<p><a id="mpvPlayerObject.getTrackDemuxSize"></a></p>
+
+<h3>mpvPlayerObject.getTrackDemuxSize(索引)</h3>
+
+<p>获取轨道大小</p>
+
+<p><a id="mpvPlayerObject.getTrackExternal"></a></p>
+
+<h3>mpvPlayerObject.getTrackExternal(索引)</h3>
+
+<p>获取轨道是否外挂的文件，主要指外挂字幕</p>
+
+<p><a id="mpvPlayerObject.getTrackExternalFile"></a></p>
+
+<h3>mpvPlayerObject.getTrackExternalFile(索引)</h3>
+
+<p>获取轨道外挂文件路径</p>
+
+<p><a id="mpvPlayerObject.getTrackFfmpegIndex"></a></p>
+
+<h3>mpvPlayerObject.getTrackFfmpegIndex(索引)</h3>
+
+<p>获取轨道FFmpeg索引</p>
+
+<p><a id="mpvPlayerObject.getTrackForced"></a></p>
+
+<h3>mpvPlayerObject.getTrackForced(索引)</h3>
+
+<p>获取轨道强制标识</p>
+
+<p><a id="mpvPlayerObject.getTrackId"></a></p>
+
+<h3>mpvPlayerObject.getTrackId(索引)</h3>
+
+<p>获取轨道ID</p>
+
+<p><a id="mpvPlayerObject.getTrackLang"></a></p>
+
+<h3>mpvPlayerObject.getTrackLang(索引)</h3>
+
+<p>获取轨道语言</p>
+
+<p><a id="mpvPlayerObject.getTrackReplaygainAlbumGain"></a></p>
+
+<h3>mpvPlayerObject.getTrackReplaygainAlbumGain(索引)</h3>
+
+<p>获取专辑回放增益峰值</p>
+
+<p><a id="mpvPlayerObject.getTrackReplaygainAlbumPeak"></a></p>
+
+<h3>mpvPlayerObject.getTrackReplaygainAlbumPeak(索引)</h3>
+
+<p>获取专辑回放增益峰值</p>
+
+<p><a id="mpvPlayerObject.getTrackReplaygainTrackGain"></a></p>
+
+<h3>mpvPlayerObject.getTrackReplaygainTrackGain(索引)</h3>
+
+<p>获取轨道回放增益</p>
+
+<p><a id="mpvPlayerObject.getTrackReplaygainTrackPeak"></a></p>
+
+<h3>mpvPlayerObject.getTrackReplaygainTrackPeak(索引)</h3>
+
+<p>获取轨道回放增益峰值</p>
+
+<p><a id="mpvPlayerObject.getTrackSelected"></a></p>
+
+<h3>mpvPlayerObject.getTrackSelected(索引)</h3>
+
+<p>获取轨道是否当前选用轨道</p>
+
+<p><a id="mpvPlayerObject.getTrackSrcId"></a></p>
+
+<h3>mpvPlayerObject.getTrackSrcId(索引)</h3>
+
+<p>获取源文件轨道ID</p>
+
+<p><a id="mpvPlayerObject.getTrackTitle"></a></p>
+
+<h3>mpvPlayerObject.getTrackTitle(索引)</h3>
+
+<p>获取轨道标题</p>
+
+<p><a id="mpvPlayerObject.getTrackType"></a></p>
+
+<h3>mpvPlayerObject.getTrackType(索引)</h3>
+
+<p>获取轨道类型,返回值为字符串<br>
+可能的类型为&quot;video&quot;,&quot;audio&quot;,&quot;sub&quot;,其中&quot;sub&quot;为加载的字幕</p>
+
+<p><a id="mpvPlayerObject.getVolume"></a></p>
+
+<h3>mpvPlayerObject.getVolume()</h3>
+
+<p>返回播放音量</p>
+
+<p><a id="mpvPlayerObject.isPaused"></a></p>
+
+<h3>mpvPlayerObject.isPaused()</h3>
+
+<p>当前是否暂停播放</p>
+
+<p><a id="mpvPlayerObject.loadFile"></a></p>
+
+<h3>mpvPlayerObject.loadFile</h3>
+
+<p>加载视频文件</p>
+
+<p><a id="mpvPlayerObject.loadFile"></a></p>
+
+<h3>mpvPlayerObject.loadFile(filename)</h3>
+
+<p>加载视频文件,参数指定文件路径或者视频网址<br>
+注意 MPV 组件的字符串参数都是使用UTF8编码，与aardio默认编码一致<br>
+注意MPV组件的任何函数的字符串参数都是使用UTF8编码，与aardio默认编码一致</p>
+
+<p><a id="mpvPlayerObject.loadSubtitle"></a></p>
+
+<h3>mpvPlayerObject.loadSubtitle(filename,flag,title,lang)</h3>
+
+<p>加载字幕文件,<br>
+除参数@1用于指定字幕文件路径以外其他参数可选<br>
+其他参数参考函数源码以及MPV文档</p>
+
+<p><a id="mpvPlayerObject.observeProperty"></a></p>
+
+<h3>mpvPlayerObject.observeProperty</h3>
+
+<p>订阅属性变更事件</p>
+
+<p><a id="mpvPlayerObject.observeProperty"></a></p>
+
+<h3>mpvPlayerObject.observeProperty(name,format)</h3>
+
+<p>订阅属性变更事件<br>
+format可选值为&quot;string&quot;,&quot;bool&quot;,&quot;double&quot;,&quot;long&quot;,&quot;int&quot;,<br>
+也可以使用 _MPV_FORMAT 前缀的常量指定format<br>
+不指定formart时默认为&quot;double&quot;,</p>
+
+<p><a id="mpvPlayerObject.pause"></a></p>
+
+<h3>mpvPlayerObject.pause</h3>
+
+<p>暂停或取消暂停</p>
+
+<p><a id="mpvPlayerObject.pause"></a></p>
+
+<h3>mpvPlayerObject.pause(paused)</h3>
+
+<p>参数为 true 时暂停,为 false 时继续播放</p>
+
+<p><a id="mpvPlayerObject.requestLogMessages"></a></p>
+
+<h3>mpvPlayerObject.requestLogMessages(minLevel)</h3>
+
+<p>设置日志信息级别</p>
+
+<p><a id="mpvPlayerObject.screenshotToFile"></a></p>
+
+<h3>mpvPlayerObject.screenshotToFile</h3>
+
+<p>截图</p>
+
+<p><a id="mpvPlayerObject.screenshotToFile"></a></p>
+
+<h3>mpvPlayerObject.screenshotToFile(filename,flag)</h3>
+
+<p>截图,<br>
+除参数@1用于指定保存文件路径以外其他参数可选<br>
+其他参数参考函数源码以及MPV文档</p>
+
+<p><a id="mpvPlayerObject.seek"></a></p>
+
+<h3>mpvPlayerObject.seek</h3>
+
+<p>切换到指定位置播放</p>
+
+<p><a id="mpvPlayerObject.seek"></a></p>
+
+<h3>mpvPlayerObject.seek(pos)</h3>
+
+<p>切换到指定位置播放,参数为秒数</p>
+
+<p><a id="mpvPlayerObject.setOption"></a></p>
+
+<h3>mpvPlayerObject.setOption</h3>
+
+<p>设置选项</p>
+
+<p><a id="mpvPlayerObject.setOption"></a></p>
+
+<h3>mpvPlayerObject.setOption(name,value)</h3>
+
+<p>设置选项，<br>
+也可以用一个表包含多个键值对用于设置多个选项,<br>
+参考文档 <a href="javascript:if(confirm('http://mpv.io/manual/master/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://mpv.io/manual/master/#options'" tppabs="http://mpv.io/manual/master/#options">http://mpv.io/manual/master/#options</a></p>
+
+<p><a id="mpvPlayerObject.setProperty"></a></p>
+
+<h3>mpvPlayerObject.setProperty</h3>
+
+<p>设置属性</p>
+
+<p><a id="mpvPlayerObject.setProperty"></a></p>
+
+<h3>mpvPlayerObject.setProperty(name,value,format)</h3>
+
+<p>设置属性<br>
+如果值不是一个结构体,可用format指定值类型<br>
+format可选值为&quot;string&quot;,&quot;bool&quot;,&quot;double&quot;,&quot;long&quot;,&quot;int&quot;,<br>
+format也可以用数值常量指定类型,参考MPV文档，<br>
+所有可用属性参考文档 <a href="javascript:if(confirm('http://mpv.io/manual/master/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://mpv.io/manual/master/#properties'" tppabs="http://mpv.io/manual/master/#properties">http://mpv.io/manual/master/#properties</a></p>
+
+<p><a id="mpvPlayerObject.setSubtitle"></a></p>
+
+<h3>mpvPlayerObject.setSubtitle(id)</h3>
+
+<p>切换到指定的字幕<br>
+字幕ID使用 getTrackId 函数获取</p>
+
+<p><a id="mpvPlayerObject.setVolume"></a></p>
+
+<h3>mpvPlayerObject.setVolume()</h3>
+
+<p>设置音量，值可以为 0 到 100</p>
+
+<p><a id="mpvPlayerObject.stop"></a></p>
+
+<h3>mpvPlayerObject.stop()</h3>
+
+<p>停止播放视频</p>
+
+<p><a id="mpvPlayerObject.waitEvent"></a></p>
+
+<h3>mpvPlayerObject.waitEvent</h3>
+
+<p>等待视频播放器事件</p>
+
+<p><a id="mpvPlayerObject.waitEvent"></a></p>
+
+<h3>mpvPlayerObject.waitEvent(timeout)</h3>
+
+<p>等待视频播放器事件<br>
+参数指定超时秒数,如果在界面线程中建议指定为0<br>
+返回的 event.id为0时为无效事件<br>
+此函数也负责触发对象的默认事件，例如onPropertyChange,onEndFile等等<br>
+通常应当在窗口定时器中持续调用此事件</p>
+
+<h3>自动完成常量</h3>
+
+<p>_MPV_END_FILE_REASON_EOF=0<br>
+_MPV_END_FILE_REASON_ERROR=4<br>
+_MPV_END_FILE_REASON_QUIT=3<br>
+_MPV_END_FILE_REASON_REDIRECT=5<br>
+_MPV_END_FILE_REASON_STOP=2<br>
+_MPV_EVENT_AUDIO_RECONFIG=0x12<br>
+_MPV_EVENT_CLIENT_MESSAGE=0x10<br>
+_MPV_EVENT_COMMAND_REPLY=5<br>
+_MPV_EVENT_END_FILE=7<br>
+_MPV_EVENT_FILE_LOADED=8<br>
+_MPV_EVENT_GET_PROPERTY_REPLY=3<br>
+_MPV_EVENT_IDLE=0xB<br>
+_MPV_EVENT_LOG_MESSAGE=2<br>
+_MPV_EVENT_NONE=0<br>
+_MPV_EVENT_PLAYBACK_RESTART=0x15<br>
+_MPV_EVENT_PROPERTY_CHANGE=0x16<br>
+_MPV_EVENT_QUEUE_OVERFLOW=0x18<br>
+_MPV_EVENT_SEEK=0x14<br>
+_MPV_EVENT_SET_PROPERTY_REPLY=4<br>
+_MPV_EVENT_SHUTDOWN=1<br>
+_MPV_EVENT_START_FILE=6<br>
+_MPV_EVENT_TICK=0xE<br>
+_MPV_EVENT_VIDEO_RECONFIG=0x11<br>
+_MPV_FORMAT_BYTE_ARRAY=9<br>
+_MPV_FORMAT_DOUBLE=5<br>
+_MPV_FORMAT_FLAG=3<br>
+_MPV_FORMAT_INT64=4<br>
+_MPV_FORMAT_NODE=6<br>
+_MPV_FORMAT_NODE_ARRAY=7<br>
+_MPV_FORMAT_NODE_MAP=8<br>
+_MPV_FORMAT_NONE=0<br>
+_MPV_FORMAT_OSD_STRING=2<br>
+_MPV_FORMAT_STRING=1  </p>
+
+<p><a href="_.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/mpvPlayer/_.md">Markdown 格式</a></p>
+
+</body> 
+</html>

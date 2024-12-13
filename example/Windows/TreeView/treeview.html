@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - 树视图（treeview）控件 - 入门示例'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - 树视图（treeview）控件 - 入门示例</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 树视图（treeview）控件 - 入门示例</h1><pre><code class="aardio language-aardio">//树视图（treeview）控件 - 入门示例
+import win.ui;
+/*DSG{{*/
+var winform = win.form(text=&quot;aardio form&quot;;right=349;bottom=249;)
+winform.add(
+treeview={cls=&quot;treeview&quot;;left=22;top=17;right=326;bottom=230;asel=false;bgcolor=15793151;db=1;dl=1;dt=1;edge=1;hscroll=1;infoTip=1;vscroll=1;z=1}
+)
+/*}}*/
+
+import win.ui.menu;
+
+//选中树视图（treeview）节点变更触发 onSelChanged 事件
+winform.treeview.onSelChanged = function(hItem,data,nmTreeView){
+    var data  = winform.treeview.getItemData(hItem);
+
+    if( data ) winform.text = tostring(data)
+    else winform.text = winform.treeview.getItemText(hItem);    
+}
+
+//右键点击树视图（treeview）触发 onRightClick 事件
+winform.treeview.onRightClick = function(hItem,data){
+    winform.treeview.setSelected(hItem);
+
+    var menu = win.ui.popmenu(winform)
+    menu.add(&quot;删除&quot;,
+        function(){ 
+            winform.treeview.delItem(hItem)
+        }
+    )
+    menu.popup(x,y,true);       
+}
+
+//处理树视图（treeview）通知事件，实际上上面的 onSelChanged，onRightClick 都来自控件预处理的通知事件。
+winform.treeview.onnotify = function(id,code,ptr){
+
+    if( code == 0xFFFFFFF4/*_NM_CUSTOMDRAW*/ ){ //来点自绘
+        var lvcd = winform.treeview.getNotifyCustomDraw(code,ptr); 
+        if( lvcd.nmcd.dwDrawStage == 1/*_CDDS_PREPAINT*/ ){
+            return 0x20/*_CDRF_NOTIFYITEMDRAW*/;
+        }
+        elseif( lvcd.nmcd.dwDrawStage == 0x10001/*_CDDS_ITEMPREPAINT*/ ){
+            select(lvcd.iLevel) {
+                case 0{
+                    if (lvcd.nmcd.uItemState == ( 0x10/*_CDIS_FOCUS*/ | 1/*_CDIS_SELECTED*/)) 
+                        lvcd.clrText = gdi.RGB(255, 255, 255);
+                    else    
+                        lvcd.clrText = gdi.RGB(0, 0, 255); 
+                }
+                case 1 {
+                    if (lvcd.nmcd.uItemState == ( 0x10/*_CDIS_FOCUS*/ | 1/*_CDIS_SELECTED*/)) 
+                        lvcd.clrText = gdi.RGB(255, 255, 255);
+                    else    
+                        lvcd.clrText = gdi.RGB(255, 0, 0);
+                }
+            } 
+            lvcd.update() 
+            return 0/*_CDRF_DODEFAULT*/
+        }
+    }
+}
+
+var hitem = winform.treeview.insertItem( text=&quot;程序目录&quot; );
+var hSubItem = winform.treeview.insertItem( { text=&quot;子目录&quot; },hitem/*父节点*/); 
+
+var hitem = winform.treeview.insertItem( { 
+    text = &quot;下面用一个数组指定子节点&quot;; { 
+        {  text = &quot;子节点1&quot;  };
+        {  text = &quot;子节点2&quot; };
+        {  text = &quot;下面用一个数组指定子节点&quot;; {
+            &quot;a&quot;;&quot;b&quot;;&quot;c&quot;;{ text = &quot;d&quot; } 
+           }
+        };
+    }
+} ) 
+
+import string.xml;
+xmlstr =  /* 
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;project ver=&quot;10&quot; name=&quot;aardio工程3&quot; libEmbed=&quot;true&quot; icon=&quot;...&quot;&gt;
+    &lt;file name=&quot;main.aardio&quot; path=&quot;main.aardio&quot; &gt;  
+    &lt;/file&gt;
+    &lt;folder name=&quot;资源文件&quot; path=&quot;res&quot; embed=&quot;true&quot;&gt;
+        &lt;file name=&quot;test.aardio&quot; path=&quot;test.aardio&quot; &gt;  
+    &lt;/folder&gt;
+    &lt;folder name=&quot;库&quot; path=&quot;lib&quot;&gt; &lt;/folder&gt; 
+&lt;/project&gt; 
+*/ 
+xmlDoc = string.xml( xmlstr )
+winform.treeview.insertItem( xmlDoc ) //直接把XML加载到树形控件中, winform.treeview.getItemData(hItem) 获取节点对应的XML数据
+/*
+winform.treeview.insertItem 的参数@1可以使用使用string.xml对象,
+或者使用相同结构的普通数据表对象,每个节点对象必须指定tagName或text属性,
+treeview按text,label,title,name,tagName的顺序确定显示标题.
+
+每个节点可以用数组包含子节点(但节点本身必须指定tagName或text属性)
+也可以使用children成员指向一个数组表示多个子节点
+
+可以参考 fsys.asar.reader 提供的treeData函数返回的数据表,
+就可以直接在treeview中加载并显示。
+*/
+
+winform.show() 
+win.loopMessage();
+
+</code></pre>
+<a href="javascript:if(confirm('https://www.aardio.com/zh-cn/doc/example/Windows/TreeView/treeview.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������������ʵ��ļ������صġ�  \n\n�����ڷ������ϴ���?'))window.location='https://www.aardio.com/zh-cn/doc/example/Windows/TreeView/treeview.md'" tppabs="https://www.aardio.com/zh-cn/doc/example/Windows/TreeView/treeview.md">Markdown 格式</a>
+</body> 
+</html>

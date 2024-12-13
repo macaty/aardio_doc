@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - fonts 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - fonts 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>fonts 库模块帮助文档</h1>
+
+<p><details>  <summary>必读</summary>  <p></p>
+
+<p>可在aardio标准库、用户库视图&quot;/fonts&quot;目录上右键菜单中点“粘贴文件...”
+aardio会在 fonts 名字空间自动生成字体加载库（如果库已经存在则忽略不操作），</p>
+
+<p>并自动复制字体到对应的字体资源目录：</p>
+
+<p>1、标准库图标字体资源目录 &#39;~/lib/fonts/.res/&#39;
+2、工程用户库图标字体资源目录 &#39;/lib/fonts/.res/&#39;</p>
+
+<p>注意：
+aardio 不会搜索其他目录内的字体（图标浏览器工具、窗体设计器、扩展库发布工具都遵守这一规则）。
+</p></details></p>
+
+<p><a id="fonts"></a></p>
+
+<h2>fonts 成员列表</h2>
+
+<p><a id="fonts.addFamily"></a></p>
+
+<h3>fonts.addFamily</h3>
+
+<p>加载并注册嵌入字体,<br>
+加载的字体家族会添加到共享缓存,请不要删除返回的字体家族对象，<br>
+字体家族可以用于创建不同样式的同名字体，  </p>
+
+<p>在这里注册的嵌入字体，GDI,GDI+，普通控件，plus 控件等都可以自动支持</p>
+
+<p><a id="fonts.addFamily"></a></p>
+
+<h3>fonts.addFamily()</h3>
+
+<p><a href="#gdipfamilyObject">返回对象:gdipfamilyObject</a></p>
+
+<p><a id="fonts.addFamily"></a></p>
+
+<h3>fonts.addFamily(fontData)</h3>
+
+<p>fontData指定字体路径或者内存字体数据,<br>
+加载并注册嵌入字体文件中的第一个字体家族，<br>
+普通控件、plus 控件、gdi,gdip 等都可以自动支持内存字体,<br>
+但部分组件(例如web.form)不支持内存字体,可参考 fonts.fontAwesome 源码运行时保存到 appData 加载</p>
+
+<p><a id="fonts.addFamily"></a></p>
+
+<h3>fonts.addFamily(fontData,fontName)</h3>
+
+<p>加载并注册嵌入字体文件中指定名称的字体家族，<br>
+fontName 指定字体名，必须是字体文件中存在的字体名称，并且大小写一致。<br>
+推荐尽可能在参数 @2 中明确指定字体名称。  </p>
+
+<p>注册成功的嵌入字体,gdi,gdip,普通窗口控件,<br>
+plus 控件等将自动支持。<br>
+web.form 等不支持直接内存加载的字体,可调用 io.appData 将内存数据转换为本地路径后加载</p>
+
+<p><a id="fonts.getFamilyByName"></a></p>
+
+<h3>fonts.getFamilyByName()</h3>
+
+<p>在已加载的嵌入字体中查找指定名字的 gdip.family 对象</p>
+
+<p><a href="#gdipfamilyObject">返回对象:gdipfamilyObject</a></p>
+
+<p><a id="fonts.getFamilyNames"></a></p>
+
+<h3>fonts.getFamilyNames()</h3>
+
+<p>获取已加载的嵌入字体名数组</p>
+
+<p><a href="_.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/fonts/_.md">Markdown 格式</a></p>
+
+</body> 
+</html>

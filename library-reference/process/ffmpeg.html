@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - process.ffmpeg 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - process.ffmpeg 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>process.ffmpeg 库模块帮助文档</h1>
+
+<p><details>  <summary>FFmpeg调用参数说明</summary>  <p>
+<a href="javascript:if(confirm('https://quickref.me/zh-CN/docs/ffmpeg.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://quickref.me/zh-CN/docs/ffmpeg.html'" tppabs="https://quickref.me/zh-CN/docs/ffmpeg.html">FFmpeg调用参数说明</a>
+</p></details></p>
+
+<p><a id="process"></a></p>
+
+<h2>process 成员列表</h2>
+
+<p><a id="process.ffmpeg"></a></p>
+
+<h3>process.ffmpeg(&quot;/&quot;,&quot;-y&quot;,&quot;-i&quot;,)</h3>
+
+<p>调用 ffmpeg.exe，返回 process.popen 管道对象。<br>
+参数 @1 指定工作目录，传入空值则默认设为&quot;/&quot;。<br>
+可传入一个或多个启动命令行参数。<br>
+如果有多个命令行参数，则不在双引号内、且包含空白或需要转义的参数时，<br>
+转义处理该参数后并在首尾添加双引号。  </p>
+
+<p>参数 &quot;-y&quot; 表示允许覆盖同名文件。<br>
+参数 &quot;-i&quot; 的下一个参数指定输入文件路径（~或单正反斜杆开头的路径自动转为完整路径）。</p>
+
+<p><a id="process.ffmpeg"></a></p>
+
+<h3>process.ffmpeg()</h3>
+
+<p><a href="popen.html#processPopenObject" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/process/popen.html#processPopenObject">返回对象:processPopenObject</a></p>
+
+<p><a id="process.ffmpeg"></a></p>
+
+<h2>process.ffmpeg 成员列表</h2>
+
+<p>调用 ffmpeg.exe，返回 process.popen 进程管道对象。<br>
+可用于处理或转换视频、音频、图像文件。<br>
+<a href="javascript:if(confirm('https://quickref.me/zh-CN/docs/ffmpeg.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://quickref.me/zh-CN/docs/ffmpeg.html'" tppabs="https://quickref.me/zh-CN/docs/ffmpeg.html">FFmpeg调用参数说明</a></p>
+
+<p><a id="process.ffmpeg.cdnFilename"></a></p>
+
+<h3>process.ffmpeg.cdnFilename</h3>
+
+<p>默认下载的 ffmpeg 文件名。<br>
+64位系统默认为 &quot;ffmpeg-win32-x64&quot;，32位默认为 &quot;ffmpeg-win32-ia3&quot;</p>
+
+<p><a id="process.ffmpeg.cdnUrl"></a></p>
+
+<h3>process.ffmpeg.cdnUrl</h3>
+
+<p>ffmpeg.exe 默认下载地址。</p>
+
+<p><a id="process.ffmpeg.cdnVersion"></a></p>
+
+<h3>process.ffmpeg.cdnVersion</h3>
+
+<p>默认下载的 ffmpeg 版本。<br>
+当前为 &quot;6.0&quot;。</p>
+
+<p><a id="process.ffmpeg.getPath"></a></p>
+
+<h3>process.ffmpeg.getPath()</h3>
+
+<p>返回 ffmpeg.exe 路径。<br>
+如果找不到路径则会自动安装。</p>
+
+<p><a id="global"></a></p>
+
+<h2>全局对象 成员列表</h2>
+
+<p><a id="setPath()"></a></p>
+
+<h3>setPath()</h3>
+
+<p>自定义 ffmpeg.exe 路径。<br>
+参数 @1 指定文件路径</p>
+
+<p><a href="ffmpeg.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/process/ffmpeg.md">Markdown 格式</a></p>
+
+</body> 
+</html>

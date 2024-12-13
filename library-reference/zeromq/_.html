@@ -1,0 +1,448 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - zeromq 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - zeromq 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>zeromq 库模块帮助文档</h1>
+
+<p><a id="zeromq"></a></p>
+
+<h2>zeromq 成员列表</h2>
+
+<p>消息支持库<br>
+建议结合protobuf库使用</p>
+
+<p><a id="zeromq._dll"></a></p>
+
+<h3>zeromq._dll</h3>
+
+<p>libzmq.dll  </p>
+
+<p><a href="../raw/_.html#dllModuleObject" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/raw/_.html#dllModuleObject">返回对象:dllModuleObject</a></p>
+
+<p><a id="zeromq.context"></a></p>
+
+<h3>zeromq.context()</h3>
+
+<p><a href="#zeromqContextObject">返回对象:zeromqContextObject</a></p>
+
+<p><a id="zeromq.context"></a></p>
+
+<h3>zeromq.context(IO线程数)</h3>
+
+<p>创建环境上下文<br>
+参数可选,默认值为1<br>
+可选使用参数@2指定多线程共享名称</p>
+
+<p><a id="zeromq.lasterr"></a></p>
+
+<h3>zeromq.lasterr()</h3>
+
+<p>检测最后调用API发生的错误<br>
+如果存在错误则返回两个值:<br>
+错误信息,错误代码</p>
+
+<p><a id="zeromq.message"></a></p>
+
+<h3>zeromq.message()</h3>
+
+<p>创建消息对象,初始化默认缓冲区  </p>
+
+<p><a href="#zmqMessageObject">返回对象:zmqMessageObject</a></p>
+
+<p><a id="zeromq.message"></a></p>
+
+<h3>zeromq.message(缓冲区,缓冲区大小,析构函数,附加指针)</h3>
+
+<p>创建消息对象,所有参数可选<br>
+缓冲区如果是字符串或可转换为字符串的对象,则忽略后续所有参数,<br>
+缓冲区如果为空,则可选使用第二个参数指定长度,其他参数忽略,<br>
+缓冲区如果为pointer指针,则必须使用第二个参数指定长度,<br>
+缓冲区如果是cdata对象,则忽略第二个参数<br>
+缓冲区如果是结构体或数值,则调用raw.malloc转换为cdata对象<br>
+如果指定析构函数,当不再需要消息缓冲区时回调该函数,<br>
+缓冲区指针,附加指针参数将作为回调的实参.</p>
+
+<p><a id="zeromq.pollin"></a></p>
+
+<h3>zeromq.pollin</h3>
+
+<p>阻塞直到至少发生一个接收事件</p>
+
+<p><a id="zeromq.pollin"></a></p>
+
+<h3>zeromq.pollin(-1,socket,...)</h3>
+
+<p>参数@1指定超时,以毫秒为单位,-1为一直等待,<br>
+参数@2可以是任意个zmq_socket对象,也可以是包含多个对象的数组<br>
+成功返回包含事件代码的数组</p>
+
+<p><a id="zeromq.pollout"></a></p>
+
+<h3>zeromq.pollout</h3>
+
+<p>阻塞直到至少发生一个发送事件</p>
+
+<p><a id="zeromq.pollout"></a></p>
+
+<h3>zeromq.pollout(-1,socket,...)</h3>
+
+<p>参数@1指定超时,以毫秒为单位,-1为一直等待,<br>
+参数@2可以是任意个zmq_socket对象,也可以是包含多个对象的数组<br>
+成功返回包含事件代码的数组</p>
+
+<p><a id="zeromq.version"></a></p>
+
+<h3>zeromq.version()</h3>
+
+<p>返回主版本号,次版本号,修订版本号</p>
+
+<p><a id="zeromqContextObject"></a></p>
+
+<h2>zeromqContextObject 成员列表</h2>
+
+<p><a id="zeromqContextObject.term"></a></p>
+
+<h3>zeromqContextObject.term()</h3>
+
+<p>释放对象<br>
+该函数在线程结束时会作为析构函数自动调用.</p>
+
+<p><a id="zeromqContextObject.zmq_socket"></a></p>
+
+<h3>zeromqContextObject.zmq_socket()</h3>
+
+<p><a href="#zmqSocketObject">返回对象:zmqSocketObject</a></p>
+
+<p><a id="zeromqContextObject.zmq_socket"></a></p>
+
+<h3>zeromqContextObject.zmq_socket(协议类型)</h3>
+
+<p>创建pair模式socket,可自行配对,<br>
+任何一方都可以做为服务端</p>
+
+<p><a id="zeromqContextObject.zmq_socket_dealer"></a></p>
+
+<h3>zeromqContextObject.zmq_socket_dealer()</h3>
+
+<p>创建socket  </p>
+
+<p><a href="#zmqSocketObject">返回对象:zmqSocketObject</a></p>
+
+<p><a id="zeromqContextObject.zmq_socket_pub"></a></p>
+
+<h3>zeromqContextObject.zmq_socket_pub()</h3>
+
+<p>创建socket,与pub模式配对<br>
+任何一方都可以做为服务端  </p>
+
+<p><a href="#zmqSocketObject">返回对象:zmqSocketObject</a></p>
+
+<p><a id="zeromqContextObject.zmq_socket_pull"></a></p>
+
+<h3>zeromqContextObject.zmq_socket_pull()</h3>
+
+<p>创建socket,与push模式配对<br>
+任何一方都可以做为服务端  </p>
+
+<p><a href="#zmqSocketObject">返回对象:zmqSocketObject</a></p>
+
+<p><a id="zeromqContextObject.zmq_socket_push"></a></p>
+
+<h3>zeromqContextObject.zmq_socket_push()</h3>
+
+<p>创建socket,与pull模式配对<br>
+任何一方都可以做为服务端  </p>
+
+<p><a href="#zmqSocketObject">返回对象:zmqSocketObject</a></p>
+
+<p><a id="zeromqContextObject.zmq_socket_reply"></a></p>
+
+<h3>zeromqContextObject.zmq_socket_reply()</h3>
+
+<p>创建socket,与request模式配对<br>
+任何一方都可以做为服务端  </p>
+
+<p><a href="#zmqSocketObject">返回对象:zmqSocketObject</a></p>
+
+<p><a id="zeromqContextObject.zmq_socket_request"></a></p>
+
+<h3>zeromqContextObject.zmq_socket_request()</h3>
+
+<p>创建socket,与reply模式配对<br>
+任何一方都可以做为服务端  </p>
+
+<p><a href="#zmqSocketObject">返回对象:zmqSocketObject</a></p>
+
+<p><a id="zeromqContextObject.zmq_socket_router"></a></p>
+
+<h3>zeromqContextObject.zmq_socket_router()</h3>
+
+<p>创建socket  </p>
+
+<p><a href="#zmqSocketObject">返回对象:zmqSocketObject</a></p>
+
+<p><a id="zeromqContextObject.zmq_socket_sub"></a></p>
+
+<h3>zeromqContextObject.zmq_socket_sub()</h3>
+
+<p>创建socket,与sub模式配对<br>
+任何一方都可以做为服务端  </p>
+
+<p><a href="#zmqSocketObject">返回对象:zmqSocketObject</a></p>
+
+<p><a id="zeromqContextObject.zmq_socket_xpub"></a></p>
+
+<h3>zeromqContextObject.zmq_socket_xpub()</h3>
+
+<p>创建socket  </p>
+
+<p><a href="#zmqSocketObject">返回对象:zmqSocketObject</a></p>
+
+<p><a id="zeromqContextObject.zmq_socket_xsub"></a></p>
+
+<h3>zeromqContextObject.zmq_socket_xsub()</h3>
+
+<p>创建socket  </p>
+
+<p><a href="#zmqSocketObject">返回对象:zmqSocketObject</a></p>
+
+<p><a id="zmqMessageObject"></a></p>
+
+<h2>zmqMessageObject 成员列表</h2>
+
+<p><a id="zmqMessageObject.close"></a></p>
+
+<h3>zmqMessageObject.close()</h3>
+
+<p>释放消息对象</p>
+
+<p><a id="zmqMessageObject.copy"></a></p>
+
+<h3>zmqMessageObject.copy(消息对象)</h3>
+
+<p>复制消息缓冲区</p>
+
+<p><a id="zmqMessageObject.getData"></a></p>
+
+<h3>zmqMessageObject.getData()</h3>
+
+<p>返回缓冲区指针</p>
+
+<p><a id="zmqMessageObject.getMore"></a></p>
+
+<h3>zmqMessageObject.getMore()</h3>
+
+<p>是否有更多的消息帧</p>
+
+<p><a id="zmqMessageObject.getProperty"></a></p>
+
+<h3>zmqMessageObject.getProperty(&quot;字符串参数&quot;)</h3>
+
+<p>获取消息属性,属性名可指定：Socket-Type，Identity，Resource</p>
+
+<p><a id="zmqMessageObject.getSize"></a></p>
+
+<h3>zmqMessageObject.getSize()</h3>
+
+<p>返回缓冲区长度</p>
+
+<p><a id="zmqMessageObject.getString"></a></p>
+
+<h3>zmqMessageObject.getString()</h3>
+
+<p>以字符串形式返回缓冲区内容</p>
+
+<p><a id="zmqMessageObject.move"></a></p>
+
+<h3>zmqMessageObject.move(消息对象)</h3>
+
+<p>移动消息缓冲区</p>
+
+<p><a id="zmqMessageObject.recv"></a></p>
+
+<h3>zmqMessageObject.recv(zmq_socket对象,选项)</h3>
+
+<p>发送消息<br>
+成功返回长度,失败返回null</p>
+
+<p><a id="zmqMessageObject.send"></a></p>
+
+<h3>zmqMessageObject.send(zmq_socket对象,选项)</h3>
+
+<p>发送消息<br>
+成功返回长度,失败返回null</p>
+
+<p><a id="zmqSocketObject"></a></p>
+
+<h2>zmqSocketObject 成员列表</h2>
+
+<p><a id="zmqSocketObject.bind"></a></p>
+
+<h3>zmqSocketObject.bind(&quot;tcp://*:26666地址&quot;)</h3>
+
+<p>绑定</p>
+
+<p><a id="zmqSocketObject.close"></a></p>
+
+<h3>zmqSocketObject.close()</h3>
+
+<p>关闭socket</p>
+
+<p><a id="zmqSocketObject.connect"></a></p>
+
+<h3>zmqSocketObject.connect(&quot;tcp://localhost:26666地址&quot;)</h3>
+
+<p>连接</p>
+
+<p><a id="zmqSocketObject.disconnect"tcp://localhost:26666地址")"></a></p>
+
+<h3>zmqSocketObject.disconnect&quot;tcp://localhost:26666地址&quot;)</h3>
+
+<p>断开连接</p>
+
+<p><a id="zmqSocketObject.getsockopt"></a></p>
+
+<h3>zmqSocketObject.getsockopt(选项,结构体)</h3>
+
+<p>值必须是一个结构体对象<br>
+成功返回更新的结构体对象.</p>
+
+<p><a id="zmqSocketObject.recv"></a></p>
+
+<h3>zmqSocketObject.recv(缓冲区,长度,选项)</h3>
+
+<p>接收消息帧<br>
+成功返回长度,失败或超时返回null<br>
+参数一可选指定缓冲区指针.<br>
+所有参数可选,如果仅指定长度则自动创建缓冲区</p>
+
+<p><a id="zmqSocketObject.recvMsg"></a></p>
+
+<h3>zmqSocketObject.recvMsg(消息对象,选项)</h3>
+
+<p>接收消息<br>
+成功返回长度,失败或超时返回null<br>
+如果参数一不是一个消息对象,则创建临时消息对象并尝试返回接收的字符串<br>
+选项为_ZMQ_DONTWAIT时立即返回不阻塞,收不到返回null<br>
+选项为可选参数可省略</p>
+
+<p><a id="zmqSocketObject.send"></a></p>
+
+<h3>zmqSocketObject.send(缓冲区,长度,选项)</h3>
+
+<p>发送消息帧\参数一可以是字符串或指针.n选项为_ZMQ_DONTWAIT时立即返回不阻塞,收不到返回null<br>
+选项为可选参数可省略</p>
+
+<p><a id="zmqSocketObject.sendMsg"></a></p>
+
+<h3>zmqSocketObject.sendMsg(消息对象,选项)</h3>
+
+<p>发送消息<br>
+成功返回长度,失败返回null<br>
+参数一也可以是能转换为字符串的对象、或结构体、buffer指针等<br>
+选项为可选参数可省略</p>
+
+<p><a id="zmqSocketObject.setRecvTimeout"></a></p>
+
+<h3>zmqSocketObject.setRecvTimeout()</h3>
+
+<p>设置接收超时，单位毫秒</p>
+
+<p><a id="zmqSocketObject.setSendTimeout"></a></p>
+
+<h3>zmqSocketObject.setSendTimeout()</h3>
+
+<p>设置发送超时，单位毫秒</p>
+
+<p><a id="zmqSocketObject.setsockopt"></a></p>
+
+<h3>zmqSocketObject.setsockopt(选项,结构体)</h3>
+
+<p>值必须是一个结构体对象<br>
+成功返回true</p>
+
+<p><a id="zmqSocketObject.unbind"></a></p>
+
+<h3>zmqSocketObject.unbind(&quot;tcp://*:26666地址&quot;)</h3>
+
+<p>解除绑定</p>
+
+<h3>自动完成常量</h3>
+
+<p>_ZMQ_AFFINITY=4<br>
+_ZMQ_BACKLOG=0x13<br>
+_ZMQ_DEALER=5<br>
+_ZMQ_DELIMITER=0x1F<br>
+_ZMQ_DONTWAIT=1<br>
+_ZMQ_EVENTS=0xF<br>
+_ZMQ_EVENT_ACCEPTED=0x20<br>
+_ZMQ_EVENT_ACCEPT_FAILED=0x40<br>
+_ZMQ_EVENT_ALL=0xFFFF<br>
+_ZMQ_EVENT_BIND_FAILED=0x10<br>
+_ZMQ_EVENT_CLOSED=0x80<br>
+_ZMQ_EVENT_CLOSE_FAILED=0x100<br>
+_ZMQ_EVENT_CONNECTED=1<br>
+_ZMQ_EVENT_CONNECT_DELAYED=2<br>
+_ZMQ_EVENT_CONNECT_RETRIED=4<br>
+_ZMQ_EVENT_DISCONNECTED=0x200<br>
+_ZMQ_EVENT_LISTENING=8<br>
+_ZMQ_EVENT_MONITOR_STOPPED=0x400<br>
+_ZMQ_FD=0xE<br>
+_ZMQ_FORWARDER=2<br>
+_ZMQ_HWM=1<br>
+_ZMQ_IDENTITY=5<br>
+_ZMQ_IO_THREADS=0x1<br>
+_ZMQ_LINGER=0x11<br>
+_ZMQ_MAX_SOCKETS=0x2<br>
+_ZMQ_MCAST_LOOP=0xA<br>
+_ZMQ_MSG_MASK=0x81<br>
+_ZMQ_MSG_MORE=1<br>
+_ZMQ_MSG_SHARED=0x80<br>
+_ZMQ_NOBLOCK=1<br>
+_ZMQ_PAIR=0<br>
+_ZMQ_POLLERR=4<br>
+_ZMQ_POLLIN=1<br>
+_ZMQ_POLLOUT=2<br>
+_ZMQ_PUB=1<br>
+_ZMQ_PULL=7<br>
+_ZMQ_PUSH=8<br>
+_ZMQ_QUEUE=3<br>
+_ZMQ_RATE=8<br>
+_ZMQ_RCVBUF=0xC<br>
+_ZMQ_RCVMORE=0xD<br>
+_ZMQ_RECONNECT_IVL=0x12<br>
+_ZMQ_RECONNECT_IVL_MAX=0x15<br>
+_ZMQ_RECOVERY_IVL=9<br>
+_ZMQ_REP=4<br>
+_ZMQ_REQ=3<br>
+_ZMQ_ROUTER=6<br>
+_ZMQ_SNDBUF=0xB<br>
+_ZMQ_SNDMORE=2<br>
+_ZMQ_SOCKET_LIMIT=0x3<br>
+_ZMQ_STREAMER=1<br>
+_ZMQ_SUB=2<br>
+_ZMQ_SUBSCRIBE=6<br>
+_ZMQ_SWAP=3<br>
+_ZMQ_THREAD_PRIORITY=0x3<br>
+_ZMQ_THREAD_SCHED_POLICY=0x4<br>
+_ZMQ_TYPE=0x10<br>
+_ZMQ_UNSUBSCRIBE=7<br>
+_ZMQ_VSM=0x20<br>
+_ZMQ_XPUB=9<br>
+_ZMQ_XSUB=0xA  </p>
+
+<p><a href="_.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/zeromq/_.md">Markdown 格式</a></p>
+
+</body> 
+</html>

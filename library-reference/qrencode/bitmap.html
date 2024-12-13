@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - qrencode.bitmap 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - qrencode.bitmap 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>qrencode.bitmap 库模块帮助文档</h1>
+
+<p><a id="qrencode"></a></p>
+
+<h2>qrencode 成员列表</h2>
+
+<p><a id="qrencode.bitmap"></a></p>
+
+<h3>qrencode.bitmap</h3>
+
+<p>创建二维码并用于生成GDI+位图</p>
+
+<p><a id="qrencode.bitmap"></a></p>
+
+<h3>qrencode.bitmap(&quot;UTF8字符串&quot;,版本,错误级别)</h3>
+
+<p>生成二维码数据<br>
+版本1:21×21 版本40:177×177,省略根据输入数据自动选择最小版本<br>
+错误修正级别LMQH顺序用0,1,2,3表示,省略该参数默认为0</p>
+
+<p><a id="qrencode.bitmap"></a></p>
+
+<h3>qrencode.bitmap()</h3>
+
+<p><a href="#libqrencodebitmapObject">返回对象:libqrencodebitmapObject</a></p>
+
+<p><a id="libqrencodebitmapObject"></a></p>
+
+<h2>libqrencodebitmapObject 成员列表</h2>
+
+<p><a id="libqrencodebitmapObject.bitmap"></a></p>
+
+<h3>libqrencodebitmapObject.bitmap</h3>
+
+<p>生成的原始GDI+位图  </p>
+
+<p><a href="javascript:if(confirm('https://www.aardio.com/zh-cn/doc/library-reference/gdip/bitmap.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������������ʵ��ļ������صġ�  \n\n�����ڷ������ϴ���?'))window.location='https://www.aardio.com/zh-cn/doc/library-reference/gdip/bitmap.html#gdipbitmapObject'" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/gdip/bitmap.html#gdipbitmapObject">返回对象:gdipbitmapObject</a></p>
+
+<p><a id="libqrencodebitmapObject.copyBitmap"></a></p>
+
+<h3>libqrencodebitmapObject.copyBitmap()</h3>
+
+<p><a href="javascript:if(confirm('https://www.aardio.com/zh-cn/doc/library-reference/gdip/bitmap.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������������ʵ��ļ������صġ�  \n\n�����ڷ������ϴ���?'))window.location='https://www.aardio.com/zh-cn/doc/library-reference/gdip/bitmap.html#gdipbitmapObject'" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/gdip/bitmap.html#gdipbitmapObject">返回对象:gdipbitmapObject</a></p>
+
+<p><a id="libqrencodebitmapObject.copyBitmap"></a></p>
+
+<h3>libqrencodebitmapObject.copyBitmap(宽度)</h3>
+
+<p>缩放为指定大小的GDI+位图<br>
+使用相邻插值法缩放</p>
+
+<p><a id="libqrencodebitmapObject.copyBitmapString"></a></p>
+
+<h3>libqrencodebitmapObject.copyBitmapString(宽度,文件格式,图像质量)</h3>
+
+<p>缩放为指定大小的GDI+位图,并返回图像数据<br>
+文件格式为可选参数,用文件后缀名表示,默认为&quot;*.jpg&quot;<br>
+图像质量为可选参数,以百分比表示,默认为100</p>
+
+<p><a id="libqrencodebitmapObject.version"></a></p>
+
+<h3>libqrencodebitmapObject.version</h3>
+
+<p>二维码版本<br>
+这个版本号可能比生成二维码指定的要大</p>
+
+<p><a id="libqrencodebitmapObject.width"></a></p>
+
+<h3>libqrencodebitmapObject.width</h3>
+
+<p>二维码宽度</p>
+
+<p><a href="bitmap.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/qrencode/bitmap.md">Markdown 格式</a></p>
+
+</body> 
+</html>

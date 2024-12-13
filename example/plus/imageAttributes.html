@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - plus 控件 - 调色矩阵'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - plus 控件 - 调色矩阵</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: plus 控件 - 调色矩阵</h1><pre><code class="aardio language-aardio">//plus 控件 - 调色矩阵
+import win.ui;
+/*DSG{{*/
+var winform = win.form(text=&quot;plus控件 - 调色矩阵&quot;;right=759;bottom=469)
+winform.add(
+plus={cls=&quot;plus&quot;;left=117;top=27;right=334;bottom=170;color=16737536;font=LOGFONT(h=-48;name=&#39;FontAwesome&#39;;charset=0);foreRepeat=&quot;stretch&quot;;foreground=&quot;~\example\Graphics\.gdip.jpg&quot;;notify=1;z=1};
+static={cls=&quot;static&quot;;text=&quot;鼠标移到图像上,绿色会增强,红色会减弱&quot;;left=237;top=196;right=469;bottom=255;transparent=1;z=2}
+)
+/*}}*/
+
+import gdip.imageAttributes;
+winform.plus.imageAttributes = gdip.imageAttributes(); 
+
+winform.plus.onStateChange = function(){
+    if(winform.plus.state.hover){
+        //动态调色(增加绿色,减少红色)，仅影响前景图像，不作用于背景图像
+        winform.plus.imageAttributes.setColorMatrix({
+            0.9;0;0;0;0;
+            0;1.1;0;0;0;
+            0;0;1;0;0;
+            0;0;0;1;0;
+            0;0;0;0;1
+        });
+
+        //也可以用下面的函数更简单一些，可以实现相同的功能
+        winform.plus.imageAttributes.setRgba(0.9,1.1);
+    }
+    else {
+        winform.plus.imageAttributes.reset();
+    }
+    winform.plus.redrawTransparent();
+}
+
+/*
+把图像的所有像素看作二维数组，
+每个像素为一行，包含R,G,B,A,W 5列，其中W为虚拟列（值总是255）
+
+下面的调色矩阵必须为5行5列，格式为：
+{  
+    rr;gr;br;ar;wr;
+    rg;gg;bg;ag;wg;  
+    rb;gb;bb;ab;wb;  
+    ra;ga;ba;aa;wa; 
+    rw;gw;bw;aw;ww; 
+}  
+
+原图原图矩阵里0为最小值，255为最大值，
+调色矩阵里0为最小值,1为最大值,小数可理解为百分比.
+
+绘图时使用原图矩阵与调色矩阵行列相乘，
+原图中的i行乘以调色矩阵中的j列，也就等于结果图像矩阵矩阵的i行j列，
+
+设有图像数据如下
+{
+R1;G1;B1;A1;//第一个像素的R,G,B,A分量
+R2;G2;B2;A2;//第二个像素的R,G,B,A分量 
+}
+
+那么经过矩阵转换以后得到的结果就是
+R1 = R1*rr+G1*rg+B1*rb+A1*ra+W*rw (原图R,G,B,A,W逐个与调色矩阵第1列相乘)
+G1 = R1*gr+G1*gg+B1*gb+A1*ga+W*gw (原图R,G,B,A,W逐个与调色矩阵第2列相乘)
+B1 = R1*br+G1*bg+B1*bb+A1*ba+W*bw (原图R,G,B,A,W逐个与调色矩阵第3列相乘)
+A1 = R1*ar+G1*ag+B1*ab+A1*aa+W*aw (原图R,G,B,A,W逐个与调色矩阵第4列相乘)  
+
+R2 = R2*rr+G2*rg+B2*rb+A2*ra+W*rw (原图R,G,B,A,W逐个与调色矩阵第1列相乘)
+G2 = R2*gr+G2*gg+B2*gb+A2*ga+W*gw (原图R,G,B,A,W逐个与调色矩阵第2列相乘)
+B2 = R2*br+G2*bg+B2*bb+A2*ba+W*bw (原图R,G,B,A,W逐个与调色矩阵第3列相乘)
+A2 = R2*ar+G2*ag+B2*ab+A2*aa+W*aw (原图R,G,B,A,W逐个与调色矩阵第4列相乘) 
+*/
+
+winform.show() 
+win.loopMessage();
+</code></pre>
+<a href="javascript:if(confirm('https://www.aardio.com/zh-cn/doc/example/plus/imageAttributes.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������������ʵ��ļ������صġ�  \n\n�����ڷ������ϴ���?'))window.location='https://www.aardio.com/zh-cn/doc/example/plus/imageAttributes.md'" tppabs="https://www.aardio.com/zh-cn/doc/example/plus/imageAttributes.md">Markdown 格式</a>
+</body> 
+</html>

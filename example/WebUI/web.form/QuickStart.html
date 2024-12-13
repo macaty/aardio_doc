@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - web.form 入门'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - web.form 入门</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: web.form 入门</h1><pre><code class="aardio language-aardio">//入门
+import win.ui;
+/*DSG{{*/
+var winform = win.form(text=&quot;web.form 入门&quot;;right=892;bottom=566;scroll=1)
+winform.add()
+/*}}*/
+
+/*
+只要简洁，不求完美！
+Win7 在市场上已经接近消失，现在开发软件再处处考虑 Win7 兼容是不必要的。
+注意 Win10/11 自带 IE11，不自带 IE11 的旧系统已经很罕见一般没必要再考虑。
+即使系统删除 IE 浏览器，IE 内核浏览器的控件仍作为操作系统组件被保留。
+
+web.form 使用系统自带的 IE 内核，生成的 EXE 体积很小。
+改用 web.view 库可支持系统自带的 Edge Chromium 内核。
+
+不要拿 web.form 去跟 web.view 比，
+请拿 web.form 跟 static 控件比。
+
+凡事多看优点，扬其长避其短：
+static 都有用，web.form 当然更有用。 
+其实 web.form 轻量，接口简洁并易于使用，还是非常好的。
+*/
+import web.form;
+var wb = web.form( winform );//参数 @1 指定嵌入窗口（可以是 winform 或 static,custom 等控件对象）。
+
+import console;
+wb.external={
+    tab = {abc=1;b=2};
+    aardioArray = function(){
+        return wb.jsArray({12;23;34}); 
+    };
+    log = function(...){
+        console.log(...)
+    } 
+} 
+import console;
+
+wb.html = /**
+&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt; 
+    &lt;script type=&quot;text/javascript&quot;&gt;
+
+    $enum = function(obj,callback,thisObj){
+
+        if( obj instanceof Array ){
+            for(var i=0;i&lt;obj.length;i++){
+                callback.call(thisObj||window,i,obj[i],obj);  
+            }
+        }
+        else if( obj instanceof Object ){
+            for( k in obj){
+                callback.call(thisObj||window,k,obj[k],obj); 
+            }
+        }
+        else{
+            if(typeof(obj)==&quot;unknown&quot;){
+                var array = new VBArray(obj).toArray() //注意多维 aardio 数组转换为 JScript 会转换为单维数组，改用 JSON 传输参数可支持更多 JS 对象
+                for (var i = 0; i &lt; array.length; i++) {
+                    callback.call(thisObj||window,i,array[i],array );
+                }
+            }
+            else if( obj ) { 
+                var e = new Enumerator(obj);  
+                var k;
+                if(!e)
+                    return;
+
+                for   (;!e.atEnd();e.moveNext()){ 
+                    k = e.item(); 
+                    callback.call(thisObj||window,k,obj[k],obj); 
+                } 
+            }
+        } 
+    }  
+    &lt;/script&gt;
+
+    &lt;script type=&quot;text/javascript&quot;&gt;
+    //其他Js代码
+
+    &lt;/script&gt;
+
+    &lt;style type=&quot;text/css&quot;&gt;
+    body { 
+        font: 10.5pt/1.3;
+    }
+    &lt;/style&gt; 
+&lt;/head&gt;
+&lt;body style=&quot;margin:50px&quot;&gt;
+    &lt;button id=&quot;myId&quot;&gt;  
+        点这里试一试
+    &lt;/button&gt;
+&lt;br&gt;&lt;br&gt;    
+只要简洁，不求完美！&lt;br&gt;
+Win7 在市场上已经接近消失，现在开发软件再处处考虑 Win7 兼容是不必要的。&lt;br&gt;
+注意 Win10/11 自带 IE11，不自带 IE11 的旧系统已经很罕见一般没必要再考虑。&lt;br&gt;
+即使系统删除 IE 浏览器，IE 内核浏览器的控件仍作为操作系统组件被保留。&lt;br&gt; 
+&lt;br&gt;
+web.form 使用系统自带的 IE 内核，生成的 EXE 体积很小。&lt;br&gt; 
+改用 web.view 库可支持系统自带的 Edge Chromium 内核。&lt;br&gt;
+&lt;br&gt;
+不要拿 web.form 去跟 web.view 比，&lt;br&gt;
+请拿 web.form 跟 static 控件比。&lt;br&gt;
+&lt;br&gt;
+凡事多看优点，扬其长避其短：&lt;br&gt;
+static 都有用，web.form 当然更有用。 &lt;br&gt;
+其实 web.form 轻量，接口简洁并易于使用，还是非常好的。&lt;br&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+**/
+
+var js = /**
+    external.log( &quot;Hello, aardio!&quot; )
+    external.log( &quot;Welcome to aardio!&quot;,event.srcElement.id );
+    //枚举js数组
+    $enum(
+        [1,2,3],
+        function(v,i){
+            external.log(v,i)
+        }
+    )
+    //枚举js对象
+    $enum(
+        {a:123,b:456},
+        function(k,v){
+            external.log(k,v)
+        }
+    )
+    //枚举aardio数组
+    $enum(
+        external.aardioArray(),
+        function(k,v){
+            external.log(k,v)
+        }
+    )
+    //枚举aardio对象
+    $enum(
+        external.tab,
+        function(k,v){
+            external.log(k,v)
+        }
+    )
+**/
+wb.eventScript(js,&quot;myId&quot;,&quot;onclick&quot;)
+
+winform.show();
+win.loopMessage(); 
+</code></pre>
+<a href="javascript:if(confirm('https://www.aardio.com/zh-cn/doc/example/WebUI/web.form/QuickStart.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������������ʵ��ļ������صġ�  \n\n�����ڷ������ϴ���?'))window.location='https://www.aardio.com/zh-cn/doc/example/WebUI/web.form/QuickStart.md'" tppabs="https://www.aardio.com/zh-cn/doc/example/WebUI/web.form/QuickStart.md">Markdown 格式</a>
+</body> 
+</html>

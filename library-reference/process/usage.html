@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - process.usage 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - process.usage 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>process.usage 库模块帮助文档</h1>
+
+<p><a id="process"></a></p>
+
+<h2>process 成员列表</h2>
+
+<p><a id="process.usage"></a></p>
+
+<h3>process.usage</h3>
+
+<p>进程CPU、内存占用率<br>
+<a href="javascript:if(confirm('https://docs.microsoft.com/en-us/previous-versions/windows/desktop/legacy/aa965225%28v%3Dvs.85%29  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://docs.microsoft.com/en-us/previous-versions/windows/desktop/legacy/aa965225%28v%3Dvs.85%29'" tppabs="https://docs.microsoft.com/en-us/previous-versions/windows/desktop/legacy/aa965225%28v%3Dvs.85%29">MSDN文档</a><br>
+<a href="javascript:if(confirm('https://docs.microsoft.com/en-us/sysinternals/downloads/process-explorer  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://docs.microsoft.com/en-us/sysinternals/downloads/process-explorer'" tppabs="https://docs.microsoft.com/en-us/sysinternals/downloads/process-explorer">推荐﻿工具:Process Explorer</a></p>
+
+<p><a id="process.usage"></a></p>
+
+<h3>process.usage()</h3>
+
+<p><a href="#processUsageObject">返回对象:processUsageObject</a></p>
+
+<p><a id="process.usage"></a></p>
+
+<h3>process.usage(进程ID)</h3>
+
+<p>创建进程CPU、内存占用率获取工具对象,<br>
+参数用法与process完全一样,<br>
+失败返回null</p>
+
+<p><a id="processUsageObject"></a></p>
+
+<h2>processUsageObject 成员列表</h2>
+
+<p><a id="processUsageObject.cpu"></a></p>
+
+<h3>processUsageObject.cpu()</h3>
+
+<p>返回表示cpu占用率百分比的数值,<br>
+首次调用返回0</p>
+
+<p><a id="processUsageObject.cpuString"></a></p>
+
+<h3>processUsageObject.cpuString()</h3>
+
+<p>返回表示cpu占用率百分比的字符串,<br>
+首次调用返回值无效</p>
+
+<p><a id="processUsageObject.free"></a></p>
+
+<h3>processUsageObject.free()</h3>
+
+<p>释放对象</p>
+
+<p><a id="processUsageObject.mem"></a></p>
+
+<h3>processUsageObject.mem()</h3>
+
+<p>返回表示内存占用率的memCounter对象</p>
+
+<p><a id="processUsageObject.memString"></a></p>
+
+<h3>processUsageObject.memString()</h3>
+
+<p>返回2个表示内存占用的字符串，<br>
+斜杠前为内存﻿工作集大小（Working Set Size），<br>
+后者为提交内存大小（Commit Size）</p>
+
+<p><a id="processUsageObject.stillActive"></a></p>
+
+<h3>processUsageObject.stillActive()</h3>
+
+<p>进程是否在运行</p>
+
+<p><a href="usage.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/process/usage.md">Markdown 格式</a></p>
+
+</body> 
+</html>

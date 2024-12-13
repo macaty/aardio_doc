@@ -1,0 +1,234 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - libpq 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - libpq 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>libpq 库模块帮助文档</h1>
+
+<p><a id="libpq"></a></p>
+
+<h2>libpq 成员列表</h2>
+
+<p><a id="libpq( 连接参数 )"></a></p>
+
+<h3>libpq( 连接参数 )</h3>
+
+<p>打开数据库连接,<br>
+连接参数可以是字符串，也可以是指定任意个配置参数的表,<br>
+常用的配置字段如下：<br>
+libpq(<br>
+    host =&quot;连接主机,不指定时默认localhost&quot;;<br>
+    hostaddr =&quot;连接主机的IP地址,可省略&quot; ;<br>
+    port = &quot;服务端口,不指定默认值为5432&quot;;<br>
+    dbname = &quot;数据库名,不指定时默认和用户名相同&quot;;<br>
+    user = &quot;不指定时默认值为postgres&quot;;<br>
+    password = &quot;密码&quot;;<br>
+    connect_timeout = &quot;超时值,0为不限时间&quot;;<br>
+    options = &quot;发送给服务器的命令行选项&quot;<br>
+    sslmode = &quot;SSL模式,4个可选值：disable,allow,prefer （缺省）,require &quot;<br>
+)</p>
+
+<p><a id="libpq()"></a></p>
+
+<h3>libpq()</h3>
+
+<p><a href="#libpqObject">返回对象:libpqObject</a></p>
+
+<p><a id="libpqObject"></a></p>
+
+<h2>libpqObject 成员列表</h2>
+
+<p><a id="libpqObject.backendPid"></a></p>
+
+<h3>libpqObject.backendPid()</h3>
+
+<p>服务器的进程号ID;</p>
+
+<p><a id="libpqObject.charset"></a></p>
+
+<h3>libpqObject.charset()</h3>
+
+<p>服务端编码</p>
+
+<p><a id="libpqObject.close"></a></p>
+
+<h3>libpqObject.close()</h3>
+
+<p>关闭连接<br>
+在对象析构时会自动调用此函数</p>
+
+<p><a id="libpqObject.each"></a></p>
+
+<h3>libpqObject.each()</h3>
+
+<p>执行SQL并返回一个遍历查询结果的迭代器<br>
+如果参数@2是一个表,则调用formatSqlParameters格式化,SQL中的以数名以@字符开始<br>
+如果是其他类型的参数,调用string.format格式化</p>
+
+<p><a id="libpqObject.errorMessage"></a></p>
+
+<h3>libpqObject.errorMessage()</h3>
+
+<p>返回错误信息</p>
+
+<p><a id="libpqObject.escapeString"></a></p>
+
+<h3>libpqObject.escapeString()</h3>
+
+<p>转义参数指定的字符串</p>
+
+<p><a id="libpqObject.exec"></a></p>
+
+<h3>libpqObject.exec()</h3>
+
+<p>执行SQL,并可添加不定个数的参数<br>
+如果参数@2是一个表,则调用formatSqlParameters格式化,SQL中的以数名以@字符开始<br>
+如果是其他类型的参数,调用string.format格式化<br>
+如果失败返回null,错误信息  </p>
+
+<p>如果成功并且执行的是返回数据的命令，返回libpq.pqresult对象<br>
+否则返回状态码</p>
+
+<p><a href="#libpqresultObject">返回对象:libpqresultObject</a></p>
+
+<p><a id="libpqObject.execParams"></a></p>
+
+<h3>libpqObject.execParams()</h3>
+
+<p>执行SQL,并可添加不定个数的参数<br>
+SQL中用 $1，$2 等引用后面的参数  </p>
+
+<p>如果失败返回null,错误信息<br>
+如果成功并且执行的是返回数据的命令，返回libpq.pqresult对象<br>
+否则返回状态码</p>
+
+<p><a href="#libpqresultObject">返回对象:libpqresultObject</a></p>
+
+<p><a id="libpqObject.formatSqlParameters"></a></p>
+
+<h3>libpqObject.formatSqlParameters()</h3>
+
+<p>格式化SQL<br>
+如果参数@2是一个表,则调用formatSqlParameters格式化,SQL中的以数名以@字符开始<br>
+如果是其他类型的参数,调用string.format格式化</p>
+
+<p><a id="libpqObject.getCopyData"></a></p>
+
+<h3>libpqObject.getCopyData()</h3>
+
+<p>接收数据<br>
+成功返回buffer对象,失败返回null,错误信息</p>
+
+<p><a id="libpqObject.getTable"></a></p>
+
+<h3>libpqObject.getTable()</h3>
+
+<p>执行SQL并返回一个包含查询结果的表<br>
+如果参数@2是一个表,则调用formatSqlParameters格式化,SQL中的以数名以@字符开始<br>
+如果是其他类型的参数,调用string.format格式化</p>
+
+<p><a id="libpqObject.parameterStatus"></a></p>
+
+<h3>libpqObject.parameterStatus(&quot;字符串参数&quot;)</h3>
+
+<p>返回服务器参数设置</p>
+
+<p><a id="libpqObject.putCopyData"></a></p>
+
+<h3>libpqObject.putCopyData(buffer,err)</h3>
+
+<p>发送数据<br>
+buffer参数为null结束发送,指定err参数返回错误信息并结束发送</p>
+
+<p><a id="libpqObject.resultFormat"></a></p>
+
+<h3>libpqObject.resultFormat</h3>
+
+<p>其值为0或空值时execParams返回数据使用文本模式，<br>
+值为1使用二进制模式</p>
+
+<p><a id="libpqresultObject"></a></p>
+
+<h2>libpqresultObject 成员列表</h2>
+
+<p><a id="libpqresultObject.clear"></a></p>
+
+<h3>libpqresultObject.clear()</h3>
+
+<p>释放资源<br>
+在对象析构时会自动调用此函数</p>
+
+<p><a id="libpqresultObject.each"></a></p>
+
+<h3>libpqresultObject.each()</h3>
+
+<p>返回一个遍历查询结果的迭代器</p>
+
+<p><a id="libpqresultObject.fname"></a></p>
+
+<h3>libpqresultObject.fname(列序号)</h3>
+
+<p>字段名</p>
+
+<p><a id="libpqresultObject.fnumber"></a></p>
+
+<h3>libpqresultObject.fnumber(字段名)</h3>
+
+<p>字段名转换为列序号</p>
+
+<p><a id="libpqresultObject.ftable"></a></p>
+
+<h3>libpqresultObject.ftable(列序号)</h3>
+
+<p>字段所在的表的 OID</p>
+
+<p><a id="libpqresultObject.ftext"></a></p>
+
+<h3>libpqresultObject.ftext(列序号)</h3>
+
+<p>列是否以文本模式返回数据</p>
+
+<p><a id="libpqresultObject.ftype"></a></p>
+
+<h3>libpqresultObject.ftype(列序号)</h3>
+
+<p>返回列类型</p>
+
+<p><a id="libpqresultObject.getTable"></a></p>
+
+<h3>libpqresultObject.getTable()</h3>
+
+<p>返回一个包含查询结果的表</p>
+
+<p><a id="libpqresultObject.nfields"></a></p>
+
+<h3>libpqresultObject.nfields()</h3>
+
+<p>返回列数</p>
+
+<p><a id="libpqresultObject.ntuples"></a></p>
+
+<h3>libpqresultObject.ntuples()</h3>
+
+<p>返回行数</p>
+
+<p><a id="libpqresultObject.value"></a></p>
+
+<h3>libpqresultObject.value(行序号,列序号)</h3>
+
+<p>返回值</p>
+
+<p><a href="_.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/libpq/_.md">Markdown 格式</a></p>
+
+</body> 
+</html>

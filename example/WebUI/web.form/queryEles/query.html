@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - queryEles基本用法'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - queryEles基本用法</title> 
+<link rel="stylesheet" href="../../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: queryEles基本用法</h1><pre><code class="aardio language-aardio">//queryEles基本用法
+import win.ui;
+/*DSG{{*/
+var winform = win.form(text=&quot;aardio form&quot;;right=349;bottom=249)
+winform.add()
+/*}}*/
+
+import web.form;
+var wb = web.form( winform ) //创建web窗体
+wb.html = /**
+&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; /&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;idTest&quot; class=&quot;style2&quot;&gt;
+    测试文本 
+    测试文本
+    &lt;/div&gt;
+
+    &lt;/div&gt;
+
+    &lt;div id=&quot;idTest2&quot; class=&quot;style2&quot;&gt;
+    测试文本
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+**/
+
+winform.show();
+
+var qEles = wb.queryEles(
+    parent = 可选指定父节点;
+    className = &quot;style\d+&quot;; //按CSS类名查找,\d+是模式匹配语法,匹配一个或多个数字
+    /*
+    可选指定任意个HTML属性,作为条件查询匹配的节点.
+    可选使用模式匹配语法.
+    */ 
+) 
+
+//wb.queryEles返回一个节点的集合,
+//可以象使用单个节点一样访问其成员.集合对象自动循环处理所有子节点.
+qEles.style.color = &quot;red&quot; //改变集合内所有节点的属性就这样简单
+
+var ele = qEles(0); //模拟COM对象,返回第一个节点
+io.print( qEles.Length ); //模拟COM对象,返回长度
+
+var ele = qEles[1]; //作为aardio数组,返回 一个节点
+io.print( #qEles ); //返回长度
+
+//进入消息循环
+win.loopMessage();
+return winform,wb;
+
+</code></pre>
+<a href="javascript:if(confirm('https://www.aardio.com/zh-cn/doc/example/WebUI/web.form/queryEles/query.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������������ʵ��ļ������صġ�  \n\n�����ڷ������ϴ���?'))window.location='https://www.aardio.com/zh-cn/doc/example/WebUI/web.form/queryEles/query.md'" tppabs="https://www.aardio.com/zh-cn/doc/example/WebUI/web.form/queryEles/query.md">Markdown 格式</a>
+</body> 
+</html>

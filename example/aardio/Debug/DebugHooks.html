@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - 调试钩子'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - 调试钩子</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 调试钩子</h1><pre><code class="aardio language-aardio">import debug;    
+
+//注册一个新的调试钩子
+var dbg = debug.hook()
+
+//每行代码触发
+dbg.line = function(line){
+
+    io.print( &quot;line&quot;,line )
+
+    //可用类似sql语法查询调试信息
+    var info = debug.queryinfo(2,&quot;select source,function,upvars,name,currentline,activelines&quot;);
+    io.print( info.name,info.name_where /* ,info.source.code*/ )
+}
+
+//调用函数触发
+dbg.call = function(){
+    io.print( &quot;call&quot; )
+    io.print( debug.traceback(,&quot;调用栈&quot;,2));
+}
+
+//返回值触发
+dbg.return = function(line){
+    io.print( &quot;return&quot; )
+}
+
+//尾调用触发,必须同时定义 dbg.return 回调,如果仅指定 dbg.tailreturn 则不会被触发
+dbg.tailreturn = function(line){
+    io.print( &quot;tailreturn&quot; )
+}
+
+io.open()
+function func(){
+
+}
+func()
+io.print(&quot;aaa&quot;) 
+
+dbg.line = null; //注销一个钩子函数
+dbg.call = null; //注销一个钩子函数
+dbg.return = null; //注销一个钩子函数
+dbg.tailreturn = null; //注销一个钩子函数
+
+execute(&quot;pause&quot;)
+
+</code></pre>
+<a href="DebugHooks.md" tppabs="https://www.aardio.com/zh-cn/doc/example/aardio/Debug/DebugHooks.md">Markdown 格式</a>
+</body> 
+</html>

@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - Markdown 转 PDF'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - Markdown 转 PDF</title> 
+<link rel="stylesheet" href="../../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: Markdown 转 PDF</h1><pre><code class="aardio language-aardio">//网页转 PDF
+import win.ui;
+/*DSG{{*/
+var winform = win.form(text=&quot;请在打开网页，请稍候 ……&quot;;right=759;bottom=469;bgcolor=16777215)
+winform.add()
+/*}}*/
+
+import web.view;
+var wb = web.view(winform); 
+winform.show();
+
+var pdfFile = &quot;/test.pdf&quot;
+var mdFile = /*
+# 说明
+
+- 这个字符串可以写 *.md 文件路径
+- 也可以直接写 Markdown 内容
+- 这是一个 Markdown 快速转 PDF 范例。
+- 这是一个 网页 快速转 PDF 范例。
+*/
+
+import string.markdown;
+var markdown = string.markdown();
+
+var html;
+if(io.exist(mdFile)){
+    html = markdown.renderFile(mdFile);
+}
+else {
+    html = markdown.render(mdFile); 
+}
+
+var html = `
+&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; https://cdn.bootcdn.net/ajax/libs/github-markdown-css/5.6.1/github-markdown-dark.min.css&quot;&gt;
+    &lt;script&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+` +  html + `
+&lt;/body&gt;
+&lt;/html&gt;
+`
+
+//大文件自内存加载会比较快。
+string.save(&quot;/pdf.html&quot;,html )
+wb.go(&quot;/pdf.html&quot;);
+
+winform.text = &quot;正在导出 PDF，大文件会比较慢，请耐心等待！&quot;
+wb.waitDoc();
+
+//调用 DevTools 方法，并等待返回结果，失败返回 null
+var result  = wb.cdp(&quot;Page.printToPDF&quot;);
+
+if(result[[&quot;data&quot;]]){
+    import crypt;
+    var bin = crypt.decodeBin(result[[&quot;data&quot;]]); 
+    string.save(pdfFile,bin);
+
+    winform.text = &quot;已导出 PDF，路径已复制到剪贴板。&quot; 
+    wb.go(pdfFile);
+} 
+
+
+win.loopMessage();
+</code></pre>
+<a href="javascript:if(confirm('https://www.aardio.com/zh-cn/doc/example/WebUI/web.view/DevTools/printToPDF.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������������ʵ��ļ������صġ�  \n\n�����ڷ������ϴ���?'))window.location='https://www.aardio.com/zh-cn/doc/example/WebUI/web.view/DevTools/printToPDF.md'" tppabs="https://www.aardio.com/zh-cn/doc/example/WebUI/web.view/DevTools/printToPDF.md">Markdown 格式</a>
+</body> 
+</html>

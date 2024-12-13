@@ -1,0 +1,208 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - sys.storage 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - sys.storage 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>sys.storage 库模块帮助文档</h1>
+
+<p><a id="sys.storage"></a></p>
+
+<h2>sys.storage 成员列表</h2>
+
+<p>存储设备属性<br>
+不需要管理权限。<br>
+相关库：fsys.drives, sys.volume</p>
+
+<p><a id="sys.storage.getDeviceNumber"></a></p>
+
+<h3>sys.storage.getDeviceNumber(&quot;设备名&quot;)</h3>
+
+<p>参数指定分区设备名,或直接指定盘符<br>
+返回存储设备序号</p>
+
+<p><a id="sys.storage.getDeviceNumber"></a></p>
+
+<h3>sys.storage.getDeviceNumber()</h3>
+
+<p><a href="#sysStorageDeviceNumberObject">返回对象:sysStorageDeviceNumberObject</a></p>
+
+<p><a id="sys.storage.getDevices"></a></p>
+
+<h3>sys.storage.getDevices</h3>
+
+<p>返回硬盘分区</p>
+
+<p><a id="sys.storage.getDevices"></a></p>
+
+<h3>sys.storage.getDevices(flat,isUsb)</h3>
+
+<p>返回硬盘分区,所有参数都可省略。  </p>
+
+<p>如果 @flat 参数为 true 则返回分区盘符数组,<br>
+否则返回硬盘分区列表,键为设备序号,值为该设备创建的分区盘符数组。<br>
+注意设备序号不一定是连续的数值。  </p>
+
+<p>@isUsb 如果为 true，则仅返回 USB 设备创建的分区</p>
+
+<p><a id="sys.storage.getUsbDevices"></a></p>
+
+<h3>sys.storage.getUsbDevices</h3>
+
+<p>返回 U盘 分区</p>
+
+<p><a id="sys.storage.getUsbDevices"></a></p>
+
+<h3>sys.storage.getUsbDevices()</h3>
+
+<p>返回U盘分区列表，<br>
+键为 U盘 设备序号,值为该 U盘 建立的所有分区盘符数组。<br>
+注意设备序号不一定是连续的数值。</p>
+
+<p><a id="sys.storage.getUsbDevices"></a></p>
+
+<h3>sys.storage.getUsbDevices(true)</h3>
+
+<p>返回 U盘 分区盘符数组</p>
+
+<p><a id="sys.storage.isUsbDevice"></a></p>
+
+<h3>sys.storage.isUsbDevice(&quot;设备路径)</h3>
+
+<p>检测是否 U盘,<br>
+参数可指定设备名、分区盘符、存储设备序号等</p>
+
+<p><a id="sys.storage.queryProperty"></a></p>
+
+<h3>sys.storage.queryProperty(&quot;设备路径)</h3>
+
+<p>可指定设备名、分区盘符、存储设备序号等<br>
+如果不指定参数则自动获取硬盘设备路径</p>
+
+<p><a id="sys.storage.queryProperty"></a></p>
+
+<h3>sys.storage.queryProperty()</h3>
+
+<p><a href="#sysStoragePropertyObject">返回对象:sysStoragePropertyObject</a></p>
+
+<p><a id="sysStorageDeviceNumberObject"></a></p>
+
+<h2>sysStorageDeviceNumberObject 成员列表</h2>
+
+<p><a id="sysStorageDeviceNumberObject.deviceNumber"></a></p>
+
+<h3>sysStorageDeviceNumberObject.deviceNumber</h3>
+
+<p>设备序号</p>
+
+<p><a id="sysStorageDeviceNumberObject.deviceType"></a></p>
+
+<h3>sysStorageDeviceNumberObject.deviceType</h3>
+
+<p>类型<br>
+使用 <em>FILE_DEVICE</em> 前缀常量</p>
+
+<p><a id="sysStorageDeviceNumberObject.partitionNumber"></a></p>
+
+<h3>sysStorageDeviceNumberObject.partitionNumber</h3>
+
+<p>分区序号</p>
+
+<p><a id="sysStoragePropertyObject"></a></p>
+
+<h2>sysStoragePropertyObject 成员列表</h2>
+
+<p><a id="sysStoragePropertyObject.busType"></a></p>
+
+<h3>sysStoragePropertyObject.busType</h3>
+
+<p>总线类型<br>
+使用 _BusType 前缀常量<br>
+例如U盘是 _BusTypeUsb,其值为7</p>
+
+<p><a id="sysStoragePropertyObject.commandQueueing"></a></p>
+
+<h3>sysStoragePropertyObject.commandQueueing</h3>
+
+<p>是否支持命令队列</p>
+
+<p><a id="sysStoragePropertyObject.deviceType"></a></p>
+
+<h3>sysStoragePropertyObject.deviceType</h3>
+
+<p>设备类型</p>
+
+<p><a id="sysStoragePropertyObject.deviceTypeModifier"></a></p>
+
+<h3>sysStoragePropertyObject.deviceTypeModifier</h3>
+
+<p>SCSI-2额外的设备类型</p>
+
+<p><a id="sysStoragePropertyObject.isUsbDevice"></a></p>
+
+<h3>sysStoragePropertyObject.isUsbDevice</h3>
+
+<p>是否 USB 设备</p>
+
+<p><a id="sysStoragePropertyObject.productId"></a></p>
+
+<h3>sysStoragePropertyObject.productId</h3>
+
+<p>产品ID</p>
+
+<p><a id="sysStoragePropertyObject.productRevision"></a></p>
+
+<h3>sysStoragePropertyObject.productRevision</h3>
+
+<p>产品版本</p>
+
+<p><a id="sysStoragePropertyObject.removableMedia"></a></p>
+
+<h3>sysStoragePropertyObject.removableMedia</h3>
+
+<p>是否可移动</p>
+
+<p><a id="sysStoragePropertyObject.serialNumber"></a></p>
+
+<h3>sysStoragePropertyObject.serialNumber</h3>
+
+<p>序列号</p>
+
+<p><a id="sysStoragePropertyObject.vendorId"></a></p>
+
+<h3>sysStoragePropertyObject.vendorId</h3>
+
+<p>厂商ID</p>
+
+<h3>自动完成常量</h3>
+
+<p>_BusType1394=4<br>
+_BusTypeAta=3<br>
+_BusTypeAtapi=2<br>
+_BusTypeFibre=6<br>
+_BusTypeMaxReserved=0x7F<br>
+_BusTypeRAID=8<br>
+_BusTypeScsi=1<br>
+_BusTypeSsa=5<br>
+_BusTypeUnknown=0<br>
+_BusTypeUsb=7<br>
+_PropertyExistsQuery=1<br>
+_PropertyMaskQuery=2<br>
+_PropertyQueryMaxDefined=3<br>
+_PropertyStandardQuery=0<br>
+_StorageAdapterProperty=1<br>
+_StorageDeviceProperty=0  </p>
+
+<p><a href="storage.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/sys/storage.md">Markdown 格式</a></p>
+
+</body> 
+</html>

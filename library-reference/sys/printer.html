@@ -1,0 +1,217 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - sys.printer 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - sys.printer 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>sys.printer 库模块帮助文档</h1>
+
+<p><a id="sys"></a></p>
+
+<h2>sys 成员列表</h2>
+
+<p><a id="sys.printer"></a></p>
+
+<h3>sys.printer()</h3>
+
+<p><a href="#sysprinterObject">返回对象:sysprinterObject</a></p>
+
+<p><a id="sys.printer"></a></p>
+
+<h3>sys.printer(printerName,printerDefaults)</h3>
+
+<p>打开打印机设备<br>
+printerName指定打印机名称,省略打开默认打印机<br>
+printerDefaults可省略</p>
+
+<p><a id="sys.printer"></a></p>
+
+<h2>sys.printer 成员列表</h2>
+
+<p><a id="sys.printer.default"></a></p>
+
+<h3>sys.printer.default()</h3>
+
+<p>返回默认打印机名称</p>
+
+<p><a id="sys.printer.device"></a></p>
+
+<h3>sys.printer.device()</h3>
+
+<p><a href="#sysprinterdcObject">返回对象:sysprinterdcObject</a></p>
+
+<p><a id="sys.printer.device"></a></p>
+
+<h3>sys.printer.device(hdc)</h3>
+
+<p>创建绘图设备对象<br>
+如果不指定hdc,则自动获取默认打印机绘图设备句柄<br>
+如果参数@2为true,则负责释放参数@1指定的hdc</p>
+
+<p><a id="sys.printer.each"></a></p>
+
+<h3>sys.printer.each(flags)</h3>
+
+<pre><code class="aardio language-aardio">for printerName,serverName,attributes in sys.printer.each(){
+    /*遍历系统打印机:  
+printerName为打机机名称,  
+serverName为服务名,  
+attributes为_PRINTER_ATTRIBUTE_前缀常量*/
+}
+</code></pre>
+
+<p><a id="sys.printer.setDefault"></a></p>
+
+<h3>sys.printer.setDefault(名称)</h3>
+
+<p>设置默认打印机</p>
+
+<p><a id="sysprinterObject"></a></p>
+
+<h2>sysprinterObject 成员列表</h2>
+
+<p><a id="sysprinterObject.createDevice"></a></p>
+
+<h3>sysprinterObject.createDevice()</h3>
+
+<p>创建绘图设备对象,<br>
+可选在参数中使用任意个键值对重新指定DEVMODE部分字段的值  </p>
+
+<p><a href="#sysprinterdcObject">返回对象:sysprinterdcObject</a></p>
+
+<p><a id="sysprinterObject.documentProperties"></a></p>
+
+<h3>sysprinterObject.documentProperties()</h3>
+
+<p>获取或修改DEVMODE缓冲区指针<br>
+可选在参数中使用任意个键值对重新指定DEVMODE部分字段的值</p>
+
+<p><a id="sysprinterObject.endDoc"></a></p>
+
+<h3>sysprinterObject.endDoc()</h3>
+
+<p>结束打印一个文档</p>
+
+<p><a id="sysprinterObject.endPage"></a></p>
+
+<h3>sysprinterObject.endPage()</h3>
+
+<p>结束打印一个页面</p>
+
+<p><a id="sysprinterObject.start"></a></p>
+
+<h3>sysprinterObject.start(回调函数,文档名,文档类型,输出文件)</h3>
+
+<pre><code class="aardio language-aardio">sysprinterObject.start(  
+    function(){  
+
+    }  
+);
+</code></pre>
+
+<p><a id="sysprinterObject.startDoc"></a></p>
+
+<h3>sysprinterObject.startDoc(docName,dataType,outputFile)</h3>
+
+<p>开始打印文档,所有参数可选<br>
+参数参考API函数StartPagePrinter的说明</p>
+
+<p><a id="sysprinterObject.startPage"></a></p>
+
+<h3>sysprinterObject.startPage()</h3>
+
+<p>开始打印一个页面</p>
+
+<p><a id="sysprinterObject.write"></a></p>
+
+<h3>sysprinterObject.write()</h3>
+
+<p>写入字符串</p>
+
+<p><a id="sysprinterObject.writePack"></a></p>
+
+<h3>sysprinterObject.writePack()</h3>
+
+<p>写入一个或多个字节码</p>
+
+<p><a id="sysprinterdcObject"></a></p>
+
+<h2>sysprinterdcObject 成员列表</h2>
+
+<p><a id="sysprinterdcObject.dpi"></a></p>
+
+<h3>sysprinterdcObject.dpi()</h3>
+
+<p>返回DPI</p>
+
+<p><a id="sysprinterdcObject.endDoc"></a></p>
+
+<h3>sysprinterdcObject.endDoc()</h3>
+
+<p>结束打印一个文档</p>
+
+<p><a id="sysprinterdcObject.endPage"></a></p>
+
+<h3>sysprinterdcObject.endPage()</h3>
+
+<p>结束打印一个页面</p>
+
+<p><a id="sysprinterdcObject.rect"></a></p>
+
+<h3>sysprinterdcObject.rect()</h3>
+
+<p>返回一个表示绘图区块的 RECT 结构体  </p>
+
+<p><a href="../global/_.html#rectObject" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/global/_.html#rectObject">返回对象:rectObject</a></p>
+
+<p><a id="sysprinterdcObject.reset"></a></p>
+
+<h3>sysprinterdcObject.reset()</h3>
+
+<p>修改打印机设置<br>
+参数应为 sys.printer.documentProperties 函数返回的 DEVMODE 指针</p>
+
+<p><a id="sysprinterdcObject.size"></a></p>
+
+<h3>sysprinterdcObject.size()</h3>
+
+<p>返回 2 个返回值，分别为绘图区块的宽，高。</p>
+
+<p><a id="sysprinterdcObject.start"></a></p>
+
+<h3>sysprinterdcObject.start(回调函数,文档名,文档类型,输出文件,类型)</h3>
+
+<pre><code class="aardio language-aardio">sysprinterdcObject.start(  
+    function(hdcPrinter,rc){  
+        ::Gdi32.TextOut(hdcPrinter,20,20,&quot;测试打印&quot;,4); /*回调参数 hdcPrinter 为绘图设备上下文句柄（hdc）,  
+rc 为绘图区块（ ::RECT 结构体）。*/  
+    }  
+);
+</code></pre>
+
+<p><a id="sysprinterdcObject.startDoc"></a></p>
+
+<h3>sysprinterdcObject.startDoc(docName,dataType,output,fwType)</h3>
+
+<p>开始打印文档,所有参数可选<br>
+参数参考 API 函数 StartPage 的说明</p>
+
+<p><a id="sysprinterdcObject.startPage"></a></p>
+
+<h3>sysprinterdcObject.startPage()</h3>
+
+<p>开始打印一个页面</p>
+
+<p><a href="printer.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/sys/printer.md">Markdown 格式</a></p>
+
+</body> 
+</html>

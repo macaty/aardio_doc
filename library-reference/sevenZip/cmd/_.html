@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - sevenZip.cmd 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - sevenZip.cmd 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>sevenZip.cmd 库模块帮助文档</h1>
+
+<p><a id="sevenZip.cmd"></a></p>
+
+<h2>sevenZip.cmd 成员列表</h2>
+
+<p><a id="sevenZip.cmd.compress"></a></p>
+
+<h3>sevenZip.cmd.compress(&quot;源路径&quot;,&quot;压缩文件路径&quot;,回显函数,压缩级别,密码,其他命令参数)</h3>
+
+<p>压缩<br>
+源路径尾部自动添加 * 表示压缩目录下的所有文件。<br>
+回显函数,压缩级别,密码都是可选参数<br>
+压缩级别可选值为0到9,默认值为9</p>
+
+<p><a id="sevenZip.cmd.compressInstall"></a></p>
+
+<h3>sevenZip.cmd.compressInstall(&quot;源路径&quot;,&quot;安装文件路径&quot;,配置表,回显函数,压缩级别,密码,其他命令参数)</h3>
+
+<p>生成自解压安装文件。<br>
+参数 @2 必须指定 exe 后缀的文件路径。<br>
+配置表指定一个包含配置名值对的表对象，可用配置请参考7zip文档。<br>
+<a href="javascript:if(confirm('https://7zip.bugaco.com/7zip/MANUAL/cmdline/switches/sfx.htm  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://7zip.bugaco.com/7zip/MANUAL/cmdline/switches/sfx.htm'" tppabs="https://7zip.bugaco.com/7zip/MANUAL/cmdline/switches/sfx.htm">https://7zip.bugaco.com/7zip/MANUAL/cmdline/switches/sfx.htm</a><br>
+源路径可以使用星号表示压缩目录下的文件<br>
+回显函数,压缩级别,密码都是可选参数<br>
+压缩级别可选值为0到9,默认值为9</p>
+
+<p><a id="sevenZip.cmd.compressSfx"></a></p>
+
+<h3>sevenZip.cmd.compressSfx(&quot;源路径&quot;,&quot;自解压文件路径&quot;,回显函数,压缩级别,密码,其他命令参数)</h3>
+
+<p>生成自解压 EXE 文件。<br>
+参数 @2 必须指定 exe 后缀的文件路径。<br>
+源路径可以使用星号表示压缩目录下的文件<br>
+回显函数,压缩级别,密码都是可选参数<br>
+压缩级别可选值为0到9,默认值为9</p>
+
+<p><a id="sevenZip.cmd.extract"></a></p>
+
+<h3>sevenZip.cmd.extract(&quot;压缩文件路径&quot;,&quot;解压目录&quot;,回显函数,密码,其他命令参数)</h3>
+
+<p>解压缩<br>
+回显函数,密码都是可选参数</p>
+
+<p><a id="sevenZip.cmd.sfx"></a></p>
+
+<h3>sevenZip.cmd.sfx(&quot;压缩文件路径&quot;,&quot;自解压文件路径&quot;)</h3>
+
+<p>将 7z 压缩文件转换为自解压文件</p>
+
+<p><a id="sevenZip.cmd.sfxInstall"></a></p>
+
+<h3>sevenZip.cmd.sfxInstall(&quot;压缩文件路径&quot;,&quot;安装文件路径&quot;,配置文件)</h3>
+
+<p>将 7z 压缩文件转换为安装文件。<br>
+配置表参数请参考 compressInstall 函数说明</p>
+
+<p><a id="sevenZip.cmd.write7zHeader"></a></p>
+
+<h3>sevenZip.cmd.write7zHeader(&quot;文件路径&quot;)</h3>
+
+<p>保持文件已有内容不变,并追加7z格式头<br>
+compress函数当压缩包参数为exe文件时自动调用此函数</p>
+
+<p><a href="_.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/sevenZip/cmd/_.md">Markdown 格式</a></p>
+
+</body> 
+</html>

@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - process.mutex 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - process.mutex 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>process.mutex 库模块帮助文档</h1>
+
+<p><a id="process"></a></p>
+
+<h2>process 成员列表</h2>
+
+<p><a id="process.mutex"></a></p>
+
+<h3>process.mutex(&quot;唯一名称&quot;,句柄是否可继承,获取初始所有权)</h3>
+
+<p>创建互斥体<br>
+名称不能超过260个字符,名称内的反斜杠自动替换为正斜杠,<br>
+thread.event,process.mutex,fsys.mmap等命名不能相同,<br>
+省略名称创建匿名对象,<br>
+参数@2指定句柄是否可被子进程继承,为可选参数,默认为false,<br>
+可选用参数@3指定是否获取初始所有权,默认为 false，<br>
+因为可能同时创建互斥体，不建议将参数@3指定为 true</p>
+
+<p><a id="process.mutex"></a></p>
+
+<h3>process.mutex()</h3>
+
+<p><a href="#mutexObject">返回对象:mutexObject</a></p>
+
+<p><a id="process.mutex"></a></p>
+
+<h3>process.mutex(互斥体句柄)</h3>
+
+<p>使用句柄直接打开互斥体</p>
+
+<p><a id="process.mutex"></a></p>
+
+<h3>process.mutex(互斥体句柄,true)</h3>
+
+<p>使用句柄直接打开互斥体<br>
+添加析构函数负责释放句柄</p>
+
+<p><a id="process.mutex"></a></p>
+
+<h2>process.mutex 成员列表</h2>
+
+<p>互斥体<br>
+可用于进程间同步</p>
+
+<p>创建或打开互斥体对象,<br>
+返回对象可传入其他线程使用。</p>
+
+<p><a id="process.mutex.lock"></a></p>
+
+<h3>process.mutex.lock(&quot;互斥体名称&quot;,回调函数)</h3>
+
+<p>该函数在多进程中互斥执行</p>
+
+<p><a id="mutexObject"></a></p>
+
+<h2>mutexObject 成员列表</h2>
+
+<p><a id="mutexObject.close"></a></p>
+
+<h3>mutexObject.close()</h3>
+
+<p>关闭互斥体句柄<br>
+该函数并不关闭互斥体创建的内核对象<br>
+当所有引用内核对象的对象关闭,内核对象自动释放</p>
+
+<p><a id="mutexObject.conflict"></a></p>
+
+<h3>mutexObject.conflict</h3>
+
+<p>如果互斥体已存在,此属性为真值<br>
+否则为空值</p>
+
+<p><a id="mutexObject.release"></a></p>
+
+<h3>mutexObject.release()</h3>
+
+<p>线程在处理完共享资源后,<br>
+应在离开时调用此函数释放互斥体所有权</p>
+
+<p><a id="mutexObject.wait"></a></p>
+
+<h3>mutexObject.wait()</h3>
+
+<p>等待并获取互斥体独占所有权,<br>
+可选增加一个参数指定超时,以毫秒为单位<br>
+注意此函数应与release函数配对使用<br>
+在同一线程中可多次取得所有权,但需要相同次数调用release函数释放<br>
+在UI线程中应使用非阻塞的waitOne()函数替代</p>
+
+<p><a id="mutexObject.waitOne"></a></p>
+
+<h3>mutexObject.waitOne()</h3>
+
+<p>等待并获取互斥体独占所有权,<br>
+可选增加一个参数指定超时,以毫秒为单位<br>
+注意此函数应与release函数配对使用<br>
+在同一线程中可多次取得所有权,但需要相同次数调用release函数释放</p>
+
+<p><a href="mutex.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/process/mutex.md">Markdown 格式</a></p>
+
+</body> 
+</html>

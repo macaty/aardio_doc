@@ -1,0 +1,616 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - electron.app 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - electron.app 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>electron.app 库模块帮助文档</h1>
+
+<p><a id="electron"></a></p>
+
+<h2>electron 成员列表</h2>
+
+<p>Electron 扩展库  </p>
+
+<p>自动下载 Electron 的功能仅供测试不保证下载地址不会失效，<br>
+软件请自带 Electron，适用版本请参考 electron.runtime。<br>
+因 Electron 升级接口改动太大，暂无计划支持 Electron 后续版本。  </p>
+
+<p>建议改用基于 WebView2 的标准库： web.view<br>
+WebView2 为公用的系统组件，接口简洁、分发方便、功能强大，<br>
+并可自动更新，拥有良好的向下兼容性</p>
+
+<p><a id="electron.app"></a></p>
+
+<h3>electron.app</h3>
+
+<p>创建 Electron 嵌入进程,<br>
+注意主进程的控制台输出需要在 aardio 中调用 console.open 打开控制台才能查看，并且必须开启控制台的 UTF-8 模式,<br>
+可选在参数 @4中指定 true，以通知aardio在开发环境下自动打开控制台</p>
+
+<p><a id="electron.app"></a></p>
+
+<h3>electron.app()</h3>
+
+<p><a href="#ElectronAppObject">返回对象:ElectronAppObject</a></p>
+
+<p><a id="electron.app"></a></p>
+
+<h3>electron.app(ctrl,electronPath,showConsole)</h3>
+
+<p>创建 Electron 嵌入进程,所有参数可选<br>
+参数@1 可选用控件对象指定宿主窗口。<br>
+参数 @electronPath 指定electron.exe的路径,<br>
+不指定则自动下载安装 Electron 运行时</p>
+
+<p><a id="electron.app"></a></p>
+
+<h3>electron.app(title)</h3>
+
+<p>创建electron嵌入进程,所有参数可选<br>
+参数@1指定窗口标题</p>
+
+<p><a id="electron.lastRemoteDebuggingPort"></a></p>
+
+<h3>electron.lastRemoteDebuggingPort</h3>
+
+<p>electron最近启用的远程调试端口</p>
+
+<p><a id="ElectronAppObject"></a></p>
+
+<h2>ElectronAppObject 成员列表</h2>
+
+<p><a id="ElectronAppObject._form"></a></p>
+
+<h3>ElectronAppObject._form</h3>
+
+<p>创建chrome.app时指定的父窗口  </p>
+
+<p><a href="../../win/ui/ctrl/static.html#staticObject" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/win/ui/ctrl/static.html#staticObject">返回对象:staticObject</a></p>
+
+<p><a id="ElectronAppObject.accessControlAllowOrigin"></a></p>
+
+<h3>ElectronAppObject.accessControlAllowOrigin</h3>
+
+<p>允许写入 Access-Control-Allow-Headers 响应头的站点地址。<br>
+此属性必须为 null、字符串，或者指定为一个表对象,<br>
+表的键为允许跨域调用的站点地址,值必须为 true<br>
+站点地址应使用 https://host 格式，且结尾不要有斜杠，<br>
+新的浏览器已经禁止在非 HTTPS 协议下调用本机地址，<br>
+而老版浏览器则反之</p>
+
+<p><a id="ElectronAppObject.accessControlRequestPrivateNetwork"></a></p>
+
+<h3>ElectronAppObject.accessControlRequestPrivateNetwork</h3>
+
+<p>自定义 Access-Control-Request-Private-Network 响应头的值，<br>
+默认为 &quot;true&quot;，可改为 null</p>
+
+<p><a id="ElectronAppObject.appPath"></a></p>
+
+<h3>ElectronAppObject.appPath</h3>
+
+<p>electron主进程所在目录,可指定为asar文件路径，<br>
+该值不指定时默认为&quot;/electron.app&quot;,<br>
+该目录为默认值&quot;/electron.app&quot;时，发布EXE时可自动打包为asar - 可选嵌入EXE文件</p>
+
+<p><a id="ElectronAppObject.callback"></a></p>
+
+<h3>ElectronAppObject.callback(method,proc)</h3>
+
+<pre><code class="aardio language-aardio">ElectronAppObject.callback(&quot;/*调用survey发起调查指定的方法名字*/&quot;,function(hSocket,result,err){  
+
+})
+</code></pre>
+
+<p><a id="ElectronAppObject.chromePath"></a></p>
+
+<h3>ElectronAppObject.chromePath</h3>
+
+<p>electron.exe 路径</p>
+
+<p><a id="ElectronAppObject.chromeProcessId"></a></p>
+
+<h3>ElectronAppObject.chromeProcessId</h3>
+
+<p>electron进程ID</p>
+
+<p><a id="ElectronAppObject.chromeThreadId"></a></p>
+
+<h3>ElectronAppObject.chromeThreadId</h3>
+
+<p>electron启动线程ID</p>
+
+<p><a id="ElectronAppObject.close"></a></p>
+
+<h3>ElectronAppObject.close()</h3>
+
+<p>关闭主窗口</p>
+
+<p><a id="ElectronAppObject.doScript"></a></p>
+
+<h3>ElectronAppObject.doScript($,js,...)</h3>
+
+<p>在electron中执行javascript代码,忽略返回,<br>
+在js参数后可选指定多个字符串格式化参数用于调用string.form格式化代码,  </p>
+
+<p>参数@1指定客户端套接字句柄,<br>
+RPC服务端远程回调函数名首字符为$时,<br>
+第一个回调$参数即为当前客户端套接字句柄,<br>
+除非熟悉getActiveSocket函数导致的潜在问题,请不要省略$参数</p>
+
+<p><a id="ElectronAppObject.doScriptMain"></a></p>
+
+<h3>ElectronAppObject.doScriptMain(js,...)</h3>
+
+<p>在electron主进程中执行javascript代码,忽略返回值,<br>
+在js参数后可选指定多个字符串格式化参数用于调用string.form格式化代码</p>
+
+<p><a id="ElectronAppObject.electronDir"></a></p>
+
+<h3>ElectronAppObject.electronDir</h3>
+
+<p>electron.exe 所在的目录</p>
+
+<p><a id="ElectronAppObject.electronPath"></a></p>
+
+<h3>ElectronAppObject.electronPath</h3>
+
+<p>electron.exe 路径</p>
+
+<p><a id="ElectronAppObject.external"></a></p>
+
+<h3>ElectronAppObject.external</h3>
+
+<pre><code class="aardio language-aardio">ElectronAppObject.external = {
+    /*可以在这里指定允许electron访问的对象和函数  
+在electron使用const aardio = require(&#39;aardio&#39;)导入此对象  
+必须在调用start函数以前设置此对象才能生效  
+注意electron.app已经默认提供了部分导出函数  
+例如发送标题栏命令必须使用预定义的hitCaption等函数*/
+}
+</code></pre>
+
+<p><a id="ElectronAppObject.fullpath"></a></p>
+
+<h3>ElectronAppObject.fullpath()</h3>
+
+<p>在参数中指定electron.exe 所在目录下的相对路径,<br>
+此函数转换为完整路径</p>
+
+<p><a id="ElectronAppObject.getActiveSocket"></a></p>
+
+<h3>ElectronAppObject.getActiveSocket()</h3>
+
+<p>获取RPC服务端当前活动套接字句柄<br>
+,任何触发消息处理、异步套接字处理程序的代码都有可能改变这个函数的返回值<br>
+任何时候都不推荐使用此函数  </p>
+
+<p>更好的替代方案是在RPC函数名前添加$字符,用于通知aardio在回调参数中添加$参数<br>
+回调$参数可以稳定可靠的获取当前套接字</p>
+
+<p><a id="ElectronAppObject.getUrl"></a></p>
+
+<h3>ElectronAppObject.getUrl(&quot;/res/&quot;)</h3>
+
+<p>将资源文件路径转换为HTTP服务端网址</p>
+
+<p><a id="ElectronAppObject.html"></a></p>
+
+<h3>ElectronAppObject.html</h3>
+
+<p>可选使用些属性直接指定启动页面的代码<br>
+代码会被自动存于indexUrl指定的文件地址</p>
+
+<p><a id="ElectronAppObject.http"></a></p>
+
+<h3>ElectronAppObject.http</h3>
+
+<p>aardio创建的HTTP服务器  </p>
+
+<p><a href="javascript:if(confirm('https://www.aardio.com/zh-cn/doc/library-reference/wsock/tcp/asynHttpServer.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������������ʵ��ļ������صġ�  \n\n�����ڷ������ϴ���?'))window.location='https://www.aardio.com/zh-cn/doc/library-reference/wsock/tcp/asynHttpServer.html#asynHttpServerObject'" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/wsock/tcp/asynHttpServer.html#asynHttpServerObject">返回对象:asynHttpServerObject</a></p>
+
+<p><a id="ElectronAppObject.httpHandler"></a></p>
+
+<h3>ElectronAppObject.httpHandler</h3>
+
+<pre><code class="aardio language-aardio">ElectronAppObject.httpHandler[&quot;/test.js&quot; ] = function(response,request){
+    /*自定义HTTP处理程序  
+键为请求的路径,值为处理函数或者HTML代码*/
+}
+</code></pre>
+
+<p><a id="ElectronAppObject.hwndChrome"></a></p>
+
+<h3>ElectronAppObject.hwndChrome</h3>
+
+<p>electron窗口句柄</p>
+
+<p><a id="ElectronAppObject.indexReady"></a></p>
+
+<h3>ElectronAppObject.indexReady</h3>
+
+<pre><code class="aardio language-aardio">ElectronAppObject.indexReady(  
+    function($){  
+        /*如果加载startEnviron.indexUrl已完成,  
+并且页面上的DOM内容、aardio模块都已准备就绪,  
+将立即执行在此注册的回调函数,  
+可重复添加回调，并保证按添加的前后顺序调用且仅调用一次  
+参数 $ 为触发此事件的网页RPC客户端套接字句柄*/  
+    }   
+)
+</code></pre>
+
+<p><a id="ElectronAppObject.jsMain"></a></p>
+
+<h3>ElectronAppObject.jsMain</h3>
+
+<pre><code class="aardio language-aardio">ElectronAppObject.jsMain = /**  
+    const aardio = require(&#39;aardio&#39;);   
+    const app = require(&#39;electron&#39;).app;   
+
+    /* aardio-electron 主进程已准备就绪,win是已创建的主窗口(BrowserWindow对象) */  
+    aardio.ready( win =&gt; {   
+        if( !aardio.studioInvoke ){  
+            win.setMenu( null )   
+        }   
+
+        win.on(&#39;closed&#39;, () =&gt; {    
+
+        })        
+    } )  
+
+    /* 全部窗口已关闭, 退出electron进程 */  
+    app.on(&#39;window-all-closed&#39;, () =&gt; {  
+        app.quit();   
+    })   
+**/
+</code></pre>
+
+<p><a id="ElectronAppObject.msgbox"></a></p>
+
+<h3>ElectronAppObject.msgbox(&quot;字符串参数&quot;)</h3>
+
+<p>弹出对话框<br>
+参数@1指定显示的数据,如果是表对象先序列化为文本,<br>
+其他对象调用tostring转换为文本  </p>
+
+<p>此函数调用win.msgbox,但设定父窗口为当前chrome窗体</p>
+
+<p><a id="ElectronAppObject.msgbox"></a></p>
+
+<h3>ElectronAppObject.msgbox(&quot;字符串参数&quot;,&quot;标题&quot;)</h3>
+
+<p>弹出对话框<br>
+参数@1指定显示的数据,如果是表对象先序列化为文本,<br>
+其他对象调用tostring转换为文本  </p>
+
+<p>此函数调用win.msgbox,但设定父窗口为当前chrome窗体</p>
+
+<p><a id="ElectronAppObject.msgboxErr"></a></p>
+
+<h3>ElectronAppObject.msgboxErr(&quot;字符串参数&quot;)</h3>
+
+<p>弹出错误对话框<br>
+参数@1指定显示的数据,如果是表对象先序列化为文本,<br>
+其他对象调用tostring转换为文本  </p>
+
+<p>此函数调用win.msgbox,但设定父窗口为当前chrome窗体</p>
+
+<p><a id="ElectronAppObject.msgboxErr"></a></p>
+
+<h3>ElectronAppObject.msgboxErr(&quot;字符串参数&quot;,&quot;标题&quot;)</h3>
+
+<p>弹出错误对话框<br>
+参数@1指定显示的数据,如果是表对象先序列化为文本,<br>
+其他对象调用tostring转换为文本  </p>
+
+<p>此函数调用win.msgbox,但设定父窗口为当前chrome窗体</p>
+
+<p><a id="ElectronAppObject.msgboxTest"></a></p>
+
+<h3>ElectronAppObject.msgboxTest(&quot;字符串参数&quot;)</h3>
+
+<p>弹出询问对话框<br>
+参数@1指定显示的数据,如果是表对象先序列化为文本,<br>
+其他对象调用tostring转换为文本  </p>
+
+<p>此函数调用win.msgbox,但设定父窗口为当前chrome窗体</p>
+
+<p><a id="ElectronAppObject.name"></a></p>
+
+<h3>ElectronAppObject.name</h3>
+
+<p>应用程序名，只能使用英文字母、连字符、下划线<br>
+在调用start函数之前指定才会生效</p>
+
+<p><a id="ElectronAppObject.nodePath"></a></p>
+
+<h3>ElectronAppObject.nodePath</h3>
+
+<p>调用start函数时会将此目录添加到NodeJs搜索模块路径,<br>
+此目录不用指定保持默认值即可,aardio会自动在此目录下添加ws.asar</p>
+
+<p><a id="ElectronAppObject.notify"></a></p>
+
+<h3>ElectronAppObject.notify($,&quot;method&quot;,...)</h3>
+
+<p>调用指定electron函数,但不需要客户端回调反馈,  </p>
+
+<p>参数@1指定客户端套接字句柄,<br>
+RPC服务端远程回调函数名首字符为$时,<br>
+第一个回调$参数即为当前客户端套接字句柄,<br>
+除非熟悉getActiveSocket函数导致的潜在问题,请不要省略$参数</p>
+
+<p><a id="ElectronAppObject.notifyMain"></a></p>
+
+<h3>ElectronAppObject.notifyMain(&quot;main.method&quot;,...)</h3>
+
+<p>调用electron主进程的函数,但不需要客户端回调反馈,<br>
+建议名字加上&quot;main.&quot;前缀</p>
+
+<p><a id="ElectronAppObject.onClose"></a></p>
+
+<h3>ElectronAppObject.onClose</h3>
+
+<pre><code class="aardio language-aardio">ElectronAppObject.onClose = function(hSocket,err){
+    /*一个渲染进程断开连接触发此事件*/
+}
+</code></pre>
+
+<p><a id="ElectronAppObject.onError"></a></p>
+
+<h3>ElectronAppObject.onError</h3>
+
+<pre><code class="aardio language-aardio">ElectronAppObject.onError = function(hSocket,err){
+    errput(err,&quot;electron/rpc error&quot;);/*自定义RPC错误处理*/
+}
+</code></pre>
+
+<p><a id="ElectronAppObject.onIndexLoad"></a></p>
+
+<h3>ElectronAppObject.onIndexLoad</h3>
+
+<pre><code class="aardio language-aardio">ElectronAppObject.onIndexLoad = function(){
+    /*主窗口首次加载startEnviron.indexUrl指定的首页后触发此事件*/
+}
+</code></pre>
+
+<p><a id="ElectronAppObject.onIndexReady"></a></p>
+
+<h3>ElectronAppObject.onIndexReady</h3>
+
+<pre><code class="aardio language-aardio">ElectronAppObject.onIndexReady = function(){
+    /*主窗口首次加载完成startEnviron.indexUrl指定的首页,  
+并且页面上的DOM内容、aardio模块都已准备就绪*/
+}
+</code></pre>
+
+<p><a id="ElectronAppObject.onQuit"></a></p>
+
+<h3>ElectronAppObject.onQuit</h3>
+
+<pre><code class="aardio language-aardio">ElectronAppObject.onQuit = function(){
+    ..win.quitMessage();/*Electron主进程断开连接触发此事件*/
+}
+</code></pre>
+
+<p><a id="ElectronAppObject.onReady"></a></p>
+
+<h3>ElectronAppObject.onReady()</h3>
+
+<pre><code class="aardio language-aardio">ElectronAppObject.onReady = function(){
+    /*electron已创建主窗口  
+node.js主进程内aardio/electron交互接口已准备就绪*/
+}
+</code></pre>
+
+<p><a id="ElectronAppObject.onUrlReady"></a></p>
+
+<h3>ElectronAppObject.onUrlReady</h3>
+
+<pre><code class="aardio language-aardio">ElectronAppObject.onUrlReady = function(hSocket,url){
+    /*页面加载完成并且页面上的DOM内容、aardio模块都已准备就绪*/
+}
+</code></pre>
+
+<p><a id="ElectronAppObject.process"></a></p>
+
+<h3>ElectronAppObject.process</h3>
+
+<p>electron进程对象  </p>
+
+<p><a href="../../process/_.html#processObject" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/process/_.html#processObject">返回对象:processObject</a></p>
+
+<p><a id="ElectronAppObject.publish"></a></p>
+
+<h3>ElectronAppObject.publish(method,...)</h3>
+
+<p>主动向所有客户端发送通知<br>
+method指定客户端方法名,<br>
+可添加任意个调用参数</p>
+
+<p><a id="ElectronAppObject.ready"></a></p>
+
+<h3>ElectronAppObject.ready</h3>
+
+<pre><code class="aardio language-aardio">ElectronAppObject.ready(  
+    function(hwndChrome){  
+        /*保证在electron主窗口准备就绪后立即执行此回调函数  
+可重复添加此回调，并保证按添加的前后顺序调用*/  
+    }   
+)
+</code></pre>
+
+<p><a id="ElectronAppObject.remoteDebuggingPort"></a></p>
+
+<h3>ElectronAppObject.remoteDebuggingPort</h3>
+
+<p>指定远程调试端口<br>
+如果指定为0，则自动分配1025以后的空闲端口<br>
+此属性启动后更新为实际开始的调试端口号  </p>
+
+<p>注意开启远程调试端口以后，<br>
+不应再在electron中调用win.webContents.openDevTools启动调试工具<br>
+这2个会冲突导致一些不正常</p>
+
+<p><a id="ElectronAppObject.rpc"></a></p>
+
+<h3>ElectronAppObject.rpc</h3>
+
+<p>aardio创建的JSON-RPC服务端  </p>
+
+<p><a href="#websocketjsonserverObject">返回对象:websocketjsonserverObject</a></p>
+
+<p><a id="ElectronAppObject.serverIp"></a></p>
+
+<h3>ElectronAppObject.serverIp</h3>
+
+<p>指定嵌入服务器的监听IP<br>
+默认值为 &quot;127.0.0.1&quot;,仅限本机可以访问<br>
+如果希望外网可以访问,可以赋值为null即可<br>
+在调用start函数以前指定此属性才有效</p>
+
+<p><a id="ElectronAppObject.serverPort"></a></p>
+
+<h3>ElectronAppObject.serverPort</h3>
+
+<p>指定嵌入服务器的监听端口<br>
+建议保持默认值null<br>
+不指定端口可以随机分配空闲端口，不会出现端口冲突的问题<br>
+在调用start函数以前指定此属性才有效</p>
+
+<p><a id="ElectronAppObject.show"></a></p>
+
+<h3>ElectronAppObject.show()</h3>
+
+<p>显示或隐藏主窗口,<br>
+参数可以省略，也可指定为false,true用于控制显示状态,<br>
+也可以使用_SW_前缀的常量等</p>
+
+<p><a id="ElectronAppObject.start"></a></p>
+
+<h3>ElectronAppObject.start()</h3>
+
+<p>启动electron主进程,<br>
+省略参数自动指定默认值,indexUrl默认指定为&quot;./index.html&quot;<br>
+indexUrl参数的首字符为&quot;.&quot;表示electron主进程目录下的相对路径</p>
+
+<p><a id="ElectronAppObject.start"></a></p>
+
+<h3>ElectronAppObject.start(indexUrl)</h3>
+
+<pre><code class="aardio language-aardio">ElectronAppObject.start(&quot;/*可选直接在这里指定一个启动网址启动electron*/&quot;)
+</code></pre>
+
+<p><a id="ElectronAppObject.start"></a></p>
+
+<h3>ElectronAppObject.start(startEnviron)</h3>
+
+<pre><code class="aardio language-aardio">ElectronAppObject.start({  
+
+    /*指定首页地址,必须指定*/  
+    indexUrl = &quot;/res/index.aardio&quot;;  
+
+    /*创建窗口参数,可以不指定*/  
+    browserWindow = {  
+        width = 800;  
+        height = 600;  
+    };  
+
+    /*启动参数,可以不指定*/  
+    args = {  
+
+    };  
+})
+</code></pre>
+
+<p><a id="ElectronAppObject.startLoopMessage"></a></p>
+
+<h3>ElectronAppObject.startLoopMessage(startEnviron)</h3>
+
+<p>调用start函数启动electron主进程,<br>
+然后调用 win.loopMessage 函数并返回该函数的返回值,<br>
+参数用法请参考start函数</p>
+
+<p><a id="ElectronAppObject.survey"></a></p>
+
+<h3>ElectronAppObject.survey(method,...)</h3>
+
+<p>发起调查任务,<br>
+调用所有客户端的同名函数,<br>
+method指定客户端方法名,<br>
+可添加任意个调用参数  </p>
+
+<p>请使用callback函数指定调查结束后客户端回调的函数</p>
+
+<p><a id="ElectronAppObject.windowTitle"></a></p>
+
+<h3>ElectronAppObject.windowTitle</h3>
+
+<p>窗口默认标题</p>
+
+<p><a id="ElectronAppObject.ws"></a></p>
+
+<h3>ElectronAppObject.ws</h3>
+
+<p>aardio创建的WebSocket服务器  </p>
+
+<p><a href="#websocketserverObject">返回对象:websocketserverObject</a></p>
+
+<p><a id="ElectronAppObject.xcall"></a></p>
+
+<h3>ElectronAppObject.xcall($,&quot;method&quot;,...)</h3>
+
+<p>调用electron函数,<br>
+参数@1指定客户端套接字句柄,<br>
+RPC服务端远程回调函数名首字符为$时,第一个回调$参数即为当前客户端套接字句柄,<br>
+除非熟悉getActiveSocket函数导致的潜在问题,请不要省略$参数  </p>
+
+<p>在electron的js代码使用 aardio.on(&quot;method&quot;)<br>
+添加允许aardio调用的js回调函数.  </p>
+
+<p>可选使用callback函数指定一个同名回调函数按收本次调用electron的返回值</p>
+
+<p><a id="ElectronAppObject.xcallMain"></a></p>
+
+<h3>ElectronAppObject.xcallMain(&quot;main.method&quot;,...)</h3>
+
+<p>调用electron主进程的函数,建议名字加上&quot;main.&quot;前缀,<br>
+在electron主进程中js代码使用 aardio.on(&quot;main.method&quot;)<br>
+添加允许aardio调用的js回调函数.  </p>
+
+<p>可选使用callback函数指定一个同名回调函数按收本次调用electron的返回值</p>
+
+<p><a id="ElectronAppObject.startEnviron"></a></p>
+
+<h2>ElectronAppObject.startEnviron 成员列表</h2>
+
+<p>调用start函数时指定的启动参数<br>
+在调用start启动electron以后再修改此参数对electron是不起作用的</p>
+
+<p><a id="ElectronAppObject.startEnviron.indexUrl"></a></p>
+
+<h3>ElectronAppObject.startEnviron.indexUrl</h3>
+
+<p>electron打开的首页地址</p>
+
+<p><a id="ElectronAppObject.startEnviron.rpcServerUrl"></a></p>
+
+<h3>ElectronAppObject.startEnviron.rpcServerUrl</h3>
+
+<p>WebSocket/RPC服务器地址</p>
+
+<p><a href="_.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/electron/app/_.md">Markdown 格式</a></p>
+
+</body> 
+</html>

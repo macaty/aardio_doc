@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - plus 控件 - 动态边框'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - plus 控件 - 动态边框</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: plus 控件 - 动态边框</h1><pre><code class="aardio language-aardio">//plus 控件 - 动态边框
+import win.ui;
+/*DSG{{*/
+var winform = win.form(text=&quot;plus - 动态边框&quot;;right=759;bottom=469)
+winform.add(
+plus={cls=&quot;plus&quot;;text=&quot;鼠标移到这里按下试试&quot;;left=180;top=116;right=447;bottom=168;bgcolor=10789024;notify=1;z=1};
+plusVertical={cls=&quot;plus&quot;;text=&quot;鼠标移到这里按下试试&quot;;left=602;top=200;right=648;bottom=399;bgcolor=10789024;notify=1;z=2}
+)
+/*}}*/
+
+winform.plus.skin(
+    border = { 
+        hover = {left=5;color=0xFFFF0000;padding=15;} 
+        active = {right=5;color=0xFF00FF00;padding=15;}  
+        default = {width=0}
+        /*
+        width指定所有边框宽度,也可以用left,top,right,bottom分别指定左，上，右，下边框宽度
+        color指定所有边框颜色，也可以用leftColor,topColor,rightColor,bottomColor分别指定左，上，右，下边框颜色
+        padding指定边框两头的空白边距（可用于缩小边框高度）
+        */
+    }
+)
+
+//设置文本垂直显示
+winform.plusVertical.stringFormatFlags = 2/*_StringFormatFlagsDirectionVertical*/;
+
+winform.plusVertical.skin(
+    border = { 
+        hover = {top=5;color=0xFFFF0000;padding=10;} 
+        active = {bottom=5;color=0xFF00FF00;padding=10;}  
+        default = {width=0} 
+    }
+)
+
+winform.show() 
+win.loopMessage();
+</code></pre>
+<a href="javascript:if(confirm('https://www.aardio.com/zh-cn/doc/example/plus/border.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������������ʵ��ļ������صġ�  \n\n�����ڷ������ϴ���?'))window.location='https://www.aardio.com/zh-cn/doc/example/plus/border.md'" tppabs="https://www.aardio.com/zh-cn/doc/example/plus/border.md">Markdown 格式</a>
+</body> 
+</html>

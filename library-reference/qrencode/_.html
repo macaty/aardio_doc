@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - qrencode 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - qrencode 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>qrencode 库模块帮助文档</h1>
+
+<p><a id="qrencode"></a></p>
+
+<h2>qrencode 成员列表</h2>
+
+<p>用于生成二维码</p>
+
+<p><a id="qrencode.string"></a></p>
+
+<h3>qrencode.string(&quot;UTF8字符串&quot;,版本,错误级别)</h3>
+
+<p>生成二维码数据<br>
+版本1:21×21 版本40:177×177,省略根据输入数据自动选择最小版本<br>
+错误修正级别LMQH顺序用0,1,2,3表示,省略该参数默认为0</p>
+
+<p><a id="qrencode.string"></a></p>
+
+<h3>qrencode.string()</h3>
+
+<p><a href="#libqrencodeinfoObject">返回对象:libqrencodeinfoObject</a></p>
+
+<p><a id="libqrencodeinfoObject"></a></p>
+
+<h2>libqrencodeinfoObject 成员列表</h2>
+
+<p><a id="libqrencodeinfoObject.data"></a></p>
+
+<h3>libqrencodeinfoObject.data</h3>
+
+<p>二维码数据,字符串值<br>
+每个字节低位为1表示深色,否则为浅色<br>
+用法以参考qrencode.bitmap源码</p>
+
+<p><a id="libqrencodeinfoObject.version"></a></p>
+
+<h3>libqrencodeinfoObject.version</h3>
+
+<p>二维码版本<br>
+这个版本号可能比生成二维码指定的要大</p>
+
+<p><a id="libqrencodeinfoObject.width"></a></p>
+
+<h3>libqrencodeinfoObject.width</h3>
+
+<p>二维码宽度</p>
+
+<p><a href="_.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/qrencode/_.md">Markdown 格式</a></p>
+
+</body> 
+</html>

@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - 合并排序'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - 合并排序</title> 
+<link rel="stylesheet" href="../../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 合并排序</h1><pre><code class="aardio language-aardio">import console;
+
+var merge = function(array,from,mid,to){ 
+
+    var left = { table.unpack(array,from,mid) }
+    var right = { table.unpack(array,mid+1,to) };
+
+    var i = 1;
+    var j = 1;
+
+    for(k=from;to){ 
+        //比较left,right最前面的一个数,从中取最小的一个
+        if( (!right[j]) or left[i] &lt;= right[j] ){ 
+            //如果right空,则!right[j]为真,就直接取left 
+            array[k] = left[i];
+            i++;
+        }
+        else { 
+            //如果L空,则left[i]为null,null不会小于等于任何数,left[i] &lt;= right[j]必然为不成立
+            array[k] = right[j];
+            j++;
+        }  
+    }
+
+}
+
+var mergeSort; 
+mergeSort = function(array,from,to) {
+
+    if( from &lt; to ){
+        var mid =math.floor( ( from + to ) / 2) 
+        mergeSort(array,from,mid);
+        mergeSort(array,mid+1,to);
+        merge(array,from,mid,to);
+    }
+}
+
+
+console.log(&quot;----------------&quot;)
+console.log(&quot;合并排序( 基于分治法 )&quot;)
+console.log(&quot;----------------&quot;)
+
+array ={2;4;5;7;1;2;3};
+mergeSort(array,1,#array)
+
+//输出结果
+for(i=1;#array;1){
+    console.log( array[i] )
+}
+
+execute(&quot;pause&quot;)
+</code></pre>
+<a href="MergeSort.md" tppabs="https://www.aardio.com/zh-cn/doc/example/aardio/Array/ComparisonSort/MergeSort.md">Markdown 格式</a>
+</body> 
+</html>

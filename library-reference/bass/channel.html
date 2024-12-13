@@ -1,0 +1,308 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - bass.channel 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - bass.channel 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>bass.channel 库模块帮助文档</h1>
+
+<p><a id="bass"></a></p>
+
+<h2>bass 成员列表</h2>
+
+<p><a id="bass.channel"></a></p>
+
+<h3>bass.channel()</h3>
+
+<p><a href="#basschannelObject">返回对象:basschannelObject</a></p>
+
+<p><a id="bass.channel"></a></p>
+
+<h2>bass.channel 成员列表</h2>
+
+<p><a id="bass.channel.create"></a></p>
+
+<h3>bass.channel.create</h3>
+
+<p>创建音频推送流。<br>
+成功返回 bass.channe 对象,<br>
+失败返回null,错误信息</p>
+
+<p><a id="bass.channel.create"></a></p>
+
+<h3>bass.channel.create()</h3>
+
+<p><a href="#basschannelObject">返回对象:basschannelObject</a></p>
+
+<p><a id="bass.channel.create"></a></p>
+
+<h3>bass.channel.create(freq,chans,flags)</h3>
+
+<p>创建音频推送流。<br>
+参数@freq 指定采样率，@chans 指定通道数，@flags 指定选项。<br>
+可选使用参数@2指定选项<br>
+详细用法请参考bass文档</p>
+
+<p><a id="bass.channel.open"></a></p>
+
+<h3>bass.channel.open</h3>
+
+<p>打开音频。<br>
+成功返回 bass.channe 对象,<br>
+失败返回 null,错误信息</p>
+
+<p><a id="bass.channel.open"></a></p>
+
+<h3>bass.channel.open()</h3>
+
+<p><a href="#basschannelObject">返回对象:basschannelObject</a></p>
+
+<p><a id="bass.channel.open"></a></p>
+
+<h3>bass.channel.open(path,flags)</h3>
+
+<p>打开音频,<br>
+参数@1可以指定本地文件路径、资源文件路径、网址、内存数据,<br>
+可选使用参数@2指定选项<br>
+详细用法请参考bass文档</p>
+
+<p><a id="basschannelObject"></a></p>
+
+<h2>basschannelObject 成员列表</h2>
+
+<p><a id="basschannelObject.duration"></a></p>
+
+<h3>basschannelObject.duration()</h3>
+
+<p>返回总时长,以秒为单位</p>
+
+<p><a id="basschannelObject.effect"></a></p>
+
+<h3>basschannelObject.effect()</h3>
+
+<p><a href="#basseffectObject">返回对象:basseffectObject</a></p>
+
+<p><a id="basschannelObject.effect"></a></p>
+
+<h3>basschannelObject.effect(type,priority)</h3>
+
+<p>创建效果</p>
+
+<p><a id="basschannelObject.free"></a></p>
+
+<h3>basschannelObject.free()</h3>
+
+<p>释放对象<br>
+音频对象不会自动释放,<br>
+必须在不再使用该音频时手动调用些函数释放对象</p>
+
+<p><a id="basschannelObject.getAttribute"></a></p>
+
+<h3>basschannelObject.getAttribute(attrib)</h3>
+
+<p>获取属性值</p>
+
+<p><a id="basschannelObject.getData"></a></p>
+
+<h3>basschannelObject.getData(_BASS_DATA)</h3>
+
+<p>获取FFT频谱数据</p>
+
+<p><a id="basschannelObject.getDevice"></a></p>
+
+<h3>basschannelObject.getDevice()</h3>
+
+<p>返回音频设备索引</p>
+
+<p><a id="basschannelObject.getInfo"></a></p>
+
+<h3>basschannelObject.getInfo()</h3>
+
+<p>返回音频信息,返回格式请参考些函数源码</p>
+
+<p><a id="basschannelObject.getPosition"></a></p>
+
+<h3>basschannelObject.getPosition()</h3>
+
+<p>返回当前位置,可选使用参数@1指定使用的单位</p>
+
+<p><a id="basschannelObject.getTime"></a></p>
+
+<h3>basschannelObject.getTime()</h3>
+
+<p>返回以秒为单位的当前播放时间位置</p>
+
+<p><a id="basschannelObject.getVolume"></a></p>
+
+<h3>basschannelObject.getVolume()</h3>
+
+<p>返回音量,<br>
+返回值为0到1之间表示百分比的小数</p>
+
+<p><a id="basschannelObject.isActive"></a></p>
+
+<h3>basschannelObject.isActive()</h3>
+
+<p>音频是否可用</p>
+
+<p><a id="basschannelObject.loop"></a></p>
+
+<h3>basschannelObject.loop()</h3>
+
+<p>设置是否循环播放</p>
+
+<p><a id="basschannelObject.pause"></a></p>
+
+<h3>basschannelObject.pause()</h3>
+
+<p>暂停播放</p>
+
+<p><a id="basschannelObject.play"></a></p>
+
+<h3>basschannelObject.play()</h3>
+
+<p>播放音频</p>
+
+<p><a id="basschannelObject.posCallback"></a></p>
+
+<h3>basschannelObject.posCallback(callback,interval)</h3>
+
+<pre><code class="aardio language-aardio">basschannelObject.posCallback(  
+    function(seconds){  
+        /*播放进度改变时触发此函数,  
+seconds为当前播放时长,以秒为单位*/    
+    }  
+)
+</code></pre>
+
+<p><a id="basschannelObject.push"></a></p>
+
+<h3>basschannelObject.push</h3>
+
+<p>如果是用 bass.channel.create 创建的推送流<br>
+可用此函数推送数据</p>
+
+<p><a id="basschannelObject.push"></a></p>
+
+<h3>basschannelObject.push(buffer,length)</h3>
+
+<p>buffer 为字符串或 buffer 对象。<br>
+length 指定推送长度，如果不指定 length 则自动取参数 @1 长度。<br>
+如果参数 @1 为内存指针，则必须指定 length 参数</p>
+
+<p><a id="basschannelObject.resetEffect"></a></p>
+
+<h3>basschannelObject.resetEffect()</h3>
+
+<p>重置效果</p>
+
+<p><a id="basschannelObject.setAttribute"></a></p>
+
+<h3>basschannelObject.setAttribute(attrib,value)</h3>
+
+<p>设置属性值</p>
+
+<p><a id="basschannelObject.setDevice"></a></p>
+
+<h3>basschannelObject.setDevice()</h3>
+
+<p>指定音频设备索引,<br>
+参数为 bass.getDeviceInfos 返回的音频设备数组中对应设备的数组索引值,<br>
+参数指定的设备索引如果未初始化则自动调用 bass.init 函数初始化</p>
+
+<p><a id="basschannelObject.setFlags"></a></p>
+
+<h3>basschannelObject.setFlags(flags,mask)</h3>
+
+<p>设置选项</p>
+
+<p><a id="basschannelObject.setPosition"></a></p>
+
+<h3>basschannelObject.setPosition(pos)</h3>
+
+<p>设置位置,可选使用参数@2指定使用的单位</p>
+
+<p><a id="basschannelObject.setTime"></a></p>
+
+<h3>basschannelObject.setTime(seconds)</h3>
+
+<p>设置当前播放时间位置,参数指定秒数</p>
+
+<p><a id="basschannelObject.setVolume"></a></p>
+
+<h3>basschannelObject.setVolume()</h3>
+
+<p>使用0到1之间表示百分比的小数设置音量</p>
+
+<p><a id="basschannelObject.slideAttribute"></a></p>
+
+<h3>basschannelObject.slideAttribute(attrib,value,milliseconds)</h3>
+
+<p>在参数@3指定的时间内<br>
+渐变参数@1指定的属性到参数@2指定的值</p>
+
+<p><a id="basschannelObject.slideVolume"></a></p>
+
+<h3>basschannelObject.slideVolume(vol,milliseconds)</h3>
+
+<p>渐变音量到 @vol 参数指定的值,<br>
+使用0到1之间表示百分比的小数表示音量<br>
+,参数@3指定渐变时长</p>
+
+<p><a id="basschannelObject.stop"></a></p>
+
+<h3>basschannelObject.stop()</h3>
+
+<p>停止播放</p>
+
+<p><a id="basschannelObject.syncCallback"></a></p>
+
+<h3>basschannelObject.syncCallback(callback,syncType,syncParam)</h3>
+
+<pre><code class="aardio language-aardio">basschannelObject.syncCallback(function(data){  
+
+},_BASS_SYNC/*指定同步回调类型,可选用参数@3指定附加参数  
+此函数详细用法请参数函数源码以及bass.dll的文档*/)
+</code></pre>
+
+<p><a id="basseffectObject"></a></p>
+
+<h2>basseffectObject 成员列表</h2>
+
+<p><a id="basseffectObject.delete"></a></p>
+
+<h3>basseffectObject.delete()</h3>
+
+<p>删除效果</p>
+
+<p><a id="basseffectObject.getParameters"></a></p>
+
+<h3>basseffectObject.getParameters()</h3>
+
+<p>获取参数</p>
+
+<p><a id="basseffectObject.setParameters"></a></p>
+
+<h3>basseffectObject.setParameters()</h3>
+
+<p>设置参数</p>
+
+<p><a id="basseffectObject.setPriority"></a></p>
+
+<h3>basseffectObject.setPriority()</h3>
+
+<p>设置优先级</p>
+
+<p><a href="channel.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/bass/channel.md">Markdown 格式</a></p>
+
+</body> 
+</html>

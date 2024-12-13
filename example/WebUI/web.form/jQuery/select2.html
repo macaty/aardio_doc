@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - Select2 - 支持 Win7 以及 Win7 以后的系统'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - Select2 - 支持 Win7 以及 Win7 以后的系统</title> 
+<link rel="stylesheet" href="../../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: Select2 - 支持 Win7 以及 Win7 以后的系统</h1><pre><code class="aardio language-aardio">//Select2 下拉搜索框
+import win.ui;
+/*DSG{{*/
+var winform = win.form(text=&quot;Select2 - 支持 Win7 以及 Win7 以后的系统&quot;;right=759;bottom=469;bgcolor=16777215)
+winform.add(
+edit={cls=&quot;edit&quot;;left=442;top=13;right=739;bottom=453;edge=1;multiline=1;z=2};
+static={cls=&quot;static&quot;;text=&quot;Static&quot;;left=6;top=7;right=371;bottom=459;clip=1;transparent=1;z=1}
+)
+/*}}*/
+
+import web.form;
+var wb = web.form(winform.static);
+
+wb.external={
+    getData = function(){
+        var data = {
+            {
+                &quot;id&quot;: 1,
+                &quot;text&quot;: &quot;aardio&quot;,
+                &quot;selected&quot;: true
+            },
+            {
+                &quot;id&quot;: 2,
+                &quot;text&quot;: &quot;Delphi&quot;
+            },
+            {
+                &quot;id&quot;: 3,
+                &quot;text&quot;: &quot;Python&quot;,
+                &quot;disabled&quot;: true
+            }
+        }
+
+        return wb.jsObject(data,true); 
+    }
+
+    onSelect2Change = function(value){
+        winform.edit.print(&quot;选择了&quot;,value);
+    }   
+}
+
+/*
+Select2 v3.5.3 支持 IE8+, 也就是支持 Win7 以及 Win7 以后的系统
+文档： https://select2.github.io/select2/#documentation
+
+下面使用 CDN 服务器加载 JS 文件初始化可能有点慢，实际开发请先下载到本地。
+aardio 可直接支持加载资源目录（发布可嵌入 EXE）下的网页文件。
+*/
+
+wb.html = /**
+&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt; 
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; /&gt;
+    &lt;script src=&quot;http://lib.sinaapp.com/js/jquery/1.12.4/jquery-1.12.4.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;http://lib.baomitu.com/select2/3.5.3/select2.min.js&quot;&gt;&lt;/script&gt;
+    &lt;link href=&quot;http://lib.baomitu.com/select2/3.5.3/select2.min.css&quot; rel=&quot;stylesheet&quot; /&gt; 
+    &lt;style type=&quot;text/css&quot;&gt;
+    html,body{ height:100%; margin:0; } 
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;    
+    &lt;!-- 注意 Select2 v3.x 用 input / Select2 v4.x 用 select  --&gt;
+    &lt;input type=&quot;text&quot; id=&quot;example&quot; style=&quot;width:100%;&quot; &gt; 
+
+    &lt;script&gt; 
+    $(document).ready(function() {  
+        $(&#39;#example&#39;).select2({
+            placeholder: &#39;请选择&#39;,
+           &quot;data&quot;: external.getData()  //调用 aardio 函数获取数据
+        });
+
+        $(&#39;#example&#39;).on(&#39;change.select2&#39;, function (e) {  
+            //响应事件并调用 aardio 函数
+            external.onSelect2Change(e.val);
+        });
+
+    });
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+**/
+
+winform.show();
+win.loopMessage();
+</code></pre>
+<a href="javascript:if(confirm('https://www.aardio.com/zh-cn/doc/example/WebUI/web.form/jQuery/select2.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������������ʵ��ļ������صġ�  \n\n�����ڷ������ϴ���?'))window.location='https://www.aardio.com/zh-cn/doc/example/WebUI/web.form/jQuery/select2.md'" tppabs="https://www.aardio.com/zh-cn/doc/example/WebUI/web.form/jQuery/select2.md">Markdown 格式</a>
+</body> 
+</html>

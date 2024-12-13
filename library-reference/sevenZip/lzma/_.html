@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - sevenZip.lzma 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - sevenZip.lzma 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>sevenZip.lzma 库模块帮助文档</h1>
+
+<p><a id="sevenZip.lzma"></a></p>
+
+<h2>sevenZip.lzma 成员列表</h2>
+
+<p><a id="sevenZip.lzma.compress"></a></p>
+
+<h3>sevenZip.lzma.compress()</h3>
+
+<p><a href="#SEVERZIPLZMAHEADERObject">返回对象:SEVERZIPLZMAHEADERObject</a></p>
+
+<p><a id="sevenZip.lzma.compress"></a></p>
+
+<h3>sevenZip.lzma.compress(待压缩数据,压缩级别,字典大小,线程数,lc,lp,pb,fb)</h3>
+
+<p>压缩字符串,除参数一以外其他参数可选,<br>
+成功返回两个值:lzmaHeaer,lzmaData,<br>
+lzmaHeaer为LZMA压缩头,lzmaData为压缩后字符串<br>
+失败返回false,以及错误代码<br>
+存为lzma文件时必须首先写入文件头,然后再写入压缩数据</p>
+
+<p><a id="sevenZip.lzma.decodeFile"></a></p>
+
+<h3>sevenZip.lzma.decodeFile(输入文件路径,输出文件路径,进度回调函数)</h3>
+
+<p>解压文件,<br>
+执行成功返回true,否则返回false,以及错误信息,  </p>
+
+<p>可选指定进回调函数,回调函数原型如下：<br>
+function(inProcessed,outProcessed){ }<br>
+回调函数返回true停止解压</p>
+
+<p><a id="sevenZip.lzma.encodeFile"></a></p>
+
+<h3>sevenZip.lzma.encodeFile(输入文件路径,输出文件路径,进度回调函数)</h3>
+
+<p>压缩文件,<br>
+如果不指定输出路径,则自动添加.lzma后缀作为输出路径<br>
+执行成功返回true,否则返回false,以及错误信息,  </p>
+
+<p>可选指定进回调函数,回调函数原型如下：<br>
+function(inSize,outSize){ }<br>
+回调函数返回true停止压缩</p>
+
+<p><a id="sevenZip.lzma.load"></a></p>
+
+<h3>sevenZip.lzma.load(lzma文件路径)</h3>
+
+<p>解压文件并返回字符串</p>
+
+<p><a id="sevenZip.lzma.save"></a></p>
+
+<h3>sevenZip.lzma.save(待压缩数据,输出文件路径,压缩级别,字典大小,线程数,lc,lp,pb,fb)</h3>
+
+<p>压缩字符串并存储到文件<br>
+除参数@1,@2以外其他参数可选</p>
+
+<p><a id="sevenZip.lzma.unCompress"></a></p>
+
+<h3>sevenZip.lzma.unCompress(待解压数据,LZMA头)</h3>
+
+<p>解压字符串,<br>
+如果待解压数据已包含LZMA头，可省略参数@2</p>
+
+<p><a id="SEVERZIPLZMAHEADERObject"></a></p>
+
+<h2>SEVERZIPLZMAHEADERObject 成员列表</h2>
+
+<p><a id="SEVERZIPLZMAHEADERObject.properties"></a></p>
+
+<h3>SEVERZIPLZMAHEADERObject.properties</h3>
+
+<p>记录压缩参数,<br>
+该值为(pb * 5 + lp) * 9 + lc</p>
+
+<p><a id="SEVERZIPLZMAHEADERObject.uncompressedSize"></a></p>
+
+<h3>SEVERZIPLZMAHEADERObject.uncompressedSize</h3>
+
+<p>文件原始大小</p>
+
+<p><a href="_.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/sevenZip/lzma/_.md">Markdown 格式</a></p>
+
+</body> 
+</html>

@@ -1,0 +1,275 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - unqlite 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - unqlite 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>unqlite 库模块帮助文档</h1>
+
+<p><a id="unqlite"></a></p>
+
+<h2>unqlite 成员列表</h2>
+
+<p>嵌入式NoSQL引擎</p>
+
+<p><a id="unqlite("/test.db" )"></a></p>
+
+<h3>unqlite(&quot;/test.db&quot; )</h3>
+
+<p>打开数据库,<br>
+可选使用参数二用 <em>UNQLITE_OPEN</em> 前缀常量指定选项<br>
+默认为 _UNQLITE_OPEN_CREATE</p>
+
+<p><a id="unqlite()"></a></p>
+
+<h3>unqlite()</h3>
+
+<p><a href="#unqliteObject">返回对象:unqliteObject</a></p>
+
+<p><a id="unqlite.version"></a></p>
+
+<h3>unqlite.version</h3>
+
+<p>unqlite版本</p>
+
+<p><a id="unqliteObject"></a></p>
+
+<h2>unqliteObject 成员列表</h2>
+
+<p><a id="unqliteObject.append"></a></p>
+
+<h3>unqliteObject.append(&quot;键名&quot;,值,格式化参数)</h3>
+
+<p>追加值到指定键<br>
+格式化参数为可选参数<br>
+成功返回0,失败返回非0</p>
+
+<p><a id="unqliteObject.beginTrans"></a></p>
+
+<h3>unqliteObject.beginTrans()</h3>
+
+<p>开始事务<br>
+成功返回0,失败返回非0</p>
+
+<p><a id="unqliteObject.commitTrans"></a></p>
+
+<h3>unqliteObject.commitTrans()</h3>
+
+<p>提交事务<br>
+成功返回0,失败返回非0</p>
+
+<p><a id="unqliteObject.compile"></a></p>
+
+<h3>unqliteObject.compile(&quot;jx9脚本&quot;)</h3>
+
+<p>编译jx9脚本,<br>
+参数可以是脚本代码或脚本文件路径</p>
+
+<p><a id="unqliteObject.compile"></a></p>
+
+<h3>unqliteObject.compile()</h3>
+
+<p><a href="#unqliteJx9Object">返回对象:unqliteJx9Object</a></p>
+
+<p><a id="unqliteObject.configErrLog"></a></p>
+
+<h3>unqliteObject.configErrLog()</h3>
+
+<p>返回错误信息</p>
+
+<p><a id="unqliteObject.cursor"></a></p>
+
+<h3>unqliteObject.cursor()</h3>
+
+<p>创建游标  </p>
+
+<p><a href="#unqliteCursorObject">返回对象:unqliteCursorObject</a></p>
+
+<p><a id="unqliteObject.delete"></a></p>
+
+<h3>unqliteObject.delete(&quot;键名&quot;)</h3>
+
+<p>删除键值</p>
+
+<p><a id="unqliteObject.fetch"></a></p>
+
+<h3>unqliteObject.fetch(键名)</h3>
+
+<p>如果不指定回调函数,直接返回查询结果<br>
+失败返回空值</p>
+
+<p><a id="unqliteObject.fetch"></a></p>
+
+<h3>unqliteObject.fetch(键名,回调函数)</h3>
+
+<pre><code class="aardio language-aardio">unqliteObject.fetch(&quot;/*键名*/&quot;,function( value ){  
+    io.print( &quot;查询返回&quot;, value )  
+} )
+</code></pre>
+
+<p><a id="unqliteObject.fetchObject"></a></p>
+
+<h3>unqliteObject.fetchObject(键名)</h3>
+
+<p>如果不指定回调函数,直接返回对象<br>
+失败返回空值</p>
+
+<p><a id="unqliteObject.fetchObject"></a></p>
+
+<h3>unqliteObject.fetchObject(键名,回调函数)</h3>
+
+<pre><code class="aardio language-aardio">unqliteObject.fetchObject(&quot;/*键名*/&quot;,function( tab ){  
+    io.print( &quot;查询返回对象&quot;, tab )  
+} )
+</code></pre>
+
+<p><a id="unqliteObject.rollbackTrans"></a></p>
+
+<h3>unqliteObject.rollbackTrans()</h3>
+
+<p>回滚事务<br>
+成功返回0,失败返回非0</p>
+
+<p><a id="unqliteObject.store"></a></p>
+
+<h3>unqliteObject.store(&quot;键名&quot;,值,格式化参数)</h3>
+
+<p>写入键值<br>
+格式化参数为可选参数<br>
+成功返回0,失败返回非0</p>
+
+<p><a id="unqliteObject.storeFile"></a></p>
+
+<h3>unqliteObject.storeFile(&quot;键名&quot;,&quot;文件路径&quot;)</h3>
+
+<p>存储文件到数据库<br>
+成功返回0,失败返回非0</p>
+
+<p><a id="unqliteObject.storeObject"></a></p>
+
+<h3>unqliteObject.storeObject(&quot;键名&quot;,表对象)</h3>
+
+<p>写入表对象<br>
+成功返回0,失败返回非0</p>
+
+<h3>自动完成常量</h3>
+
+<p>_SXERR_ABORT=-10<br>
+_SXERR_BIG=-32<br>
+_SXERR_BUSY=-14<br>
+_SXERR_CONTINUE=-25<br>
+_SXERR_CORRUPT=-24<br>
+_SXERR_DONE=-28<br>
+_SXERR_EMPTY=-3<br>
+_SXERR_EOF=-18<br>
+_SXERR_EXISTS=-11<br>
+_SXERR_FORMAT=-21<br>
+_SXERR_IGNORE=-63<br>
+_SXERR_INVALID=-9<br>
+_SXERR_IO=-2<br>
+_SXERR_LIMIT=-7<br>
+_SXERR_LOCKED=-4<br>
+_SXERR_MEM=-1<br>
+_SXERR_MORE=-8<br>
+_SXERR_NEXT=-22<br>
+_SXERR_NOMATCH=-26<br>
+_SXERR_NOOP=-20<br>
+_SXERR_NOTFOUND=-6<br>
+_SXERR_NOTIMPLEMENTED=-17<br>
+_SXERR_ORANGE=-5<br>
+_SXERR_OS=-23<br>
+_SXERR_OVERFLOW=-15<br>
+_SXERR_PATH=-30<br>
+_SXERR_PERM=-19<br>
+_SXERR_RESET=-27<br>
+_SXERR_RETRY=-33<br>
+_SXERR_SHORT=-29<br>
+_SXERR_SYNTAX=-12<br>
+_SXERR_TIMEOUT=-31<br>
+_SXERR_UNKNOWN=-13<br>
+_SXERR_WILLBLOCK=-16<br>
+_SXRET_OK=0<br>
+_UNQLITE_ABORT=-10<br>
+_UNQLITE_BUSY=-14<br>
+_UNQLITE_CANTOPEN=-74<br>
+_UNQLITE_COMPILE_ERR=-70<br>
+_UNQLITE_CONFIG_DISABLE_AUTO_COMMIT=5<br>
+_UNQLITE_CONFIG_ERR_LOG=3<br>
+_UNQLITE_CONFIG_GET_KV_NAME=6<br>
+_UNQLITE_CONFIG_JX9_ERR_LOG=1<br>
+_UNQLITE_CONFIG_KV_ENGINE=4<br>
+_UNQLITE_CONFIG_MAX_PAGE_CACHE=2<br>
+_UNQLITE_CORRUPT=-24<br>
+_UNQLITE_DONE=-28<br>
+_UNQLITE_EMPTY=-3<br>
+_UNQLITE_EOF=-18<br>
+_UNQLITE_EXISTS=-11<br>
+_UNQLITE_FULL=-73<br>
+_UNQLITE_INVALID=-9<br>
+_UNQLITE_IOERR=-2<br>
+_UNQLITE_KV_CONFIG_CMP_FUNC=2<br>
+_UNQLITE_KV_CONFIG_HASH_FUNC=1<br>
+_UNQLITE_LIB_CONFIG_MEM_ERR_CALLBACK=2<br>
+_UNQLITE_LIB_CONFIG_PAGE_SIZE=8<br>
+_UNQLITE_LIB_CONFIG_STORAGE_ENGINE=7<br>
+_UNQLITE_LIB_CONFIG_THREAD_LEVEL_MULTI=5<br>
+_UNQLITE_LIB_CONFIG_THREAD_LEVEL_SINGLE=4<br>
+_UNQLITE_LIB_CONFIG_USER_MALLOC=1<br>
+_UNQLITE_LIB_CONFIG_USER_MUTEX=3<br>
+_UNQLITE_LIB_CONFIG_VFS=6<br>
+_UNQLITE_LIMIT=-7<br>
+_UNQLITE_LOCKED=-4<br>
+_UNQLITE_LOCKERR=-76<br>
+_UNQLITE_LOCK_EXCLUSIVE=4<br>
+_UNQLITE_LOCK_NONE=0<br>
+_UNQLITE_LOCK_PENDING=3<br>
+_UNQLITE_LOCK_RESERVED=2<br>
+_UNQLITE_LOCK_SHARED=1<br>
+_UNQLITE_NOMEM=-1<br>
+_UNQLITE_NOOP=-20<br>
+_UNQLITE_NOTFOUND=-6<br>
+_UNQLITE_NOTIMPLEMENTED=-17<br>
+_UNQLITE_OK=0<br>
+_UNQLITE_OPEN_CREATE=4<br>
+_UNQLITE_OPEN_EXCLUSIVE=8<br>
+_UNQLITE_OPEN_IN_MEMORY=0x80<br>
+_UNQLITE_OPEN_MMAP=0x100<br>
+_UNQLITE_OPEN_NOMUTEX=0x20<br>
+_UNQLITE_OPEN_OMIT_JOURNALING=0x40<br>
+_UNQLITE_OPEN_READONLY=1<br>
+_UNQLITE_OPEN_READWRITE=2<br>
+_UNQLITE_OPEN_TEMP_DB=0x10<br>
+_UNQLITE_PERM=-19<br>
+_UNQLITE_READ_ONLY=-75<br>
+_UNQLITE_SYNC_DATAONLY=0x10<br>
+_UNQLITE_SYNC_FULL=3<br>
+_UNQLITE_SYNC_NORMAL=2<br>
+_UNQLITE_UNKNOWN=-13<br>
+_UNQLITE_VM_CONFIG_ARGV_ENTRY=0xC<br>
+_UNQLITE_VM_CONFIG_CREATE_VAR=6<br>
+_UNQLITE_VM_CONFIG_ENV_ATTR=9<br>
+_UNQLITE_VM_CONFIG_ERR_REPORT=3<br>
+_UNQLITE_VM_CONFIG_EXEC_VALUE=0xA<br>
+_UNQLITE_VM_CONFIG_EXTRACT_OUTPUT=0xD<br>
+_UNQLITE_VM_CONFIG_HTTP_REQUEST=7<br>
+_UNQLITE_VM_CONFIG_IMPORT_PATH=2<br>
+_UNQLITE_VM_CONFIG_IO_STREAM=0xB<br>
+_UNQLITE_VM_CONFIG_OUTPUT=1<br>
+_UNQLITE_VM_CONFIG_RECURSION_DEPTH=4<br>
+_UNQLITE_VM_CONFIG_SERVER_ATTR=8<br>
+_UNQLITE_VM_ERR=-71<br>
+_UNQLITE_VM_OUTPUT_LENGTH=5  </p>
+
+<p><a href="_.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/unqlite/_.md">Markdown 格式</a></p>
+
+</body> 
+</html>

@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - web.view( WebView2 浏览器控件) - 创建无边框窗口'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - web.view( WebView2 浏览器控件) - 创建无边框窗口</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: web.view( WebView2 浏览器控件) - 创建无边框窗口</h1><pre><code class="aardio language-aardio">//web.view( WebView2 浏览器控件) - 创建无边框窗口
+import win.ui;
+/*DSG{{*/
+var winform = win.form(text=&quot;Edge 浏览器控件 - web.view&quot;;right=759;bottom=469;bgcolor=16777215;border=&quot;none&quot;)
+winform.add()
+/*}}*/
+
+import web.view;
+var wb = web.view(winform);
+
+//导出为 Javascript 中的 aardio 对象
+wb.external = { 
+    close = function(){
+        winform.close();
+    };
+    hitCaption = function(){
+        winform.hitCaption();
+    };
+    hitMin = function(){
+        winform.hitMin();
+    };
+    hitMax = function(){
+        return winform.hitMax();
+    };
+}
+
+// wb.go(&quot;/res/index.html&quot;); //直接打开资源目录下的文件
+wb.html = /**
+&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+    html {
+        margin: 0px;
+        padding: 0px; 
+        background-color: #202020; 
+    }
+
+    #title-bar {
+        height: 32px;   
+        padding: 0px;
+        margin: 0px;
+    }
+
+    #title-bar .caption {
+        position: fixed;
+        top: 0px;
+        left: 0px;  
+        width: 100%;
+        padding-left: 10px;
+        color: #ADADAD;
+        line-height: 32px;
+        font-size: 14px;
+        cursor: default;
+        user-select:none;
+    }
+
+    #title-bar .buttons {
+        position: fixed;
+        top: 1px;
+        right: 1px; 
+    }
+
+    #title-bar button {
+        font: 14px Marlett ;
+        color: #F5F5F5;
+        background-color: transparent;
+        border: none;
+        height: 28px;
+        width: 28px;  
+    }
+
+    #title-bar button:hover {
+        background-color: #FF4500;
+    }
+
+    #title-bar button:active {
+        background-color: #B0451E;
+        color: #C5C5C5;
+    }
+
+    #main {
+        padding: 12px;  
+        color: #C0C0C0;
+    }
+
+    &lt;/style&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;  
+
+    &lt;/script&gt;
+&lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id=&quot;title-bar&quot; &gt;
+      &lt;div class=&quot;caption&quot; onmousedown=&quot;aardio.hitCaption()&quot;&gt;按住这里调用 aardio.hitCaption() 拖动窗口 &lt;/div&gt;
+      &lt;div class=&quot;buttons&quot;&gt;
+        &lt;button id=&quot;min-btn&quot; onclick=&quot;aardio.hitMin()&quot;&gt;0&lt;/button&gt;
+        &lt;button id=&quot;max-btn&quot;  onclick=&quot;aardio.hitMax()&quot;&gt;1&lt;/button&gt;
+        &lt;button id=&quot;close-btn&quot; onclick=&quot;aardio.close()&quot;&gt;r&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div id=&quot;main&quot;&gt;
+      1、请指定窗体「边框」属性为 none ，创建无边框窗口。&lt;br /&gt;
+      2、调用 win.ui.shadow(winform) 创建阴影边框&lt;br /&gt;
+    &lt;/div&gt;
+    &lt;script src=&quot;default.js&quot;&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+**/ 
+
+//添加阴影边框
+import win.ui.shadow;
+win.ui.shadow(winform);
+
+//设置窗口缩放范围
+import win.ui.minmax;
+win.ui.minmax(winform);
+
+//切换最大化、还原按钮
+winform.adjust = function( cx,cy,wParam ) {
+    if( wParam == 0x2/*_SIZE_MAXIMIZED*/ ){ 
+        wb.doScript(`document.getElementById(&quot;max-btn&quot;).innerText=&quot;2&quot;;`)
+    }
+    elseif( wParam == 0x0/*_SIZE_RESTORED*/ ){
+        wb.doScript(`document.getElementById(&quot;max-btn&quot;).innerText=&quot;1&quot;;`)
+    } 
+};
+
+winform.show();
+win.loopMessage();
+</code></pre>
+<a href="javascript:if(confirm('https://www.aardio.com/zh-cn/doc/example/WebUI/web.view/frameless.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������������ʵ��ļ������صġ�  \n\n�����ڷ������ϴ���?'))window.location='https://www.aardio.com/zh-cn/doc/example/WebUI/web.view/frameless.md'" tppabs="https://www.aardio.com/zh-cn/doc/example/WebUI/web.view/frameless.md">Markdown 格式</a>
+</body> 
+</html>

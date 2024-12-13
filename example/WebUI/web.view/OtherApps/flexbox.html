@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - CSS 弹性盒布局工具'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - CSS 弹性盒布局工具</title> 
+<link rel="stylesheet" href="../../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: CSS 弹性盒布局工具</h1><pre><code class="aardio language-aardio">//弹性盒布局
+import fonts.fontAwesome;
+import win.ui;
+/*DSG{{*/
+var winform = win.form(text=&quot;CSS 弹性盒布局工具&quot;;right=992;bottom=623;bgcolor=16777215)
+winform.add(
+nav0={cls=&quot;plus&quot;;text=&quot;教程&quot;;left=524;top=573;right=599;bottom=603;align=&quot;left&quot;;border={top=1;color=-16744448};db=1;dr=1;iconStyle={align=&quot;left&quot;;font=LOGFONT(name=&#39;FontAwesome&#39;);padding={left=11}};iconText=&#39;\uF02D&#39;;textPadding={left=28;bottom=1};z=5};
+nav1={cls=&quot;plus&quot;;text=&quot;语法速览&quot;;left=598;top=573;right=692;bottom=605;align=&quot;left&quot;;border={top=1;color=-16744448};db=1;dr=1;iconStyle={align=&quot;left&quot;;font=LOGFONT(name=&#39;FontAwesome&#39;);padding={left=11}};iconText=&#39;\uF008&#39;;textPadding={left=28;bottom=1};z=6};
+nav2={cls=&quot;plus&quot;;text=&quot;Flexo&quot;;left=691;top=573;right=768;bottom=605;align=&quot;left&quot;;border={top=1;color=-16744448};db=1;dr=1;iconStyle={align=&quot;left&quot;;font=LOGFONT(name=&#39;FontAwesome&#39;);padding={left=11}};iconText=&#39;\uF0C9&#39;;textPadding={left=28;bottom=1};z=7};
+nav3={cls=&quot;plus&quot;;text=&quot;问 AI&quot;;left=768;top=573;right=850;bottom=605;align=&quot;left&quot;;border={top=1;color=-16744448};db=1;dr=1;iconStyle={align=&quot;left&quot;;font=LOGFONT(name=&#39;FontAwesome&#39;);padding={left=11}};iconText=&#39;\uF007&#39;;textPadding={left=28;bottom=1};z=8};
+nav4={cls=&quot;plus&quot;;text=&quot;HTMLayout / Sciter&quot;;left=850;top=573;right=994;bottom=606;align=&quot;left&quot;;border={top=1;color=-16744448};db=1;dr=1;iconStyle={align=&quot;left&quot;;font=LOGFONT(name=&#39;FontAwesome&#39;);padding={left=11}};iconText=&#39;\uF0FD&#39;;textPadding={left=28;bottom=1};z=9};
+navBegin={cls=&quot;plus&quot;;left=202;top=573;right=524;bottom=574;bgcolor=32768;border={color=-16744448};db=1;dl=1;dr=1;forecolor=16777215;linearGradient=180;z=1};
+navEnd={cls=&quot;plus&quot;;left=978;top=573;right=988;bottom=605;border={top=1;color=-16744448};db=1;dr=1;z=2};
+static={cls=&quot;static&quot;;left=17;top=36;right=977;bottom=570;db=1;dl=1;dr=1;dt=1;transparent=1;z=4};
+tabPanel={cls=&quot;~\example\WebUI\HTMLayout\flex.aardio&quot;;left=0;top=0;right=991;bottom=570;db=1;dl=1;dr=1;dt=1;hide=1;transparent=1;z=3}
+)
+/*}}*/
+
+import win.ui.tabs;
+var tbs = win.ui.tabs(winform.nav0,winform.nav1,winform.nav2,winform.nav3,winform.nav4)
+tbs.margin = 0;
+
+tbs.skin({
+    foreground={
+        active=0xFFFFFFFF;
+        default=0x00FFFFFF;
+        hover=0xFFCCCCCC;
+    };
+    checked={
+        foreground={ 
+            default=0x00FFFFFF; 
+        };
+        border = { 
+            default = {left=1;right=1;bottom=1;color=0xFF008000} 
+            disabled = {left=1;right=1;bottom=1;color=0xFF008000} 
+        }; 
+    }
+});
+
+import web.view;
+var wb = web.view(winform.static);
+
+wb.onDocumentInit = function(url){ 
+    if(url==&quot;https://the-echoplex.net/flexyboxes/&quot;){
+
+        wb.waitEle(&quot;a.help[data-markdown-tooltip]&quot;,` 
+            setTimeout(function(){
+                var cnTitles = {
+                    &quot;direction of the flex container\u0027s main axis&quot;:&quot;指定了内部元素是如何在 flex 容器中布局的，定义了主轴的方向 (正方向或反方向)&quot;,
+                    &quot;controls whether the flex container is single-line or multi-line, and the direction of the cross axis&quot;:&quot;指定 flex 元素单行显示还是多行显示。如果允许换行，这个属性允许你控制行的堆叠方向&quot;,
+                    &quot;align flex items along the main axis of the current line of the flex container&quot;:&quot;定义了浏览器之间，如何分配顺着弹性容器主轴 (或者网格行轴) 的元素之间及其周围的空间&quot;,
+                    &quot;align flex items along the cross axis of the current line of the flex container&quot;:&quot;控制在交叉轴上项目的对齐方式&quot;,
+                    &quot;align a flex container\u0027s lines within the flex container when there is extra space in the cross axis, similar to how *justify-content* aligns individual items within the main axis.\n\nNote, this property has no effect when the flexbox has only a single line&quot;:&quot;设置沿着弹性盒子的交叉轴方向如何对齐内容项并分配剩余空间（功能类似的 *justify-content* 则是沿着主轴方向排列项目），该属性对单行弹性盒子模型无效。（即：带有 flex-wrap: nowrap）&quot;,
+                    &quot;controls the order in which flex items appear within their flex container&quot;:&quot;规定了弹性容器中的可伸缩项目在布局时的顺序。元素按照 order 属性的值的增序进行布局。拥有相同 order 属性值的元素按照它们在源代码中出现的顺序进行布局&quot;,
+                    &quot;specifies the components of a flexible length: the *flex grow* factor and *flex shrink* factor, and the *flex basis*.\n\n1. **flex-grow**\n  *Number* which determines how much the flex item will *grow* relative to the rest of the flex items in the flex container when positive free space is distributed.\n2. **flex-shrink**\n  *Number* which determines how much the flex item will *shrink* relative to the rest of the flex items in the flex container when negative free space is distributed.\n3. **flex-basis**\n  The initial *width or height* (depending on main axis) of the flex item, before free space is distributed according to the flex factors.&quot;:&quot;此属性是 flex-grow flex-shrink flex-basis 等三个属性的简写，可以指定一个，两个或三个值。\n\n1. **flex-grow**\n 用一个数值规定项目在 flex 容器中的主轴方向分配剩余空间的相对比例，剩余空间是 flex 容器的大小减去所有 flex 项的大小加起来的大小。如果所有的兄弟项目都有相同的 flex-grow 系数，那么所有的项目将剩余空间按相同比例分配，否则将根据不同的 flex-grow 定义的比例进行分配。\n2. **flex-shrink**\n 用一个数值指定了 flex 元素在主轴方向的收缩规则。flex 元素仅在默认大小之和大于容器的时候(主轴方向)才会发生收缩。\n3. **flex-basis**\n  指定了 flex 元素在主轴方向上的初始大小。如果不使用 box-sizing 改变盒模型的话，那么这个属性就决定了 flex 元素的内容盒（content-box）的尺寸。&quot;,
+                    &quot;allows the alignment to be overridden for individual flex items&quot;:&quot;指定当前项在交叉轴上的对齐方向，覆盖父节点 CSS 的 align-items 值&quot;,
+                }
+
+                var links = document.querySelectorAll(&quot;a.help[data-markdown-tooltip]&quot;);
+                var tooltips = []
+                for(var i=0; i &lt; links.length; i++){
+                    var lnk = links[i]
+                    var title = cnTitles[lnk.title];
+                    if(title) lnk.title = title; 
+                }
+            },1000) 
+
+            setInterval(function(){
+                if(document.getElementById(&quot;ajax-loader&quot;)){ 
+                    return;
+                }
+
+                var edit = document.querySelector(&quot;#flex-style, textarea.output-css&quot;) 
+                var txt = document.querySelector(&#39;.vanilla-css&#39;).value; 
+                txt = txt.replace(/\s+}/mg,&quot;\n}&quot;); 
+                edit.value = txt; 
+            },1000)
+        `)
+    }
+    elseif(url==&quot;https://www.flexo.icu/&quot;){
+        wb.waitEle(&quot;.onboarding__bottombar-next-button&quot;,`
+            for(var i=0; i &lt; 3; i++){
+                document.querySelector(&quot;.onboarding__bottombar-next-button&quot;).click()
+            }
+        `)
+    }
+
+}
+
+var urls = {
+    &quot;https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox&quot;;
+    &quot;https://quickref.me/css#css-flexbox&quot;;
+    &quot;https://www.flexo.icu/&quot;;
+    &quot;https://metaso.cn/?q=介绍%20css%20flexbox&quot;; 
+}
+
+tbs.onSelchange = function(idx,tab,form){
+    var url = urls[idx]
+    if(url){ 
+        winform.tabPanel.show(false);
+        winform.static.show(true)
+
+        tab.disabledText = {&#39;\uF254&#39;;&#39;\uF251&#39;;&#39;\uF252&#39;;&#39;\uF253&#39;;&#39;\uF250&#39;}
+        wb.go(url);
+
+        thread.delay(500);
+        tab.disabledText = null;
+    }
+    else {
+        winform.tabPanel.show(true);
+        winform.static.show(false)
+    }
+}
+
+tbs.selIndex = 3;
+
+winform.show(3/*_SW_MAXIMIZE*/);
+win.loopMessage();
+</code></pre>
+<a href="javascript:if(confirm('https://www.aardio.com/zh-cn/doc/example/WebUI/web.view/OtherApps/flexbox.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������������ʵ��ļ������صġ�  \n\n�����ڷ������ϴ���?'))window.location='https://www.aardio.com/zh-cn/doc/example/WebUI/web.view/OtherApps/flexbox.md'" tppabs="https://www.aardio.com/zh-cn/doc/example/WebUI/web.view/OtherApps/flexbox.md">Markdown 格式</a>
+</body> 
+</html>

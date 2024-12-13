@@ -1,0 +1,298 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - ahk 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - ahk 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>ahk 库模块帮助文档</h1>
+
+<p><details>  <summary>说明</summary>  <p>
+aardio 中路径以斜杆开始表示应用程序根目录，
+应用程序根目录在开发时指工程目录或工程外独立启动的文件所在目录，
+发布后指 EXE 所在目录。</p>
+
+<p>当我们用 aardio + AHK 开发时，可以在应用程序根目录下的 /AutoHotkey/Lib/ 目录下面放 AHK 的用户库文件。
+如果创建了 aardio 工程，可以将这个 /AutoHotkey/ 目录设为内嵌资源目录（可生成独立 EXE 文件）。</p>
+
+<p>如果在 aardio中 调用 ahk.import(&quot;libName&quot;) ，
+aardio 会自动加载 /AutoHotkey/Lib/libName.ahk 的代码，
+并转存到 AHK 加载该用户库的路径 %A_MyDocuments%\AutoHotkey\Lib*.ahk 。
+然后在 AHK 中可以用 #include <libName> 加载这个库,注意库名是放在 &lt; ... &gt; 这对尖括号中间。
+这个虽然叫用户库目录，其实是所有 AHK 程序公用的，所以最好放在子目录里，例如 ahk.import(&quot;aardio/libName&quot;) </p>
+
+<p>在调用 ahk.run() 启动 AHK 脚本线程时，也会将应用程序根目录设为 AHK 设为 AHK 中的 %A_WorkingDir% 目录。
+也就是可以在 AHK 中用　#include path/name.ahk 的代码导入 AHK 文件，这时要写文件后缀名，不能加 &lt; ... &gt; 这种尖括号。
+</p></details></p>
+
+<p><a id="ahk"></a></p>
+
+<h2>ahk 成员列表</h2>
+
+<p>Autohokey v1.x H 版扩展库,<br>
+ AHK v2.x 请改用 ahk.thread 扩展库。<br>
+请注意 AHK 使用的是 GPL 许可证,注意 GPL 有传染性。<br>
+<a href="javascript:if(confirm('https://github.com/HotKeyIt/ahkdll/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/HotKeyIt/ahkdll/'" tppabs="https://github.com/HotKeyIt/ahkdll/">Autohokey_H</a></p>
+
+<p><a id="ahk.?"></a></p>
+
+<h3>ahk.?</h3>
+
+<p>on 前缀的函数可在 AHK 内通过 aardio.函数名 调用。<br>
+如果 on 前缀的回调函数返回值为函数对象，则异步执行该函数，<br>
+其他返回值返回给 AHK 调用代码  </p>
+
+<p>在 AHK v1 中必须使用 #include <aardio>加载 aardio 模块。</p>
+
+<p><a id="ahk.addFile"></a></p>
+
+<h3>ahk.addFile(脚本文件,是否允许重复加载,是否忽略错误)</h3>
+
+<p>添加文件到正在运行的 AHK 脚本线程,<br>
+第三个参数可选0,1,2,1为忽略错误,2为忽略并移除加载的代码</p>
+
+<p><a id="ahk.addScript"></a></p>
+
+<h3>ahk.addScript(脚本代码,false)</h3>
+
+<p>添加文件到正在运行的 AHK 脚本线程,不等待脚本运行完成<br>
+调用此函数前必须先调用 run 函数启动 AHK 脚本线程,<br>
+否则不执行任何操作</p>
+
+<p><a id="ahk.addScript"></a></p>
+
+<h3>ahk.addScript(脚本代码,true)</h3>
+
+<p>添加文件到正在运行的 AHK 脚本线程,等待脚本运行完成<br>
+调用此函数前必须先调用 run 函数启动 AHK 脚本线程,<br>
+否则不执行任何操作</p>
+
+<p><a id="ahk.exec"></a></p>
+
+<h3>ahk.exec(&quot;字符串参数&quot;)</h3>
+
+<p>运行脚本代码,成功返回true,失败返回false<br>
+调用此函数前必须先调用 run 函数启动 AHK 脚本线程,<br>
+否则不执行任何操作</p>
+
+<p><a id="ahk.executeLine"></a></p>
+
+<h3>ahk.executeLine</h3>
+
+<p>用来执行之前通过 ahk.addScript 或 ahk.addFile 追加的脚本行</p>
+
+<p><a id="ahk.executeLine"></a></p>
+
+<h3>ahk.executeLine(行号,0)</h3>
+
+<p>不运行,返回行号</p>
+
+<p><a id="ahk.executeLine"></a></p>
+
+<h3>ahk.executeLine(行号,1)</h3>
+
+<p>运行到返回,返回行号<br>
+可选添加第三个参数为true,等待执行完成</p>
+
+<p><a id="ahk.executeLine"></a></p>
+
+<h3>ahk.executeLine(行号,2)</h3>
+
+<p>运行到块结束,返回行号<br>
+可选添加第三个参数为true,等待执行完成</p>
+
+<p><a id="ahk.executeLine"></a></p>
+
+<h3>ahk.executeLine(行号,3)</h3>
+
+<p>仅运行一行,返回行号<br>
+可选添加第三个参数为true,等待执行完成</p>
+
+<p><a id="ahk.findFunc"></a></p>
+
+<h3>ahk.findFunc(&quot;函数名&quot;)</h3>
+
+<p>查找函数,返回函数指针</p>
+
+<p><a id="ahk.findLabel"></a></p>
+
+<h3>ahk.findLabel(&quot;标签名&quot;)</h3>
+
+<p>查找标签,返回标签指针</p>
+
+<p><a id="ahk.getGlobal"></a></p>
+
+<h3>ahk.getGlobal</h3>
+
+<p>返回 AHK 中全局变量的值或指针,<br>
+注意应当在 AHK 中先用 global name := value 声明全局变量,<br>
+运行 AHK 脚本线程后才能调用此函数</p>
+
+<p><a id="ahk.getGlobal"></a></p>
+
+<h3>ahk.getGlobal(&quot;变量名&quot;)</h3>
+
+<p>返回 AHK 中全局变量的字符串值。<br>
+数值可可自动转为字符串。</p>
+
+<p><a id="ahk.getGlobal"></a></p>
+
+<h3>ahk.getGlobal(&quot;变量名&quot;,true)</h3>
+
+<p>返回 AHK 中全局变量的指针</p>
+
+<p><a id="ahk.import"></a></p>
+
+<h3>ahk.import(&quot;字符串参数&quot;)</h3>
+
+<p>导入 &quot;/AutoHotkey/Lib/&quot; 目录下的 AHK 库文件<br>
+例如 ahk.import(&quot;libName&quot;) 将会转换为加载 /AutoHotkey/Lib/Libname.ahk<br>
+aardio 会加载该文件并存为 AHK 支持的 %A_MyDocuments%\AutoHotkey\Lib\Libname.ahk<br>
+在 AHK 代码中可直接使用 #include <Libname> 加载。  </p>
+
+<p>/AutoHotkey/Lib/ 可以是 aardio 工程内的内嵌资源文件，<br>
+以方便生成独立 EXE 文件。  </p>
+
+<p>注意 aardio 中路径以斜杆开始表示应用程序根目录，<br>
+应用程序根目录在开发时指工程目录或工程外独立启动的文件所在目录，<br>
+发布后指 EXE 所在目录。</p>
+
+<p><a id="ahk.jsonCall"></a></p>
+
+<h3>ahk.jsonCall(&quot;函数名&quot;,)</h3>
+
+<p>运行指定的函数<br>
+使用JSON传递参数并返回值，<br>
+在 AHK 中必须使用 #include <aardio>加载 aardio,json 模块</p>
+
+<p><a id="ahk.label"></a></p>
+
+<h3>ahk.label</h3>
+
+<p>用来运行脚本中的 Goto/GoSub 子程序</p>
+
+<p><a id="ahk.label"></a></p>
+
+<h3>ahk.label(标签名,不等待执行结束)</h3>
+
+<p>用来运行脚本中的 Goto/GoSub 子程序</p>
+
+<p><a id="ahk.pause"></a></p>
+
+<h3>ahk.pause(&quot;Off&quot;)</h3>
+
+<p>取消暂停</p>
+
+<p><a id="ahk.pause"></a></p>
+
+<h3>ahk.pause(&quot;On&quot;)</h3>
+
+<p>暂停</p>
+
+<p><a id="ahk.postCall"></a></p>
+
+<h3>ahk.postCall(&quot;函数名&quot;,)</h3>
+
+<p>运行指定的函数<br>
+可选添加一到十个参数,返回文本值<br>
+该函数立即返回不会等待函数执行完成<br>
+0为成功,-1为找不到函数</p>
+
+<p><a id="ahk.ready"></a></p>
+
+<h3>ahk.ready()</h3>
+
+<p>是否正在运行ahk脚本</p>
+
+<p><a id="ahk.reload"></a></p>
+
+<h3>ahk.reload()</h3>
+
+<p>重载启动 AHK 脚本线程,并等待启动完成,<br>
+可选用参数@1指定超时,以毫秒为单位,<br>
+执行成功返回 true, 脚本未运行返回 false 或 null</p>
+
+<p><a id="ahk.run"></a></p>
+
+<h3>ahk.run</h3>
+
+<p>启动 AHK 脚本线程,调用其他函数以后应当先调用此函数<br>
+默认会将应用程序根目录设为 AHK 中的 %A_WorkingDir%  </p>
+
+<p>aardio 中路径以斜杆开始表示应用程序根目录，<br>
+应用程序根目录在开发时指工程目录或工程外独立启动的文件所在目录，<br>
+发布后指 EXE 所在目录。</p>
+
+<p><a id="ahk.run"></a></p>
+
+<h3>ahk.run(脚本,&quot;/Debug&quot;,其他参数)</h3>
+
+<p>启动 AHK 脚本线程,参数@2、参数@3 可省略<br>
+参数@! 可以是脚本代码,也可以是脚本文件路径<br>
+如果参数是脚本代码或单个斜杠（反斜杆）开始的应用内路径，<br>
+则支持用 aardio 模板语法在 AHK 代码中嵌入 aardio 代码。<br>
+返回线程句柄  </p>
+
+<p>注意 AHK 并不支持真的多线徎，创建线程为当前线程，<br>
+其他 AHK 创建的线程会停掉</p>
+
+<p><a id="ahk.sendCall"></a></p>
+
+<h3>ahk.sendCall(&quot;函数名&quot;,)</h3>
+
+<p>运行指定的函数<br>
+可选添加一到十个参数,返回文本值</p>
+
+<p><a id="ahk.setGlobal"></a></p>
+
+<h3>ahk.setGlobal(&quot;变量名&quot;,&quot;字符串值&quot;)</h3>
+
+<p>对 AHK 中的全局变量赋值。<br>
+参数 @2 自动调用 tostring 转为字符串。<br>
+返回0表示成功,返回-1表示找不到变量,<br>
+注意应当在 AHK 中先用 global name := value 声明全局变量,<br>
+运行 AHK 脚本线程后才能调用此函数</p>
+
+<p><a id="ahk.setGlobal"></a></p>
+
+<h3>ahk.setGlobal()</h3>
+
+<p>对 AHK 中的全局变量赋值,<br>
+运行 AHK 脚本线程后才能调用此函数</p>
+
+<p><a id="ahk.terminate"></a></p>
+
+<h3>ahk.terminate()</h3>
+
+<p>停止 AHK 脚本线程,<br>
+可选用参数@1指定超时,以毫秒为单位,<br>
+执行成功返回 true, 脚本未运行返回 false 或 null</p>
+
+<p><a id="ahk.wait"></a></p>
+
+<h3>ahk.wait(false)</h3>
+
+<p>等待 AHK 脚本运行结束</p>
+
+<p><a id="ahk.wait"></a></p>
+
+<h3>ahk.wait(true)</h3>
+
+<p>等待 AHK 脚本启动运行,<br>
+只能在启动 AHK 脚本线程后调用,<br>
+否则会一直等待无法返回。  </p>
+
+<p>调用 reload 函数重启后必须调用此函数，否则后续调用会出现异常</p>
+
+<p><a href="_.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/ahk/_.md">Markdown 格式</a></p>
+
+</body> 
+</html>

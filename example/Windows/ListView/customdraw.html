@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - 列表视图（listview）控件 - 自绘'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - 列表视图（listview）控件 - 自绘</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 列表视图（listview）控件 - 自绘</h1><pre><code class="aardio language-aardio">//列表视图（listview）控件 - 自绘
+import win.ui;
+/*DSG{{*/
+var winform = win.form(text=&quot;listview custom draw&quot;;right=627;bottom=294;bgcolor=128)
+winform.add(
+listview={cls=&quot;listview&quot;;left=12;top=13;right=614;bottom=287;bgcolor=128;dl=1;dr=1;fullRow=1;z=1}
+)
+/*}}*/
+
+//移除列标题
+winform.listview.modifyStyle(,0x4000/*_LVS_NOCOLUMNHEADER*/)
+winform.listview.insertColumn(&quot;列标题3&quot;,100) 
+winform.listview.insertColumn(&quot;列标题2&quot;,100) 
+winform.listview.insertColumn(&quot;列标题1&quot;,100) 
+
+winform.listview.addItem( { 
+    text={&quot;第一行内容&quot;;&quot;1&quot;;&quot;1,2&quot;} 
+} )
+winform.listview.addItem( { 
+    text={&quot;第二行内容&quot;;&quot;2&quot;;&quot;2,2&quot;} 
+} )
+winform.listview.addItem( { 
+    text={&quot;第三行内容&quot;;&quot;3&quot;;&quot;3,2&quot;} 
+} )
+
+winform.listview.adjust = function(cx,cy){
+    winform.listview.fillParent(3);
+}
+
+//自绘
+winform.listview.onnotify = function(id,code,ptr){ 
+    if( code == 0xFFFFFFF4/*_NM_CUSTOMDRAW*/ ){
+        var lvcd = winform.listview.getNotifyCustomDraw(code,ptr);
+        if( lvcd.nmcd.dwDrawStage == 0x10001/*_CDDS_ITEMPREPAINT*/)
+            return 0x20/*_CDRF_NOTIFYSUBITEMDRAW*/
+        elseif( lvcd.nmcd.dwDrawStage == 1/*_CDDS_PREPAINT*/ ){
+            return 0x20/*_CDRF_NOTIFYITEMDRAW*/;
+        }
+        elseif( lvcd.nmcd.dwDrawStage == ( 0x10001/*_CDDS_ITEMPREPAINT*/ | 0x20000/*_CDDS_SUBITEM*/) ){ 
+            //注意这里 iSubItem 的索引自0开始( 其他函数通常自1开始 )
+            lvcd.clrText = lvcd.iSubItem % 2 ? gdi.RGB(255,255,255) : gdi.RGB(12,255,120);
+            lvcd.clrTextBk = lvcd.iSubItem % 2 ? gdi.RGB(0,12,223) : gdi.RGB(128,23,0);
+            lvcd.update()
+
+            return 0/*_CDRF_DODEFAULT*/
+        }
+    }
+}
+
+winform.show() 
+win.loopMessage();
+
+</code></pre>
+<a href="javascript:if(confirm('https://www.aardio.com/zh-cn/doc/example/Windows/ListView/customdraw.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������������ʵ��ļ������صġ�  \n\n�����ڷ������ϴ���?'))window.location='https://www.aardio.com/zh-cn/doc/example/Windows/ListView/customdraw.md'" tppabs="https://www.aardio.com/zh-cn/doc/example/Windows/ListView/customdraw.md">Markdown 格式</a>
+</body> 
+</html>

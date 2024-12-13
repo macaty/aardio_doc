@@ -1,0 +1,289 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - winring0.ps2 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - winring0.ps2 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>winring0.ps2 库模块帮助文档</h1>
+
+<p><a id="winring0.ps2"></a></p>
+
+<h2>winring0.ps2 成员列表</h2>
+
+<p>PS2鼠标键盘硬件模拟支持库,<br>
+支持win7，但需要管理员权限,<br>
+引用此库发布程序时将自动添加管理员权限到Manifest</p>
+
+<p><a id="winring0.ps2.combine"></a></p>
+
+<h3>winring0.ps2.combine(&quot;CTRL&quot;,&quot;字符串参数&quot;)</h3>
+
+<p>发送组合热键,参数个数不限.<br>
+参数可以是键名字,或者按键的虚拟码(_VK前缀常量)</p>
+
+<p><a id="winring0.ps2.delayDown"></a></p>
+
+<h3>winring0.ps2.delayDown</h3>
+
+<p>每次调用key.down函数的默认时间间隔,默认为5毫秒<br>
+在调用press以及pressEx函数时,按下松开键之间也会按此设定延时</p>
+
+<p><a id="winring0.ps2.delayPress"></a></p>
+
+<h3>winring0.ps2.delayPress</h3>
+
+<p>更改每次击键并松开后的时间间隔,默认为5毫秒</p>
+
+<p><a id="winring0.ps2.delayUp"></a></p>
+
+<h3>winring0.ps2.delayUp</h3>
+
+<p>每次调用key.up函数后的时间间隔,默认为1毫秒</p>
+
+<p><a id="winring0.ps2.enableKb"></a></p>
+
+<h3>winring0.ps2.enableKb(true)</h3>
+
+<p>禁用键盘，取消禁用参数为false</p>
+
+<p><a id="winring0.ps2.enableKbIrq"></a></p>
+
+<h3>winring0.ps2.enableKbIrq(true)</h3>
+
+<p>启用键盘中断,false为禁用</p>
+
+<p><a id="winring0.ps2.enableMouse"></a></p>
+
+<h3>winring0.ps2.enableMouse(true)</h3>
+
+<p>禁用鼠标，取消禁用参数为false</p>
+
+<p><a id="winring0.ps2.getPs2Device"></a></p>
+
+<h3>winring0.ps2.getPs2Device()</h3>
+
+<p>检测PS2设备,返回两个值: PS2鼠标设备名,PS2键盘设备名</p>
+
+<p><a id="winring0.ps2.keyDown"></a></p>
+
+<h3>winring0.ps2.keyDown(键名或键盘)</h3>
+
+<p>按下键</p>
+
+<p><a id="winring0.ps2.keyPress"></a></p>
+
+<h3>winring0.ps2.keyPress(键名或键盘)</h3>
+
+<p>按下并弹起键</p>
+
+<p><a id="winring0.ps2.keyUp"></a></p>
+
+<h3>winring0.ps2.keyUp(键名或键盘)</h3>
+
+<p>弹起键</p>
+
+<p><a id="winring0.ps2.mouseDown"></a></p>
+
+<h3>winring0.ps2.mouseDown(x,y,是否绝对坐标)</h3>
+
+<p>鼠标左键按下</p>
+
+<p><a id="winring0.ps2.mouseDownMb"></a></p>
+
+<h3>winring0.ps2.mouseDownMb(x,y,是否绝对坐标)</h3>
+
+<p>鼠标中键按下</p>
+
+<p><a id="winring0.ps2.mouseDownRb"></a></p>
+
+<h3>winring0.ps2.mouseDownRb(x,y,是否绝对坐标)</h3>
+
+<p>鼠标右键按下</p>
+
+<p><a id="winring0.ps2.mouseIs3d"></a></p>
+
+<h3>winring0.ps2.mouseIs3d</h3>
+
+<p>鼠标是否有滚轮，默认自动检测,<br>
+如果系统有多个鼠标请正确设置此值</p>
+
+<p><a id="winring0.ps2.mouseMove"></a></p>
+
+<h3>winring0.ps2.mouseMove(x,y,是否绝对坐标)</h3>
+
+<p>移动鼠标</p>
+
+<p><a id="winring0.ps2.mousePress"></a></p>
+
+<h3>winring0.ps2.mousePress(x,y,是否绝对坐标)</h3>
+
+<p>鼠标左键按下弹起</p>
+
+<p><a id="winring0.ps2.mousePressMb"></a></p>
+
+<h3>winring0.ps2.mousePressMb(x,y,是否绝对坐标)</h3>
+
+<p>鼠标中键按下弹起</p>
+
+<p><a id="winring0.ps2.mousePressRb"></a></p>
+
+<h3>winring0.ps2.mousePressRb(x,y,是否绝对坐标)</h3>
+
+<p>鼠标右键按下弹起</p>
+
+<p><a id="winring0.ps2.mouseUp"></a></p>
+
+<h3>winring0.ps2.mouseUp(x,y,是否绝对坐标)</h3>
+
+<p>鼠标左键弹起</p>
+
+<p><a id="winring0.ps2.mouseUpMb"></a></p>
+
+<h3>winring0.ps2.mouseUpMb(x,y,是否绝对坐标)</h3>
+
+<p>鼠标中键弹起</p>
+
+<p><a id="winring0.ps2.mouseUpRb"></a></p>
+
+<h3>winring0.ps2.mouseUpRb(x,y,是否绝对坐标)</h3>
+
+<p>鼠标右键弹起</p>
+
+<p><a id="winring0.ps2.ps2Keyboard"></a></p>
+
+<h3>winring0.ps2.ps2Keyboard</h3>
+
+<p>系统自动检测到的P2键盘名称,<br>
+该值为空则禁用键盘硬件模拟</p>
+
+<p><a id="winring0.ps2.ps2Mouse"></a></p>
+
+<h3>winring0.ps2.ps2Mouse</h3>
+
+<p>系统自动检测到的P2鼠标,<br>
+该值为空则禁用鼠标硬件模拟</p>
+
+<p><a id="winring0.ps2.readMouseID"></a></p>
+
+<h3>winring0.ps2.readMouseID()</h3>
+
+<p>返回鼠标设备ID</p>
+
+<p><a id="winring0.ps2.reakKey"></a></p>
+
+<h3>winring0.ps2.reakKey(是否允许发送键)</h3>
+
+<p>读取按键</p>
+
+<p><a id="winring0.ps2.waitInputEmpty"></a></p>
+
+<h3>winring0.ps2.waitInputEmpty()</h3>
+
+<p>在向64h端口写数据之前必须确保Input Register是空的</p>
+
+<p><a id="winring0.ps2.waitKeyOutputEmpty"></a></p>
+
+<h3>winring0.ps2.waitKeyOutputEmpty()</h3>
+
+<p>等待键盘缓冲区空</p>
+
+<p><a id="winring0.ps2.waitKeyOutputFull"></a></p>
+
+<h3>winring0.ps2.waitKeyOutputFull()</h3>
+
+<p>等待键盘缓冲区满</p>
+
+<p><a id="winring0.ps2.waitKeyOutputFullAsyn"></a></p>
+
+<h3>winring0.ps2.waitKeyOutputFullAsyn()</h3>
+
+<p>等待键盘Output Register满<br>
+不论有没有等到按键都返回值，成功返回true，失败返回false</p>
+
+<p><a id="winring0.ps2.waitMouseOutputEmpty"></a></p>
+
+<h3>winring0.ps2.waitMouseOutputEmpty()</h3>
+
+<p>读数据以前要确认鼠标输出缓冲区为空</p>
+
+<p><a id="winring0.ps2.waitMouseOutputFull"></a></p>
+
+<h3>winring0.ps2.waitMouseOutputFull()</h3>
+
+<p>等待鼠标缓冲区满</p>
+
+<p><a id="winring0.ps2.waitMouseOutputFullAsyn"></a></p>
+
+<h3>winring0.ps2.waitMouseOutputFullAsyn()</h3>
+
+<p>等待鼠标Output Register满<br>
+不论有没有等到按键都返回值，成功返回true，失败返回false</p>
+
+<p><a id="winring0.ps2.waitOutputEmpty"></a></p>
+
+<h3>winring0.ps2.waitOutputEmpty()</h3>
+
+<p>等待Output Register空</p>
+
+<p><a id="winring0.ps2.waitOutputFull"></a></p>
+
+<h3>winring0.ps2.waitOutputFull()</h3>
+
+<p>在向60h端口读取数据之前必须确保Output Register中有数据</p>
+
+<p><a id="winring0.ps2.waitOutputFullAsyn"></a></p>
+
+<h3>winring0.ps2.waitOutputFullAsyn()</h3>
+
+<p>等待Output Register满<br>
+不论有没有等到按键都返回值，成功返回true，失败返回false</p>
+
+<p><a id="winring0.ps2.writeK60"></a></p>
+
+<h3>winring0.ps2.writeK60(数值)</h3>
+
+<p>向60端口写数据</p>
+
+<p><a id="winring0.ps2.writeK64"></a></p>
+
+<h3>winring0.ps2.writeK64(数值)</h3>
+
+<p>向64端口写数据</p>
+
+<p><a id="winring0.ps2.writeKeyDown"></a></p>
+
+<h3>winring0.ps2.writeKeyDown(键码)</h3>
+
+<p>写入按下虚拟键码</p>
+
+<p><a id="winring0.ps2.writeKeyUp"></a></p>
+
+<h3>winring0.ps2.writeKeyUp(键码)</h3>
+
+<p>写入弹起虚拟键码</p>
+
+<p><a id="winring0.ps2.writeMouse"></a></p>
+
+<h3>winring0.ps2.writeMouse(x,y,消息ID)</h3>
+
+<p>写入鼠标消息</p>
+
+<p><a id="winring0.ps2.writeScanKey"></a></p>
+
+<h3>winring0.ps2.writeScanKey(扫描码)</h3>
+
+<p>写入键盘扫描码</p>
+
+<p><a href="ps2.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/winring0/ps2.md">Markdown 格式</a></p>
+
+</body> 
+</html>

@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio ç¼–ç¨‹è¯­è¨€èŒƒä¾‹ - Lottie åŠ¨ç”»æ¼”ç¤º'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio ç¼–ç¨‹è¯­è¨€èŒƒä¾‹ - Lottie åŠ¨ç”»æ¼”ç¤º</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio ç¼–ç¨‹è¯­è¨€æ–‡æ¡£é¦–é¡µ"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio æ–‡æ¡£</span></a>
+<h1>aardio èŒƒä¾‹: Lottie åŠ¨ç”»æ¼”ç¤º</h1><pre><code class="aardio language-aardio">//Lottie åŠ¨ç”»
+import fonts.fontAwesome;
+import win.ui;
+/*DSG{{*/
+var winform = win.form(text=&quot;Lottie åŠ¨ç”»æ¼”ç¤º&quot;;right=759;bottom=469;bgcolor=16777215)
+winform.add(
+bnPause={cls=&quot;plus&quot;;text=&quot;æ’­æ”¾&quot;;left=480;top=384;right=609;bottom=434;align=&quot;left&quot;;font=LOGFONT(h=-24);iconStyle={align=&quot;left&quot;;font=LOGFONT(h=-21;name=&#39;FontAwesome&#39;);padding={top=5}};iconText=&#39;\uF04B &#39;;notify=1;textPadding={left=27};z=2};
+static={cls=&quot;static&quot;;left=42;top=41;right=451;bottom=272;bgcolor=16777215;z=1}
+)
+/*}}*/
+
+import web.form;
+var wb = web.form(winform.static);
+
+//æ”¯æŒ IE10ï¼ŒIE11ï¼ˆWin10ï¼ŒWin11 è‡ªå¸¦ï¼‰
+wb.html = /**
+&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+     &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; /&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+    html,body{ height:100%; margin:0; overflow:hidden } 
+    &lt;/style&gt; 
+    &lt;script src=&quot;https://lib.baomitu.com/lottie-web/5.10.0/lottie.min.js&quot;&gt;&lt;/script&gt; 
+&lt;/head&gt;
+&lt;body&gt;
+&lt;script&gt;
+    var lottieSample = lottie.loadAnimation({
+        container: document.body,
+        renderer: &#39;svg&#39;,
+        loop: true,
+        autoplay: true,
+        path: &quot;https://download.aardio.com/demo/lottie/1.json&quot; // the path to the animation json
+    });
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+**/
+
+winform.bnPause.skin({
+    color={
+        active=0xFF00FF00;
+        default=0xFF000000;
+        disabled=0xEE666666;
+        hover=0xFFFF0000
+    };
+    checked={
+        iconText=&#39;\uF04C&#39;;
+        text=&quot;æš‚åœ&quot;;
+    }
+})
+winform.bnPause.checked = true;
+
+winform.bnPause.oncommand = function(id,event){
+    if(owner.checked) wb.script.lottieSample.play(); 
+    else wb.script.lottieSample.pause(); 
+}
+
+winform.show();
+win.loopMessage();
+</code></pre>
+<a href="javascript:if(confirm('https://www.aardio.com/zh-cn/doc/example/WebUI/web.form/Lottie.md  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ·şÎñÆ÷±¨¸æ·ÃÎÊµÄÎÄ¼şÊÇÒş²ØµÄ¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://www.aardio.com/zh-cn/doc/example/WebUI/web.form/Lottie.md'" tppabs="https://www.aardio.com/zh-cn/doc/example/WebUI/web.form/Lottie.md">Markdown æ ¼å¼</a>
+</body> 
+</html>

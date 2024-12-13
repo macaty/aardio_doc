@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - 设置代理'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - 设置代理</title> 
+<link rel="stylesheet" href="../../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 设置代理</h1><pre><code class="aardio language-aardio">//设置代理
+import win.ui;
+/*DSG{{*/
+var winform = win.form(text=&quot;aardio form&quot;;right=855;bottom=498;)
+winform.add()
+/*}}*/
+
+import inet; 
+/*
+// web.form 可用 inet.setProxy 修改代理服务器设置
+
+// HTTP代理代理服务器这样写: 
+inet.setProxy(&quot;代理服务器地址:端口号&quot;); 
+
+// SOCKS4 代理代理服务器这样写: 
+inet.setProxy(&quot;SOCKS=代理服务器地址:端口号&quot;); 
+
+inet.setProxy 的代理地址参数如果改为 false 表示进程内默认禁用代理服务器。
+代理服务器设为&quot;IE&quot;表示使用IE代理设置,&quot;IE&quot;为默认值可省略。
+
+inet.setProxy 设置的代理在当前进程范例内对所有基于 WinInet 的对象有效，
+这包含 web.form,inet.http 以及 web.rest 名字空间所有 client 对象。
+
+基于 WinHTTP 的 inet.whttp 则不受 IE 或 WinInet 代理设置影响,
+WinHTTP 请使用 inet.whttp.setProxy() 修改默认代理设置。
+
+更多细节请参考。
+https://www.aardio.com/zh-cn/doc/library-guide/std/inet/proxy.html
+*/
+
+import web.form;
+var wb = web.form(winform);
+
+import crypt.bin;
+wb.addHeaders ={
+    [&quot;Proxy-Authorization&quot;] = &quot;Basic &quot; +crypt.bin.encodeBase64(&quot;代理服务器用户名&quot;+&quot;:&quot;+&quot;代理服务器密码&quot;);
+    [&quot;Authorization&quot;] = &quot;Basic &quot; +crypt.bin.encodeBase64(&quot;用户名&quot;+&quot;:&quot;+&quot;密码&quot;);
+} 
+wb.go(&quot;http://www.aardio.com&quot;);
+
+winform.show();  
+win.loopMessage(); 
+
+</code></pre>
+<a href="javascript:if(confirm('https://www.aardio.com/zh-cn/doc/example/WebUI/web.form/Feature/proxy.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������������ʵ��ļ������صġ�  \n\n�����ڷ������ϴ���?'))window.location='https://www.aardio.com/zh-cn/doc/example/WebUI/web.form/Feature/proxy.md'" tppabs="https://www.aardio.com/zh-cn/doc/example/WebUI/web.form/Feature/proxy.md">Markdown 格式</a>
+</body> 
+</html>

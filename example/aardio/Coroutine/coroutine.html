@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - 对称式协程'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - 对称式协程</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 对称式协程</h1><pre><code class="aardio language-aardio">//对称式协程
+import console;
+import coroutine; 
+
+class 公司 {
+
+     ctor(){  
+        var coroutine = ..coroutine;
+
+        this.客服 = coroutine.create(
+            function(工单){
+
+                while(工单){ 
+                    工单 = coroutine.transfer(this.用户,&quot;已解决,&quot; + 工单)
+                }  
+
+                coroutine.transfer( ,&quot;老板,累得不如狗,给加班费不？!&quot;)  
+            } 
+        )
+
+        this.用户 = coroutine.create(
+            function(消息){ 
+
+                for(i=1;100;1){ 
+                    ..console.log(  coroutine.transfer(this.客服,&quot;工单号:&quot; + i) );
+                }
+
+                coroutine.transfer(this.客服)     
+            } 
+        )
+
+        ..console.log( coroutine.transfer( this.用户,&quot;欢迎光临,有任何问题请联系客服&quot;) ); 
+    }
+}
+
+coroutine.run(公司)
+console.pause();
+
+</code></pre>
+<a href="coroutine.md" tppabs="https://www.aardio.com/zh-cn/doc/example/aardio/Coroutine/coroutine.md">Markdown 格式</a>
+</body> 
+</html>

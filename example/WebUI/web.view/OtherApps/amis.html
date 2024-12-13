@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - WebView2 - 调用 amis'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - WebView2 - 调用 amis</title> 
+<link rel="stylesheet" href="../../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: WebView2 - 调用 amis</h1><pre><code class="aardio language-aardio">//amis 低代码框架
+import win.ui;
+/*DSG{{*/
+var winform = win.form(text=&quot;WebView2 - 调用 amis&quot;;right=966;bottom=622)
+winform.add()
+/*}}*/
+
+import web.view;
+var wb = web.view(winform);
+
+//导出 JS 函数
+wb.export({ 
+    //注意 aardio 函数在 JS 中返回 Promise 
+    getAmisJson  = function(){
+        return {
+            &quot;type&quot;:&quot;page&quot;,
+            &quot;title&quot;:&quot;表单页面&quot;, 
+             &quot;body&quot;: { {
+                &quot;type&quot;:&quot;form&quot;,
+                &quot;mode&quot;:&quot;horizontal&quot;,
+                &quot;api&quot;:&quot;/saveForm.aardio&quot;,
+                &quot;body&quot;:{
+                    {&quot;type&quot;:&quot;input-text&quot;,&quot;name&quot;:&quot;name&quot;,&quot;label&quot;:&quot;Name&quot;,&quot;required&quot;:true},
+                    {&quot;type&quot;:&quot;input-email&quot;,&quot;name&quot;:&quot;email&quot;,&quot;label&quot;:&quot;Email&quot;,&quot;required&quot;:true},
+                    {&quot;type&quot;:&quot;static-tpl&quot;,&quot;tpl&quot;:&quot;生成的id为：${id}&quot;}
+                }, 
+
+            },
+            {
+                &quot;type&quot;: &quot;button&quot;,
+                &quot;label&quot;: &quot;调用 aardio 函数&quot;,
+                &quot;onEvent&quot;: {
+                    &quot;click&quot;: {
+                        &quot;actions&quot;: {
+                            {
+                                &quot;actionType&quot;: &quot;custom&quot;,
+                                &quot;script&quot;: &quot;window.aardioMsgbox(&#39;网页调用 aardio 函数&#39;)&quot;
+                            }
+                        }
+                    },
+                },
+
+            } } 
+        };
+    }; 
+
+    amisCopy = function(content,format){
+
+        import win.clip.html;
+        if(format==&quot;text/html&quot;){
+            win.clip.html().write(content);
+        }
+        else {
+            win.clip.write(content)
+        } 
+    };
+
+    aardioMsgbox = function(str){ 
+        winform.msgbox(str,&quot;JS 调用 aardio&quot;);
+    };
+})
+
+
+import wsock.tcp.asynHttpServer;
+var httpServer = wsock.tcp.asynHttpServer(); 
+httpServer.run( {
+    [&quot;/index.html&quot;] = /**
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;zh&quot;&gt;
+    &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt; 
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://lib.baomitu.com/amis/6.2.2/antd.min.css&quot; /&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://lib.baomitu.com/amis/6.2.2/helper.min.css&quot; /&gt;
+    &lt;script src=&quot;https://lib.baomitu.com/amis/6.2.2/sdk.min.js&quot;&gt;&lt;/script&gt;
+    &lt;style&gt; html, body, .app-wrapper { position: relative; width: 100%; height: 100%; margin: 0; padding: 0; }  &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+    &lt;div id=&quot;root&quot; class=&quot;app-wrapper&quot;&gt;&lt;/div&gt;
+
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        (async function () {
+        let amis = amisRequire(&#39;amis/embed&#39;);
+        let amisJson = await getAmisJson(); 
+        let amisScoped = amis.embed(&#39;#root&#39;, amisJson,{},{
+            theme: &#39;antd&#39;,//https://github.com/baidu/amis/issues/2465
+            copy: (content,{format}) =&gt; { amisCopy(content,format) },
+        });
+        })();
+    &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+**/;
+    [&quot;/saveForm.aardio&quot;] = function(response,request){
+
+        //读取表单请求发送的数据，返回值已解析为 aardio 对象
+        var data = request.postJson();
+
+        response.write({
+            &quot;status&quot;: 0,
+                &quot;msg&quot;: &quot;保存成功&quot;,
+                &quot;data&quot;: { &quot;id&quot;:  ..math.random(1,200) } 
+        }) 
+    };
+}); 
+
+//需要通过HTTP服务器访问才能支持 localStorage( 也可以指定资源文件内响应 HTTP 请求的 aardio 代码路径 ）。
+wb.go( httpServer.getUrl(&quot;index.html&quot;) ) 
+
+winform.show();
+win.loopMessage();
+</code></pre>
+<a href="javascript:if(confirm('https://www.aardio.com/zh-cn/doc/example/WebUI/web.view/OtherApps/amis.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������������ʵ��ļ������صġ�  \n\n�����ڷ������ϴ���?'))window.location='https://www.aardio.com/zh-cn/doc/example/WebUI/web.view/OtherApps/amis.md'" tppabs="https://www.aardio.com/zh-cn/doc/example/WebUI/web.view/OtherApps/amis.md">Markdown 格式</a>
+</body> 
+</html>

@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - tsclib 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - tsclib 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>tsclib 库模块帮助文档</h1>
+
+<p><a id="tsclib"></a></p>
+
+<h2>tsclib 成员列表</h2>
+
+<p><a id="tsclib.about"></a></p>
+
+<h3>tsclib.about()</h3>
+
+<p>关于</p>
+
+<p><a id="tsclib.barcode"></a></p>
+
+<h3>tsclib.barcode(x,y,codeType,height, readable, rotation,narrow,wide, code)</h3>
+
+<p>输出条码</p>
+
+<p><a id="tsclib.clearbuffer"></a></p>
+
+<h3>tsclib.clearbuffer()</h3>
+
+<p>清空缓冲</p>
+
+<p><a id="tsclib.closeport"></a></p>
+
+<h3>tsclib.closeport()</h3>
+
+<p>关闭打印机</p>
+
+<p><a id="tsclib.downloadpcx"></a></p>
+
+<h3>tsclib.downloadpcx(fileName,imageName)</h3>
+
+<p>下载单色PCX 格式图文件至打印机</p>
+
+<p><a id="tsclib.formfeed"></a></p>
+
+<h3>tsclib.formfeed()</h3>
+
+<p>跳页，该函数需在setup 后使用</p>
+
+<p><a id="tsclib.nobackfeed"></a></p>
+
+<h3>tsclib.nobackfeed()</h3>
+
+<p>设定纸张不回吐</p>
+
+<p><a id="tsclib.openport"></a></p>
+
+<h3>tsclib.openport(printerName)</h3>
+
+<p>打开打印机</p>
+
+<p><a id="tsclib.printerfont"></a></p>
+
+<h3>tsclib.printerfont(x,y,fontName,rotation,xmul, ymul, content)</h3>
+
+<p>输出文本</p>
+
+<p><a id="tsclib.printlabel"></a></p>
+
+<h3>tsclib.printlabel(numberOfSet,numberOfCopy)</h3>
+
+<p>打印标签</p>
+
+<p><a id="tsclib.qrcode"></a></p>
+
+<h3>tsclib.qrcode(x,y,eccLevel,width, mode, rotation,model,mask,dataString)</h3>
+
+<p>打印二维码<br>
+x QRCODE条码左上角X座标<br>
+y QRCODE条码左上角Y座标<br>
+eccLevel 错误纠正能力等级<br>
+    L 7%<br>
+    M 15%<br>
+    Q 25%<br>
+    H 30%<br>
+width 1~10<br>
+mode 自动生成编码/手动生成编码<br>
+    A Auto<br>
+    M Manual<br>
+rotation 顺时针旋转角度<br>
+    0 不旋转<br>
+    90 顺时针旋转90度<br>
+    180 顺时针旋转180度<br>
+    270 顺时针旋转270度<br>
+model 条码生成样式<br>
+    M1 (预设), 原始版本<br>
+    M2 扩大版本<br>
+mask 范围：S0~S8，预设S7<br>
+dataString 条码资料内容</p>
+
+<p><a id="tsclib.sendBinaryData"></a></p>
+
+<h3>tsclib.sendBinaryData(hexData)</h3>
+
+<p>发送二进制数据</p>
+
+<p><a id="tsclib.sendcommand"></a></p>
+
+<h3>tsclib.sendcommand(command)</h3>
+
+<p>发送命令</p>
+
+<p><a id="tsclib.setup"></a></p>
+
+<h3>tsclib.setup(labelWidth,labelHeight,speed,density,sensor,vertical,offset)</h3>
+
+<p>设置</p>
+
+<p><a id="tsclib.windowsfont"></a></p>
+
+<h3>tsclib.windowsfont(x,y,fontheight, rotation,fontstyle,fontunderline,szFaceName,content)</h3>
+
+<p>使用Windows TTF 字型打印文字</p>
+
+<p><a href="_.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/tsclib/_.md">Markdown 格式</a></p>
+
+</body> 
+</html>

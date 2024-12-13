@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - color 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - color 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>color 库模块帮助文档</h1>
+
+<p><a id="color"></a></p>
+
+<h2>color 成员列表</h2>
+
+<p><a id="color.argb"></a></p>
+
+<h3>color.argb</h3>
+
+<p>转换ARGB颜色分量为数值,<br>
+gdi+,plus控件等使用argb格式颜色</p>
+
+<p><a id="color.argb"></a></p>
+
+<h3>color.argb(红,绿,蓝,透明度)</h3>
+
+<p>透明度默认为0xFF,即不透明</p>
+
+<p><a id="color.argbReverse"></a></p>
+
+<h3>color.argbReverse(颜色数值)</h3>
+
+<p>RGB颜色转值转ARGB,<br>
+RGB分量中R、B的位置互换,并修改高位透明分量为0xFF</p>
+
+<p><a id="color.distance"></a></p>
+
+<h3>color.distance(clr,clr2)</h3>
+
+<p>计算GDI+颜色值的色差</p>
+
+<p><a id="color.distance"></a></p>
+
+<h3>color.distance(clr,clr2,true)</h3>
+
+<p>计算GDI颜色值的色差</p>
+
+<p><a id="color.getHsb"></a></p>
+
+<h3>color.getHsb(clr)</h3>
+
+<p>输入GDI+颜色值,<br>
+返回h(色相),s(饱和度),b(明度)三个值</p>
+
+<p><a id="color.getHsb"></a></p>
+
+<h3>color.getHsb(clr,true)</h3>
+
+<p>输入GDI颜色值,<br>
+返回h(色相),s(饱和度),b(明度)三个值</p>
+
+<p><a id="color.getRgb"></a></p>
+
+<h3>color.getRgb(RGB颜色数值)</h3>
+
+<p>返回R(红),G（绿）,B（蓝） 三个分量<br>
+RGB颜色值一般用于GDI,普通控件等</p>
+
+<p><a id="color.getRgba"></a></p>
+
+<h3>color.getRgba(ARGB颜色数值)</h3>
+
+<p>返回R(红),G（绿）,B（蓝),A（透明度) 4个分量<br>
+注意透明度为0~0xFF,0xFF为完全不透明,0为完全透明<br>
+ARGB颜色值一般用于GDI+,plus控件等</p>
+
+<p><a id="color.hsb"></a></p>
+
+<h3>color.hsb(h,s,b)</h3>
+
+<p>转换HSB颜色分量为ARGB格式颜色数值<br>
+返回一个值,可用于gdi+,plus控件等</p>
+
+<p><a id="color.hsb"></a></p>
+
+<h3>color.hsb(h,s,b,true)</h3>
+
+<p>转换HSB颜色分量为RGB格式颜色数值<br>
+返回一个值,可用于gdi等</p>
+
+<p><a id="color.hsb2rgb"></a></p>
+
+<h3>color.hsb2rgb(h,s,b)</h3>
+
+<p>hsb转rgb,<br>
+返回R(红),G（绿）,B（蓝） 三个值</p>
+
+<p><a id="color.lab2rgb"></a></p>
+
+<h3>color.lab2rgb(L,a,b)</h3>
+
+<p>Lab颜色分量转RGB颜色分量,返回r,g,b等三个值<br>
+注意Lab,RGB的颜色并非精确的一一对应</p>
+
+<p><a id="color.light"></a></p>
+
+<h3>color.light(argb,lt)</h3>
+
+<p>输入参数为ARGB格式颜色数值，<br>
+不指定lt获取颜色的亮度,<br>
+指定lt修改亮度后并返回新的ARGB格式颜色数值,lt可以为负值,<br>
+亮度为0到1间的小数表示的百分比,亮度为0会改变色相为0</p>
+
+<p><a id="color.lightHsb"></a></p>
+
+<h3>color.lightHsb(h,s,b,lt)</h3>
+
+<p>输入参数h,s,b指定输入颜色分量<br>
+不指定lt获取hsb颜色的亮度,<br>
+指定lt修改h,s,b的亮度后并返回新的h,s,b分量,lt可以为负值,<br>
+亮度为0到1间的小数表示的百分比</p>
+
+<p><a id="color.parse"></a></p>
+
+<h3>color.parse(&quot;#FFFFFF&quot;)</h3>
+
+<p>解析网页兼容的颜色代码<br>
+支持#RGB,#RRGGBB,#RRGGBBAA三种格式,#号可省略,<br>
+#RGB,#RRGGBB返回GDI兼容的RGB值<br>
+#RRGGBBAA返回GDI+兼容的ARGB格式颜色值<br>
+失败返回null</p>
+
+<p><a id="color.rgb"></a></p>
+
+<h3>color.rgb</h3>
+
+<p>转换RGB颜色分量为数值</p>
+
+<p><a id="color.rgb"></a></p>
+
+<h3>color.rgb(红,绿,蓝)</h3>
+
+<p>转换RGB颜色分量为数值</p>
+
+<p><a id="color.rgb2hsb"></a></p>
+
+<h3>color.rgb2hsb(r,g,b)</h3>
+
+<p>rgb转hsb,<br>
+返回h(色相),s(饱和度),b(明度)三个值</p>
+
+<p><a id="color.rgb2lab"></a></p>
+
+<h3>color.rgb2lab(r,g,b)</h3>
+
+<p>RGB颜色分量转Lab颜色分量[D65],返回L,a,b等三个值</p>
+
+<p><a id="color.rgbReverse"></a></p>
+
+<h3>color.rgbReverse(颜色数值)</h3>
+
+<p>ARGB颜色转值转RGB,<br>
+RGB分量中R、B的位置互换</p>
+
+<p><a id="color.stringify"></a></p>
+
+<h3>color.stringify(颜色数值,是否ARGB格式)</h3>
+
+<p>生成网页兼容的文本<br>
+如果是ARGB数值，返回#RRGGBBAA格式字符串<br>
+#RRGGBBAA可用于HTMLayout,Sciter,以及最新版的chrome也可以支持</p>
+
+<p><a href="_.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/color/_.md">Markdown 格式</a></p>
+
+</body> 
+</html>

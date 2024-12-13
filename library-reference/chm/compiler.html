@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - chm.compiler 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - chm.compiler 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>chm.compiler 库模块帮助文档</h1>
+
+<p><a id="chm"></a></p>
+
+<h2>chm 成员列表</h2>
+
+<p><a id="chm.compiler"></a></p>
+
+<h3>chm.compiler(&quot;HHP文件路径&quot;)</h3>
+
+<p>创建可打开CHM工程文件</p>
+
+<p><a id="chm.compiler"></a></p>
+
+<h3>chm.compiler()</h3>
+
+<p><a href="#chmCompilerObject">返回对象:chmCompilerObject</a></p>
+
+<p><a id="chmCompilerObject"></a></p>
+
+<h2>chmCompilerObject 成员列表</h2>
+
+<p><a id="chmCompilerObject.compile"></a></p>
+
+<h3>chmCompilerObject.compile()</h3>
+
+<p>编译生成CHM文件<br>
+可选在参数中指定输出CHM文件路径</p>
+
+<p><a id="chmCompilerObject.compiledFile"></a></p>
+
+<h3>chmCompilerObject.compiledFile</h3>
+
+<p>输出的CHM文件路径</p>
+
+<p><a id="chmCompilerObject.contentsFile"></a></p>
+
+<h3>chmCompilerObject.contentsFile</h3>
+
+<p>目录文件</p>
+
+<p><a id="chmCompilerObject.defaultFont"></a></p>
+
+<h3>chmCompilerObject.defaultFont</h3>
+
+<p>默认字体,默认为 &quot;Tahoma,10,0&quot;</p>
+
+<p><a id="chmCompilerObject.defaultTopic"></a></p>
+
+<h3>chmCompilerObject.defaultTopic</h3>
+
+<p>默认首页</p>
+
+<p><a id="chmCompilerObject.defaultWindow"></a></p>
+
+<h3>chmCompilerObject.defaultWindow</h3>
+
+<p>默认窗体名字</p>
+
+<p><a id="chmCompilerObject.displayCompileProgress"></a></p>
+
+<h3>chmCompilerObject.displayCompileProgress</h3>
+
+<p>是否显示进度,默认为&quot;Yes&quot;</p>
+
+<p><a id="chmCompilerObject.fullTextSearch"></a></p>
+
+<h3>chmCompilerObject.fullTextSearch</h3>
+
+<p>是否全文搜索,默认为 &quot;Yes&quot;</p>
+
+<p><a id="chmCompilerObject.hhpInfo"></a></p>
+
+<h3>chmCompilerObject.hhpInfo</h3>
+
+<p>配置文件  </p>
+
+<p><a href="#iniObject">返回对象:iniObject</a></p>
+
+<p><a id="chmCompilerObject.indexFile"></a></p>
+
+<h3>chmCompilerObject.indexFile</h3>
+
+<p>索引文件</p>
+
+<p><a id="chmCompilerObject.language"></a></p>
+
+<h3>chmCompilerObject.language</h3>
+
+<p>LCID 语言代码</p>
+
+<p><a id="chmCompilerObject.navigationPaneWidth"></a></p>
+
+<h3>chmCompilerObject.navigationPaneWidth</h3>
+
+<p>左侧导航栏宽度,默认为 220</p>
+
+<p><a id="chmCompilerObject.navigationStyle"></a></p>
+
+<h3>chmCompilerObject.navigationStyle</h3>
+
+<p>左侧导航栏样式,数值,<br>
+默认为 0x60420</p>
+
+<p><a id="chmCompilerObject.onPrint"></a></p>
+
+<h3>chmCompilerObject.onPrint</h3>
+
+<pre><code class="aardio language-aardio">chmCompilerObject.onPrint = function( str ){
+    io.print( str )/*参数为输出信息,  
+此回调函数返回 true 继续编译*/
+    return true;
+}
+</code></pre>
+
+<p><a id="chmCompilerObject.onProgress"></a></p>
+
+<h3>chmCompilerObject.onProgress</h3>
+
+<pre><code class="aardio language-aardio">chmCompilerObject.onProgress = function( str ){
+    io.print( str )/*参数指示进度,  
+此回调函数返回 true 继续编译*/
+    return true;
+}
+</code></pre>
+
+<p><a id="chmCompilerObject.title"></a></p>
+
+<h3>chmCompilerObject.title</h3>
+
+<p>窗口标题</p>
+
+<p><a href="compiler.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/chm/compiler.md">Markdown 格式</a></p>
+
+</body> 
+</html>

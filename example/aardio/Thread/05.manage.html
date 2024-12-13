@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - 线程管理器'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - 线程管理器</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 线程管理器</h1><pre><code class="aardio language-aardio">//线程管理器
+//这个东西主要是用在界面线程里,但为了简化代码,这里用一个控制台来演示
+
+import console;
+import thread.manage;
+
+//创建线程管理器
+manage = thread.manage(3);
+
+var thrdFunc = function(name){
+
+    import win;
+    import console;
+
+    for(i=1;10;1){ 
+        console.log( thread.getId(),name )
+        if( !win.delay(1000) ){ 
+            //主线程可以用 manage.quitMessage()中断这个循环
+            console.log(&quot;收到退出指令&quot;)
+            return;
+        }
+    } 
+    return 67;
+}
+
+//创建线程，如果线程池已满会自动等待其他线程结束
+manage.create(thrdFunc,&quot;线程1&quot;).onEnd = function(...){
+    console.log(&quot;线程1的回调&quot;,...);
+} 
+
+//创建线程（忽略线程返回值），如果线程池已满会自动等待其他线程结束
+manage.createLite(thrdFunc,&quot;线程2&quot;).onEnd = function(){
+    console.log(&quot;线程2的回调&quot;);
+}
+
+manage.create(thrdFunc,&quot;线程3&quot;);
+
+/*
+创建所有线程以后，
+必须调用 manage.waitClose() 函数等待所有线程执行完成，
+manage.waitClose() 也会负责触发 onEnd 回调，并自动关闭已结束线程的线程句柄。
+*/
+manage.waitClose(); 
+
+console.pause();
+</code></pre>
+<a href="05.manage.md" tppabs="https://www.aardio.com/zh-cn/doc/example/aardio/Thread/05.manage.md">Markdown 格式</a>
+</body> 
+</html>

@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - web form 上传文件'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - web form 上传文件</title> 
+<link rel="stylesheet" href="../../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: web form 上传文件</h1><pre><code class="aardio language-aardio">//上传文件
+import win.ui;
+/*DSG{{*/
+var winform = win.form(text=&quot;web form 上传文件&quot;;right=717;bottom=524;scroll=1)
+winform.add()
+/*}}*/
+
+import web.form;
+var wb = web.form( winform );//创建web窗体
+string.save(&quot;/test.txt&quot;,&quot;这是测试数据&quot; );//构建数据包
+
+//构建上传数据包
+import web.multipartFormData;
+var formData = web.multipartFormData();
+formData.add(&quot;username&quot;,&quot;用户名&quot;);
+formData.add(&quot;password&quot;,&quot;密码&quot;);
+formData.add(&quot;file1&quot;,&quot;@/test.txt&quot;) 
+
+//httpbin.org总是会返回JSON,用FileDownload事件取消JSON下载
+wb.FileDownload = function( activeDocument, cancel) {if( !activeDocument ) return true;} 
+wb.post(&quot;http://eu.httpbin.org/post&quot;
+    , formData.readAll() //上传数据包 
+    , formData.contentHeader()  //要添加的HTTP头
+    );
+winform.show() 
+
+//也可以用inet.http上传(与web.form共享会话)
+import inet.http;
+import string.html;
+var http = inet.http(wb.script.navigator.userAgent);
+var json = http.post(&quot;http://eu.httpbin.org/post&quot; 
+    , formData.readAll() //上传数据包 
+    , formData.contentHeader()  //要添加的HTTP头
+    );
+wb.write(string.html.fromText(json));
+
+//启动消息循环
+win.loopMessage();
+
+</code></pre>
+<a href="javascript:if(confirm('https://www.aardio.com/zh-cn/doc/example/WebUI/web.form/Feature/post.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������������ʵ��ļ������صġ�  \n\n�����ڷ������ϴ���?'))window.location='https://www.aardio.com/zh-cn/doc/example/WebUI/web.form/Feature/post.md'" tppabs="https://www.aardio.com/zh-cn/doc/example/WebUI/web.form/Feature/post.md">Markdown 格式</a>
+</body> 
+</html>

@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - environment 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - environment 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>environment 库模块帮助文档</h1>
+
+<p><a id="environment"></a></p>
+
+<h2>environment 成员列表</h2>
+
+<p><a id="environment.each"></a></p>
+
+<h3>environment.each()</h3>
+
+<pre><code class="aardio language-aardio">for(name,value in environment.each() ){
+    if( value ) {
+        /*遍历当前进程环境变量  
+name 为变量名,value 为变量值*/
+    }
+}
+</code></pre>
+
+<p><a id="environment.query"></a></p>
+
+<h3>environment.query(&quot;Path&quot;)</h3>
+
+<p>自注册表读取参数@1指定环境变量的最新值,<br>
+如果要自当前进程环境变量读取请改用 environment.get 函数</p>
+
+<p><a id="environment.system"></a></p>
+
+<h3>environment.system()</h3>
+
+<p>获取系统环境变量,<br>
+修改变时值需要管理权限  </p>
+
+<p><a href="#environmentObject">返回对象:environmentObject</a></p>
+
+<p><a id="environment.update"></a></p>
+
+<h3>environment.update(&quot;Path&quot;)</h3>
+
+<p>自注册表读取参数@1指定环境变量的最新值,<br>
+并更新当前进程指定名称的坏境变量<br>
+默认读取系统环境变量,<br>
+参数@2如果指定为 true 则读取用户环境变量  </p>
+
+<p>如果一些安装程序修改了 Path 环境变量,<br>
+可能当前进程仍然在使用旧的值或继承父进程的值,<br>
+调用此函数可读取注册表中最新的值</p>
+
+<p><a id="environment.user"></a></p>
+
+<h3>environment.user()</h3>
+
+<p>获取用户环境变量  </p>
+
+<p><a href="#environmentObject">返回对象:environmentObject</a></p>
+
+<p><a id="environmentObject"></a></p>
+
+<h2>environmentObject 成员列表</h2>
+
+<p><a id="environmentObject.close"></a></p>
+
+<h3>environmentObject.close()</h3>
+
+<p>关闭</p>
+
+<p><a id="environmentObject.delete"></a></p>
+
+<h3>environmentObject.delete(&quot;键&quot;)</h3>
+
+<p>删除环境变量<br>
+成功返回对象自身,失败返回 null</p>
+
+<p><a id="environmentObject.delete"></a></p>
+
+<h3>environmentObject.delete()</h3>
+
+<p><a href="#environmentObject">返回对象:environmentObject</a></p>
+
+<p><a id="environmentObject.each"></a></p>
+
+<h3>environmentObject.each()</h3>
+
+<p>用于for语句中作为迭代器遍历所有环境变量</p>
+
+<p><a id="environmentObject.get"></a></p>
+
+<h3>environmentObject.get(&quot;键&quot;)</h3>
+
+<p>读取指定的环境变量,<br>
+省略参数读取所有环境变量返回表对象</p>
+
+<p><a id="environmentObject.set"></a></p>
+
+<h3>environmentObject.set(&quot;键&quot;,&quot;值&quot;)</h3>
+
+<p>修改当前进程环境变量,并修改注册表中指定的环境变量，<br>
+不指定值或为 null 值则删除变量<br>
+成功返回对象自身,失败返回 null</p>
+
+<p><a id="environmentObject.set"></a></p>
+
+<h3>environmentObject.set()</h3>
+
+<p><a href="#environmentObject">返回对象:environmentObject</a></p>
+
+<p><a id="environmentObject.update"></a></p>
+
+<h3>environmentObject.update</h3>
+
+<p>更新环境变量</p>
+
+<p><a id="environmentObject.update"></a></p>
+
+<h3>environmentObject.update()</h3>
+
+<p>自注册表读取环境变量，并更新当前进程环境变量,<br>
+此用法不修改注册表</p>
+
+<p><a id="environmentObject.update"></a></p>
+
+<h3>environmentObject.update(env)</h3>
+
+<p>修改并更新环境变量为参数指定的值,<br>
+@env 参数指定包含需要更新的环境变量键值对的表参数,<br>
+此用法会更新注册表</p>
+
+<p><a id="environmentObject.update"></a></p>
+
+<h3>environmentObject.update(name)</h3>
+
+<p>自注册表读取指定名称环境变量，并更新当前进程环境变量，<br>
+@name 参数指定需要刷新的环境变量名,<br>
+此用法不修改注册表</p>
+
+<p><a href="_.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/environment/_.md">Markdown 格式</a></p>
+
+</body> 
+</html>

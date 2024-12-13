@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - newLisp 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - newLisp 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>newLisp 库模块帮助文档</h1>
+
+<p><details>  <summary>官网文档</summary>  <p>
+<a href="javascript:if(confirm('http://www.newlisp.org/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.newlisp.org/'" tppabs="http://www.newlisp.org/">http://www.newlisp.org/</a>
+<a href="javascript:if(confirm('http://www.newlisp.org/newlisp_manual.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.newlisp.org/newlisp_manual.html'" tppabs="http://www.newlisp.org/newlisp_manual.html">http://www.newlisp.org/newlisp_manual.html</a>
+<a href="javascript:if(confirm('http://www.newlisp.org/CodePatterns-cn.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.newlisp.org/CodePatterns-cn.html'" tppabs="http://www.newlisp.org/CodePatterns-cn.html">http://www.newlisp.org/CodePatterns-cn.html</a>
+</p></details></p>
+
+<p><a id="newLisp"></a></p>
+
+<h2>newLisp 成员列表</h2>
+
+<p><a id="newLisp.callback"></a></p>
+
+<h3>newLisp.callback(name,proto,func)</h3>
+
+<pre><code class="aardio language-aardio">newLisp.callback(&quot;/*回调函数名，LISP 可用 get-string 等获取返回值*/&quot;,&quot;string(int,double,string)&quot;,  
+    function(i,n,str){  
+        return web.json.stringify({i,n,str});  
+    }  
+)
+</code></pre>
+
+<p><a id="newLisp.eval"></a></p>
+
+<h3>newLisp.eval()</h3>
+
+<p>执行 LISP 代码，返回字符串  </p>
+
+<p>LISP 代码支持 aardio 模板语法: <a href="../../language-reference/templating/syntax.html" tppabs="https://www.aardio.com/zh-cn/doc/language-reference/templating/syntax.html">https://www.aardio.com/zh-cn/doc/language-reference/templating/syntax.html</a><br>
+一、如果 aardio 输出表，则通过 JSON 转为 LISP 对象<br>
+二、如果 aardio 输出多个参数，则转为数组后通过 JSON 转为 LISP 对象<br>
+三、如果 aardio 输出其他单个参数，则转为字符串直接置入 LISP 代码</p>
+
+<p><a id="newLisp.exec"></a></p>
+
+<h3>newLisp.exec()</h3>
+
+<p>执行 LISP 代码，并输出到控制台  </p>
+
+<p>LISP 代码支持 aardio 模板语法: <a href="../../language-reference/templating/syntax.html" tppabs="https://www.aardio.com/zh-cn/doc/language-reference/templating/syntax.html">https://www.aardio.com/zh-cn/doc/language-reference/templating/syntax.html</a><br>
+一、如果 aardio 输出表，则通过 JSON 转为 LISP 对象<br>
+二、如果 aardio 输出多个参数，则转为数组后通过 JSON 转为 LISP 对象<br>
+三、如果 aardio 输出其他单个参数，则转为字符串直接置入 LISP 代码</p>
+
+<p><a id="newLisp.jsonCallback"></a></p>
+
+<h3>newLisp.jsonCallback(name,proto,func)</h3>
+
+<pre><code class="aardio language-aardio">newLisp.callback(&quot;/*回调函数名，LISP 可用 get-json 获取返回值*/&quot;,&quot;string(int a,int b)&quot;,  
+    function(a,b){  
+        return {a,b};  
+    }  
+)
+</code></pre>
+
+<p><a id="newLisp.libConsole"></a></p>
+
+<h3>newLisp.libConsole(false)</h3>
+
+<p>禁止 LISP 代码输出到控制台</p>
+
+<p><a id="newLisp.libConsole"></a></p>
+
+<h3>newLisp.libConsole(true)</h3>
+
+<p>允许 LISP 代码输出到控制台，这是默认设置</p>
+
+<p><a id="newLisp.run"></a></p>
+
+<h3>newLisp.run()</h3>
+
+<p>启动 NewLisp REPL（Read Eval Print Loop）命令行解释器<br>
+每一个非空行在回车后执行并输出结果,<br>
+如果输入一个空行，则读取输入直到下一个空行后执行代码<br>
+按Ctrl + C退出程序</p>
+
+<p><a href="_.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/newLisp/_.md">Markdown 格式</a></p>
+
+</body> 
+</html>

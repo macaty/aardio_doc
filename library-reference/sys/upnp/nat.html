@@ -1,0 +1,214 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - sys.upnp.nat 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - sys.upnp.nat 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>sys.upnp.nat 库模块帮助文档</h1>
+
+<p><a id="sys.upnp"></a></p>
+
+<h2>sys.upnp 成员列表</h2>
+
+<p>通用即插即用 Universal Plug and Play</p>
+
+<p><a id="sys.upnp.nat"></a></p>
+
+<h3>sys.upnp.nat</h3>
+
+<p>Network Address Translation 自动端口映射</p>
+
+<p><a id="sys.upnp.nat"></a></p>
+
+<h3>sys.upnp.nat()</h3>
+
+<p>创建 UPnP 自动端口映射管理器,<br>
+如果设备不支持自动端口映射或连接到受限的访客网络则所有函数忽略不执行,<br>
+注意在XP系统上此对象的所有函数也会忽略不执行  </p>
+
+<p><a href="#sysUpnpNatObject">返回对象:sysUpnpNatObject</a></p>
+
+<p><a id="sysUpnpNatMappingPortObject"></a></p>
+
+<h2>sysUpnpNatMappingPortObject 成员列表</h2>
+
+<p><a id="sysUpnpNatMappingPortObject.description"></a></p>
+
+<h3>sysUpnpNatMappingPortObject.description</h3>
+
+<p>描述</p>
+
+<p><a id="sysUpnpNatMappingPortObject.editDescription"></a></p>
+
+<h3>sysUpnpNatMappingPortObject.editDescription()</h3>
+
+<p>设置描述,参数应为字符串</p>
+
+<p><a id="sysUpnpNatMappingPortObject.editInternalClient"></a></p>
+
+<h3>sysUpnpNatMappingPortObject.editInternalClient()</h3>
+
+<p>设置内网IP地址或主机名,参数应为字符串</p>
+
+<p><a id="sysUpnpNatMappingPortObject.editInternalPort"></a></p>
+
+<h3>sysUpnpNatMappingPortObject.editInternalPort()</h3>
+
+<p>设置内网端口,参数应为数值</p>
+
+<p><a id="sysUpnpNatMappingPortObject.enable"></a></p>
+
+<h3>sysUpnpNatMappingPortObject.enable()</h3>
+
+<p>设置是否启用,即修改 enabled 属性的值,<br>
+参数可为 true 或 false</p>
+
+<p><a id="sysUpnpNatMappingPortObject.enabled"></a></p>
+
+<h3>sysUpnpNatMappingPortObject.enabled</h3>
+
+<p>是否启用<br>
+注意这是只读属性,<br>
+修改此属性应当调用 enable 函数</p>
+
+<p><a id="sysUpnpNatMappingPortObject.externalIPAddress"></a></p>
+
+<h3>sysUpnpNatMappingPortObject.externalIPAddress</h3>
+
+<p>外网 IP 地址</p>
+
+<p><a id="sysUpnpNatMappingPortObject.externalPort"></a></p>
+
+<h3>sysUpnpNatMappingPortObject.externalPort</h3>
+
+<p>外网端口</p>
+
+<p><a id="sysUpnpNatMappingPortObject.internalClient"></a></p>
+
+<h3>sysUpnpNatMappingPortObject.internalClient</h3>
+
+<p>内网IP地址或主机名</p>
+
+<p><a id="sysUpnpNatMappingPortObject.internalPort"></a></p>
+
+<h3>sysUpnpNatMappingPortObject.internalPort</h3>
+
+<p>内网端口</p>
+
+<p><a id="sysUpnpNatMappingPortObject.protocol"></a></p>
+
+<h3>sysUpnpNatMappingPortObject.protocol</h3>
+
+<p>网络协议</p>
+
+<p><a id="sysUpnpNatObject"></a></p>
+
+<h2>sysUpnpNatObject 成员列表</h2>
+
+<p><a id="sysUpnpNatObject.add"></a></p>
+
+<h3>sysUpnpNatObject.add</h3>
+
+<p>添加端口映射,<br>
+成功返回端口映射对象,失败返回null,<br>
+如果指定外网端口已映射到其他主机,则添加该端口会失败,<br>
+如果添加之前已映射到本机的端口则会成功</p>
+
+<p><a id="sysUpnpNatObject.add"></a></p>
+
+<h3>sysUpnpNatObject.add()</h3>
+
+<p><a href="#sysUpnpNatMappingPortObject">返回对象:sysUpnpNatMappingPortObject</a></p>
+
+<p><a id="sysUpnpNatObject.add"></a></p>
+
+<h3>sysUpnpNatObject.add(externalPort,protocol,internalPort,internalClient,description)</h3>
+
+<p>添加端口映射,<br>
+除参数 @1 以外，所有参数都是可选参数,<br>
+全部参数如下：<br>
+@externalPort 外网端口,数值,<br>
+@protocol 网络协议,默认为&quot;TCP&quot;<br>
+@internalPort 内网端口,默认与外端端口相同,数值<br>
+@internalClient 内网地址,默认获取本机联网的网卡IP地址,字符串值<br>
+@description 描述,默认为空字符串</p>
+
+<p><a id="sysUpnpNatObject.close"></a></p>
+
+<h3>sysUpnpNatObject.close()</h3>
+
+<p>关闭对象,一般可省略</p>
+
+<p><a id="sysUpnpNatObject.count"></a></p>
+
+<h3>sysUpnpNatObject.count</h3>
+
+<p>返回端口映射对象总数</p>
+
+<p><a id="sysUpnpNatObject.each"></a></p>
+
+<h3>sysUpnpNatObject.each()</h3>
+
+<pre><code class="aardio language-aardio">for index,mappingPort in sysUpnpNatObject.each() {  
+
+}  
+
+[返回对象:sysUpnpNatMappingPortObject](#sysUpnpNatMappingPortObject)
+</code></pre>
+
+<p><a id="sysUpnpNatObject.getTable"></a></p>
+
+<h3>sysUpnpNatObject.getTable()</h3>
+
+<p>返回所有端口映射数据为一个数组，<br>
+每个数组成员为包含以下字段的普通表对象：<br>
+protocol 协议,<br>
+description 描述,<br>
+externalPort 外部端口,<br>
+externalIPAddress 外网地址,<br>
+internalPort 内网端口,<br>
+internalClient 内网地址,<br>
+comObject 此映射对象的 COM 对象</p>
+
+<p><a id="sysUpnpNatObject.item"></a></p>
+
+<h3>sysUpnpNatObject.item()</h3>
+
+<p><a href="#sysUpnpNatMappingPortObject">返回对象:sysUpnpNatMappingPortObject</a></p>
+
+<p><a id="sysUpnpNatObject.item"></a></p>
+
+<h3>sysUpnpNatObject.item(externalPort,protocol)</h3>
+
+<p>获取指定的端口映射对象,<br>
+@externalPort 用一个数值指定外网端口,<br>
+@protocol 用一个字符串指定网络协议,省略则为&quot;TCP&quot;</p>
+
+<p><a id="sysUpnpNatObject.remove"></a></p>
+
+<h3>sysUpnpNatObject.remove(externalPort,protocol)</h3>
+
+<p>移除指定的端口映射对象,成功返回 true,<br>
+@externalPort 用一个数值指定外网端口,<br>
+@protocol 用一个字符串指定网络协议,省略则为&quot;TCP&quot;</p>
+
+<p><a id="sysUpnpNatObject.valid"></a></p>
+
+<h3>sysUpnpNatObject.valid()</h3>
+
+<p>检测当前系统以及路由器是否支持 UPnP 自动端口映射,<br>
+注意连接到路由器设置受限的访客网络也可能不支持 UPnP</p>
+
+<p><a href="nat.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/sys/upnp/nat.md">Markdown 格式</a></p>
+
+</body> 
+</html>

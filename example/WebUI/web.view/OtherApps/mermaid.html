@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - Mermaid 是一个用于画流程图、状态图、时序图、甘特图的库'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - Mermaid 是一个用于画流程图、状态图、时序图、甘特图的库</title> 
+<link rel="stylesheet" href="../../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: Mermaid 是一个用于画流程图、状态图、时序图、甘特图的库</h1><pre><code class="aardio language-aardio">//Mermaid 绘图
+import win.ui;
+/*DSG{{*/
+var winform = win.form(text=&quot;Mermaid 是一个用于画流程图、状态图、时序图、甘特图的库&quot;;right=966;bottom=622)
+winform.add(
+button={cls=&quot;button&quot;;text=&quot;绘图&quot;;left=643;top=552;right=878;bottom=604;color=14120960;font=LOGFONT(h=-14);z=2};
+custom={cls=&quot;custom&quot;;text=&quot;自定义控件&quot;;left=10;top=6;right=958;bottom=535;z=1}
+)
+/*}}*/
+
+import web.view;
+var wb = web.view(winform.custom);
+
+wb.html = /**
+&lt;!DOCTYPE html&gt;
+&lt;html&gt; 
+  &lt;body&gt;
+    Here is one mermaid diagram:
+    &lt;div class=&quot;mermaid&quot;&gt;
+        graph TD 
+        A[Client] --&gt; B[Load Balancer] 
+        B --&gt; C[Server1] 
+        B --&gt; D[Server2]
+    &lt;/div&gt;
+
+    And here is another:
+   &lt;div id=&quot;graphDiv&quot;&gt;&lt;/div&gt;
+
+   &lt;script type=&quot;module&quot;&gt;
+      import mermaid from &#39;https://lib.baomitu.com/mermaid/10.9.0/mermaid.esm.min.mjs&#39;;
+      window.mermaid = mermaid;
+
+      //mermaid.initialize({ startOnLoad: true }); 
+    &lt;/script&gt;
+   &lt;script&gt; 
+   //mermaid.initialize({ startOnLoad: false }); 
+   &lt;/script&gt;
+&lt;/body&gt;
+**/
+
+//aardio 调用 Mermaid.js 绘图
+winform.button.oncommand = function(id,event){
+    wb.xcall(`
+    (graph)=&gt;{
+
+        mermaid.render(&#39;graphTemp&#39;,//不要指定 graphDiv，否则会被删除
+            graph ).then(
+            (result,bindFunctions)=&gt;{ 
+                var ele = document.getElementById(&quot;graphDiv&quot;);
+                ele.innerHTML = result.svg;
+            }
+        ) 
+    }`,&#39;graph TB\na--&gt;b&#39;)   
+}
+
+winform.show();
+win.loopMessage();
+</code></pre>
+<a href="javascript:if(confirm('https://www.aardio.com/zh-cn/doc/example/WebUI/web.view/OtherApps/mermaid.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������������ʵ��ļ������صġ�  \n\n�����ڷ������ϴ���?'))window.location='https://www.aardio.com/zh-cn/doc/example/WebUI/web.view/OtherApps/mermaid.md'" tppabs="https://www.aardio.com/zh-cn/doc/example/WebUI/web.view/OtherApps/mermaid.md">Markdown 格式</a>
+</body> 
+</html>

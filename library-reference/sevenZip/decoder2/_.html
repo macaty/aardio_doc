@@ -1,0 +1,282 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - sevenZip.decoder2 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - sevenZip.decoder2 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>sevenZip.decoder2 库模块帮助文档</h1>
+
+<p><a id="sevenZip"></a></p>
+
+<h2>sevenZip 成员列表</h2>
+
+<p><a id="sevenZip.decoder2"></a></p>
+
+<h3>sevenZip.decoder2</h3>
+
+<p>7Zip解压支持库,<br>
+支持LZMA/BCJ*算法</p>
+
+<p>创建7Zip解压对象</p>
+
+<p><a id="sevenZip.decoder2"></a></p>
+
+<h3>sevenZip.decoder2()</h3>
+
+<p>创建7Zip解压对象,  </p>
+
+<p><a href="#sevenZipDecoder2Object">返回对象:sevenZipDecoder2Object</a></p>
+
+<p><a id="sevenZipDecoder2Object"></a></p>
+
+<h2>sevenZipDecoder2Object 成员列表</h2>
+
+<p><a id="sevenZipDecoder2Object.close"></a></p>
+
+<h3>sevenZipDecoder2Object.close()</h3>
+
+<p>关闭对象</p>
+
+<p><a id="sevenZipDecoder2Object.count"></a></p>
+
+<h3>sevenZipDecoder2Object.count()</h3>
+
+<p>返回文件数</p>
+
+<p><a id="sevenZipDecoder2Object.each"></a></p>
+
+<h3>sevenZipDecoder2Object.each()</h3>
+
+<pre><code class="aardio language-aardio">for path,isDir,time,size64 in sevenZipDecoder2Object.each(){
+    /*遍历压缩包中的所有文件或目录,  
+path 参数为相对路径,  
+isDir 参数指定当前路径是否目录,  
+time 参数为文件修改时间,  
+size64 参数为文件大小，math.size64 对象*/
+}
+</code></pre>
+
+<p><a id="sevenZipDecoder2Object.extract"></a></p>
+
+<h3>sevenZipDecoder2Object.extract(&quot;解压路径&quot;)</h3>
+
+<p>解压文件到指定目录,<br>
+目录不存在则自动创建该目录</p>
+
+<p><a id="sevenZipDecoder2Object.extractPrepareOperation"></a></p>
+
+<h3>sevenZipDecoder2Object.extractPrepareOperation</h3>
+
+<pre><code class="aardio language-aardio">sevenZipDecoder2Object.extractPrepareOperation = function(askExtractMode,itemIndex,filepath,isDir){
+    /*准备解压时回调此函数,filepath参数为当前解压的文件路径*/
+}
+</code></pre>
+
+<p><a id="sevenZipDecoder2Object.extractSetCompleted"></a></p>
+
+<h3>sevenZipDecoder2Object.extractSetCompleted</h3>
+
+<pre><code class="aardio language-aardio">sevenZipDecoder2Object.extractSetCompleted = function(lowSize,hiSize,percent){
+    io.print(&quot;已解压&quot;,math.formatSize(lowSize,hiSize),&quot; %&quot; + percent )
+    /*解压完成时回调此函数,percent为表示解压进度的百分比数值*/
+}
+</code></pre>
+
+<p><a id="sevenZipDecoder2Object.extractSetOperationResult"></a></p>
+
+<h3>sevenZipDecoder2Object.extractSetOperationResult</h3>
+
+<pre><code class="aardio language-aardio">sevenZipDecoder2Object.extractSetOperationResult = function(opRet){
+    /*这里可以获取操作结果*/
+    if( opRet == 0/*kOK*/ ){
+
+    }
+    elseif( opRet == 1/*kUnSupportedMethod*/ ){
+        io.print(&quot;Unsupported Method&quot;)
+    }
+    elseif( opRet == 0/*kDataError*/ ){
+        io.print(&quot;CRC Failed&quot;)
+    }
+    elseif( opRet == 0/*kCRCError*/ ){
+        io.print(&quot;Data Error&quot;)
+    }
+    else {
+        io.print(&quot;Unknown Error&quot;)
+    }
+}
+</code></pre>
+
+<p><a id="sevenZipDecoder2Object.extractSetTotal"></a></p>
+
+<h3>sevenZipDecoder2Object.extractSetTotal</h3>
+
+<pre><code class="aardio language-aardio">sevenZipDecoder2Object.extractSetTotal = function(lowSize,hiSize){
+    var size64 = math.size64(lowBytes,hiBytes);
+    io.print(&quot;压缩包大小&quot;,size64.format() )
+    /*返回 _S_FALSE 取消解压*/
+}
+</code></pre>
+
+<p><a id="sevenZipDecoder2Object.getItemBoolean"></a></p>
+
+<h3>sevenZipDecoder2Object.getItemBoolean(文件索引,_kpid)</h3>
+
+<p>文件索引自1开始,返回属性布尔值<br>
+参数2使用_kpid前缀的常量表示属性索引</p>
+
+<p><a id="sevenZipDecoder2Object.getItemNumber"></a></p>
+
+<h3>sevenZipDecoder2Object.getItemNumber(文件索引,_kpid)</h3>
+
+<p>文件索引自1开始,返回属性数值<br>
+参数2使用_kpid前缀的常量表示属性索引</p>
+
+<p><a id="sevenZipDecoder2Object.getItemSize64"></a></p>
+
+<h3>sevenZipDecoder2Object.getItemSize64()</h3>
+
+<p><a href="../../math/_.html#mathSize64Object" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/math/_.html#mathSize64Object">返回对象:mathSize64Object</a></p>
+
+<p><a id="sevenZipDecoder2Object.getItemSize64"></a></p>
+
+<h3>sevenZipDecoder2Object.getItemSize64(文件索引,_kpidSize)</h3>
+
+<p>文件索引自1开始,返回文件大小</p>
+
+<p><a id="sevenZipDecoder2Object.getItemString"></a></p>
+
+<h3>sevenZipDecoder2Object.getItemString(文件索引,_kpid)</h3>
+
+<p>文件索引自1开始,返回属性字符串值<br>
+参数2使用_kpid前缀的常量表示属性索引</p>
+
+<p><a id="sevenZipDecoder2Object.getItemTime"></a></p>
+
+<h3>sevenZipDecoder2Object.getItemTime(文件索引,_kpid)</h3>
+
+<p>文件索引自1开始,返回属性时间值<br>
+参数2使用_kpid前缀的常量表示属性索引</p>
+
+<p><a id="sevenZipDecoder2Object.open"></a></p>
+
+<h3>sevenZipDecoder2Object.open(&quot;7z压缩包路径&quot;,是否测试模式)</h3>
+
+<p>打开压缩包,<br>
+成功返回true,失败返回false以及错误信息</p>
+
+<p><a id="sevenZipDecoder2Object.openSetCompleted"></a></p>
+
+<h3>sevenZipDecoder2Object.openSetCompleted</h3>
+
+<pre><code class="aardio language-aardio">sevenZipDecoder2Object.openSetCompleted = function(files,lowBytes,hiBytes,percent){
+    io.print(&quot;已打开&quot;,math.size64(lowBytes,hiBytes).format() ,&quot; %&quot; + percent)
+    /*打开压缩包回调此函数,percent为表示打开进度的百分比数值*/
+}
+</code></pre>
+
+<p><a id="sevenZipDecoder2Object.openSetTotal"></a></p>
+
+<h3>sevenZipDecoder2Object.openSetTotal</h3>
+
+<pre><code class="aardio language-aardio">sevenZipDecoder2Object.openSetTotal = function(files,lowBytes,hiBytes){
+    var size64 = ..math.size64(lowBytes,hiBytes);
+    /*返回 _S_FALSE 取消解压*/
+}
+</code></pre>
+
+<p><a id="sevenZipDecoder2Object.printError"></a></p>
+
+<h3>sevenZipDecoder2Object.printError</h3>
+
+<pre><code class="aardio language-aardio">sevenZipDecoder2Object.printError = function(name,message){
+    /*解压时调用此函数显示错误信息*/
+    io.print(&quot;出错了&quot;, name,message ) 
+}
+</code></pre>
+
+<p><a id="sevenZipDecoder2Object.size64"></a></p>
+
+<h3>sevenZipDecoder2Object.size64()</h3>
+
+<p>返回解压后大小  </p>
+
+<p><a href="../../math/_.html#mathSize64Object" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/math/_.html#mathSize64Object">返回对象:mathSize64Object</a></p>
+
+<h3>自动完成常量</h3>
+
+<p>_kpidATime=0xB<br>
+_kpidAttrib=9<br>
+_kpidBigEndian=0x2A<br>
+_kpidBit64=0x29<br>
+_kpidBlock=0x1B<br>
+_kpidCRC=0x13<br>
+_kpidCTime=0xA<br>
+_kpidCharacts=0x2F<br>
+_kpidChecksum=0x2E<br>
+_kpidClusterSize=0x1102<br>
+_kpidComment=0x1C<br>
+_kpidCommented=0xE<br>
+_kpidCpu=0x2B<br>
+_kpidCreatorApp=0x33<br>
+_kpidDictionarySize=0x12<br>
+_kpidEncrypted=0xF<br>
+_kpidError=0x37<br>
+_kpidExtension=5<br>
+_kpidFileSystem=0x18<br>
+_kpidFreeSpace=0x1101<br>
+_kpidGroup=0x1A<br>
+_kpidHandlerItemIndex=2<br>
+_kpidHeadersSize=0x2D<br>
+_kpidHostOS=0x17<br>
+_kpidId=0x31<br>
+_kpidIsAnti=0x15<br>
+_kpidIsDir=6<br>
+_kpidIsVolume=0x23<br>
+_kpidLink=0x36<br>
+_kpidLinks=0x25<br>
+_kpidLocalName=0x1200<br>
+_kpidMTime=0xC<br>
+_kpidMainSubfile=1<br>
+_kpidMethod=0x16<br>
+_kpidName=4<br>
+_kpidNumBlocks=0x26<br>
+_kpidNumSubDirs=0x1F<br>
+_kpidNumSubFiles=0x20<br>
+_kpidNumVolumes=0x27<br>
+_kpidOffset=0x24<br>
+_kpidPackSize=8<br>
+_kpidPath=3<br>
+_kpidPhySize=0x2C<br>
+_kpidPosition=0x1D<br>
+_kpidPosixAttrib=0x35<br>
+_kpidPrefix=0x1E<br>
+_kpidProvider=0x1201<br>
+_kpidSectorSize=0x34<br>
+_kpidShortName=0x32<br>
+_kpidSize=7<br>
+_kpidSolid=0xD<br>
+_kpidSplitAfter=0x11<br>
+_kpidSplitBefore=0x10<br>
+_kpidTimeType=0x28<br>
+_kpidTotalSize=0x1100<br>
+_kpidType=0x14<br>
+_kpidUnpackVer=0x21<br>
+_kpidUser=0x19<br>
+_kpidUserDefined=0x10000<br>
+_kpidVa=0x30<br>
+_kpidVolume=0x22<br>
+_kpidVolumeName=0x1103  </p>
+
+<p><a href="_.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/sevenZip/decoder2/_.md">Markdown 格式</a></p>
+
+</body> 
+</html>

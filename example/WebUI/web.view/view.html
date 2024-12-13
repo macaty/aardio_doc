@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - web.view( WebView2 浏览器控件) - 入门'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - web.view( WebView2 浏览器控件) - 入门</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: web.view( WebView2 浏览器控件) - 入门</h1><pre><code class="aardio language-aardio">//web.view( WebView2 浏览器控件) - 入门
+import win.ui;
+/*DSG{{*/
+var winform = win.form(text=&quot;Edge 浏览器控件 - web.view&quot;;right=800;bottom=469;bgcolor=16777215)
+winform.add()
+/*}}*/
+
+/*
+网页开发文档教程
+https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/html
+https://learnxinyminutes.com/docs/zh-cn/javascript-cn
+https://learnxinyminutes.com/docs/zh-cn/html-cn
+https://learnxinyminutes.com/docs/zh-cn/css-cn
+https://quickref.me/javascript
+https://quickref.me/es6 https://babeljs.io/docs/en/learn/#ecmascript-2015-features
+https://quickref.me/css
+
+web.view 入门教程：
+https://mp.weixin.qq.com/s/iYXPJgagXax9VgiIYaRfRw
+*/
+if(!_WIN10_LATER) import web.view.7; //兼容 Win7 以及之后版本，不支持新版 WebView2 的功能。 
+else import web.view;//支持 Win10 以及之后版本，导入这个就别导入前面的 web.view.7;  
+
+/*
+参数 @1 指定嵌入窗口（可以是 winform 或 static,custom 等控件对象）。
+可选用参数 @2 指定浏览器用户数据目录，可选用参数 @3 指定浏览器启动参数。
+*/
+var wb = web.view(winform);
+
+/*
+在 Javascript 中可通过全局变量 `aardio` 访问 wb.external 对象。
+在 JavaScript 中所有的 aardio 对象以及 aardio 对象的方法与属性都被包装为 Promise 对象
+
+在 JavaScript 中调用 wb.external 导出的函数时，参数与返回值都不需要经过 JSON 转换。
+除字符串、数值、布尔值、可兼容的数组、buffer 等基础值类型可以直接传值以外，
+其他对象类型（JavaScript 中的 object 或 aardio 中的表对象 ）自动转换为 COM 代理对象，
+让我们可以通过 COM 接口间接操作跨语言的对象。
+
+要注意不能将这种 COM 代理对象作为原生 JavaScript 对象使用，
+例如不能用于 JavaScript 图表或表格的数据源对象，而 wb.export 导出的 aardio 函数则无此限制。
+*/
+wb.external = {
+    toString = function(){
+        return owner.property; 
+    };
+    property = &quot;这是 aardio 对象的属性值&quot;;
+    methodWithParametersAndReturnValue = function(a,b){
+        return a + b
+    } 
+    //aardio 函数如果抛出异常，网页 DevTools 调试工具可查看错误信息
+}
+
+/*
+wb.export 导出 aardio 函数为 Javascript 全局对象（ Promise 对象 ）, 
+JavaScript 调用这些 aardio 函数时将会使用 JSON 自动转换跨编程语言的参数和返回值。
+这种经由 JSON 转换的对象与 JavaScript 完全兼容，而 wb.external 导出的函数则只能返回 COM 代理对象。
+
+在被网页回调的 aardio 函数内部调用 wb.eval, wb.xcall 可能阻塞后续调用。
+应改用非阻塞的 wb.invoke, wb.doScript 。或者通过 winform.setTimeout 异步调用 wb.invoke, wb.doScript。
+*/
+wb.export({
+    alert = function(msg){
+        winform.msgbox(msg) 
+
+        //要避免重入，例如：不能在 alert 回调中再次调用 alert 函数
+        //wb.invoke(&quot;alet(&#39;test&#39;)&quot;);
+    };
+    nativeAdd = function(a,b){ 
+        return a + b; 
+    }
+})
+
+/*
+如果通过 wb.html 直接写入 HTML，则不能引用其他本地文件路径。
+如果需要引用 JS,CSS 等本地资源文件，请改为：
+
+import wsock.tcp.simpleHttpServer;
+wb.go(&quot;/res/index.html&quot;) 
+*/
+wb.html = /**
+&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+    html,body{ height:100%; } 
+    &lt;/style&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt; 
+    (async ()=&gt;{
+        var v = await aardio.property;
+        var n = await aardio.methodWithParametersAndReturnValue(21,12);
+
+        /*
+        aardio 作为一个 JavaScript 对象也有一些成员是 Javascript 函数（或属性）。
+        例如 aardio.toString() 调用的就是 Javascript 函数。
+
+        如果要调用同名的 aardio 函数按微软的文档要写为 aardio.applyHostFunction(&quot;toString&quot;) ，
+        但实际测试正确写法应该是 aardio.getHostProperty(&quot;toString&quot;).applyHostFunction([])。
+        applyHostFunction 其实可以省略，所以可以这样写：
+        */
+        var str = await aardio.getHostProperty(&quot;toString&quot;)() ;//没必要取这种函数名，也没必要这样写。
+
+        alert(str);
+    })()
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body style=&quot;margin:50px&quot;&gt;
+web.view 基于微软 WebView2（Edge/Chromium内核），&lt;br&gt;
+WebView2 稳定可靠、性能强悍、接口简洁，可生成体积很小的独立 EXE 程序。&lt;br&gt;
+&lt;br&gt;
+WebView2 支持 Win10 以及之后的系统。&lt;br&gt;
+Win11 已自带 WebView2，Win10 1803 以及之后的系统早已自动推送 WebView2。&lt;br&gt;
+&lt;br&gt;
+实际上现在 WebView2 已经是无法卸载的系统级组件。&lt;br&gt;
+没有自带 WebView2 的旧系统已经非常罕见，可以忽略不记。&lt;br&gt;
+&lt;br&gt;
+
+只要简洁，不求完美！&lt;br&gt;
+Win7 在市场上已经接近消失，现在开发软件再处处考虑 Win7 兼容是不必要的。&lt;br&gt;
+web.view 支持库不再支持 Win7，可通过 web.view.7 扩展库导入兼容 Win7 的旧版 web.view 。 
+&lt;br&gt;
+在网页上点右键菜单项&lt;b&gt;（Inspect / 检查）&lt;/b&gt;或按 F12 键可以打开网页开发工具（ DevTools ），&lt;br&gt;
+在开发工具的「设置 / 语言」&lt;b&gt;（Settings / Language」）&lt;/b&gt;界面可切换开发工具的界面语言。&lt;br&gt;
+在 DevTools &lt;b&gt;控制台（Console）&lt;/b&gt;可查看程序错误信息。&lt;br&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+**/
+
+/*
+//打开远程网址可以这样写
+wb.go(&quot;https://aardio.com&quot;)
+
+如果需要打开嵌入资源目录下的网页，
+需要事先导入 wsock.tcp.simpleHttpServer 或 wsock.tcp.asynHttpServer。
+
+例如：
+import wsock.tcp.simpleHttpServer; 
+wb.go(&quot;\res\index.html&quot;); 
+
+这时候 aardio 会自动创建嵌入 HTTP 服务端，
+并将单个斜杠或反斜杆开头的路径转换为嵌入 HTTP 服务端地址（支持 SPA 单页应用）。
+如果打开路径的文件名为 &quot;index.html&quot;, 则上级目录自动设为根目录。
+也就是说前端工程里不用再配置非根目录，网页可以直接使用  &quot;/index.html&quot; 这样的路径。
+
+上面的代码等价于下面的代码：
+import wsock.tcp.simpleHttpServer; 
+var indexUrl = wsock.tcp.simpleHttpServer.startSpaUrl(&quot;\res\index.html&quot;,&quot;\res\&quot;);
+wb.go(indexUrl); 
+*/
+
+//执行 JS 并获取返回值。
+wb.doScript(&quot;window.location.href&quot;,function(result,err){
+    winform.msgbox(result,&quot;doScript&quot;)
+})
+
+winform.show();
+win.loopMessage();
+</code></pre>
+<a href="javascript:if(confirm('https://www.aardio.com/zh-cn/doc/example/WebUI/web.view/view.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������������ʵ��ļ������صġ�  \n\n�����ڷ������ϴ���?'))window.location='https://www.aardio.com/zh-cn/doc/example/WebUI/web.view/view.md'" tppabs="https://www.aardio.com/zh-cn/doc/example/WebUI/web.view/view.md">Markdown 格式</a>
+</body> 
+</html>

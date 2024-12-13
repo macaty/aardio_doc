@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - 遍历树形视图（treeview）控件'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - 遍历树形视图（treeview）控件</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 遍历树形视图（treeview）控件</h1><pre><code class="aardio language-aardio">//遍历树形视图（treeview）控件
+import win.ui;
+/*DSG{{*/
+var winform = win.form(text=&quot;treeview控件遍的节点&quot;;right=349;bottom=249;)
+winform.add(
+btnSelectAll={cls=&quot;button&quot;;text=&quot;全选&quot;;left=172;top=206;right=271;bottom=232;z=2};
+treeview={cls=&quot;treeview&quot;;left=22;top=17;right=326;bottom=190;asel=false;bgcolor=15793151;edge=1;exstyle=131072;style=256;z=1}
+)
+/*}}*/
+
+var hitem = winform.treeview.insertItem( text=&quot;程序目录&quot; );
+var hSubItem = winform.treeview.insertItem( { text=&quot;子目录&quot; },hitem/*父节点*/);
+
+hitem = winform.treeview.insertItem( { 
+        text = &quot;children数组指定子节点&quot;; 
+        children = { 
+            { text = &quot;子节点&quot;  };
+            { text = &quot;子节点2&quot; };
+        }
+} ) 
+
+winform.btnSelectAll.oncommand = function(id,event){ 
+
+    winform.treeview.enum(
+        function(hItem,parent){             
+            winform.treeview.setChecked(hItem,true)
+        }
+    )
+} 
+
+winform.show() 
+win.loopMessage();
+
+
+
+
+</code></pre>
+<a href="javascript:if(confirm('https://www.aardio.com/zh-cn/doc/example/Windows/TreeView/treeview_enum.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������������ʵ��ļ������صġ�  \n\n�����ڷ������ϴ���?'))window.location='https://www.aardio.com/zh-cn/doc/example/Windows/TreeView/treeview_enum.md'" tppabs="https://www.aardio.com/zh-cn/doc/example/Windows/TreeView/treeview_enum.md">Markdown 格式</a>
+</body> 
+</html>

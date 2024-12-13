@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - libvlc.media 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - libvlc.media 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>libvlc.media 库模块帮助文档</h1>
+
+<p><a id="libvlcmediaObject"></a></p>
+
+<h2>libvlcmediaObject 成员列表</h2>
+
+<p><a id="libvlcmediaObject.duration"></a></p>
+
+<h3>libvlcmediaObject.duration</h3>
+
+<p>返回持续时间,单位毫秒</p>
+
+<p><a id="libvlcmediaObject.getEventManager"></a></p>
+
+<h3>libvlcmediaObject.getEventManager()</h3>
+
+<p>获取事件管理器  </p>
+
+<p><a href="#vlcEventManagerObject">返回对象:vlcEventManagerObject</a></p>
+
+<p><a id="libvlcmediaObject.getMeta"></a></p>
+
+<h3>libvlcmediaObject.getMeta(_libvlc_meta)</h3>
+
+<p>获取视频元数据<br>
+如果元数据尚未准备好则解析并触发MediaMetaChanged消息</p>
+
+<p><a id="libvlcmediaObject.mrl"></a></p>
+
+<h3>libvlcmediaObject.mrl</h3>
+
+<p>资源地址</p>
+
+<p><a id="libvlcmediaObject.parse"></a></p>
+
+<h3>libvlcmediaObject.parse()</h3>
+
+<p>解析媒体文件、元数据等,<br>
+默认是异步解析，调用此函数则同步解析</p>
+
+<p><a id="libvlcmediaObject.player"></a></p>
+
+<h3>libvlcmediaObject.player()</h3>
+
+<p>创建播放器  </p>
+
+<p><a href="#libvlcplayerObject">返回对象:libvlcplayerObject</a></p>
+
+<p><a id="libvlcmediaObject.release"></a></p>
+
+<h3>libvlcmediaObject.release()</h3>
+
+<p>释放对象引用</p>
+
+<p><a id="libvlcmediaObject.saveMeta"></a></p>
+
+<h3>libvlcmediaObject.saveMeta()</h3>
+
+<p>保存修改后的元数据</p>
+
+<p><a id="libvlcmediaObject.setMeta"></a></p>
+
+<h3>libvlcmediaObject.setMeta(_libvlc_meta , )</h3>
+
+<p>修改元数据<br>
+注意修改后需要调用 saveMeta 函数保存</p>
+
+<h3>自动完成常量</h3>
+
+<p>_libvlc_meta_Actors=0x16<br>
+_libvlc_meta_Album=4<br>
+_libvlc_meta_AlbumArtist=0x17<br>
+_libvlc_meta_Artist=1<br>
+_libvlc_meta_ArtworkURL=0xF<br>
+_libvlc_meta_Copyright=3<br>
+_libvlc_meta_Date=8<br>
+_libvlc_meta_Description=6<br>
+_libvlc_meta_Director=0x12<br>
+_libvlc_meta_DiscNumber=0x18<br>
+_libvlc_meta_EncodedBy=0xE<br>
+_libvlc_meta_Episode=0x14<br>
+_libvlc_meta_Genre=2<br>
+_libvlc_meta_Language=0xB<br>
+_libvlc_meta_NowPlaying=0xC<br>
+_libvlc_meta_Publisher=0xD<br>
+_libvlc_meta_Rating=7<br>
+_libvlc_meta_Season=0x13<br>
+_libvlc_meta_Setting=9<br>
+_libvlc_meta_ShowName=0x15<br>
+_libvlc_meta_Title=0<br>
+_libvlc_meta_TrackID=0x10<br>
+_libvlc_meta_TrackNumber=5<br>
+_libvlc_meta_TrackTotal=0x11<br>
+_libvlc_meta_URL=0xA  </p>
+
+<p><a href="media.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/libvlc/media.md">Markdown 格式</a></p>
+
+</body> 
+</html>

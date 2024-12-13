@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - math.bignum 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - math.bignum 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>math.bignum 库模块帮助文档</h1>
+
+<p><details>  <summary>说明</summary>  <p>
+此扩展库基于开源项目 tiny-bignum-c 
+<a href="javascript:if(confirm('https://github.com/kokke/tiny-bignum-c  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/kokke/tiny-bignum-c'" tppabs="https://github.com/kokke/tiny-bignum-c">https://github.com/kokke/tiny-bignum-c</a>
+</p></details></p>
+
+<p><a id="math"></a></p>
+
+<h2>math 成员列表</h2>
+
+<p><a id="math.bignum"></a></p>
+
+<h3>math.bignum()</h3>
+
+<p>创建大数对象<br>
+参数可以使用 10 进制或 16 进制的字符串指定数值,16进制必须有0x前缀,<br>
+也可以是普通整数,或者 math.size64 函数创建的长整数,<br>
+传入math.bignum对象则复制为新的大数对象</p>
+
+<p><a href="#mathbignumObject">返回对象:mathbignumObject</a></p>
+
+<p><a id="math.bignum"></a></p>
+
+<h2>math.bignum 成员列表</h2>
+
+<p>大数对象，仅支持正整数，不支持负数或小数。<br>
+大数对象可以使用 tostring 函数转换为普通字符串<br>
+并可以在 tostring 的第二个参数中指定显示进制，默认输出 10 进制数。</p>
+
+<p><a id="math.bignum.is"></a></p>
+
+<h3>math.bignum.is()</h3>
+
+<p>参数 @1 是否 math.bignum 对象。</p>
+
+<p><a id="mathbignumObject"></a></p>
+
+<h2>mathbignumObject 成员列表</h2>
+
+<p><a id="mathbignumObject.add"></a></p>
+
+<h3>mathbignumObject.add()</h3>
+
+<p>加运算,<br>
+参数可以是普通整数,也可以是大数对象<br>
+返回新的大数对象</p>
+
+<p><a href="#mathbignumObject">返回对象:mathbignumObject</a></p>
+
+<p><a id="mathbignumObject.and"></a></p>
+
+<h3>mathbignumObject.and()</h3>
+
+<p>位与,<br>
+参数是普通整数<br>
+返回新的大数对象</p>
+
+<p><a href="#mathbignumObject">返回对象:mathbignumObject</a></p>
+
+<p><a id="mathbignumObject.dec"></a></p>
+
+<h3>mathbignumObject.dec()</h3>
+
+<p>自减，<br>
+参数可以是普通整数,也可以是大数对象<br>
+返回新的大数对象</p>
+
+<p><a href="#mathbignumObject">返回对象:mathbignumObject</a></p>
+
+<p><a id="mathbignumObject.div"></a></p>
+
+<h3>mathbignumObject.div()</h3>
+
+<p>除运算,<br>
+参数可以是普通整数,也可以是大数对象<br>
+返回新的大数对象</p>
+
+<p><a href="#mathbignumObject">返回对象:mathbignumObject</a></p>
+
+<p><a id="mathbignumObject.fromString"></a></p>
+
+<h3>mathbignumObject.fromString()</h3>
+
+<p>自16进制字符串获取数值更新并返回自身</p>
+
+<p><a id="mathbignumObject.inc"></a></p>
+
+<h3>mathbignumObject.inc()</h3>
+
+<p>自增,<br>
+参数可以是普通整数,也可以是大数对象<br>
+返回新的大数对象</p>
+
+<p><a href="#mathbignumObject">返回对象:mathbignumObject</a></p>
+
+<p><a id="mathbignumObject.isZero"></a></p>
+
+<h3>mathbignumObject.isZero()</h3>
+
+<p>数值是否为0</p>
+
+<p><a id="mathbignumObject.isqrt"></a></p>
+
+<h3>mathbignumObject.isqrt()</h3>
+
+<p>整数平方根,<br>
+参数可以是普通整数,也可以是大数对象<br>
+返回新的大数对象</p>
+
+<p><a href="#mathbignumObject">返回对象:mathbignumObject</a></p>
+
+<p><a id="mathbignumObject.lshift"></a></p>
+
+<h3>mathbignumObject.lshift()</h3>
+
+<p>位左移,<br>
+参数是普通整数<br>
+返回新的大数对象</p>
+
+<p><a href="#mathbignumObject">返回对象:mathbignumObject</a></p>
+
+<p><a id="mathbignumObject.mod"></a></p>
+
+<h3>mathbignumObject.mod()</h3>
+
+<p>模运算,<br>
+参数可以是普通整数,也可以是大数对象<br>
+返回新的大数对象</p>
+
+<p><a href="#mathbignumObject">返回对象:mathbignumObject</a></p>
+
+<p><a id="mathbignumObject.mul"></a></p>
+
+<h3>mathbignumObject.mul()</h3>
+
+<p>乘运算,<br>
+参数可以是普通整数,也可以是大数对象<br>
+返回新的大数对象</p>
+
+<p><a href="#mathbignumObject">返回对象:mathbignumObject</a></p>
+
+<p><a id="mathbignumObject.or"></a></p>
+
+<h3>mathbignumObject.or()</h3>
+
+<p>位或,<br>
+参数是普通整数<br>
+返回新的大数对象</p>
+
+<p><a href="#mathbignumObject">返回对象:mathbignumObject</a></p>
+
+<p><a id="mathbignumObject.pow"></a></p>
+
+<h3>mathbignumObject.pow()</h3>
+
+<p>乘方，<br>
+参数可以是普通整数,也可以是大数对象<br>
+返回新的大数对象</p>
+
+<p><a href="#mathbignumObject">返回对象:mathbignumObject</a></p>
+
+<p><a id="mathbignumObject.random"></a></p>
+
+<h3>mathbignumObject.random()</h3>
+
+<p>生成指定长度的随机数值更新并返回自身</p>
+
+<p><a id="mathbignumObject.rshift"></a></p>
+
+<h3>mathbignumObject.rshift()</h3>
+
+<p>位右移,<br>
+参数是普通整数<br>
+返回新的大数对象</p>
+
+<p><a href="#mathbignumObject">返回对象:mathbignumObject</a></p>
+
+<p><a id="mathbignumObject.size64"></a></p>
+
+<h3>mathbignumObject.size64()</h3>
+
+<p>返回size64对象</p>
+
+<p><a id="mathbignumObject.sub"></a></p>
+
+<h3>mathbignumObject.sub()</h3>
+
+<p>减运算,<br>
+参数可以是普通整数,也可以是大数对象<br>
+返回新的大数对象</p>
+
+<p><a href="#mathbignumObject">返回对象:mathbignumObject</a></p>
+
+<p><a id="mathbignumObject.xor"></a></p>
+
+<h3>mathbignumObject.xor()</h3>
+
+<p>位异或,<br>
+参数是普通整数<br>
+返回新的大数对象</p>
+
+<p><a href="#mathbignumObject">返回对象:mathbignumObject</a></p>
+
+<p><a href="_.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/math/bignum/_.md">Markdown 格式</a></p>
+
+</body> 
+</html>

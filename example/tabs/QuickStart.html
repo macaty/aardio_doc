@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - 高级选项卡 win.ui.tabs'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - 高级选项卡 win.ui.tabs</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 高级选项卡 win.ui.tabs</h1><pre><code class="aardio language-aardio">//高级选项卡 win.ui.tabs
+import fonts.fontAwesome;
+import win.ui;
+/*DSG{{*/
+mainForm = win.form(text=&quot;使用高级选项&quot;;right=1040;bottom=642;bgcolor=16777215;border=&quot;none&quot;)
+mainForm.add(
+caption={cls=&quot;bkplus&quot;;text=&quot;选项卡演示&quot;;left=35;top=12;right=160;bottom=30;color=15780518;dl=1;dt=1;font=LOGFONT(h=-16);z=5};
+logo={cls=&quot;bkplus&quot;;text=&#39;\uF0AD&#39;;left=6;top=9;right=35;bottom=34;color=15780518;dl=1;dt=1;font=LOGFONT(h=-18;name=&#39;FontAwesome&#39;);z=4};
+tabPanel={cls=&quot;custom&quot;;left=0;top=40;right=1040;bottom=643;bgcolor=16777215;db=1;dl=1;dr=1;dt=1;z=1};
+tabPlus1={cls=&quot;plus&quot;;text=&quot;测试1&quot;;left=166;top=5;right=294;bottom=40;align=&quot;left&quot;;color=16777215;dl=1;dt=1;font=LOGFONT(h=-16);iconStyle={align=&quot;left&quot;;font=LOGFONT(h=-19;name=&#39;FontAwesome&#39;);padding={left=12;top=4}};iconText=&#39;\uF00A&#39;;notify=1;paddingLeft=1;paddingRight=1;paddingTop=3;textPadding={left=39;bottom=1};x=0.5;y=0.2;z=3};
+tabPlus2={cls=&quot;plus&quot;;text=&quot;测试2&quot;;left=294;top=5;right=422;bottom=40;align=&quot;left&quot;;color=16777215;dl=1;dt=1;font=LOGFONT(h=-16);iconStyle={align=&quot;left&quot;;font=LOGFONT(h=-19;name=&#39;FontAwesome&#39;);padding={left=12;top=4}};iconText=&#39;\uF11C &#39;;notify=1;paddingLeft=1;paddingRight=1;paddingTop=3;textPadding={left=39;bottom=1};x=0.5;y=0.2;z=6};
+titleBar={cls=&quot;bkplus&quot;;left=0;top=0;right=1042;bottom=41;bgcolor=14977280;dl=1;dr=1;dt=1;z=2}
+)
+/*}}*/
+
+//导入&quot;高级选项卡（ tab plus control ）&quot;
+import win.ui.tabs;
+
+/*
+相关文档: https://www.aardio.com/zh-cn/doc/library-guide/std/win/ui/tabs/_.html
+
+创建&quot;高级选项卡&quot;步骤：
+
+- 在窗体上添加两个 plus 控件 mainForm.tabPlus1, mainForm.tabPlus2 
+  这些 plus 控件显示在选项卡头部（ header ）位置，并且用于确定选项卡的外观与排列方向。
+
+- 在窗体上添加一个 custom 控件 mainForm.tabPanel 作为页面容器，
+  用于在选项卡的客户区（ client area ）加载子窗口以显示不同的页面内容。
+
+然后调用下面的代码创建 win.ui.tabs 控件。
+*/
+var tabs = win.ui.tabs(mainForm.tabPlus1,mainForm.tabPlus2);
+
+//可选清除  mainForm.tabPlus1,mainForm.tabPlus2，这些选项卡获取的默认样式与排列方向与间距已经保存。
+tabs.clear();
+
+//指定选项卡右侧预留的空白边距（用于显示下拉菜单，以及其他需要放置的控件）
+tabs.margin = 150;
+
+//指定所有选项卡按钮的交互样式，用法与 plus 控件相同
+tabs.skin({
+    foreground={
+        active=0xFFFFFFFF;
+        default=0x00FFFFFF;
+        hover=0x38FFFFFF
+    };
+    color={
+        default=0xFFFFFFFF; 
+    };
+    checked={
+        foreground={default=0xFFFFFFFF;}; 
+        color={default=0xFF42A875;};
+    }
+})
+//控件样式参数建议写到用户库里，改为 tabs.skin( styles.tabs ) 会更好。
+
+//添加更多选项卡，参数可指定创建选项卡控件的属性(作为创建 plus 控件的表参数)
+var tabIndex1 = tabs.add({
+    text=&quot;标签页1&quot;;
+    iconText=&#39;\uF0AD&#39;;
+    hasCloseButton = true;
+})
+
+//继续添加选项卡, 一般不用取返回值，这是给 AI 看的。
+var tabIndex2 = tabs.add({
+    text=&quot;标签页2&quot;;
+    iconText=&#39;\uF0AD&#39;;
+    hasCloseButton = true;
+})
+
+ //在创建窗体并设为第一个标签页，page1 是一个 win.form 对象。
+var formPage1 = tabs.loadForm(tabIndex1);//参数 1 指加载到索引为 tabIndex1 的标签页。
+
+/*
+//可自参数指定的窗体代码文件加载子窗口到标签页容器，第一个参数指定选项卡索引（省略则为 #tabs.forms + 1） 
+tabs.loadForm(tabIndex1,&quot;\dlg\first.aardio&quot; );  
+tabs.loadForm(tabIndex2,&quot;\dlg\hotkey.aardio&quot; );   
+*/
+
+// 在第一个标签页上添加按钮，用法与 winform.add 相同。
+formPage1.add({
+   button1 = { 
+        cls=&quot;button&quot;;
+        text=&quot;按钮2&quot;;
+        left=20;top=20;right=120;bottom=50;
+
+        }
+    }
+)
+
+formPage1.button1.oncommand = function(){
+    formPage1.msgbox(&quot;hello&quot;)
+}
+
+//切换选项卡触发下面的事件
+tabs.onSelchange = function(index,tabItem,form){
+
+}
+
+/*
+//选项卡调整位置会触发下面的函数
+tabs.adjust = function(){
+    var x,y,cx,cy = owner.getPos(); //获取选项卡的x,y 坐标,cx为宽度,cy 为高度
+}
+*/
+
+//设置当前选项卡
+tabs.selIndex = 1; 
+
+//也可以用下面的代码自定义关闭按钮的外观样式
+tabs.closeButton.skin(
+    background = {
+        hover = 0xFFe35c51;
+        active = 0xFF8f241b;
+        default = 0x99FFCC66;
+    }
+    color = {
+        hover = 0xFFFFFFFF;
+        active = 0xFFEEEEEE;
+        default = 0xCCFFFFFF;
+    }
+)
+
+//可以自定义关闭按钮在选项卡上的显示位
+tabs.beforeShowCloseButton = function(tab,rcTab,rcCloseButton,dpiScaleX){ 
+    return rcTab.right - 10 * dpiScaleX, rcTab.top -2* dpiScaleX;
+}
+
+import win.ui.simpleWindow;
+win.ui.simpleWindow( mainForm );
+
+mainForm.show();
+win.loopMessage(); 
+
+</code></pre>
+<a href="javascript:if(confirm('https://www.aardio.com/zh-cn/doc/example/tabs/QuickStart.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������������ʵ��ļ������صġ�  \n\n�����ڷ������ϴ���?'))window.location='https://www.aardio.com/zh-cn/doc/example/tabs/QuickStart.md'" tppabs="https://www.aardio.com/zh-cn/doc/example/tabs/QuickStart.md">Markdown 格式</a>
+</body> 
+</html>

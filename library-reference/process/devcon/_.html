@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - process.devcon 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - process.devcon 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>process.devcon 库模块帮助文档</h1>
+
+<p><a id="process"></a></p>
+
+<h2>process 成员列表</h2>
+
+<p><a id="process.devcon"></a></p>
+
+<h3>process.devcon()</h3>
+
+<p><a href="../popen.html#processPopenObject" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/process/popen.html#processPopenObject">返回对象:processPopenObject</a></p>
+
+<p><a id="process.devcon"></a></p>
+
+<h3>process.devcon(命令行参数,STARTUPINFO)</h3>
+
+<p>运行 devcon.exe 并创建子进程,并支持管道读写<br>
+命令行参数可以是一个数组、一个或多个字符串参数,  </p>
+
+<p>数组或多个命令行参数调用 process.joinArguments 合并,<br>
+不在双引号内、且包含空白或需要转义的参数转义处理后首尾添加双引号</p>
+
+<p><a id="process.devcon"></a></p>
+
+<h2>process.devcon 成员列表</h2>
+
+<p>调用 devcon.exe<br>
+参数用法请参考 <a href="javascript:if(confirm('https://docs.microsoft.com/zh-cn/windows-hardware/drivers/devtest/devcon  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://docs.microsoft.com/zh-cn/windows-hardware/drivers/devtest/devcon'" tppabs="https://docs.microsoft.com/zh-cn/windows-hardware/drivers/devtest/devcon">https://docs.microsoft.com/zh-cn/windows-hardware/drivers/devtest/devcon</a></p>
+
+<p><a id="process.devcon.disable"></a></p>
+
+<h3>process.devcon.disable</h3>
+
+<p>禁用设备</p>
+
+<p><a id="process.devcon.disable"></a></p>
+
+<h3>process.devcon.disable(...)</h3>
+
+<p>禁用设备，<br>
+可传入一个或多个文本参数，参数调用 process.joinArguments 合并，<br>
+参数@1 可指定设备 ID 或 设备实例ID，设备实例 ID前要加@字符  </p>
+
+<p>可使用 sys.device 获取设备 ID，  </p>
+
+<p>网卡设备 ID 可用 sys.networkCards 获取</p>
+
+<p><a id="process.devcon.enable"></a></p>
+
+<h3>process.devcon.enable</h3>
+
+<p>启用设备</p>
+
+<p><a id="process.devcon.enable"></a></p>
+
+<h3>process.devcon.enable(...)</h3>
+
+<p>启用设备，<br>
+可传入一个或多个文本参数，参数调用 process.joinArguments 合并，<br>
+参数@1 可指定设备 ID 或 设备实例ID，设备实例 ID前要加@字符  </p>
+
+<p>可使用 sys.device 获取设备 ID，<br>
+网卡设备 ID 可用 sys.networkCards 获取</p>
+
+<p><a id="process.devcon.executeAs"></a></p>
+
+<h3>process.devcon.executeAs(命令行参数,更多命令行参数,...)</h3>
+
+<p>以管理权限运行 devcon.exe 并等待返回,<br>
+命令行参数可以是一个数组、一个或多个字符串参数,  </p>
+
+<p>数组或多个命令行参数调用 process.joinArguments 合并,<br>
+不在双引号内、且包含空白或需要转义的参数转义处理后首尾添加双引号</p>
+
+<p><a href="_.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/process/devcon/_.md">Markdown 格式</a></p>
+
+</body> 
+</html>

@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - 树视图（treeview）控件 - 复选框多级同步'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - 树视图（treeview）控件 - 复选框多级同步</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 树视图（treeview）控件 - 复选框多级同步</h1><pre><code class="aardio language-aardio">//树视图（treeview）控件 - 复选框多级同步
+import win.ui;
+/*DSG{{*/
+var winform = win.form(text=&quot;aardio form&quot;;right=349;bottom=249)
+winform.add(
+treeview={cls=&quot;treeview&quot;;left=10;top=11;right=336;bottom=233;asel=false;bgcolor=16777215;chkBox=1;edge=1;z=1}
+)
+/*}}*/
+
+/*
+注意：请在窗口设计视图下，设置treeview控件的【显示复选框】为true
+*/
+
+//添加节点
+var hitem = winform.treeview.insertItem( { 
+    text = &quot;下面用一个数组指定子节点&quot;; { 
+        {  text = &quot;子节点1&quot;  };
+        {  text = &quot;子节点2&quot; };
+        {  text = &quot;下面用一个数组指定子节点&quot;; {
+            &quot;a&quot;;&quot;b&quot;;&quot;c&quot;;{ text = &quot;d&quot; } 
+           }
+        };
+    }
+} ) 
+
+//响应复选框事件（状态图像变更事件）
+winform.treeview.onStateImageChanging = function(hItem,checked,newImgIndex,oldImgIndex){
+
+     /*
+     全选所有下级节点,并更新所有上级父节点勾选状态。
+     如果有任意下级节点被勾选则勾选父节点,如果所有下级节点都没有被勾选则取消勾选父节点。 
+     */
+     winform.treeview.checkAll(hItem,checked); 
+
+     //展开所有下级节点
+     winform.treeview.expandAll(hItem); 
+
+     //选定节点
+     winform.treeview.setSelected(hItem);
+}
+
+winform.show() 
+win.loopMessage();
+</code></pre>
+<a href="javascript:if(confirm('https://www.aardio.com/zh-cn/doc/example/Windows/TreeView/checkAll.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������������ʵ��ļ������صġ�  \n\n�����ڷ������ϴ���?'))window.location='https://www.aardio.com/zh-cn/doc/example/Windows/TreeView/checkAll.md'" tppabs="https://www.aardio.com/zh-cn/doc/example/Windows/TreeView/checkAll.md">Markdown 格式</a>
+</body> 
+</html>

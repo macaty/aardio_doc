@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - 用高级选项卡（win.ui.tabs）实现弹出菜单'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - 用高级选项卡（win.ui.tabs）实现弹出菜单</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 用高级选项卡（win.ui.tabs）实现弹出菜单</h1><pre><code class="aardio language-aardio">//用高级选项卡（win.ui.tabs）实现弹出菜单
+import fonts.fontAwesome;
+import win.ui;
+/*DSG{{*/
+var winform = win.form(text=&quot;aardio form&quot;;right=759;bottom=469)
+winform.add(
+button={cls=&quot;button&quot;;text=&quot;弹出列表&quot;;left=390;top=363;right=517;bottom=410;z=3};
+menuItem={cls=&quot;plus&quot;;text=&#39;\uF0AE 测试菜单一&#39;;left=523;top=167;right=676;bottom=212;bgcolor=-6960024;font=LOGFONT(name=&#39;FontAwesome&#39;;charset=0);tabstop=1;z=1};
+menuItem2={cls=&quot;plus&quot;;text=&#39;\uF0AE 测试菜单二&#39;;left=523;top=214;right=676;bottom=259;bgcolor=-6960024;font=LOGFONT(name=&#39;FontAwesome&#39;);ont=LOGFONT(name=&#39;FontAwesome&#39;;charset=0);tabstop=1;z=2}
+)
+/*}}*/
+
+import win.ui.tabs;
+var menu = win.ui.tabs(winform.menuItem,winform.menuItem2)
+menu.skin({
+    background={
+        default=0xFF68CC95;
+        disabled=0xFFC4CCC8;
+        hover=0xFF4A522F;
+    };
+    color={
+        default=0xFF000000;
+        disabled=0xFF8A8A8A;
+        hover=0xFFFFFFFF
+    };
+    checked={
+        border={default={color=0xFF0E64E7;right=4}}
+    }
+})
+
+menu.onOk = function(tabItem){ 
+    winform.msgbox(tabItem.text)
+}
+
+winform.button.oncommand = function(id,event){
+    menu.popup(true,winform.button)
+}
+
+menu.add({
+    text=&#39;\uF0AE 测试菜单三&#39;; 
+})
+
+// 调用这句代码切换到弹出列表显示模式
+menu.initPopup()
+
+winform.show() 
+win.loopMessage();
+</code></pre>
+<a href="javascript:if(confirm('https://www.aardio.com/zh-cn/doc/example/tabs/popup.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������������ʵ��ļ������صġ�  \n\n�����ڷ������ϴ���?'))window.location='https://www.aardio.com/zh-cn/doc/example/tabs/popup.md'" tppabs="https://www.aardio.com/zh-cn/doc/example/tabs/popup.md">Markdown 格式</a>
+</body> 
+</html>

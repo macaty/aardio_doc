@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - process.cache 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - process.cache 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>process.cache 库模块帮助文档</h1>
+
+<p><a id="process.cache"></a></p>
+
+<h2>process.cache 成员列表</h2>
+
+<p>用于搜索运行过的程序</p>
+
+<p><a id="process.cache.each"></a></p>
+
+<h3>process.cache.each()</h3>
+
+<pre><code class="aardio language-aardio">for(path in process.cache.each() ){
+    /*遍历最近运行过的程序路径，  
+path 为程序路径，可能为已删除的路径*/
+}
+</code></pre>
+
+<p><a id="process.cache.find"></a></p>
+
+<h3>process.cache.find</h3>
+
+<p>查找并返回运行过或在 AppPath 注册过的有效程序路径，<br>
+返回路径必须是 exe 后缀，且文件名不包含 Install,Setup 等单词</p>
+
+<p><a id="process.cache.find"></a></p>
+
+<h3>process.cache.find(&quot;文件名&quot;,&quot;版本信息产品名称&quot;,是否搜索快捷方式)</h3>
+
+<p>查找并返回运行过或在 AppPath 注册过的有效程序路径。<br>
+忽略大小写比较,并支持模式匹配语法,<br>
+文件名与产品名称必须至少指定一个，<br>
+越是指定严格的文件名匹配条件搜索越快。<br>
+参数@3 为 false 不搜索快捷方式，可加快返回速度</p>
+
+<p><a id="process.cache.list"></a></p>
+
+<h3>process.cache.list()</h3>
+
+<p>返回最近运行的应用程序路径数组，<br>
+返回数组可能包含已删除的程序  </p>
+
+<p>如果参数 @1 为 true ，<br>
+则允许在列表中包含在 AppPath 注册的应用程序路径</p>
+
+<p><a href="cache.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/process/cache.md">Markdown 格式</a></p>
+
+</body> 
+</html>

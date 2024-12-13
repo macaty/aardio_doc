@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - plus 控件 - 渐变'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - plus 控件 - 渐变</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: plus 控件 - 渐变</h1><pre><code class="aardio language-aardio">//plus 控件 - 渐变
+import win.ui;
+/*DSG{{*/
+var winform = win.form(text=&quot;plus - 线性渐变&quot;;right=759;bottom=469)
+winform.add(
+plus={cls=&quot;plus&quot;;left=22;top=32;right=387;bottom=89;notify=1;z=1};
+plus2={cls=&quot;plus&quot;;left=111;top=222;right=342;bottom=429;notify=1;z=2}
+)
+/*}}*/
+
+//动态改变渐变色，从background指定的颜色渐变到foreground指定的颜色
+winform.plus.skin(
+    background = { 
+        hover = 0xFFFF0000; 
+        active = 0xAA0000FF;
+        default = 0xFFFF0000; 
+    }
+    foreground  = { 
+        hover = 0xAA0000FF; 
+        active = 0xFFFFFFFF;
+        default = 0xFFFFFFFF;
+    }
+)
+winform.plus.linearGradient = 270 //线性渐变的方向角度
+
+//设置静态的渐变色，从background指定的颜色渐变到foreground指定的颜色
+winform.plus2.background = 0xFFFFFF00;//中心颜色
+winform.plus2.foreground = 0x00000000;//环绕颜色
+winform.plus2.linearGradient = -1 //指定为负数启用圆形径向渐变,此时background为中心颜色，foreground为环绕颜色
+//当然径向渐变也支持使用winform.plus.skin指定动态变换效果
+
+winform.show() 
+win.loopMessage();
+</code></pre>
+<a href="javascript:if(confirm('https://www.aardio.com/zh-cn/doc/example/plus/linearGradient.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������������ʵ��ļ������صġ�  \n\n�����ڷ������ϴ���?'))window.location='https://www.aardio.com/zh-cn/doc/example/plus/linearGradient.md'" tppabs="https://www.aardio.com/zh-cn/doc/example/plus/linearGradient.md">Markdown 格式</a>
+</body> 
+</html>

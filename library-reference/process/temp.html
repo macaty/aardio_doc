@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - process.temp 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - process.temp 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>process.temp 库模块帮助文档</h1>
+
+<p><a id="process.temp"></a></p>
+
+<h2>process.temp 成员列表</h2>
+
+<p>创建可删除EXE文件自身的临时进程<br>
+可用于卸载更新等辅助程序  </p>
+
+<p>同一路径同一文件自动阻止重复启动自删进程</p>
+
+<p><a id="process.temp.run"></a></p>
+
+<h3>process.temp.run</h3>
+
+<p>创建可删除EXE文件自身的临时进程<br>
+注意同一EXE文件，并且是同一文件名，同一时间只能运行一个实例，<br>
+启动多个实例会忽略不执行并返回false,<br>
+此函数执行成功返回true</p>
+
+<p><a id="process.temp.run"></a></p>
+
+<h3>process.temp.run( 启动应用程序的函数 )</h3>
+
+<pre><code class="aardio language-aardio">process.temp.run(   
+    function( exePath,argv ){  
+        io.remove(exePath);   
+        /*exePath为原EXE文件，可如上直接删除  
+当前目录,应用程序目录已设置为exePath的父目录,一般也是你的软件所在目录  
+自删进程会保持&quot;/&quot;指向的路径不变,启动原EXE的命令行参数不变*/  
+        io.print( &quot;原EXE文件所在目录:&quot;,io.fullpath(&quot;/&quot;) );  
+        io.print( &quot;自删进程EXE文件所在目录:&quot;,io.fullpath(&quot;~/&quot;) );  
+    }  
+)
+</code></pre>
+
+<p><a href="temp.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/process/temp.md">Markdown 格式</a></p>
+
+</body> 
+</html>

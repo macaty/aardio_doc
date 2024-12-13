@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - ustring 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - ustring 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>ustring 库模块帮助文档</h1>
+
+<p><a id="ustring"></a></p>
+
+<h2>ustring 成员列表</h2>
+
+<p>UTF-16 字符串（ustring）函数库。<br>
+用于操作 UTF-16 编码的 Unicode 字符串。<br>
+aardio 字符串默认为 UTF-8 编码。<br>
+aardio 字符串包含在单引号内并在尾部加小写 u 标记可创建 UTF-16 字符串（ustring）。</p>
+
+<p><a id="ustring.breakAny"></a></p>
+
+<h3>ustring.breakAny(&#39;字符串&#39;u,&#39;查找字符集&#39;u)</h3>
+
+<p>查找字符集中任意字符开始的字符串。<br>
+参数 @2 默认为空白字符。</p>
+
+<p><a id="ustring.charCode"></a></p>
+
+<h3>ustring.charCode(字符串,开始位置,结束位置)</h3>
+
+<p>返回每个字符的 Unicode 编码值。<br>
+参数 @1 如果未标记为 UTF16 编码,会自动转换为 UTF-16 字符串（ustring）。<br>
+其他参数可省略  </p>
+
+<p>开始位置、结束位置按UTF16编码字符计数（每字符占2个字节）@2<br>
+可以使用负数表示尾部倒计数字符位置</p>
+
+<p><a id="ustring.charCodeAt"></a></p>
+
+<h3>ustring.charCodeAt(字符串,位置)</h3>
+
+<p>返回指定位置的 Unicode 编码值。<br>
+位置按字符计数（无论字符占用几个字节,需要 4 字节编码的字符计数仍然为1）。</p>
+
+<p><a id="ustring.charCodeEx"></a></p>
+
+<h3>ustring.charCodeEx(字符串,开始位置,结束位置)</h3>
+
+<p>返回一个数组，包含每个字符的 Unicode 编码值。<br>
+Unicode 代理对字符转换为大于 0x10000 的 Unicode 编码值。<br>
+参数@1如果未标记为UTF16编码,会自动转换为 UTF-16 字符串（ustring）@2<br>
+其他参数可省略。  </p>
+
+<p>开始位置、结束位置按 UTF16 编码字符计数（每字符占2个字节）。<br>
+可以使用负数表示尾部倒计数字符位置</p>
+
+<p><a id="ustring.cspan"></a></p>
+
+<h3>ustring.cspan(&#39;字符串&#39;u,&quot;字符补集&quot;)</h3>
+
+<p>查找字符补集组成的开始标记长度。<br>
+即所有不在指定字符集中的字符所占字节长度。</p>
+
+<p><a id="ustring.eachIndexOf"></a></p>
+
+<h3>ustring.eachIndexOf(&#39;字符串&#39;u,&#39;查找文本&#39;u)</h3>
+
+<pre><code class="aardio language-aardio">for i,j in ustring.eachIndexOf(str,&#39;/*查找文本*/&#39;u){
+
+}
+</code></pre>
+
+<p><a id="ustring.format"></a></p>
+
+<h3>ustring.format(&#39;%s&#39;u,)</h3>
+
+<p>格式化字符串</p>
+
+<p><a id="ustring.fromCharCode"></a></p>
+
+<h3>ustring.fromCharCode()</h3>
+
+<p>使用1个或多个 Unicode 编码值转换为 UTF-16 字符串（ustring）。<br>
+参数可以指定 1 个或多个 Unicode 编码数值,也可以直接指定一个包含多个编码的数组参数。<br>
+可指定大于 0x10000 的编码。</p>
+
+<p><a id="ustring.indexAny"></a></p>
+
+<h3>ustring.indexAny(&#39;字符串&#39;u,&#39;查找字符集&#39;u)</h3>
+
+<p>查找字符集中任意字符出现位置。</p>
+
+<p><a id="ustring.indexOf"></a></p>
+
+<h3>ustring.indexOf(&#39;字符串&#39;u,&#39;查找文本&#39;u,开始索引)</h3>
+
+<p>查找匹配文本,成功返回开始与结束字符位置。<br>
+不支持模式语法。</p>
+
+<p><a id="ustring.lastIndexAny"></a></p>
+
+<h3>ustring.lastIndexAny(&#39;字符串&#39;u,&#39;查找字符集&#39;u)</h3>
+
+<p>自后向前查找字符集中任意字符出现位置。</p>
+
+<p><a id="ustring.lastIndexOf"></a></p>
+
+<h3>ustring.lastIndexOf(&#39;字符串&#39;u,&#39;查找文本&#39;u)</h3>
+
+<p>在字符串尾部查找匹配文本。<br>
+不支持模式语法。</p>
+
+<p><a id="ustring.left"></a></p>
+
+<h3>ustring.left(str,n)</h3>
+
+<p>从字符串左侧截取 n 个字符<br>
+按字符计数，汉字为一个字符。</p>
+
+<p><a id="ustring.len"></a></p>
+
+<h3>ustring.len(&#39;字符串&#39;u)</h3>
+
+<p>计算文本字符串的字符数。<br>
+如果字符串内包含文本终止符<code>&#39;\u0000&#39;</code>，则计数到该字节前停止。</p>
+
+<p><a id="ustring.reverse"></a></p>
+
+<h3>ustring.reverse(&#39;字符串&#39;u)</h3>
+
+<p>反转字符串</p>
+
+<p><a id="ustring.right"></a></p>
+
+<h3>ustring.right(str,n )</h3>
+
+<p>从字符串右侧截取 n 个字符<br>
+按字符计数，汉字为一个字符。</p>
+
+<p><a id="ustring.slice"></a></p>
+
+<h3>ustring.slice(str,i,j )</h3>
+
+<p>从字符串中截取位置 i 开始的字符串。<br>
+如果 i 为负数则从右侧倒数计数，<br>
+按字符计数，汉字为一个字符。</p>
+
+<p><a id="ustring.span"></a></p>
+
+<h3>ustring.span(&#39;字符串&#39;u,&#39;查找字符集&#39;u)</h3>
+
+<p>返回字符串开始在指定字符集中的字符所占字节长度</p>
+
+<p><a id="ustring.split"></a></p>
+
+<h3>ustring.split(&#39;字符串&#39;u,&#39;分隔符&#39;u,拆分次数)</h3>
+
+<p>拆分为数组。<br>
+分隔符为可选参数，默认为空白字符。<br>
+拆分次数为可选参数，负数指定最后拆分次数，其他分组保持不变。</p>
+
+<p><a id="ustring.tokenize"></a></p>
+
+<h3>ustring.tokenize(&#39;字符串&#39;u,&quot;分隔符&quot;)</h3>
+
+<pre><code class="aardio language-aardio">for(tok in ustring.tokenize(,&#39;/*分隔符,默认为空白字符*/&#39;u)){
+    console.log( tok );
+}
+</code></pre>
+
+<p><a id="ustring.trim"></a></p>
+
+<h3>ustring.trim(&#39;字符串&#39;u,&quot;字符集&quot;)</h3>
+
+<p>清除头尾在指定字符集中的字符。<br>
+参数 @2 可选,默认为空白字符。</p>
+
+<p><a id="ustring.trimleft"></a></p>
+
+<h3>ustring.trimleft(&#39;字符串&#39;u,&quot;字符集&quot;)</h3>
+
+<p>清除头部在指定字符集中的字符。<br>
+参数 @2 可选,默认为空白字符。</p>
+
+<p><a id="ustring.trimright"></a></p>
+
+<h3>ustring.trimright(&#39;字符串&#39;u,&quot;字符集&quot;)</h3>
+
+<p>清除尾部在指定字符集中的字符。<br>
+参数 @2 可选,默认为空白字符。</p>
+
+<h3>全局常量</h3>
+
+<p><a id="::Msvcrt :"></a></p>
+
+<h3>::Msvcrt :</h3>
+
+<p>VC6运行库,所有操作系统都自带的系统 DLL。<br>
+console,ustring,string.builder 等标准库加载了此 DLL。  </p>
+
+<p><a href="../raw/_.html#dllModuleObject" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/raw/_.html#dllModuleObject">返回对象:dllModuleObject</a></p>
+
+<p><a href="_.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/ustring/_.md">Markdown 格式</a></p>
+
+</body> 
+</html>

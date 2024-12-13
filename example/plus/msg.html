@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - 基于 plus 控件的简单提示框 win.dlg.message'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - 基于 plus 控件的简单提示框 win.dlg.message</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 基于 plus 控件的简单提示框 win.dlg.message</h1><pre><code class="aardio language-aardio">//基于 plus 控件的简单提示框 win.dlg.message
+import win.ui;
+/*DSG{{*/
+var winform = win.form(text=&quot;简单提示框演示&quot;;right=759;bottom=469;bgcolor=8421504)
+winform.add(
+plus={cls=&quot;plus&quot;;text=&quot;显示简单提示框&quot;;left=451;top=378;right=576;bottom=403;font=LOGFONT(h=-15);notify=1;z=1}
+)
+/*}}*/
+
+import win.dlg.message;
+var msgDlg = win.dlg.message(winform); 
+msgDlg.okLabel = &#39;\uF164 很好&#39;
+msgDlg.cancelLabel = &#39;\uF165 不好&#39;
+
+winform.plus.skin(msgDlg.buttonStyle)
+winform.plus.oncommand = function(id,event){
+    if( msgDlg.ask(&quot;你觉得这个简单提示框好用吗&quot;)  ){
+        win.delay(100);
+        msgDlg.smile(&quot;谢谢！&quot;)
+    }
+    else {
+        win.delay(100);
+
+        var form = msgDlg.create(&#39;很遗憾你会这么想,但是\nwin.dlg.message提供了很多自定义外观样式的选项\n您可以根据自己的喜好进行调整&#39;,,true)
+
+        for(i=1;100;1){
+            if(!form.valid){ break; }
+            form.progress.progressPos = form.progress.progressPos + 1;
+            win.delay(100) 
+        }
+        form.close();
+    }   
+}
+
+winform.show() 
+winform.msgOk(&#39;win.dlg.message自动安装\nmsgOk,msgErr,msgAsk,msgInfo ......\n等函数到所有窗口&#39;,1000) 
+
+win.loopMessage();
+</code></pre>
+<a href="javascript:if(confirm('https://www.aardio.com/zh-cn/doc/example/plus/msg.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������������ʵ��ļ������صġ�  \n\n�����ڷ������ϴ���?'))window.location='https://www.aardio.com/zh-cn/doc/example/plus/msg.md'" tppabs="https://www.aardio.com/zh-cn/doc/example/plus/msg.md">Markdown 格式</a>
+</body> 
+</html>

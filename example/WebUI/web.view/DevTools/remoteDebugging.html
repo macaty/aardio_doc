@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - Edge 浏览器控件 - web.view'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - Edge 浏览器控件 - web.view</title> 
+<link rel="stylesheet" href="../../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: Edge 浏览器控件 - web.view</h1><pre><code class="aardio language-aardio">//远程调试
+import win.ui;
+/*DSG{{*/
+var winform = win.form(text=&quot;Edge 浏览器控件 - web.view&quot;;right=759;bottom=469;bgcolor=16777215)
+winform.add()
+/*}}*/
+
+import web.view;
+
+/*
+WebView2 调用 CDP 有两种方式：
+
+1、内置 CDP 接口 —— 推荐使用
+直接使用 web.view 提供的 cdp 前缀函数调用内置 CDP 接口。
+多个 web.view 窗口相互不会冲突，CDP 命令默认操作当前页面。
+同一用户数据目录，同一程序启动多个进程相互不会冲突。
+
+2、远程调试接口 —— 不推荐使用
+如果创建 WebView2 时在构造函数参数中指定远程调试端口，
+我们就可以用 web.socket.chrome 创建远程调试客户端去操作 CDP 接口。
+
+但同一个进程里所有 WebView2 只能开放并共享一个远程调试端口。
+同一用户数据目录，同一程序启动多个进程相互会出现冲突。
+
+——————————————————————————————————————————————————————————————————————。
+如果同一用户数据目录的程序使用了上面的一种方式，
+那么另外一种方式就无法正常使用。
+
+如果不是为了从外部连接 WebView2 时尽量不要用远程调试端口。
+推荐使用内置 CDP 接口。
+*/
+var wb = web.view(winform,/*用户数据目录*/,0/*自动分配调试端口*/);
+winform.text = &quot;正在打开网页，请稍候 ……&quot;
+winform.show();
+
+//创建远程调试对象
+import web.socket.chrome;
+var ws = wb.openRemoteDebugging();
+
+//允许触发 Runtime.executionContextCreated
+//ws.Runtime.enable();
+
+//通过远程调试协议打开指定网页  
+//CDP 文档： https://chromedevtools.github.io/devtools-protocol   
+ws.Page.navigate(
+    url = &quot;https://chromedevtools.github.io/devtools-protocol&quot;;
+);
+
+//截图
+wb.wait(&quot;chromedevtools&quot;);
+
+import crypt;
+ws.Page.captureScreenshot().end = function(result,err){
+   if(result[[&quot;data&quot;]]){
+       var bin = crypt.decodeBin(result[[&quot;data&quot;]]);
+       string.save(&quot;/screenshot.png&quot;,bin )
+
+       import process.imageView;
+       process.imageView(&quot;/screenshot.png&quot;);
+       winform.text = &quot;截图已完成…&quot;
+   } 
+} 
+
+win.loopMessage();
+</code></pre>
+<a href="javascript:if(confirm('https://www.aardio.com/zh-cn/doc/example/WebUI/web.view/DevTools/remoteDebugging.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������������ʵ��ļ������صġ�  \n\n�����ڷ������ϴ���?'))window.location='https://www.aardio.com/zh-cn/doc/example/WebUI/web.view/DevTools/remoteDebugging.md'" tppabs="https://www.aardio.com/zh-cn/doc/example/WebUI/web.view/DevTools/remoteDebugging.md">Markdown 格式</a>
+</body> 
+</html>

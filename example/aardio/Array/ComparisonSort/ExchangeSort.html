@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - 交换排序'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - 交换排序</title> 
+<link rel="stylesheet" href="../../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 交换排序</h1><pre><code class="aardio language-aardio">import console;
+
+/*-------------------------------------------------------
+ * 冒泡排序 
+ *-------------------------------------------------------*/
+
+//冒泡排序实现简单,代码较少,是较常用交换类排序
+bubbleSort = function(arr) {
+    for( i=1;#arr) { 
+        for(j=#arr;i+1;-1) //自后向前挨个比较,i前面的已经是最小的数,并排序好了
+            if(arr[j]&lt;arr[j-1]) //小的总是往前排  
+                arr[j],arr[j-1] = arr[j-1],arr[j];  
+    }
+}
+
+console.log(&quot;冒泡排序( 交换类换排序 )&quot;)
+console.log(&quot;---------------------------&quot;)
+
+var arr = {2;46;5;17;1;2;3;99;12;56;66;21};
+bubbleSort(arr,1,#arr)
+
+//输出结果
+console.dump(arr)
+console.more(1)
+
+/*
+ *-------------------------------------------------------
+ * 快速排序 
+ *-------------------------------------------------------*/
+
+console.log(&quot;快速排序( 交换类排序 基于分治法 )&quot;)
+console.log(&quot;---------------------------&quot;)
+
+parttion = function(arr,from,to){  
+    var x = arr[to];//选定主元(pivot element)
+
+    var left = from-1;
+    for(j=from;to-1){  
+        if(arr[j]&lt;=x){ //如果比主元小
+            left++;  
+            arr[j],arr[left]  = arr[left],arr[j]; //互换,小的去左边
+        } 
+    }
+
+    //主元移中间
+    var pivot = left+1; 
+    arr[pivot],arr[to]  = arr[to],arr[pivot]; 
+    return pivot;
+}
+
+
+//快速排序的随机版本
+ranParttion = function(arr,from,to){
+    var pivot = math.random(from,to); 
+    arr[pivot],arr[to] = arr[to],arr[pivot]; 
+    return parttion(arr,from,to)
+} 
+
+quickSort = function(arr,from,to){
+    if(from&lt;to){
+        //小的站pivot左边,大的站pivot右边
+        var pivot = ranParttion(arr,from,to)
+        quickSort(arr,from,pivot-1);
+        quickSort(arr,pivot+1,to); 
+    }
+
+}
+
+var arr ={2;46;5;17;1;2;3;99;12;56;66;21};
+quickSort(arr,1,#arr);
+
+//输出结果
+console.dump(arr);
+console.more(1);
+
+
+</code></pre>
+<a href="ExchangeSort.md" tppabs="https://www.aardio.com/zh-cn/doc/example/aardio/Array/ComparisonSort/ExchangeSort.md">Markdown 格式</a>
+</body> 
+</html>

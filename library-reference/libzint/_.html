@@ -1,0 +1,277 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - libzint 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - libzint 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>libzint 库模块帮助文档</h1>
+
+<p><details>  <summary>感谢</summary>  <p>
+此扩展库参考了 popdes 提供的 Zint 调用代码 
+</p></details></p>
+
+<p><a id="libzint"></a></p>
+
+<h2>libzint 成员列表</h2>
+
+<p>条码扩展库<br>
+扩展库<br>
+<a href="javascript:if(confirm('https://sourceforge.net/projects/zint/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://sourceforge.net/projects/zint/'" tppabs="https://sourceforge.net/projects/zint/">基于开源组件libzint</a><br>
+libzint.dll使用BSD开源许可证可免费使用</p>
+
+<p><a id="libzint()"></a></p>
+
+<h3>libzint()</h3>
+
+<p>初始化条码组件</p>
+
+<p><a href="#libzintObject">返回对象:libzintObject</a></p>
+
+<p><a id="libzintObject"></a></p>
+
+<h2>libzintObject 成员列表</h2>
+
+<p><a id="libzintObject.backgroundColor"></a></p>
+
+<h3>libzintObject.backgroundColor</h3>
+
+<p>背景色</p>
+
+<p><a id="libzintObject.borderWidth"></a></p>
+
+<h3>libzintObject.borderWidth</h3>
+
+<p>边框宽度</p>
+
+<p><a id="libzintObject.encode"></a></p>
+
+<h3>libzintObject.encode(str)</h3>
+
+<p>编码 @str 参数指定的字符串<br>
+成功返回 0 ，失败返回错误代码</p>
+
+<p><a id="libzintObject.encodeFile"></a></p>
+
+<h3>libzintObject.encodeFile(filename)</h3>
+
+<p>编码 @filename 参数指定的文件<br>
+成功返回 0 ，失败返回错误代码</p>
+
+<p><a id="libzintObject.err"></a></p>
+
+<h3>libzintObject.err</h3>
+
+<p>错误信息</p>
+
+<p><a id="libzintObject.fontsize"></a></p>
+
+<h3>libzintObject.fontsize</h3>
+
+<p>字体尺寸</p>
+
+<p><a id="libzintObject.foregroundColor"></a></p>
+
+<h3>libzintObject.foregroundColor</h3>
+
+<p>前景色</p>
+
+<p><a id="libzintObject.height"></a></p>
+
+<h3>libzintObject.height</h3>
+
+<p>高度</p>
+
+<p><a id="libzintObject.inputMode"></a></p>
+
+<h3>libzintObject.inputMode</h3>
+
+<p>数值,编码格式</p>
+
+<p><a id="libzintObject.option1"></a></p>
+
+<h3>libzintObject.option1</h3>
+
+<p>依赖于 symbology，不同编码有不同意义</p>
+
+<p><a id="libzintObject.option2"></a></p>
+
+<h3>libzintObject.option2</h3>
+
+<p>依赖于 symbology，不同编码有不同意义</p>
+
+<p><a id="libzintObject.outputOptions"></a></p>
+
+<h3>libzintObject.outputOptions</h3>
+
+<p>有无边框之类的控制</p>
+
+<p><a id="libzintObject.saveBitmap"></a></p>
+
+<h3>libzintObject.saveBitmap()</h3>
+
+<p>获取内存条码图像,<br>
+返回值为gdip.bitmap对象  </p>
+
+<p><a href="javascript:if(confirm('https://www.aardio.com/zh-cn/doc/library-reference/gdip/bitmap.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������������ʵ��ļ������صġ�  \n\n�����ڷ������ϴ���?'))window.location='https://www.aardio.com/zh-cn/doc/library-reference/gdip/bitmap.html#gdipbitmapObject'" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/gdip/bitmap.html#gdipbitmapObject">返回对象:gdipbitmapObject</a></p>
+
+<p><a id="libzintObject.saveBitmap"></a></p>
+
+<h3>libzintObject.saveBitmap(angle,newWidth,newHeight)</h3>
+
+<p>获取内存条码图像,所有参数可选,<br>
+@angle参数可选使用0,90,180,270之一的数值指定旋转角度,<br>
+可选用@newWidth,@newHeight指定缩放后的图像大小,<br>
+这里的缩放可修正二维码缩放后模糊的问题,<br>
+返回值为gdip.bitmap对象</p>
+
+<p><a id="libzintObject.saveFile"></a></p>
+
+<h3>libzintObject.saveFile(文件路径,旋转角度)</h3>
+
+<p>保存条码到文件,<br>
+注意传入路径必须使用ANSI兼容的UTF8编码字符串<br>
+如果需要存为png图像，请先调用saveBitmap函数保存为gidp.bitmap图像,<br>
+再调用bitmap对象的save函数存为文件</p>
+
+<p><a id="libzintObject.scale"></a></p>
+
+<h3>libzintObject.scale</h3>
+
+<p>缩放比</p>
+
+<p><a id="libzintObject.showHrt"></a></p>
+
+<h3>libzintObject.showHrt</h3>
+
+<p>显示底部文本<br>
+如果设置为1，则text必须含有内容</p>
+
+<p><a id="libzintObject.symbology"></a></p>
+
+<h3>libzintObject.symbology</h3>
+
+<pre><code class="aardio language-aardio">libzintObject.symbology = _BARCODE_/*条码编号*/
+</code></pre>
+
+<p><a id="libzintObject.text"></a></p>
+
+<h3>libzintObject.text</h3>
+
+<p>底部文本</p>
+
+<p><a id="libzintObject.whiteSpacWidth"></a></p>
+
+<h3>libzintObject.whiteSpacWidth</h3>
+
+<p>白边宽度</p>
+
+<h3>自动完成常量</h3>
+
+<p>_BARCODE_AUSPOST=0x3F<br>
+_BARCODE_AUSREDIRECT=0x44<br>
+_BARCODE_AUSREPLY=0x42<br>
+_BARCODE_AUSROUTE=0x43<br>
+_BARCODE_AZRUNE=0x80<br>
+_BARCODE_AZTEC=0x5C<br>
+_BARCODE_C25IATA=4<br>
+_BARCODE_C25IND=7<br>
+_BARCODE_C25INTER=3<br>
+_BARCODE_C25LOGIC=6<br>
+_BARCODE_C25MATRIX=2<br>
+_BARCODE_CHANNEL=0x8C<br>
+_BARCODE_CODABAR=0x12<br>
+_BARCODE_CODABLOCKF=0x4A<br>
+_BARCODE_CODE11=1<br>
+_BARCODE_CODE128=0x14<br>
+_BARCODE_CODE128B=0x3C<br>
+_BARCODE_CODE16K=0x17<br>
+_BARCODE_CODE32=0x81<br>
+_BARCODE_CODE39=8<br>
+_BARCODE_CODE49=0x18<br>
+_BARCODE_CODE93=0x19<br>
+_BARCODE_CODEONE=0x8D<br>
+_BARCODE_DAFT=0x5D<br>
+_BARCODE_DATAMATRIX=0x47<br>
+_BARCODE_DOTCODE=0x73<br>
+_BARCODE_DPIDENT=0x16<br>
+_BARCODE_DPLEIT=0x15<br>
+_BARCODE_EAN128=0x10<br>
+_BARCODE_EAN128_CC=0x83<br>
+_BARCODE_EAN14=0x48<br>
+_BARCODE_EANX=0xD<br>
+_BARCODE_EANX_CC=0x82<br>
+_BARCODE_EANX_CHK=0xE<br>
+_BARCODE_EXCODE39=9<br>
+_BARCODE_FIM=0x31<br>
+_BARCODE_FLAT=0x1C<br>
+_BARCODE_GRIDMATRIX=0x8E<br>
+_BARCODE_HANXIN=0x74<br>
+_BARCODE_HIBC_128=0x62<br>
+_BARCODE_HIBC_39=0x63<br>
+_BARCODE_HIBC_AZTEC=0x70<br>
+_BARCODE_HIBC_BLOCKF=0x6E<br>
+_BARCODE_HIBC_DM=0x66<br>
+_BARCODE_HIBC_MICPDF=0x6C<br>
+_BARCODE_HIBC_PDF=0x6A<br>
+_BARCODE_HIBC_QR=0x68<br>
+_BARCODE_ISBNX=0x45<br>
+_BARCODE_ITF14=0x59<br>
+_BARCODE_JAPANPOST=0x4C<br>
+_BARCODE_KIX=0x5A<br>
+_BARCODE_KOREAPOST=0x4D<br>
+_BARCODE_LOGMARS=0x32<br>
+_BARCODE_MAILMARK=0x79<br>
+_BARCODE_MAXICODE=0x39<br>
+_BARCODE_MICROPDF417=0x54<br>
+_BARCODE_MICROQR=0x61<br>
+_BARCODE_MSI_PLESSEY=0x2F<br>
+_BARCODE_NVE18=0x4B<br>
+_BARCODE_ONECODE=0x55<br>
+_BARCODE_PDF417=0x37<br>
+_BARCODE_PDF417TRUNC=0x38<br>
+_BARCODE_PHARMA=0x33<br>
+_BARCODE_PHARMA_TWO=0x35<br>
+_BARCODE_PLANET=0x52<br>
+_BARCODE_PLESSEY=0x56<br>
+_BARCODE_POSTNET=0x28<br>
+_BARCODE_PZN=0x34<br>
+_BARCODE_QRCODE=0x3A<br>
+_BARCODE_RM4SCC=0x46<br>
+_BARCODE_RMQR=0x91<br>
+_BARCODE_RSS14=0x1D<br>
+_BARCODE_RSS14STACK=0x4F<br>
+_BARCODE_RSS14STACK_CC=0x89<br>
+_BARCODE_RSS14STACK_OMNI=0x50<br>
+_BARCODE_RSS14_CC=0x84<br>
+_BARCODE_RSS14_OMNI_CC=0x8A<br>
+_BARCODE_RSS_EXP=0x1F<br>
+_BARCODE_RSS_EXPSTACK=0x51<br>
+_BARCODE_RSS_EXPSTACK_CC=0x8B<br>
+_BARCODE_RSS_EXP_CC=0x86<br>
+_BARCODE_RSS_LTD=0x1E<br>
+_BARCODE_RSS_LTD_CC=0x85<br>
+_BARCODE_TELEPEN=0x20<br>
+_BARCODE_TELEPEN_NUM=0x57<br>
+_BARCODE_ULTRA=0x90<br>
+_BARCODE_UPCA=0x22<br>
+_BARCODE_UPCA_CC=0x87<br>
+_BARCODE_UPCA_CHK=0x23<br>
+_BARCODE_UPCE=0x25<br>
+_BARCODE_UPCE_CC=0x88<br>
+_BARCODE_UPCE_CHK=0x26<br>
+_BARCODE_UPNQR=0x8F<br>
+_BARCODE_VIN=0x49  </p>
+
+<p><a href="_.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/libzint/_.md">Markdown 格式</a></p>
+
+</body> 
+</html>

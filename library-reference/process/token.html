@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - process.token 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - process.token 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>process.token 库模块帮助文档</h1>
+
+<p><a id="process"></a></p>
+
+<h2>process 成员列表</h2>
+
+<p><a id="process.token"></a></p>
+
+<h3>process.token()</h3>
+
+<p><a href="#processTokenObject">返回对象:processTokenObject</a></p>
+
+<p><a id="process.token"></a></p>
+
+<h3>process.token(process,access)</h3>
+
+<p>打开进程令牌,<br>
+@process 参数指定 process 进程对象、句柄、或已执行文件名，省略时取当前进程句柄,<br>
+access指定访问权限,省略时默认值为 _TOKEN_QUERY<br>
+返回对象在回收时默认自动调用close函数</p>
+
+<p><a id="process.token"></a></p>
+
+<h3>process.token({token=tokenHandle})</h3>
+
+<p>绑定参数表中 tokenHandle 属性指定的进程令牌句柄,<br>
+可选用 gc 属性指定是否允许对象回收时自动释放 token</p>
+
+<p><a id="process.token"></a></p>
+
+<h2>process.token 成员列表</h2>
+
+<p><a id="process.token.sid"></a></p>
+
+<h3>process.token.sid(process)</h3>
+
+<p>返回运行进程的用户 SID，返回值为 buffer 类型指针，<br>
+@process 参数指定进程对象、句柄、或已执行文件名，省略时取当前进程句柄</p>
+
+<p><a id="processTokenObject"></a></p>
+
+<h2>processTokenObject 成员列表</h2>
+
+<p><a id="processTokenObject.close"></a></p>
+
+<h3>processTokenObject.close()</h3>
+
+<p>关闭对象</p>
+
+<p><a id="processTokenObject.duplicate"></a></p>
+
+<h3>processTokenObject.duplicate(level,tokenType,access,tokenAttributes)</h3>
+
+<p>复制 token 并返回 token 句柄，<br>
+打开进程时请指定 4/*_TOKEN_IMPERSONATE*/|2/*_TOKEN_DUPLICATE*/ 权限，<br>
+所有参数可选，用法请参考源码</p>
+
+<p><a id="processTokenObject.elevation"></a></p>
+
+<h3>processTokenObject.elevation()</h3>
+
+<p>当前进程是否使用管理员权限启动</p>
+
+<p><a id="processTokenObject.info"></a></p>
+
+<h3>processTokenObject.info(infClass,info)</h3>
+
+<p>获取令牌信息<br>
+@infClass参数使用枚举数值标明要获取的类型,<br>
+@info参数为要获取的结构体,<br>
+成功返回info参数</p>
+
+<p><a id="processTokenObject.sid"></a></p>
+
+<h3>processTokenObject.sid()</h3>
+
+<p>返回进程的用户 SID，返回值为 buffer 类型指针，<br>
+标准库 sys.acl 提供操作转换sid的函数，<br>
+例如可用 sys.acl.sidToUserName 将 SID 转换为用户名</p>
+
+<p><a id="processTokenObject.user"></a></p>
+
+<h3>processTokenObject.user()</h3>
+
+<p>获取进程令牌的用户信息,<br>
+返回TokenUser结构体，返回值不需要手动释放</p>
+
+<h3>自动完成常量</h3>
+
+<p>_TOKEN_ADJUST_DEFAULT=0x80<br>
+_TOKEN_ADJUST_GROUPS=0x40<br>
+_TOKEN_ADJUST_PRIVILEGES=0x20<br>
+_TOKEN_ADJUST_SESSIONID=0x100<br>
+_TOKEN_ALL_ACCESS=0xF00FF<br>
+_TOKEN_ASSIGN_PRIMARY=1<br>
+_TOKEN_DUPLICATE=2<br>
+_TOKEN_EXECUTE=0x20000<br>
+_TOKEN_IMPERSONATE=4<br>
+_TOKEN_QUERY=8<br>
+_TOKEN_QUERY_SOURCE=0x10<br>
+_TOKEN_READ=0x20008<br>
+_TOKEN_SOURCE_LENGTH=8<br>
+_TOKEN_WRITE=0x200E0  </p>
+
+<p><a href="token.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/process/token.md">Markdown 格式</a></p>
+
+</body> 
+</html>

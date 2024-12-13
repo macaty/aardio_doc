@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - vc6 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - vc6 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>vc6 库模块帮助文档</h1>
+
+<p><a id="vc6"></a></p>
+
+<h2>vc6 成员列表</h2>
+
+<p><a id="vc6("C++工程目录路径" )"></a></p>
+
+<h3>vc6(&quot;C++工程目录路径&quot; )</h3>
+
+<p>创建编译器对象</p>
+
+<p><a id="vc6()"></a></p>
+
+<h3>vc6()</h3>
+
+<p><a href="#vc6envObject">返回对象:vc6envObject</a></p>
+
+<p><a id="vc6.loadcode"></a></p>
+
+<h3>vc6.loadcode(cpp)</h3>
+
+<pre><code class="aardio language-aardio">vc6.loadcode(`  
+#include &lt;windows.h&gt;   
+#define DllExport declspec( dllexport )  
+
+extern &quot;C&quot; {  
+    DllExport int cdecl getValue() {   
+        /*编译参数@1指定的C++代码到临时 DLL 文件,  
+并通过加载该临时 DLL,然后立即删除 临时DLL文件  
+然后该回可以在 aardio 中使用的 DLL 对象*/  
+        return 0;  
+    }  
+}`);
+</code></pre>
+
+<p><a id="vc6envObject"></a></p>
+
+<h2>vc6envObject 成员列表</h2>
+
+<p><a id="vc6envObject.?"></a></p>
+
+<h3>vc6envObject.?</h3>
+
+<p>如果键值都是字符串：<br>
+当键名只包含字母与数字，在工作目录生成同名 &quot;.cpp&quot; 文件。<br>
+如果键名已包含后缀名，则不添加&quot;.cpp&quot; 后缀。<br>
+含后缀名时请使用下标操作符赋值。  </p>
+
+<p>在 aardio 中段注释可以赋值为字符串，首尾星号数目要相同</p>
+
+<p><a id="vc6envObject.addIncludePath"></a></p>
+
+<h3>vc6envObject.addIncludePath(&quot;目录&quot;)</h3>
+
+<p>环境变量中添加默认头文件目录,支持多个目录参数</p>
+
+<p><a id="vc6envObject.addLibPath"></a></p>
+
+<h3>vc6envObject.addLibPath(&quot;目录&quot;)</h3>
+
+<p>环境变量中添加默认库文件目录,支持多个目录参数</p>
+
+<p><a id="vc6envObject.addPath"></a></p>
+
+<h3>vc6envObject.addPath(&quot;PATH&quot;,&quot;目录&quot;)</h3>
+
+<p>添加环境变量,支持多个目录参数</p>
+
+<p><a id="vc6envObject.exec"></a></p>
+
+<h3>vc6envObject.exec(命令参数)</h3>
+
+<pre><code class="aardio language-aardio">vc6envObject.exec(  
+    &#39;cl *.cpp&#39;  
+    ,&#39;/W3&#39; /*警告等级*/  
+    ,&#39;/MD&#39; /*使用多线程动态运行库*/  
+    ,&#39;/O2 /Ot /GL /EHsc&#39; /*代码优化选项*/  
+    ,&#39;/D &quot;WIN32&quot; /D &quot;_WINDOWS&quot; /D &quot;_MBCS&quot; /D &quot;_USRDLL&quot;&#39; /*定义常数和宏*/  
+    ,&#39;/I&quot;./INCLUDE&quot;&#39;/*指定头文件目录*/  
+    ,&#39;kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib&#39; /*导入库*/  
+    ,&#39;/link /SUBSYSTEM:WINDOWS /MACHINE:X86&#39; /*后面是链接参数 */  
+    ,&#39;/out:test.dll&#39;/*输出文件名*/  
+    ,&#39;/dll&#39; /*输出DLL*/  
+    ,&#39;/def:test.def&#39; /*dll模块定义文件*/  
+    ,&#39;/LIBPATH:&quot;.\LIB&quot; /LIBPATH:&quot;.\LIB2&quot;&#39; /*指定库目录*/  
+)
+</code></pre>
+
+<p><a id="vc6envObject.popen"></a></p>
+
+<h3>vc6envObject.popen()</h3>
+
+<p><a href="../process/popen.html#processPopenObject" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/process/popen.html#processPopenObject">返回对象:processPopenObject</a></p>
+
+<p><a id="vc6envObject.popen"></a></p>
+
+<h3>vc6envObject.popen(命令参数)</h3>
+
+<pre><code class="aardio language-aardio">vc6envObject.popen(  
+    &#39;cl *.cpp&#39;  
+    ,&#39;/W3&#39; /*警告等级*/  
+    ,&#39;/MD&#39; /*使用多线程动态运行库*/  
+    ,&#39;/O2 /Ot /GL /EHsc&#39; /*代码优化选项*/  
+    ,&#39;/D &quot;WIN32&quot; /D &quot;_WINDOWS&quot; /D &quot;_MBCS&quot; /D &quot;_USRDLL&quot;&#39; /*定义常数和宏*/  
+    ,&#39;/I&quot;./INCLUDE&quot;&#39;/*指定头文件目录*/
+</code></pre>
+
+<p><a id="vc6envObject.sourceDir"></a></p>
+
+<h3>vc6envObject.sourceDir</h3>
+
+<p>设置源码目录</p>
+
+<p><a href="_.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/vc6/_.md">Markdown 格式</a></p>
+
+</body> 
+</html>

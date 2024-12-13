@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - color.view 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - color.view 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>color.view 库模块帮助文档</h1>
+
+<p><a id="color"></a></p>
+
+<h2>color 成员列表</h2>
+
+<p><a id="color.view"></a></p>
+
+<h3>color.view</h3>
+
+<p>用于显示color.table色表的视图控件</p>
+
+<p><a id="color.view"></a></p>
+
+<h3>color.view()</h3>
+
+<p><a href="#colorviewObject">返回对象:colorviewObject</a></p>
+
+<p><a id="color.view"></a></p>
+
+<h3>color.view(plusCtrl)</h3>
+
+<p>创建色表视图,<br>
+参数必须指定一个plus控件</p>
+
+<p><a id="colorviewObject"></a></p>
+
+<h2>colorviewObject 成员列表</h2>
+
+<p><a id="colorviewObject.addItem"></a></p>
+
+<h3>colorviewObject.addItem(rgb,name)</h3>
+
+<p>添加色卡,rgb为RGB格式颜色数值,name为颜色名,<br>
+名称中的英文名或副名称应放在括号内</p>
+
+<p><a id="colorviewObject.delItem"></a></p>
+
+<h3>colorviewObject.delItem(index)</h3>
+
+<p>删除色卡,参数指定索引</p>
+
+<p><a id="colorviewObject.getColorTable"></a></p>
+
+<h3>colorviewObject.getColorTable()</h3>
+
+<p>返回色表数据</p>
+
+<p><a id="colorviewObject.getItemRect"></a></p>
+
+<h3>colorviewObject.getItemRect()</h3>
+
+<p>返回指定项所在区块的::RECT结构体,<br>
+参数@1使用数值指定索引,如果索引超出范围返回null,<br>
+可选指定参数@2为true返回屏幕坐标  </p>
+
+<p><a href="../global/_.html#rectObject" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/global/_.html#rectObject">返回对象:rectObject</a></p>
+
+<p><a id="colorviewObject.loadColorTable"></a></p>
+
+<h3>colorviewObject.loadColorTable</h3>
+
+<p>加载色表</p>
+
+<p><a id="colorviewObject.loadColorTable"></a></p>
+
+<h3>colorviewObject.loadColorTable(clrTable,startIndex,endIndex,rows)</h3>
+
+<p>所有参数可选,<br>
+参数@1指定色表,不指定则自动创建默认色表,<br>
+startIndex,endIndex指定当前页开始、结束索引,<br>
+rows指定色卡行数,默认为12</p>
+
+<p><a id="colorviewObject.onItemClick"></a></p>
+
+<h3>colorviewObject.onItemClick()</h3>
+
+<pre><code class="aardio language-aardio">colorviewObject.onItemClick = function(index,rgb,argb,name,ename){
+    /*鼠标点击色卡触发此事件  
+index为为色卡索引,rgb为GDI颜色值,argb为GDI+颜色值,  
+name为颜色中文名字,ename为英文名字*/    
+}
+</code></pre>
+
+<p><a id="colorviewObject.onItemDoubleClick"></a></p>
+
+<h3>colorviewObject.onItemDoubleClick()</h3>
+
+<pre><code class="aardio language-aardio">colorviewObject.onItemDoubleClick = function(index,rgb,argb,name,ename){
+    /*鼠标双击击色卡触发此事件  
+index为色卡索引,rgb为GDI颜色值,argb为GDI+颜色值,  
+name为颜色中文名字,ename为英文名字*/    
+}
+</code></pre>
+
+<p><a id="colorviewObject.onItemHover"></a></p>
+
+<h3>colorviewObject.onItemHover()</h3>
+
+<pre><code class="aardio language-aardio">colorviewObject.onItemHover = function(index,rgb,argb,name,ename){
+    /*鼠标移动到色卡上触发此事件  
+index为色卡索引,rgb为GDI颜色值,argb为GDI+颜色值,  
+name为颜色中文名字,ename为英文名字*/
+}
+</code></pre>
+
+<p><a id="colorviewObject.onItemLeave"></a></p>
+
+<h3>colorviewObject.onItemLeave</h3>
+
+<pre><code class="aardio language-aardio">colorviewObject.onItemLeave = function(){
+    /*鼠标离开色卡且未移动到其他色卡时触发此事件*/ 
+}
+</code></pre>
+
+<p><a href="view.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/color/view.md">Markdown 格式</a></p>
+
+</body> 
+</html>

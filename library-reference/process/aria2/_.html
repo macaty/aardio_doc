@@ -1,0 +1,488 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - process.aria2 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - process.aria2 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>process.aria2 库模块帮助文档</h1>
+
+<p><a id="process"></a></p>
+
+<h2>process 成员列表</h2>
+
+<p><a id="process.aria2"></a></p>
+
+<h3>process.aria2()</h3>
+
+<p><a href="#ProcessAria2Object">返回对象:ProcessAria2Object</a></p>
+
+<p><a id="process.aria2"></a></p>
+
+<h3>process.aria2(rpcPort)</h3>
+
+<p>创建 aria2 对象,<br>
+可选使用 @rpcPort 参数指定 RPC 服务端监听端口，\不指定参数则自动分配空闲端口</p>
+
+<p><a id="process.aria2"></a></p>
+
+<h2>process.aria2 成员列表</h2>
+
+<p>用于创建 aria2 服务进程<br>
+已添加 UPnP 自动端口映射功能，下载速度更快。<br>
+注意 BT 下载速度要养，如果没速度先找个热门资源下载就可以了</p>
+
+<p>创建 aria2 客户端</p>
+
+<p><a id="process.aria2.defaultTrackerList"></a></p>
+
+<h3>process.aria2.defaultTrackerList</h3>
+
+<p>默认 Tracker 服务器列表,<br>
+当获取用户指定的 Tracker 服务器列表失败时使用此值,<br>
+Tracker 服务器必须以逗号换换行符分隔,<br>
+这里不能指定 获取 Tracker 服务器列表的网址</p>
+
+<p><a id="process.aria2.server"></a></p>
+
+<h3>process.aria2.server</h3>
+
+<p>最后一次启动的 process.aria2 实例  </p>
+
+<p><a href="#ProcessAria2Object">返回对象:ProcessAria2Object</a></p>
+
+<p><a id="ProcessAria2Object"></a></p>
+
+<h2>ProcessAria2Object 成员列表</h2>
+
+<p><a id="ProcessAria2Object.addArguments"></a></p>
+
+<h3>ProcessAria2Object.addArguments()</h3>
+
+<p>使用一个或多个参数指定 aria2 启动参数,应在 startRpcUrl 之前调用</p>
+
+<p><a id="ProcessAria2Object.defaultArguments"></a></p>
+
+<h3>ProcessAria2Object.defaultArguments</h3>
+
+<p>字符串数组,用于指定 aria 的默认启动参数,<br>
+已指定的默认参数请参考库源码</p>
+
+<p><a id="ProcessAria2Object.dhtListenPort"></a></p>
+
+<h3>ProcessAria2Object.dhtListenPort</h3>
+
+<p>允许的 DHT 监听端口,默认为 &quot;6881-6999&quot;。<br>
+可以指定一个或多个用逗号分隔的端口配置，<br>
+可指定单个端口，也可用 &quot;6881-6999&quot; 格式表示端口范围。<br>
+调用 startServer 以后可用 dhtListeningPort 属性查看实际监听端口</p>
+
+<p><a id="ProcessAria2Object.dhtListeningPort"></a></p>
+
+<h3>ProcessAria2Object.dhtListeningPort</h3>
+
+<p>实际使用的 DHT 监听端口，<br>
+请先用 listenPort 配置允许的  DHT 监听端口</p>
+
+<p><a id="ProcessAria2Object.diskCache"></a></p>
+
+<h3>ProcessAria2Object.diskCache</h3>
+
+<p>磁盘缓存大小，默认为 32M</p>
+
+<p><a id="ProcessAria2Object.downloadDir"></a></p>
+
+<h3>ProcessAria2Object.downloadDir</h3>
+
+<p>自定义下载目录,默认为系统下载目录。<br>
+如果自定义此属性，将在调用 startServer 函数时生效</p>
+
+<p><a id="ProcessAria2Object.fileAllocation"></a></p>
+
+<h3>ProcessAria2Object.fileAllocation</h3>
+
+<p>文件分配方式。<br>
+建议保持为 null 由 aardio 自动指定：<br>
+NTFS 分区自动指定为 &quot;falloc&quot;，否则为 &quot;prealloc&quot;</p>
+
+<p><a id="ProcessAria2Object.getGlobalOption"></a></p>
+
+<h3>ProcessAria2Object.getGlobalOption()</h3>
+
+<p>返回 aria2 全局配置表。</p>
+
+<p><a id="ProcessAria2Object.isReady"></a></p>
+
+<h3>ProcessAria2Object.isReady()</h3>
+
+<p>aria2已启动，并且 jsonClient 已连接时返回true</p>
+
+<p><a id="ProcessAria2Object.jsonClient"></a></p>
+
+<h3>ProcessAria2Object.jsonClient()</h3>
+
+<p>启动并返回基于 WebSocket 协议的异步 JSON-RPC 客户端，<br>
+成功返回 web.socket.jsonClient 对象。<br>
+如果服务端未启动，则启动服务进程。<br>
+可用接口函数请参考 <a href="javascript:if(confirm('https://aria2.github.io/manual/en/html/aria2c.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://aria2.github.io/manual/en/html/aria2c.html#rpc-interface'" tppabs="https://aria2.github.io/manual/en/html/aria2c.html#rpc-interface">https://aria2.github.io/manual/en/html/aria2c.html#rpc-interface</a>   </p>
+
+<p>jsonClientSync 与 jsonClient 函数返回的 API 接口是一样的，<br>
+区别是 jsonClientSync 调用后阻塞等待结果返回，<br>
+而 jsonClient 则立即返回，RPC 调用结束再触发返回对象的 end 成员函数  </p>
+
+<p><a href="#websocketjsonClientObject">返回对象:websocketjsonClientObject</a></p>
+
+<p><a id="ProcessAria2Object.jsonClientSync"></a></p>
+
+<h3>ProcessAria2Object.jsonClientSync()</h3>
+
+<p>启动并返回基于 HTTP 协议的同步 JSON-RPC 客户端，<br>
+成功返回 web.rpc.jsonClient 对象。<br>
+如果服务端未启动，则启动服务进程。<br>
+可用接口函数请参考 <a href="javascript:if(confirm('https://aria2.github.io/manual/en/html/aria2c.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://aria2.github.io/manual/en/html/aria2c.html#rpc-interface'" tppabs="https://aria2.github.io/manual/en/html/aria2c.html#rpc-interface">https://aria2.github.io/manual/en/html/aria2c.html#rpc-interface</a>   </p>
+
+<p><a href="javascript:if(confirm('https://www.aardio.com/zh-cn/doc/library-reference/web/rpc/jsonClient.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������������ʵ��ļ������صġ�  \n\n�����ڷ������ϴ���?'))window.location='https://www.aardio.com/zh-cn/doc/library-reference/web/rpc/jsonClient.html#webRpcJsonClientObject'" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/web/rpc/jsonClient.html#webRpcJsonClientObject">返回对象:webRpcJsonClientObject</a></p>
+
+<p><a id="ProcessAria2Object.listenPort"></a></p>
+
+<h3>ProcessAria2Object.listenPort</h3>
+
+<p>允许的监听端口,默认为 &quot;6881-6999&quot;。<br>
+可以指定一个或多个用逗号分隔的端口配置，<br>
+可指定单个端口，也可用 &quot;6881-6999&quot; 格式表示端口范围。<br>
+调用 startServer 以后可用 listeningPort 属性查看实际监听端口</p>
+
+<p><a id="ProcessAria2Object.listeningPort"></a></p>
+
+<h3>ProcessAria2Object.listeningPort</h3>
+
+<p>实际使用的监听端口，<br>
+请先用 listenPort 配置允许的监听端口</p>
+
+<p><a id="ProcessAria2Object.onBtDownloadComplete"></a></p>
+
+<h3>ProcessAria2Object.onBtDownloadComplete</h3>
+
+<pre><code class="aardio language-aardio">ProcessAria2Object.onBtDownloadComplete = function(task){
+    /*BT 下载完成，task.gid 可获取下载任务 gid */
+}
+</code></pre>
+
+<p><a id="ProcessAria2Object.onDownloadComplete"></a></p>
+
+<h3>ProcessAria2Object.onDownloadComplete</h3>
+
+<pre><code class="aardio language-aardio">ProcessAria2Object.onDownloadComplete = function(task){
+    /*下载完成，task.gid 可获取下载任务 gid */
+}
+</code></pre>
+
+<p><a id="ProcessAria2Object.onDownloadError"></a></p>
+
+<h3>ProcessAria2Object.onDownloadError</h3>
+
+<pre><code class="aardio language-aardio">ProcessAria2Object.onDownloadError = function(task){
+    var errMsg = ProcessAria2Object.taskErrorMessage(task.gid); 
+    /*下载出错了，task.gid 可获取下载任务 gid。  
+errMsg 为错误信息。 */
+}
+</code></pre>
+
+<p><a id="ProcessAria2Object.onDownloadPause"></a></p>
+
+<h3>ProcessAria2Object.onDownloadPause</h3>
+
+<pre><code class="aardio language-aardio">ProcessAria2Object.onDownloadPause = function(task){
+    /*暂停下载，task.gid 可获取下载任务 gid */
+}
+</code></pre>
+
+<p><a id="ProcessAria2Object.onDownloadStart"></a></p>
+
+<h3>ProcessAria2Object.onDownloadStart</h3>
+
+<pre><code class="aardio language-aardio">ProcessAria2Object.onDownloadStart = function(task){
+    /*开始下载，task.gid 可获取下载任务 gid */
+}
+</code></pre>
+
+<p><a id="ProcessAria2Object.onDownloadStop"></a></p>
+
+<h3>ProcessAria2Object.onDownloadStop</h3>
+
+<pre><code class="aardio language-aardio">ProcessAria2Object.onDownloadStop = function(task){
+    /*停止下载，task.gid 可获取下载任务 gid */
+}
+</code></pre>
+
+<p><a id="ProcessAria2Object.onError"></a></p>
+
+<h3>ProcessAria2Object.onError</h3>
+
+<p>function(errMessage,rpcError){
+    __/*出错时触发此函数，errMessage 为错误信息。<br>
+如果服务端按 jsonrpc 协议返回 error 对象，<br>
+则 rpcError 有值，包含 messge，code 字段。*/<br>
+}</p>
+
+<p><a id="ProcessAria2Object.ready"></a></p>
+
+<h3>ProcessAria2Object.ready(proc)</h3>
+
+<pre><code class="aardio language-aardio">ProcessAria2Object.ready(  
+    function(){  
+        var jsonClient = ProcessAria2Object.jsonClient();  
+        /*aria2已启动，并且jsonClient已连接时执行此函数*/  
+    }  
+)
+</code></pre>
+
+<p><a id="ProcessAria2Object.rpcListenAll"></a></p>
+
+<h3>ProcessAria2Object.rpcListenAll</h3>
+
+<p>是否允许外部网络使用 RPC 调用 aria2 接口,默认为 false<br>
+如果自定义此属性，将在调用 startServer 函数时生效</p>
+
+<p><a id="ProcessAria2Object.rpcMaxRequestSize"></a></p>
+
+<h3>ProcessAria2Object.rpcMaxRequestSize</h3>
+
+<p>最大请求数<br>
+如果自定义此属性，将在调用 startServer 函数时生效</p>
+
+<p><a id="ProcessAria2Object.rpcPort"></a></p>
+
+<h3>ProcessAria2Object.rpcPort</h3>
+
+<p>RPC端口<br>
+不指定时自动分配空闲端口<br>
+如果自定义此属性，将在调用 startServer 函数时生效</p>
+
+<p><a id="ProcessAria2Object.rpcToken"></a></p>
+
+<h3>ProcessAria2Object.rpcToken</h3>
+
+<p>RPC密钥<br>
+如果自定义此属性，将在调用 startServer 函数时生效</p>
+
+<p><a id="ProcessAria2Object.rpcUrl"></a></p>
+
+<h3>ProcessAria2Object.rpcUrl</h3>
+
+<p>默认为 null，调用 startServer 函数后为启动的 RPC 接口地址</p>
+
+<p><a id="ProcessAria2Object.saveSession"></a></p>
+
+<h3>ProcessAria2Object.saveSession()</h3>
+
+<p>保存会话</p>
+
+<p><a id="ProcessAria2Object.saveSessionInterval"></a></p>
+
+<h3>ProcessAria2Object.saveSessionInterval</h3>
+
+<p>保存下载状态时间间隔，默认为 30 秒</p>
+
+<p><a id="ProcessAria2Object.saveSessionPath"></a></p>
+
+<h3>ProcessAria2Object.saveSessionPath</h3>
+
+<p>保存状态文件路径，用于恢复下载，<br>
+不指定则默认存于 downloadDir 属性指定的目录下，文件名为 aria2.session</p>
+
+<p><a id="ProcessAria2Object.server"></a></p>
+
+<h3>ProcessAria2Object.server</h3>
+
+<p>服务进程  </p>
+
+<p><a href="../popen.html#processPopenObject" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/process/popen.html#processPopenObject">返回对象:processPopenObject</a></p>
+
+<p><a id="ProcessAria2Object.startServer"></a></p>
+
+<h3>ProcessAria2Object.startServer()</h3>
+
+<p>启动 aria2 服务进程，返回 RPC 地址。<br>
+如果服务进程已启动且正常运行则直接返回 RPC 地址，否则启动或重新启动 aria2。<br>
+注意所有下载配置都需要在调用此函数以前指定才会有效。<br>
+可选使用一个或多个参数指定 aria2 启动参数。<br>
+可用参数见 <a href="javascript:if(confirm('https://aria2.github.io/manual/en/html/aria2c.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://aria2.github.io/manual/en/html/aria2c.html#options'" tppabs="https://aria2.github.io/manual/en/html/aria2c.html#options">https://aria2.github.io/manual/en/html/aria2c.html#options</a><br>
+启动参数可指定多个字符串参数，也可指定包含数组或名值对的表。<br>
+短参数名应用逗号分隔为 2 个参数，例如: &quot;-j&quot;,10 。<br>
+长参数可在一个参数内以等号分隔名字与参数值，<br>
+也可以小驼峰式命名写为表的名值对，如：<br>
+{ maxConcurrentDownloads = 12  }</p>
+
+<p><a id="ProcessAria2Object.stop"></a></p>
+
+<h3>ProcessAria2Object.stop()</h3>
+
+<p>关闭 aria2，并等待调用完成。<br>
+如果参数 @1 为 true，则发送 RPC 指令后不等待调用完成。<br>
+当前进程退出后也会自动关闭 aria2</p>
+
+<p><a id="ProcessAria2Object.stopped"></a></p>
+
+<h3>ProcessAria2Object.stopped</h3>
+
+<p>是否已调用 stop 函数停止 aria2 服务端。<br>
+不可修改此属性。<br>
+如果在断开连接后自动调用 startServer 函数，<br>
+应当首先检查 stopped 属性以避免在调用 stop 函数以后重启 aria2 。<br>
+调用 startServer 函数以后会重置此属性为 null 值。</p>
+
+<p><a id="ProcessAria2Object.taskAdd"></a></p>
+
+<h3>ProcessAria2Object.taskAdd</h3>
+
+<p>添加下载任务</p>
+
+<p><a id="ProcessAria2Object.taskAdd"></a></p>
+
+<h3>ProcessAria2Object.taskAdd(url,callback)</h3>
+
+<p>参数 @url 可指定下载链接、磁力链接、本地 torrent 文件路径。<br>
+如果不指定 callback 在调用同步接口直接返回结果。<br>
+否则异步回调 @callback 指定的函数，回调参数 @1 为下载 gid 。<br>
+回调参数 @2 为错误对象，错误对象的 message 字段为错误信息。<br>
+如果未出错则错误对象为 null。</p>
+
+<p><a id="ProcessAria2Object.taskErrorMessage"></a></p>
+
+<h3>ProcessAria2Object.taskErrorMessage(gid)</h3>
+
+<p>参数 @1 指定下载 gid。<br>
+返回该下载任务发生错误返回的错误信息。</p>
+
+<p><a id="ProcessAria2Object.taskFilePath"></a></p>
+
+<h3>ProcessAria2Object.taskFilePath(gid)</h3>
+
+<p>参数 @1 指定下载 gid。<br>
+返回下载文件列表中第一个文件的路径。<br>
+BT元数据路径 返回 null。</p>
+
+<p><a id="ProcessAria2Object.taskFiles"></a></p>
+
+<h3>ProcessAria2Object.taskFiles(gid)</h3>
+
+<p>参数 @1 指定下载 gid。<br>
+返回下载文件信息列表，每个文件的 path 字段指定路径。<br>
+BT元数据路径以 [METADATA] 开头。</p>
+
+<p><a id="ProcessAria2Object.taskName"></a></p>
+
+<h3>ProcessAria2Object.taskName(gid)</h3>
+
+<p>参数 @1 指定下载 gid。<br>
+返回该下载任务的下载文件名。<br>
+如果参数 @2 为 true 则返回的是仅根据 URL 获取的文件名。<br>
+此类文件名建议稍后重新获取。</p>
+
+<p><a id="ProcessAria2Object.taskPause"></a></p>
+
+<h3>ProcessAria2Object.taskPause(gid)</h3>
+
+<p>暂停下载，参数 @1 指定下载 gid。</p>
+
+<p><a id="ProcessAria2Object.taskRemove"></a></p>
+
+<h3>ProcessAria2Object.taskRemove(gid)</h3>
+
+<p>移除下载，参数 @1 指定下载 gid。</p>
+
+<p><a id="ProcessAria2Object.taskUnpause"></a></p>
+
+<h3>ProcessAria2Object.taskUnpause(gid)</h3>
+
+<p>从暂停恢复下载，参数 @1 指定下载 gid。</p>
+
+<p><a id="ProcessAria2Object.taskUrl"></a></p>
+
+<h3>ProcessAria2Object.taskUrl(gid)</h3>
+
+<p>参数 @1 指定下载 gid。<br>
+返回磁力链接或下载网址。</p>
+
+<p><a id="ProcessAria2Object.tellActive"></a></p>
+
+<h3>ProcessAria2Object.tellActive(callback,keys...)</h3>
+
+<pre><code class="aardio language-aardio">ProcessAria2Object.tellActive(callback,keys...tellActive(function(result,err){  
+    if(result) {  
+        for(i,task in result){  
+            /*tellActive 用于返回所有正在下载的任务。  
+task 为下载任务对象，tellActive 函数的第三个参数开始可指定一个或多个要返回的状态字段名。  
+*/  
+        }   
+    }    
+},&quot;gid&quot;,&quot;status&quot;,&quot;connections&quot;,&quot;downloadSpeed&quot;,&quot;totalLength&quot;,&quot;completedLength&quot;);
+</code></pre>
+
+<p><a id="ProcessAria2Object.tellStatus"></a></p>
+
+<h3>ProcessAria2Object.tellStatus(gid,keys...)</h3>
+
+<p>参数 @1 指定下载 gid。<br>
+返回该下载任务的状态信息。<br>
+参数@2 开始可指定一个或多个要返回的状态字段名。</p>
+
+<p><a id="ProcessAria2Object.tellStopped"></a></p>
+
+<h3>ProcessAria2Object.tellStopped(offset,num,callback,keys...)</h3>
+
+<pre><code class="aardio language-aardio">ProcessAria2Object.tellStopped(offset,num,callback,keys...tellStopped(0,20,function(result,err){  
+    if(result) {  
+        for(i,task in result){  
+            /*tellStopped 用于返回所有已停止的任务。  
+task 为下载任务对象，tellActive 函数的第三个参数开始可指定一个或多个要返回的状态字段名。  
+*/  
+        }   
+    }    
+},&quot;gid&quot;,&quot;status&quot;,&quot;connections&quot;,&quot;downloadSpeed&quot;,&quot;totalLength&quot;,&quot;completedLength&quot;);
+</code></pre>
+
+<p><a id="ProcessAria2Object.tellWaiting"></a></p>
+
+<h3>ProcessAria2Object.tellWaiting(offset,num,callback,keys...)</h3>
+
+<pre><code class="aardio language-aardio">ProcessAria2Object.tellWaiting(offset,num,callback,keys...tellWaiting(0,20,function(result,err){  
+    if(result) {  
+        for(i,task in result){  
+            /*tellWaiting 用于返回所有正在等待的任务。  
+task 为下载任务对象，tellActive 函数的第三个参数开始可指定一个或多个要返回的状态字段名。  
+*/  
+        }   
+    }    
+},&quot;gid&quot;,&quot;status&quot;,&quot;connections&quot;,&quot;downloadSpeed&quot;,&quot;totalLength&quot;,&quot;completedLength&quot;);
+</code></pre>
+
+<p><a id="ProcessAria2Object.trackerList"></a></p>
+
+<h3>ProcessAria2Object.trackerList</h3>
+
+<p>指定 Tracker 服务器列表，可以逗号或换行符分隔多个Tracker 服务器,<br>
+也可以指定一个获取 Tracker 服务器列表的网址,该网址必须以 .txt 结尾,<br>
+不指定则使用默认值 <a href="javascript:if(confirm('https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_best.txt  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_best.txt'" tppabs="https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_best.txt">https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_best.txt</a><br>
+也可以指定为 <a href="javascript:if(confirm('https://trackerslist.com/best_aria2.txt  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://trackerslist.com/best_aria2.txt'" tppabs="https://trackerslist.com/best_aria2.txt">https://trackerslist.com/best_aria2.txt</a></p>
+
+<p><a id="ProcessAria2Object.userAgent"></a></p>
+
+<h3>ProcessAria2Object.userAgent</h3>
+
+<p>指定下载客户端特征字符串,<br>
+不指定则使用默认值  aria2/version</p>
+
+<p><a href="_.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/process/aria2/_.md">Markdown 格式</a></p>
+
+</body> 
+</html>
