@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - 下载文件'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - 下载文件</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 下载文件</h1><pre><code class="aardio language-aardio">//下载文件
+import console; 
+import wsock.tcp.simpleHttpServer;
+
+//创建 HTTP 服务端，不指定端口时自动分配空闲端口
+var server = wsock.tcp.simpleHttpServer(&quot;127.0.0.1&quot;,/*8081*/); 
+
+//指定网站根目录，不允许下载根目录之外的文件
+server.documentRoot = &quot;~/example/Graphics/&quot;;
+
+//显示服务器地址 
+console.log( server.getUrl() )
+
+//在浏览器打开服务器地址
+raw.execute( server.getUrl() );
+
+//运行 HTTP 服务端处理程序
+server.run(
+    function(response,request,session){
+
+        //处理请求，request.path 是客户端请求的文件路径。 
+        if( request.path = &quot;/test.jpg&quot; ){
+
+            /*
+            如果参数是 *.aardio 则执行服务端代码。否则下载文件。
+            这个函数已经处理好所有事件，一般没必要自己重新去写个 HTTP 下载功能（工作量和难度都不小）。
+            */
+            response.loadcode(&quot;/.gdip.jpg&quot;);
+            /*
+            如果需要更多功能，例如重启，更换根目录等等， 
+            请查看『扫码传文件』范例。
+            */
+        }
+        else{
+            //自动支持服务端模板语法 https://www.aardio.com/zh-cn/doc/language-reference/templating/syntax.html
+            loadcodex(`
+        &lt;!doctype html&gt;
+        &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body style=&quot;white-space:pre&quot;&gt; 
+        &lt;a href=&quot;/test.jpg&quot;&gt;/test.jpg&lt;/a&gt; &lt;/body&gt;
+        &lt;/html&gt;`); 
+        } 
+    }
+)
+
+</code></pre>
+<a href="https://www.aardio.com/zh-cn/doc/example/Web/HTTPServer/response.loadcode.md">Markdown 格式</a>
+</body> 
+</html>

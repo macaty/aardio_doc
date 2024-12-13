@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - web.kit 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - web.kit 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>web.kit 库模块帮助文档</h1>
+
+<p><a id="web.kit"></a></p>
+
+<h2>web.kit 成员列表</h2>
+
+<p>精简版 WebKit 内核浏览器组件<br>
+NPAPI插件加载目录:<br>
+~\plugins\ 以及 %localappdata%\aardio\std<br>
+p-plugin\plugins<br>
+支持在注册表路径 HKCU\Software\MozillaPlugins 注册的 NPAPI 插件,<br>
+内核源码: <a href="https://github.com/aardio/wke">https://github.com/aardio/wke</a></p>
+
+<p><a id="web.kit.configure"></a></p>
+
+<h3>web.kit.configure(setting)</h3>
+
+<pre><code class="aardio language-aardio">web.kit.configure({  
+    proxy = {  
+        type = &quot;HTTP&quot;;  
+        hostname = &quot;127.0.0.1&quot;;  
+        port = 8080;  
+        username = &quot;&quot;;  
+        password =&quot;&quot;;  
+    };  
+    cookieFilePath = &quot;/cookie&quot;;  
+})
+</code></pre>
+
+<p><a id="web.kit.export"></a></p>
+
+<h3>web.kit.export(JS变量名,aardio对象)</h3>
+
+<p>导出aardio对象为JS全局变量</p>
+
+<p><a id="web.kit.jsBindFunction"></a></p>
+
+<h3>web.kit.jsBindFunction(&quot;函数名&quot;,参数个数,函数对象)</h3>
+
+<pre><code class="aardio language-aardio">web.kit.jsBindFunction(&quot;JS函数名&quot;,/*参数个数*/,function(){  
+    var wkeWebView = owner;  
+    var winform = wkeWebView.getForm();  
+    winform.close();  
+})
+</code></pre>
+
+<p><a id="web.kit.jsBindGetter"></a></p>
+
+<h3>web.kit.jsBindGetter(&quot;函数名&quot;,函数对象)</h3>
+
+<p>定义JS属性读取器</p>
+
+<p><a id="web.kit.jsBindSetter"></a></p>
+
+<h3>web.kit.jsBindSetter(&quot;函数名&quot;,函数对象)</h3>
+
+<p>定义JS属性设置器</p>
+
+<p><a id="web.kit.jsTypeOf"></a></p>
+
+<h3>web.kit.jsTypeOf(js值句柄)</h3>
+
+<p>返回变量类型</p>
+
+<p><a id="web.kit.jsUndefined"></a></p>
+
+<h3>web.kit.jsUndefined()</h3>
+
+<p>JS未定义变量</p>
+
+<p><a id="web.kit.lastView"></a></p>
+
+<h3>web.kit.lastView()</h3>
+
+<p>获取JS最后一次回调aardio时使用的浏览器对象</p>
+
+<p><a id="web.kit.jsParseValue（"></a></p>
+
+<h2>web.kit.jsParseValue（ 成员列表</h2>
+
+<p><a id="web.kit.jsParseValue（.(jsExecState,js值句柄)"></a></p>
+
+<h3>web.kit.jsParseValue（.(jsExecState,js值句柄)</h3>
+
+<p>解析JS值对象</p>
+
+<p><a href="https://www.aardio.com/zh-cn/doc/library-reference/web/kit/_.md">Markdown 格式</a></p>
+
+</body> 
+</html>

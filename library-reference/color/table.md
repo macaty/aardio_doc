@@ -1,81 +1,97 @@
-# color.table 库模块帮助文档
+[aardio 文档](../../index.htm "aardio 编程语言文档首页")
 
-<a id="color"></a>
+# color.table 库模块帮助文�?
 ## color 成员列表
 
+### color.table()
 
-<a id="color.table"></a>
-### color.table() 
- 创建色表,用于color.view,  
-返回常用标准色组成的数组,  
-每个数组成员由色彩中文名、英文名、RGB值3个元素组成
+创建色表,用于color.view,
 
-<a id="color.table"></a>
+返回常用标准色组成的数组,
+
+每个数组成员由色彩中文名、英文名、RGB�?个元素组�?
 ## color.table 成员列表
 
+### color.table.analogousColor(clr,gdi)
 
-<a id="color.table.analogousColor"></a>
-### color.table.analogousColor(clr,gdi) 
- 创建类似色表,  
-类似色是在色相环上邻近的颜色,会给人带来和谐、舒服的视觉效果,  
-参数@1使用ARGB格式颜色值指定主色,如果颜色为gdi的rgb格式请将参数@2指定为true
+创建类似色表,
 
-<a id="color.table.complementaryColor"></a>
-### color.table.complementaryColor(clr,gdi) 
- 创建补色表,  
-突出对比效果,  
-参数@1使用ARGB格式颜色值指定主色,如果颜色为gdi的rgb格式请将参数@2指定为true
+类似色是在色相环上邻近的颜色,会给人带来和谐、舒服的视觉效果,
 
-<a id="color.table.find"></a>
-### color.table.find() 
- 参数@1指定一个ARGB格式颜色数值,  
-在色表中查找并返回色卡信息
+参数@1使用ARGB格式颜色值指定主�?如果颜色为gdi的rgb格式请将参数@2指定为true
 
-<a id="color.table.init"></a>
-### color.table.init() 
- 净色彩数组转换为color.table标准格式
+### color.table.complementaryColor(clr,gdi)
 
-<a id="color.table.insert"></a>
-### color.table.insert(clrTable,clrInfo,index) 
- 在参数@1指定的色表中添加色卡,  
-clrInfo必须是一个数组,索引1放成员名,索引2放英文名,索引3放RGB格式颜色数值  
-可选用参数@3指定插入位置,默认添加到尾部
+创建补色�?
 
-<a id="color.table.lightColor"></a>
-### color.table.lightColor(clr,gdi) 
- 创建亮度色表,  
-色相不变,亮度从0%到1%的变化色表,  
-参数@1使用ARGB格式颜色值指定主色,如果颜色为gdi的rgb格式请将参数@2指定为true
+突出对比效果,
 
-<a id="color.table.monochromaticColor"></a>
-### color.table.monochromaticColor(clr,gdi) 
- 创建单色调方案,  
-单色调是色相不变,但亮度发生变化的配色方案,  
-参数@1使用ARGB格式颜色值指定主色,如果颜色为gdi的rgb格式请将参数@2指定为true
+参数@1使用ARGB格式颜色值指定主�?如果颜色为gdi的rgb格式请将参数@2指定为true
 
-<a id="color.table.splitComplementaryColor"></a>
-### color.table.splitComplementaryColor(clr,gdi) 
- 创建分散补色表,  
-对比色,但比补色降低了对比强度  
-即有较好的对比效果,也不会显得太突兀,  
-参数@1使用ARGB格式颜色值指定主色,如果颜色为gdi的rgb格式请将参数@2指定为true
+### color.table.find()
 
-<a id="color.table.squareColor"></a>
-### color.table.squareColor(clr,gdi) 
- 创建矩形色表,  
-在色相环上平均分布,并组成两对互补色,  
-色彩丰富,要注意选定主色,处理好色彩间的平衡  
-参数@1使用ARGB格式颜色值指定主色,如果颜色为gdi的rgb格式请将参数@2指定为true
+参数@1指定一个ARGB格式颜色数�?
 
-<a id="color.table.tetradicColor"></a>
-### color.table.tetradicColor(clr,gdi) 
- 创建四色表,  
-由两对在色相环上的互补色组成,色彩丰富,  
-但要注意选定主色,处理好色彩间的平衡  
-参数@1使用ARGB格式颜色值指定主色,如果颜色为gdi的rgb格式请将参数@2指定为true
+在色表中查找并返回色卡信�?
+### color.table.init()
 
-<a id="color.table.triadicColor"></a>
-### color.table.triadicColor(clr,gdi) 
- 创建三色表,  
-三色在色相环上平均分布,应当用一个做主色,处理好色彩间的平衡  
-参数@1使用ARGB格式颜色值指定主色,如果颜色为gdi的rgb格式请将参数@2指定为true
+净色彩数组转换为color.table标准格式
+
+### color.table.insert(clrTable,clrInfo,index)
+
+在参数@1指定的色表中添加色卡,
+
+clrInfo必须是一个数�?索引1放成员名,索引2放英文名,索引3放RGB格式颜色数�?
+可选用参数@3指定插入位置,默认添加到尾�?
+### color.table.lightColor(clr,gdi)
+
+创建亮度色表,
+
+色相不变,亮度�?%�?%的变化色�?
+
+参数@1使用ARGB格式颜色值指定主�?如果颜色为gdi的rgb格式请将参数@2指定为true
+
+### color.table.monochromaticColor(clr,gdi)
+
+创建单色调方�?
+
+单色调是色相不变,但亮度发生变化的配色方案,
+
+参数@1使用ARGB格式颜色值指定主�?如果颜色为gdi的rgb格式请将参数@2指定为true
+
+### color.table.splitComplementaryColor(clr,gdi)
+
+创建分散补色�?
+
+对比�?但比补色降低了对比强�?
+即有较好的对比效�?也不会显得太突兀,
+
+参数@1使用ARGB格式颜色值指定主�?如果颜色为gdi的rgb格式请将参数@2指定为true
+
+### color.table.squareColor(clr,gdi)
+
+创建矩形色表,
+
+在色相环上平均分�?并组成两对互补色,
+
+色彩丰富,要注意选定主色,处理好色彩间的平�?
+参数@1使用ARGB格式颜色值指定主�?如果颜色为gdi的rgb格式请将参数@2指定为true
+
+### color.table.tetradicColor(clr,gdi)
+
+创建四色�?
+
+由两对在色相环上的互补色组成,色彩丰富,
+
+但要注意选定主色,处理好色彩间的平�?
+参数@1使用ARGB格式颜色值指定主�?如果颜色为gdi的rgb格式请将参数@2指定为true
+
+### color.table.triadicColor(clr,gdi)
+
+创建三色�?
+
+三色在色相环上平均分�?应当用一个做主色,处理好色彩间的平�?
+参数@1使用ARGB格式颜色值指定主�?如果颜色为gdi的rgb格式请将参数@2指定为true
+
+[Markdown 格式](https://www.aardio.com/zh-cn/doc/library-reference/color/table.md)
+

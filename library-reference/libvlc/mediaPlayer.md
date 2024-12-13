@@ -1,204 +1,220 @@
-# libvlc.mediaPlayer 库模块帮助文档
+[aardio 文档](../../index.htm "aardio 编程语言文档首页")
 
-<a id="libvlcplayerObject"></a>
+# libvlc.mediaPlayer 库模块帮助文�?
 ## libvlcplayerObject 成员列表
 
+### libvlcplayerObject.audioChannel
 
-<a id="libvlcplayerObject.audioChannel"></a>
-### libvlcplayerObject.audioChannel 
- 声道
+声道
 
-<a id="libvlcplayerObject.audioDelay"></a>
-### libvlcplayerObject.audioDelay 
- 音频延迟时间，单位毫秒
+### libvlcplayerObject.audioDelay
 
-<a id="libvlcplayerObject.audioTrack"></a>
-### libvlcplayerObject.audioTrack 
- 音轨
+音频延迟时间，单位毫�?
+### libvlcplayerObject.audioTrack
 
-<a id="libvlcplayerObject.fullscreen"></a>
-### libvlcplayerObject.fullscreen 
- 是否全屏
+音轨
 
-<a id="libvlcplayerObject.getAudioTrackCount"></a>
-### libvlcplayerObject.getAudioTrackCount() 
- 获取音轨总数
+### libvlcplayerObject.fullscreen
 
-<a id="libvlcplayerObject.getAudioTrackDescription"></a>
-### libvlcplayerObject.getAudioTrackDescription() 
- 获取音轨描述
+是否全屏
 
-<a id="libvlcplayerObject.getEventManager"></a>
-### libvlcplayerObject.getEventManager() 
- 获取事件管理器  
-  
+### libvlcplayerObject.getAudioTrackCount()
+
+获取音轨总数
+
+### libvlcplayerObject.getAudioTrackDescription()
+
+获取音轨描述
+
+### libvlcplayerObject.getEventManager()
+
+获取事件管理�?
 [返回对象:vlcEventManagerObject](#vlcEventManagerObject)
 
-<a id="libvlcplayerObject.getMedia"></a>
-### libvlcplayerObject.getMedia() 
- 返回媒体文件描述对象  
-  
+### libvlcplayerObject.getMedia()
+
+返回媒体文件描述对象
+
 [返回对象:libvlcmediaObject](#libvlcmediaObject)
 
-<a id="libvlcplayerObject.getVideoAdjustFloat"></a>
-### libvlcplayerObject.getVideoAdjustFloat(_libvlc_adjust) 
- 获取视频调整设置
+### libvlcplayerObject.getVideoAdjustFloat(\_libvlc\_adjust)
 
-<a id="libvlcplayerObject.getVideoAdjustInt"></a>
-### libvlcplayerObject.getVideoAdjustInt(_libvlc_adjust) 
- 获取视频调整设置
+获取视频调整设置
 
-<a id="libvlcplayerObject.height"></a>
-### libvlcplayerObject.height 
- 视频高度
+### libvlcplayerObject.getVideoAdjustInt(\_libvlc\_adjust)
 
-<a id="libvlcplayerObject.isBuffering"></a>
-### libvlcplayerObject.isBuffering() 
- 视频是否正在缓冲
+获取视频调整设置
 
-<a id="libvlcplayerObject.isEnded"></a>
-### libvlcplayerObject.isEnded() 
- 视频是否已结束
+### libvlcplayerObject.height
 
-<a id="libvlcplayerObject.isError"></a>
-### libvlcplayerObject.isError() 
- 视频是否遇到错误
+视频高度
 
-<a id="libvlcplayerObject.isOpening"></a>
-### libvlcplayerObject.isOpening() 
- 视频是否已打开
+### libvlcplayerObject.isBuffering()
 
-<a id="libvlcplayerObject.isPaused"></a>
-### libvlcplayerObject.isPaused() 
- 视频是否已暂停
+视频是否正在缓冲
 
-<a id="libvlcplayerObject.isPlaying"></a>
-### libvlcplayerObject.isPlaying() 
- 视频是否正在播放
+### libvlcplayerObject.isEnded()
 
-<a id="libvlcplayerObject.isStopped"></a>
-### libvlcplayerObject.isStopped() 
- 视频是否已停止
+视频是否已结�?
+### libvlcplayerObject.isError()
 
-<a id="libvlcplayerObject.length"></a>
-### libvlcplayerObject.length 
- 视频总时长,单位毫秒
+视频是否遇到错误
 
-<a id="libvlcplayerObject.loadMedia"></a>
-### libvlcplayerObject.loadMedia("媒体文件地址") 
- 使用协议地址创建媒体文件描述对象
+### libvlcplayerObject.isOpening()
 
-<a id="libvlcplayerObject.loadMedia"></a>
-### libvlcplayerObject.loadMedia() 
- [返回对象:libvlcmediaObject](#libvlcmediaObject)
+视频是否已打开
 
-<a id="libvlcplayerObject.loadMediaFile"></a>
-### libvlcplayerObject.loadMediaFile("本体文件路径") 
- 打开本地文件创建媒体文件描述对象
+### libvlcplayerObject.isPaused()
 
-<a id="libvlcplayerObject.loadMediaFile"></a>
-### libvlcplayerObject.loadMediaFile() 
- [返回对象:libvlcmediaObject](#libvlcmediaObject)
+视频是否已暂�?
+### libvlcplayerObject.isPlaying()
 
-<a id="libvlcplayerObject.mute"></a>
-### libvlcplayerObject.mute 
- 是否静音
+视频是否正在播放
 
-<a id="libvlcplayerObject.pause"></a>
-### libvlcplayerObject.pause() 
- 暂停
+### libvlcplayerObject.isStopped()
 
-<a id="libvlcplayerObject.play"></a>
-### libvlcplayerObject.play() 
- 播放
+视频是否已停�?
+### libvlcplayerObject.length
 
-<a id="libvlcplayerObject.release"></a>
-### libvlcplayerObject.release() 
- 关闭播放器
+视频总时�?单位毫秒
 
-<a id="libvlcplayerObject.resume"></a>
-### libvlcplayerObject.resume() 
- 继续
+### libvlcplayerObject.loadMedia("媒体文件地址")
 
-<a id="libvlcplayerObject.setMedia"></a>
-### libvlcplayerObject.setMedia(媒体文件描述对象) 
- 修改媒体文件描述对象
+使用协议地址创建媒体文件描述对象
 
-<a id="libvlcplayerObject.setVideoAdjustFloat"></a>
-### libvlcplayerObject.setVideoAdjustFloat(_libvlc_adjust,) 
- 修改视频调整设置
+### libvlcplayerObject.loadMedia()
 
-<a id="libvlcplayerObject.setVideoAdjustInt"></a>
-### libvlcplayerObject.setVideoAdjustInt(_libvlc_adjust,) 
- 修改视频调整设置
+[返回对象:libvlcmediaObject](#libvlcmediaObject)
 
-<a id="libvlcplayerObject.setWindow"></a>
-### libvlcplayerObject.setWindow(winform) 
- 指定输出视频的窗口对象
+### libvlcplayerObject.loadMediaFile("本体文件路径")
 
-<a id="libvlcplayerObject.spu"></a>
-### libvlcplayerObject.spu 
- 当前字幕索引
+打开本地文件创建媒体文件描述对象
 
-<a id="libvlcplayerObject.spuDelay"></a>
-### libvlcplayerObject.spuDelay 
- 字幕延迟时间,单位毫秒
+### libvlcplayerObject.loadMediaFile()
 
-<a id="libvlcplayerObject.spuDescription"></a>
-### libvlcplayerObject.spuDescription 
- 返回字幕描述数组
+[返回对象:libvlcmediaObject](#libvlcmediaObject)
 
-获取数组包含所有字幕条目描述
+### libvlcplayerObject.mute
 
-<a id="libvlcplayerObject.spuLoad"></a>
-### libvlcplayerObject.spuLoad("字幕路径") 
- 加载字幕
+是否静音
 
-<a id="libvlcplayerObject.stop"></a>
-### libvlcplayerObject.stop() 
- 停止
+### libvlcplayerObject.pause()
 
-<a id="libvlcplayerObject.takeSnapshot"></a>
-### libvlcplayerObject.takeSnapshot("图像文件路径",宽度,高度) 
- 截图  
-宽度高度参数可省略
+暂停
 
-<a id="libvlcplayerObject.time"></a>
-### libvlcplayerObject.time 
- 当前播放位置,单位毫秒
+### libvlcplayerObject.play()
 
-<a id="libvlcplayerObject.volume"></a>
-### libvlcplayerObject.volume 
- 音量,0到100范围的整数值  
-0为静音
+播放
 
-<a id="libvlcplayerObject.width"></a>
-### libvlcplayerObject.width 
- 视频宽度
+### libvlcplayerObject.release()
 
+关闭播放�?
+### libvlcplayerObject.resume()
+
+继续
+
+### libvlcplayerObject.setMedia(媒体文件描述对象)
+
+修改媒体文件描述对象
+
+### libvlcplayerObject.setVideoAdjustFloat(\_libvlc\_adjust,)
+
+修改视频调整设置
+
+### libvlcplayerObject.setVideoAdjustInt(\_libvlc\_adjust,)
+
+修改视频调整设置
+
+### libvlcplayerObject.setWindow(winform)
+
+指定输出视频的窗口对�?
+### libvlcplayerObject.spu
+
+当前字幕索引
+
+### libvlcplayerObject.spuDelay
+
+字幕延迟时间,单位毫秒
+
+### libvlcplayerObject.spuDescription
+
+返回字幕描述数组
+
+获取数组包含所有字幕条目描�?
+### libvlcplayerObject.spuLoad("字幕路径")
+
+加载字幕
+
+### libvlcplayerObject.stop()
+
+停止
+
+### libvlcplayerObject.takeSnapshot("图像文件路径",宽度,高度)
+
+截图
+
+宽度高度参数可省�?
+### libvlcplayerObject.time
+
+当前播放位置,单位毫秒
+
+### libvlcplayerObject.volume
+
+音量,0�?00范围的整数�?
+0为静�?
+### libvlcplayerObject.width
+
+视频宽度
 
 ### 自动完成常量
-_libvlc_Buffering=2  
-_libvlc_Ended=6  
-_libvlc_Error=7  
-_libvlc_NothingSpecial=0  
-_libvlc_Opening=1  
-_libvlc_Paused=4  
-_libvlc_Playing=3  
-_libvlc_Stopped=5  
-_libvlc_adjust_Brightness=2  
-_libvlc_adjust_Contrast=1  
-_libvlc_adjust_Enable=0  
-_libvlc_adjust_Gamma=5  
-_libvlc_adjust_Hue=3  
-_libvlc_adjust_Saturation=4  
-_libvlc_position_bottom=6  
-_libvlc_position_bottom_left=7  
-_libvlc_position_bottom_right=8  
-_libvlc_position_center=0  
-_libvlc_position_disable=-1  
-_libvlc_position_left=1  
-_libvlc_position_right=2  
-_libvlc_position_top=3  
-_libvlc_position_top_left=4  
-_libvlc_position_top_right=5  
+
+\_libvlc\_Buffering=2
+
+\_libvlc\_Ended=6
+
+\_libvlc\_Error=7
+
+\_libvlc\_NothingSpecial=0
+
+\_libvlc\_Opening=1
+
+\_libvlc\_Paused=4
+
+\_libvlc\_Playing=3
+
+\_libvlc\_Stopped=5
+
+\_libvlc\_adjust\_Brightness=2
+
+\_libvlc\_adjust\_Contrast=1
+
+\_libvlc\_adjust\_Enable=0
+
+\_libvlc\_adjust\_Gamma=5
+
+\_libvlc\_adjust\_Hue=3
+
+\_libvlc\_adjust\_Saturation=4
+
+\_libvlc\_position\_bottom=6
+
+\_libvlc\_position\_bottom\_left=7
+
+\_libvlc\_position\_bottom\_right=8
+
+\_libvlc\_position\_center=0
+
+\_libvlc\_position\_disable=-1
+
+\_libvlc\_position\_left=1
+
+\_libvlc\_position\_right=2
+
+\_libvlc\_position\_top=3
+
+\_libvlc\_position\_top\_left=4
+
+\_libvlc\_position\_top\_right=5
+
+[Markdown 格式](https://www.aardio.com/zh-cn/doc/library-reference/libvlc/mediaPlayer.md)
+

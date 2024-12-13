@@ -145,7 +145,7 @@ com.ReleaseConnection( com对象, 事件对象,cookie ) //释放挂接到指定�
 
 <h2>必读：避免 COM 事件表的循环引用 <a id="gc" href="#gc">&#x23;</a></h2>
 
-<p>无论是 COM 事件回调还是原生 API 回调函数，它们都有一个共同特征是要避免循环引用。而纯 aardio 对象或函数不存在这种问题。参考：<a href="../raw/callback.html#gc" tppabs="https://www.aardio.com/zh-cn/doc/library-guide/builtin/raw/callback.html#gc">原生回调函数对象的内存管理与释放</a></p>
+<p>无论是 COM 事件回调还是原生 API 回调函数，它们都有一个共同特征是要避免循环引用。而纯 aardio 对象或函数不存在这种问题。参考：<a href="https://www.aardio.com/zh-cn/doc/library-guide/builtin/raw/callback.html#gc">原生回调函数对象的内存管理与释放</a></p>
 
 <p>实际上我们使用 COM 控件上基本遇不到下面的要讲的问题，
 甚至基本不需要自己绑定事件监听器，aardio 已经自动处理好了所有这些事。</p>
@@ -171,7 +171,7 @@ aardio 中嵌入窗口控件的 winform.createEmbed(),winform.createEmbedEx() �
 这几个函数虽有前述的循环引用，但是已经在宿主窗口销毁前
 自动解除事件监听并释放对象，所以能正常释放。</p>
 
-<p><a href="event.md" tppabs="https://www.aardio.com/zh-cn/doc/library-guide/builtin/com/event.md">Markdown 格式</a></p>
+<p><a href="https://www.aardio.com/zh-cn/doc/library-guide/builtin/com/event.md">Markdown 格式</a></p>
 
 </body> 
 </html>

@@ -75,7 +75,7 @@ _host.doObjectVerb( _OLEIVERB</em>_ ) = 执行指定的动词命令</p></li>
 <p>但是通常我们需要容器对象，这是因为：</p>
 
 <ul>
-<li>我们通常需要对 COM 控件做进一步的封装以增强或简化 COM 控件的功能。 COM 控件自己已经有了锁定的元表不能被替换，所以最好的方式是用一个容器对象去封装 COM 对象。参考：<a href="../../../language-reference/datatype/table/meta.html#proxy" tppabs="https://www.aardio.com/zh-cn/doc/language-reference/datatype/table/meta.html#proxy">元表 - 代理表</a></li>
+<li>我们通常需要对 COM 控件做进一步的封装以增强或简化 COM 控件的功能。 COM 控件自己已经有了锁定的元表不能被替换，所以最好的方式是用一个容器对象去封装 COM 对象。参考：<a href="https://www.aardio.com/zh-cn/doc/language-reference/datatype/table/meta.html#proxy">元表 - 代理表</a></li>
 <li>窗口对象提供的 CreateEmbed 函数会自动将容器对注册为 COM 控件的事件表，可以直接在容器对象上添加 COM 事件回调函数。</li>
 </ul>
 
@@ -101,7 +101,7 @@ _host.doObjectVerb( _OLEIVERB</em>_ ) = 执行指定的动词命令</p></li>
 
 <p>此函数的主要作用与 createEmbed 一样用于创建 COM 控件并将 COM 控件嵌入到指定的窗口或控件对象。但是 createEmbed 返回的宿主对象需要我们自己添加元表或属性元表去封装到 COM 控件的操作。</p>
 
-<p>createEmbedEx 函数返回的容器对象已自动添加元表并成为了 COM 对象的 <a href="../../../language-reference/datatype/table/meta.html#proxy" tppabs="https://www.aardio.com/zh-cn/doc/language-reference/datatype/table/meta.html#proxy">代理表</a>，可通过容器对象的成员代理访问 COM 对象成员。也可以通过指定容器对象的成员函数响应 COM 对象事件。</p>
+<p>createEmbedEx 函数返回的容器对象已自动添加元表并成为了 COM 对象的 <a href="https://www.aardio.com/zh-cn/doc/language-reference/datatype/table/meta.html#proxy">代理表</a>，可通过容器对象的成员代理访问 COM 对象成员。也可以通过指定容器对象的成员函数响应 COM 对象事件。</p>
 
 <p>容器对象的 <strong>event</strong> 成员为 COM 对象默认的事件监听器。如果在容器对象上添加成员回调函数则会默认写入到 <strong>event</strong> 事件表。</p>
 
@@ -182,7 +182,7 @@ win.loopMessage();
 
 <p><code>embedObject.StatusTextChange = function(text) {}</code></p>
 
-<p><a href="embed.md" tppabs="https://www.aardio.com/zh-cn/doc/library-guide/builtin/com/embed.md">Markdown 格式</a></p>
+<p><a href="https://www.aardio.com/zh-cn/doc/library-guide/builtin/com/embed.md">Markdown 格式</a></p>
 
 </body> 
 </html>

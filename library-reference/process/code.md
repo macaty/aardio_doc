@@ -1,31 +1,32 @@
-# process.code 库模块帮助文档
+[aardio 文档](../../index.htm "aardio 编程语言文档首页")
 
-<a id="process"></a>
+# process.code 库模块帮助文�?
 ## process 成员列表
 
+### process.code()
 
-<a id="process.code"></a>
-### process.code() 
- [返回对象:processObject](https://www.aardio.com/zh-cn/doc/library-reference/process/_.html#processObject)
+[返回对象:processObject](_.html#processObject)
 
-<a id="process.code"></a>
-### process.code(文件,参数,...) 
- 启动 VS Code
+### process.code(文件,参数,...)
 
-<a id="process.code"></a>
+启动 VS Code
+
 ## process.code 成员列表
 
+### process.code.getInstallPath()
 
-<a id="process.code.getInstallPath"></a>
-### process.code.getInstallPath() 
- 已安装 VS Code 则返回安装路径
+已安�?VS Code 则返回安装路�?
+### process.code.install()
 
-<a id="process.code.install"></a>
-### process.code.install() 
- 已安装 VS Code 则直接返回安装路径,  
-如果未安装 VS Code 则下载安装,  
+已安�?VS Code 则直接返回安装路�?
+
+如果未安�?VS Code 则下载安�?
+
 安装完成返回安装路径
 
-<a id="process.code.path"></a>
-### process.code.path 
- VS Code 安装路径
+### process.code.path
+
+VS Code 安装路径
+
+[Markdown 格式](https://www.aardio.com/zh-cn/doc/library-reference/process/code.md)
+

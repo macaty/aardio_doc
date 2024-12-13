@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - AI 聊天简版'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - AI 聊天简版</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: AI 聊天简版</h1><pre><code class="aardio language-aardio">//AI 聊天简版
+
+import console; 
+
+import web.rest.aiChat;
+
+//创建 Anthropic 或 OpenAI 兼容 AI 聊天接口
+var ai = web.rest.aiChat(   
+    //下面的测试密钥 24 小时后失效，DeepSeek 的 key 充 10 元估计能用一年，请自己申请一个吧！
+    key = &quot;sk-2f729981180a45e3b28971e9a5c68c72&quot;;
+    url = &quot;https://api.deepseek.com/v1&quot;;//接口地址
+    model = &quot;deepseek-chat&quot;;//模型名称首字符为 @ 则使用 Anthropic 接口
+    temperature = 0.1;//温度
+    maxTokens = 1024,//最大回复长度
+)
+
+//创建 AI 会话消息队列
+import web.rest.aiChat.message;
+var msg = web.rest.aiChat.message();
+
+//添加系统提示词
+msg.system(&quot;你是 aardio 编程助手。&quot;);
+while( var txt = console.getText( &quot;请输入问题:&quot; ) ) {
+
+    //添加用户提示词
+    msg.prompt(txt);
+
+    //调用聊天接口，回调参数 2 指定的 console.writeText 输出 AI 回复的增量文本。
+    var ok,err = ai.messages(msg,console.writeText);
+    if(err) console.error(err)
+
+    console.print(&#39;\n-----------------------------\n&#39;);
+}
+
+</code></pre>
+<a href="https://www.aardio.com/zh-cn/doc/example/Web/REST/aiChatCon.md">Markdown 格式</a>
+</body> 
+</html>

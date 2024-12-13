@@ -1,141 +1,131 @@
-# sys.ddcci 库模块帮助文档
+[aardio 文档](../../index.htm "aardio 编程语言文档首页")
 
-<a id="sys"></a>
+# sys.ddcci 库模块帮助文�?
 ## sys 成员列表
 
+### sys.ddcci()
 
-<a id="sys.ddcci"></a>
-### sys.ddcci() 
- [返回对象:SysDdcciObject](#SysDdcciObject)
+[返回对象:SysDdcciObject](#SysDdcciObject)
 
-<a id="sys.ddcci"></a>
-### sys.ddcci(hpm,description) 
- 创建显示器控制对象，  
-@hpm 为物理显示器句柄,  
-@description 为显示器描述，可选参数
+### sys.ddcci(hpm,description)
 
-<a id="sys.ddcci"></a>
+创建显示器控制对象，
+
+@hpm 为物理显示器句柄,
+
+@description 为显示器描述，可选参�?
 ## sys.ddcci 成员列表
 
-DDC/CI（Display Data Channel Command Interface）  
-用于控制显示器，不是所有显示器都支持 DDC/CI
+DDC/CI（Display Data Channel Command Interface�?
+用于控制显示器，不是所有显示器都支�?DDC/CI
 
-创建显示器控制对象
+创建显示器控制对�?
+### sys.ddcci.each()
 
-<a id="sys.ddcci.each"></a>
-### sys.ddcci.each() 
- 
+```aardio aardio
+for ddcci in sys.ddcci.each() {
+    /*遍历所有物理显示器�?ddcci 为控制该显示器的 sys.ddcci 对象*/
+}
 
-```aardio
-for ddcci in sys.ddcci.each() {  
-	/*遍历所有物理显示器，  
-ddcci 为控制该显示器的 sys.ddcci 对象*/  
-}  
-  
 [返回对象:SysDdcciObject](#SysDdcciObject)
+
 ```
 
+### sys.ddcci.getPhysicalMonitors
 
+返回所有物理显示器句柄数组
 
-<a id="sys.ddcci.getPhysicalMonitors"></a>
-### sys.ddcci.getPhysicalMonitors 
- 返回所有物理显示器句柄数组
+### sys.ddcci.getPhysicalMonitors()
 
-<a id="sys.ddcci.getPhysicalMonitors"></a>
-### sys.ddcci.getPhysicalMonitors() 
- 返回所有物理显示器句柄数组
+返回所有物理显示器句柄数组
 
-<a id="sys.ddcci.getPhysicalMonitors"></a>
-### sys.ddcci.getPhysicalMonitors(hMonitor) 
- 返回 @hMonitor 指定句柄的显示器指向的物理显示器句柄数组,  
-注意参数 @hMonitor 指定显示器句柄，并非物理显示器句柄
+### sys.ddcci.getPhysicalMonitors(hMonitor)
 
-<a id="SysDdcciObject"></a>
+返回 @hMonitor 指定句柄的显示器指向的物理显示器句柄数组,
+
+注意参数 @hMonitor 指定显示器句柄，并非物理显示器句�?
 ## SysDdcciObject 成员列表
 
+### SysDdcciObject.capabilities
 
-<a id="SysDdcciObject.capabilities"></a>
-### SysDdcciObject.capabilities 
- 返回描述显示器支持功能的表对象
+返回描述显示器支持功能的表对�?
+### SysDdcciObject.description
 
-<a id="SysDdcciObject.description"></a>
-### SysDdcciObject.description 
- 显示器描述
+显示器描�?
+### SysDdcciObject.destroy()
 
-<a id="SysDdcciObject.destroy"></a>
-### SysDdcciObject.destroy() 
- 释放对象，  
-如果没有调用此函数，则回收对象时自动调用。
+释放对象�?
+如果没有调用此函数，则回收对象时自动调用�?
+### SysDdcciObject.getBrightness()
 
-<a id="SysDdcciObject.getBrightness"></a>
-### SysDdcciObject.getBrightness() 
- 获取亮度，返回3个值：  
-当前亮度，最小值，最大值
+获取亮度，返�?个值：
 
-<a id="SysDdcciObject.getColorTemperature"></a>
-### SysDdcciObject.getColorTemperature() 
- 获取色温
+当前亮度，最小值，最大�?
+### SysDdcciObject.getColorTemperature()
 
-<a id="SysDdcciObject.getContrast"></a>
-### SysDdcciObject.getContrast() 
- 获取对比度，返回3个值：  
-当前亮度，最小值，最大值
+获取色温
 
-<a id="SysDdcciObject.getFeature"></a>
-### SysDdcciObject.getFeature(vcpCode) 
- 读取设置值  
-@vcpCode 为控制代码
+### SysDdcciObject.getContrast()
 
-<a id="SysDdcciObject.getInputSource"></a>
-### SysDdcciObject.getInputSource() 
- 获取输入源
+获取对比度，返回3个值：
 
-<a id="SysDdcciObject.getPowerMode"></a>
-### SysDdcciObject.getPowerMode() 
- 获取电源状态
+当前亮度，最小值，最大�?
+### SysDdcciObject.getFeature(vcpCode)
 
-<a id="SysDdcciObject.hasFeature"></a>
-### SysDdcciObject.hasFeature(vcpCode) 
- 是否支持 @vcpCode 指定的控制代码  
-支持则返回包含可设置值的数组,数组可能为空,  
+读取设置�?
+@vcpCode 为控制代�?
+### SysDdcciObject.getInputSource()
+
+获取输入�?
+### SysDdcciObject.getPowerMode()
+
+获取电源状�?
+### SysDdcciObject.hasFeature(vcpCode)
+
+是否支持 @vcpCode 指定的控制代�?
+支持则返回包含可设置值的数组,数组可能为空,
+
 否则返回 null
 
-<a id="SysDdcciObject.reset"></a>
-### SysDdcciObject.reset() 
- 重置设置
+### SysDdcciObject.reset()
 
-<a id="SysDdcciObject.resetColor"></a>
-### SysDdcciObject.resetColor() 
- 重置颜色设置
+重置设置
 
-<a id="SysDdcciObject.save"></a>
-### SysDdcciObject.save() 
- 保存设置
+### SysDdcciObject.resetColor()
 
-<a id="SysDdcciObject.setBrightness"></a>
-### SysDdcciObject.setBrightness(value) 
- 设置亮度
+重置颜色设置
 
-<a id="SysDdcciObject.setColorTemperature"></a>
-### SysDdcciObject.setColorTemperature(value) 
- 设置色温
+### SysDdcciObject.save()
 
-<a id="SysDdcciObject.setContrast"></a>
-### SysDdcciObject.setContrast(value) 
- 设置对比度
+保存设置
 
-<a id="SysDdcciObject.setFeature"></a>
-### SysDdcciObject.setFeature(vcpCode,value) 
- 写入设置值  
-@vcpCode 为控制代码,@value 为新的设置值
+### SysDdcciObject.setBrightness(value)
 
-<a id="SysDdcciObject.setInputSource"></a>
-### SysDdcciObject.setInputSource(inputSource) 
- 修改输入源,  
+设置亮度
+
+### SysDdcciObject.setColorTemperature(value)
+
+设置色温
+
+### SysDdcciObject.setContrast(value)
+
+设置对比�?
+### SysDdcciObject.setFeature(vcpCode,value)
+
+写入设置�?
+@vcpCode 为控制代�?@value 为新的设置�?
+### SysDdcciObject.setInputSource(inputSource)
+
+修改输入�?
+
 @inputSource 用数值指定输入源
 
-<a id="SysDdcciObject.setPowerMode"></a>
-### SysDdcciObject.setPowerMode(mode) 
- 修改电源状态,  
-@mode 为1表示打开屏幕，  
-@mode 为 5 或 4 表示关闭屏幕
+### SysDdcciObject.setPowerMode(mode)
+
+修改电源状�?
+
+@mode �?表示打开屏幕�?
+@mode �?5 �?4 表示关闭屏幕
+
+[Markdown 格式](https://www.aardio.com/zh-cn/doc/library-reference/sys/ddcci.md)
+

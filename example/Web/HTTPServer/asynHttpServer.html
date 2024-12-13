@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - 单线程异步服务器'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - 单线程异步服务器</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 单线程异步服务器</h1><pre><code class="aardio language-aardio">//单线程异步服务器
+import win.ui;
+/*DSG{{*/
+var winform = win.form(text=&quot;aardio form&quot;;right=759;bottom=469)
+winform.add()
+/*}}*/
+
+/*
+单线程异步服务器用于界面线程，
+不需要创建多线程，可以在保持界面消息循环的同时响应 HTTP 请求。
+并且基于 wsock.tcp.asynHttpServer 的 web.socket.server 可在同一端口启动 WebSocket 服务。
+*/
+import wsock.tcp.asynHttpServer;
+var httpServer = wsock.tcp.asynHttpServer();
+
+//这里可以指定 IP 和端口，不指定则自动分配空闲端口 
+httpServer.start(&quot;127.0.0.1&quot;);
+
+//服务端 aardio 支持模板语法： https://www.aardio.com/zh-cn/doc/language-reference/templating/syntax.html
+var url = httpServer.getUrl(&quot;/.www/main.aardio&quot;); //参数支持 aardio 工程嵌入资源目录路径
+
+import web.form;
+var wb = web.form(winform);
+
+//用浏览器组件打开网页试试
+wb.go(url);
+
+winform.show();
+win.loopMessage();
+</code></pre>
+<a href="https://www.aardio.com/zh-cn/doc/example/Web/HTTPServer/asynHttpServer.md">Markdown 格式</a>
+</body> 
+</html>

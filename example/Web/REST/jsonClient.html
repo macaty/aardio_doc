@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - web.rest 客户端 - web.rest.jsonClient'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - web.rest 客户端 - web.rest.jsonClient</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: web.rest 客户端 - web.rest.jsonClient</h1><pre><code class="aardio language-aardio">//web.rest 客户端 - web.rest.jsonClient
+import console;
+import web.rest.jsonClient;
+
+console.showLoading(&quot;正在连接JSON数据库&quot;);
+var http = web.rest.jsonClient();
+http.setHeaders({
+    [&quot;Security-key&quot;] =  &quot;Your security key&quot;;
+    [&quot;Private&quot;] = true;
+})
+
+var jsonStore = http.api(&quot;https://extendsclass.com/api/json-storage/bin/&quot;);
+var jsonData = jsonStore.post(
+    name = &quot;jon.snow&quot;;
+    age = 31;
+)
+console.log(&quot;增，以 POST 方法请求网址&quot;,http.lastRequestUrl)
+
+var result = jsonStore[jsonData.id].put(
+    name = &quot;jon.snow2&quot;;
+    age = 32;
+)
+console.log(&quot;改，以 PUT 方法请求网址&quot;,http.lastRequestUrl)
+
+var result = jsonStore[jsonData.id].patch(
+    name = &quot;jon.snow3&quot;;
+)
+console.log(&quot;部分修改，以 PATCH 方法请求网址&quot;,http.lastRequestUrl)
+
+//也可以在网址中使用大括号指定占位符
+var jsonStore = http.api(&quot;https://extendsclass.com/api/json-storage/bin/{id}&quot;);
+
+//API对象的成员名会被自动按顺序替换为URL占位符（忽略占位符的名字）
+var result = jsonStore[jsonData.id].get();
+console.log(&quot;查，以 GET 方法请求网址&quot;,http.lastRequestUrl)
+console.dumpJson(result)
+
+//也可以用一个表指定多个占位符的替换值
+var params ={
+    id = jsonData.id; 
+}
+var result = jsonStore[ params ].delete()
+console.log(&quot;删，以 DELETE 方法请求网址&quot;,http.lastRequestUrl)
+
+console.dump(result)
+console.pause()
+
+
+</code></pre>
+<a href="https://www.aardio.com/zh-cn/doc/example/Web/REST/jsonClient.md">Markdown 格式</a>
+</body> 
+</html>

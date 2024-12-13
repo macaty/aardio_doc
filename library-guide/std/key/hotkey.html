@@ -15,11 +15,11 @@
 <body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
 <h1>超级热键使用指南</h1>
 
-<p>标准库 key.hotkey 用于创建超级热键，超级热键是基于低级键盘钩子 <a href="../../../library-reference/key/hook.html" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/key/hook.html">key.hook</a> 实现的系统全局有效的增强热键。</p>
+<p>标准库 key.hotkey 用于创建超级热键，超级热键是基于低级键盘钩子 <a href="https://www.aardio.com/zh-cn/doc/library-reference/key/hook.html">key.hook</a> 实现的系统全局有效的增强热键。</p>
 
 <ul>
-<li><a href="../../../library-reference/key/hotkey/_.html" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/key/hotkey/_.html">key.hotkey 库参考</a></li>
-<li><a href="../../../example/Windows/Hotkey/key.hotkey.html" tppabs="https://www.aardio.com/zh-cn/doc/example/Windows/Hotkey/key.hotkey.html">key.hotkey 范例</a></li>
+<li><a href="https://www.aardio.com/zh-cn/doc/library-reference/key/hotkey/_.html">key.hotkey 库参考</a></li>
+<li><a href="https://www.aardio.com/zh-cn/doc/example/Windows/Hotkey/key.hotkey.html">key.hotkey 范例</a></li>
 </ul>
 
 <h2>一、检测超级热键的基本规则</h2>
@@ -78,14 +78,14 @@ win.loopMessage();
 
 <p>superHotkey.loadTable 函数用于批量处册热键热键，参数 @1 指定热键配置表。热配置表中每个名值对都会调用 superHotkey.regStr 函数注册为热键，键名指定超级热键，对应的键值指定热键回调函数。热键回调函数用于响应热键并执行指定的代码。</p>
 
-<p>热配置表中指定超级热键的键名可以是 <a href="../../../library-reference/key/VK.html" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/key/VK.html">key.VK 库</a> 定义的英文键名字符串，尾部可用 <code>&#39;\0&#39;</code> 表示终止键。热键不区分大小写，字符间不能有空白。如果超级热键的第一个按键是控制键并紧跟一个加号，后面所有键名都要使用逗号分开，例如 <code>Ctrl+Q,Q</code> 。</p>
+<p>热配置表中指定超级热键的键名可以是 <a href="https://www.aardio.com/zh-cn/doc/library-reference/key/VK.html">key.VK 库</a> 定义的英文键名字符串，尾部可用 <code>&#39;\0&#39;</code> 表示终止键。热键不区分大小写，字符间不能有空白。如果超级热键的第一个按键是控制键并紧跟一个加号，后面所有键名都要使用逗号分开，例如 <code>Ctrl+Q,Q</code> 。</p>
 
 <p>热键回调函数返回 true 表示允许系统继续发送按键，否则取消该按键，不再继续发送。
 如果热键回调函数返回一个函数对象，则取消该按键不再发送，并在返回函数以后异步延时执行返回的函数对象。</p>
 
 <h2>四、ImTip 的超级热键</h2>
 
-<p>开源软件 <a href="../../../../../../imtip.aardio.com/index.htm" tppabs="http://imtip.aardio.com/">ImTip</a> 的超级热键基于 key.hotkey 库。</p>
+<p>开源软件 <a href="http://imtip.aardio.com/">ImTip</a> 的超级热键基于 key.hotkey 库。</p>
 
 <p>自 ImTip 5.0 开始直接在 aardio 开发环境内运行超级热键。超级热键以 aardio 目录为 <a href="../../builtin/io/path.html#app-path" tppabs="https://www.aardio.com/zh-cn/doc/library-guide/builtin/io/path.html#app-path">应用程序根目录</a>，可以调用 aardio 的所有库。</p>
 
@@ -651,7 +651,7 @@ superHotkey.loadTable({
 };
 </code></pre>
 
-<p><a href="hotkey.md" tppabs="https://www.aardio.com/zh-cn/doc/library-guide/std/key/hotkey.md">Markdown 格式</a></p>
+<p><a href="https://www.aardio.com/zh-cn/doc/library-guide/std/key/hotkey.md">Markdown 格式</a></p>
 
 </body> 
 </html>

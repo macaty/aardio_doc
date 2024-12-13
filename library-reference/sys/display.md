@@ -1,46 +1,42 @@
-# sys.display 库模块帮助文档
+[aardio 文档](../../index.htm "aardio 编程语言文档首页")
 
-<a id="sys.display"></a>
+# sys.display 库模块帮助文�?
 ## sys.display 成员列表
 
-显卡函数库。  
+显卡函数库�?
 相关的库：sys.monitor, sys.display, sys.ddcci
 
-<a id="sys.display.eachMode"></a>
-### sys.display.eachMode() 
- [返回对象:DEVMODEDISPLAYDEVICEObject](#DEVMODEDISPLAYDEVICEObject)
+### sys.display.eachMode()
 
-<a id="sys.display.eachMode"></a>
-### sys.display.eachMode(flags,idx) 
- 
+[返回对象:DEVMODEDISPLAYDEVICEObject](#DEVMODEDISPLAYDEVICEObject)
 
-```aardio
+### sys.display.eachMode(flags,idx)
+
+```aardio aardio
 for( devMode in sys.display.eachMode() ){
-	if( devMode.pelsWidth > (devMode.pelsWidth > devMode.pelsHeight ? 640 : 480) ){
-		/*列出显卡支持的分辨率*/
-	}
+    if( devMode.pelsWidth > (devMode.pelsWidth > devMode.pelsHeight ? 640 : 480) ){
+        /*列出显卡支持的分辨率*/
+    }
 }
+
 ```
 
+### sys.display.enumAdapters(回调函数)
 
-
-<a id="sys.display.enumAdapters"></a>
-### sys.display.enumAdapters(回调函数) 
- 
-
-```aardio
-sys.display.enumAdapters(  
-function(info,description,driverVersion){  
-	/*枚举显卡,info为显卡信息,description为显卡名称  
-第一个显卡是默认显示  
-返回true退出枚举*/  
+```aardio aardio
+sys.display.enumAdapters(
+function(info,description,driverVersion){
+    /*枚举显卡,info为显卡信�?description为显卡名�?第一个显卡是默认显示
+返回true退出枚�?/
 })
+
 ```
 
+### sys.display.getAdapter()
 
+获取显卡信息
 
-<a id="sys.display.getAdapter"></a>
-### sys.display.getAdapter() 
- 获取显卡信息  
-  
 [返回对象:D3DADAPTERIDENTIFIER9Object](#D3DADAPTERIDENTIFIER9Object)
+
+[Markdown 格式](https://www.aardio.com/zh-cn/doc/library-reference/sys/display.md)
+

@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - 用 web.rest 客户端调用 HTTP API - 设置代理服务器'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - 用 web.rest 客户端调用 HTTP API - 设置代理服务器</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 用 web.rest 客户端调用 HTTP API - 设置代理服务器</h1><pre><code class="aardio language-aardio">//用 web.rest 客户端调用 HTTP API - 设置代理服务器
+import console; 
+import inet.ipdata;
+import web.rest.jsonClient;
+
+//第二个构造参数指定代理服务器
+//代理配置格式: https://www.aardio.com/zh-cn/doc/library-guide/std/inet/proxy.html
+var http = web.rest.jsonClient(,&quot;socks=127.0.0.1:1081&quot;);
+
+//声明 HTTP 接口对象
+//声明 API，参数 @3 指定的模式串用于匹配返回数据
+var api = http.api(&quot;http://myip.ipip.net&quot;,,&quot;(\d+\.\d+\.\d+\.\d+)&quot;);
+
+//发送 GET 请求
+var ip = api.get();
+
+//显示 IP 所在地
+console.log( inet.ipdata().query(ip) )
+console.pause(true);
+</code></pre>
+<a href="https://www.aardio.com/zh-cn/doc/example/Web/REST/proxy.md">Markdown 格式</a>
+</body> 
+</html>

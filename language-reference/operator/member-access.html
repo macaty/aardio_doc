@@ -17,7 +17,7 @@
 
 <p>参考:
 <a href="../datatype/table/_.html" tppabs="https://www.aardio.com/zh-cn/doc/language-reference/datatype/table/_.html">表对象</a> 
-<a href="../../library-guide/builtin/table/_.html" tppabs="https://www.aardio.com/zh-cn/doc/library-guide/builtin/table/_.html">元表</a> 
+<a href="https://www.aardio.com/zh-cn/doc/library-guide/builtin/table/_.html">元表</a> 
 <a href="overloading.html" tppabs="https://www.aardio.com/zh-cn/doc/language-reference/operator/overloading.html">重载操作符</a></p>
 
 <h2>成员操作符列表</h2>
@@ -42,12 +42,12 @@
 <tr>
 <td><strong>.<br></strong></td>
 <td>var a = tab.member</td>
-<td>成员操作符，又称“属性操作符”。<br><br>当使用形如 tab.member() 的格式调用 <a href="../datatype/table/meta.html#_get" tppabs="https://www.aardio.com/zh-cn/doc/language-reference/datatype/table/meta.html#_get">_get 元方法</a> 时 ownerCall 参数为 true。如果只是写 tab.member 获取值，则 ownerCall 参数为 false。如果是用 tab[&quot;member&quot;] 的格式则 _get 元方法的 ownerCall 为 null。</td>
+<td>成员操作符，又称“属性操作符”。<br><br>当使用形如 tab.member() 的格式调用 <a href="https://www.aardio.com/zh-cn/doc/language-reference/datatype/table/meta.html#_get">_get 元方法</a> 时 ownerCall 参数为 true。如果只是写 tab.member 获取值，则 ownerCall 参数为 false。如果是用 tab[&quot;member&quot;] 的格式则 _get 元方法的 ownerCall 为 null。</td>
 </tr>
 <tr>
 <td>[]</td>
 <td>var a = tab[&quot;member&quot;]</td>
-<td>下标操作符，又称“索引操作符”。<br><br>使用形如 owner[表达式] 或 owner[&quot;键名&quot;] 的下标操作符用于赋值语句在触发 <a href="../datatype/table/meta.html#_set" tppabs="https://www.aardio.com/zh-cn/doc/language-reference/datatype/table/meta.html#_set">_set 元方法</a> 时 ownerIndex 参数为 true。用于获取键值并触发 _get 元方法时 ownerCall 参数为 null ，可此用此特性在语法上区分 owner.键名 与 owner[&quot;键名&quot;] 的不同作用。</td>
+<td>下标操作符，又称“索引操作符”。<br><br>使用形如 owner[表达式] 或 owner[&quot;键名&quot;] 的下标操作符用于赋值语句在触发 <a href="https://www.aardio.com/zh-cn/doc/language-reference/datatype/table/meta.html#_set">_set 元方法</a> 时 ownerIndex 参数为 true。用于获取键值并触发 _get 元方法时 ownerCall 参数为 null ，可此用此特性在语法上区分 owner.键名 与 owner[&quot;键名&quot;] 的不同作用。</td>
 </tr>
 <tr>
 <td><code>[[]]</code></td>
@@ -144,7 +144,7 @@ console.pause(true);
 
 <p>对 Unicode(UTF-16) 字符串 <code>wstr</code> 使用下标（ 例如 <code>wstr[1]</code> ）返回的是双字节表示的 16 位宽字节码（索引按字符计数），使用直接下标（ 例如 <code>wstr[[1]]</code> ）返回的是双字节表示的 16 位宽字符（索引按字符计数）。</p>
 
-<p><a href="member-access.md" tppabs="https://www.aardio.com/zh-cn/doc/language-reference/operator/member-access.md">Markdown 格式</a></p>
+<p><a href="https://www.aardio.com/zh-cn/doc/language-reference/operator/member-access.md">Markdown 格式</a></p>
 
 </body> 
 </html>

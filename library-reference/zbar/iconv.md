@@ -1,28 +1,30 @@
-# zbar.iconv 库模块帮助文档
+[aardio 文档](../../index.htm "aardio 编程语言文档首页")
 
-<a id="zbar"></a>
+# zbar.iconv 库模块帮助文�?
 ## zbar 成员列表
 
+### zbar.iconv()
 
-<a id="zbar.iconv"></a>
-### zbar.iconv() 
- [返回对象:zbarIconvObject](#zbarIconvObject)
+[返回对象:zbarIconvObject](#zbarIconvObject)
 
-<a id="zbar.iconv"></a>
-### zbar.iconv(fromCode,toCode) 
- 创建转换对象,  
-建议直接使用标准库函数 string.fromto 转换编码
+### zbar.iconv(fromCode,toCode)
 
-<a id="zbarIconvObject"></a>
+创建转换对象,
+
+建议直接使用标准库函�?string.fromto 转换编码
+
 ## zbarIconvObject 成员列表
 
+### zbarIconvObject.close()
 
-<a id="zbarIconvObject.close"></a>
-### zbarIconvObject.close() 
- 关闭对象
+关闭对象
 
-<a id="zbarIconvObject.convert"></a>
-### zbarIconvObject.convert(str) 
- 转换参数str指定的字符串编码，成功返回新的字符串,  
-此函数不会自动设置UTF标记，  
-建议改用标准库函数 string.fromto
+### zbarIconvObject.convert(str)
+
+转换参数str指定的字符串编码，成功返回新的字符串,
+
+此函数不会自动设置UTF标记�?
+建议改用标准库函�?string.fromto
+
+[Markdown 格式](https://www.aardio.com/zh-cn/doc/library-reference/zbar/iconv.md)
+

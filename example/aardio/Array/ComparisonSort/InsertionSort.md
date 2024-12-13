@@ -1,42 +1,44 @@
+[aardio 文档](../../../../index.htm "aardio 编程语言文档首页")
+
 # aardio 范例: 插入排序
 
-```aardio
+```aardio aardio
 import console;
 
 //插入排序算法
 var insertSort = function( array ){
 
-	for( right=2;#array ) {
-		var top = array[right];
-		
-		//Insert array[right] into the sorted seqquence array[1....right-1]
-		var left = right -1;
-		while( left and array[left]>top){
-			array[left+1] = array[left];
-			left--;
-		}
-		array[left+1] = top;
-		 
-	}
-	return array;  
+    for( right=2;#array ) {
+        var top = array[right];
+
+        //Insert array[right] into the sorted seqquence array[1....right-1]
+        var left = right -1;
+        while( left and array[left]>top){
+            array[left+1] = array[left];
+            left--;
+        }
+        array[left+1] = top;
+
+    }
+    return array;
 }
 
 //插入排序算法 - 倒序
 var insertSortDesc = function( array ){
 
-	for( right=2;#array ) {
-		var top = array[right];
-		
-		//Insert array[right] into the sorted seqquence array[1....right-1]
-		var left = right -1;
-		while( left and array[left]<top){
-			array[left+1] = array[left];
-			left--;
-		}
-		array[left+1] = top;
-		 
-	}
-	return array;  
+    for( right=2;#array ) {
+        var top = array[right];
+
+        //Insert array[right] into the sorted seqquence array[1....right-1]
+        var left = right -1;
+        while( left and array[left]<top){
+            array[left+1] = array[left];
+            left--;
+        }
+        array[left+1] = top;
+
+    }
+    return array;
 }
 
 console.log("----------------")
@@ -48,8 +50,12 @@ insertSortDesc(array)
 
 //输出结果
 for(i=1;#array;1){
-	console.log( array[i] )
+    console.log( array[i] )
 }
 
 execute("pause")
+
 ```
+
+[Markdown 格式](https://www.aardio.com/zh-cn/doc/example/aardio/Array/ComparisonSort/InsertionSort.md)
+

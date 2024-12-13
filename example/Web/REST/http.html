@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - 用 web.rest 创建 HTTP 客户端'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - 用 web.rest 创建 HTTP 客户端</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 用 web.rest 创建 HTTP 客户端</h1><pre><code class="aardio language-aardio">//用 web.rest 创建 HTTP 客户端
+import console;
+import web.rest.jsonClient;
+console.showLoading(&quot;正在连接服务器&quot;)
+
+//创建 HTTP 客户端
+var http = web.rest.jsonClient();
+
+//发送 GET 请求
+var ret = http.get(&quot;http://httpbin.org/anything&quot;,{
+    name = &quot;用户名&quot;;
+    data = &quot;其他数据&quot;;
+})
+console.dumpJson(ret);
+
+//发送 POST 请求
+var ret = http.post(&quot;http://httpbin.org/anything&quot;,{
+    name = &quot;用户名&quot;;
+    data = &quot;其他数据&quot;;
+})
+
+//示例 JSON
+var json = /*
+{
+    &quot;data&quot;:&quot;其他数据&quot;,
+    &quot;name&quot;:&quot;用户名&quot;
+}
+*/
+
+//如果提交数据是字符串，则不作任何转换直接发送
+var ret = http.post(&quot;http://httpbin.org/anything&quot;,json)
+
+console.dumpJson(ret);
+console.pause();
+</code></pre>
+<a href="https://www.aardio.com/zh-cn/doc/example/Web/REST/http.md">Markdown 格式</a>
+</body> 
+</html>

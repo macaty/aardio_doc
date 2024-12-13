@@ -1,12 +1,14 @@
-# sys.qfe 库模块帮助文档
+[aardio 文档](../../index.htm "aardio 编程语言文档首页")
 
-<a id="sys"></a>
+# sys.qfe 库模块帮助文�?
 ## sys 成员列表
 
+### sys.qfe("KB")
 
-<a id="sys.qfe"></a>
-### sys.qfe("KB") 
- 返回参数指定 ID 的系统补丁安装信息  
-未安装返回 null  
-  
- inet.installer 支持安装 *.msu 补丁
+返回参数指定 ID 的系统补丁安装信�?
+未安装返�?null
+
+inet.installer 支持安装 \*.msu 补丁
+
+[Markdown 格式](https://www.aardio.com/zh-cn/doc/library-reference/sys/qfe.md)
+

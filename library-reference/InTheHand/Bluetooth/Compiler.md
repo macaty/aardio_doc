@@ -1,11 +1,12 @@
-# InTheHand.Bluetooth.Compiler 库模块帮助文档
+[aardio 文档](../../../index.htm "aardio 编程语言文档首页")
 
-<a id="InTheHand.Bluetooth"></a>
+# InTheHand.Bluetooth.Compiler 库模块帮助文�?
 ## InTheHand.Bluetooth 成员列表
 
+### InTheHand.Bluetooth.Compiler()
 
-<a id="InTheHand.Bluetooth.Compiler"></a>
-### InTheHand.Bluetooth.Compiler() 
- 创建 C&num; 编译器，已自动引用 InTheHand.BluetoothLE 程序集 。  
-  
+创建 C# 编译器，已自动引�?InTheHand.BluetoothLE 程序�?�?
 [返回对象:dotNetCompilerObject](#dotNetCompilerObject)
+
+[Markdown 格式](https://www.aardio.com/zh-cn/doc/library-reference/InTheHand/Bluetooth/Compiler.md)
+

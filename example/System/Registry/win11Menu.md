@@ -1,0 +1,56 @@
+[aardio 文档](../../../index.htm "aardio 编程语言文档首页")
+
+# aardio 范例: 注册表操�?- Win11 右键菜单风格切换
+
+```aardio aardio
+//RUNAS//注册表操�?- Win11 右键菜单风格切换
+import win.ui;
+/*DSG{{*/
+var winform = win.form(text="Windows 11 右键菜单切换工具";right=389;bottom=166;border="dialog frame";max=false)
+winform.add(
+radioWin10={cls="radiobutton";text="Win10 风格经典右键菜单";left=44;top=46;right=217;bottom=86;z=1};
+radioWin11={cls="radiobutton";text="Win11 风格右键菜单";left=44;top=84;right=233;bottom=127;z=2}
+)
+/*}}*/
+
+import win.reg;
+import win.version;
+import process;
+winform.radioWin10.oncommand = function(id,event){
+    var reg = win.regWow64( "HKEY_CURRENT_USER\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}")
+    reg.setSzValue("","")
+
+    var reg = win.regWow64( "HKEY_CURRENT_USER\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32")
+    reg.setSzValue("","")
+    reg.close();
+
+    ::Shell32.SHChangeNotify(0x8000000/*_SHCNE_ASSOCCHANGED*/,0,0,0);
+     process.kill("explorer.exe",true)
+}
+
+winform.radioWin11.oncommand = function(id,event){
+    var reg = win.regWow64("HKEY_CURRENT_USER\Software\Classes\CLSID")
+    reg.delKeyTree("{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}")
+    reg.close();
+
+    ::Shell32.SHChangeNotify(0x8000000/*_SHCNE_ASSOCCHANGED*/,0,0,0);
+    process.kill("explorer.exe",true)
+}
+
+if(!win.version.isWin11Later){
+    win.msgboxErr("此工具仅用于 Windows 11");
+    return;
+}
+
+var reg = win.regWow64("HKEY_CURRENT_USER\Software\Classes\CLSID")
+winform.radioWin10.checked = reg.open("{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}",true);
+winform.radioWin11.checked = !winform.radioWin10.checked;
+reg.close();
+
+winform.show();
+win.loopMessage();
+
+```
+
+[Markdown 格式](https://www.aardio.com/zh-cn/doc/example/System/Registry/win11Menu.md)
+

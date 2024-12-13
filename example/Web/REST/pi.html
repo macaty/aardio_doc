@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - 用 web.rest 客户端调用 HTTP API - 获取圆周率'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - 用 web.rest 客户端调用 HTTP API - 获取圆周率</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 用 web.rest 客户端调用 HTTP API - 获取圆周率</h1><pre><code class="aardio language-aardio">//用 web.rest 客户端调用 HTTP API - 获取圆周率
+import console.int;  
+import web.rest.jsonLiteClient;
+
+var http = web.rest.jsonLiteClient();
+
+//可查询前 100 万亿位的圆周率，也是目前最长的在线可用圆周率数据库之一
+var delivery = http.api(&quot;https://api.pi.delivery/v1/pi&quot;); 
+
+//查询圆周率，参数指定一个表对象（table），单个表参数外层的 {} 可以省略不写
+var ret = delivery.get(
+    start=1, //从第 1 位开始
+    numberOfDigits=100 //返回 100 位圆周率
+)
+
+//显示圆周率 
+console.log(&quot;3.&quot;+ ret.content)
+</code></pre>
+<a href="https://www.aardio.com/zh-cn/doc/example/Web/REST/pi.md">Markdown 格式</a>
+</body> 
+</html>

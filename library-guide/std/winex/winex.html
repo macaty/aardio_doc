@@ -29,7 +29,7 @@
 
 <p>检测给定窗口句柄的窗口属性，与给定的参数进行比较，如果相符返回真(true)，否则返回假(false) 。</p>
 
-<p>使用模糊匹配比较类名、标题，支持 <a href="../../builtin/string/patterns.html" tppabs="https://www.aardio.com/zh-cn/doc/library-guide/builtin/string/patterns.html">模式语法</a> 。  </p>
+<p>使用模糊匹配比较类名、标题，支持 <a href="https://www.aardio.com/zh-cn/doc/library-guide/builtin/string/patterns.html">模式语法</a> 。  </p>
 
 <p>可选指定一个以毫秒为单位的超时值。</p>
 
@@ -47,7 +47,7 @@
 <li><p>函数说明：</p>
 
 <p>按给定的参数查找指定的窗口，所有参数都是可选参数。<br>
-winex.find使用模糊匹配来查找类名、标题，支持 <a href="../../builtin/string/patterns.html" tppabs="https://www.aardio.com/zh-cn/doc/library-guide/builtin/string/patterns.html">模式语法</a> 。  </p>
+winex.find使用模糊匹配来查找类名、标题，支持 <a href="https://www.aardio.com/zh-cn/doc/library-guide/builtin/string/patterns.html">模式语法</a> 。  </p>
 
 <p>如果需要简单匹配，请使用 <a href="../win/_.html#find" tppabs="https://www.aardio.com/zh-cn/doc/library-guide/std/win/_.html#find">win.find</a>  </p></li>
 <li><p>调用示例：   </p>
@@ -75,7 +75,7 @@ console.logPause(&quot;找到句柄：&quot;, hwnd )
 
 <p>按给定的参数查找指定的窗口，除父窗口句柄以外所有参数都是可选参数。  </p>
 
-<p>winex.findEx使用模糊匹配来查找类名、标题，支持 <a href="../../builtin/string/patterns.html" tppabs="https://www.aardio.com/zh-cn/doc/library-guide/builtin/string/patterns.html">模式查找语法</a> 。  </p>
+<p>winex.findEx使用模糊匹配来查找类名、标题，支持 <a href="https://www.aardio.com/zh-cn/doc/library-guide/builtin/string/patterns.html">模式查找语法</a> 。  </p>
 
 <p>如果需要简单匹配，请使用 <a href="../win/_.html#findEx" tppabs="https://www.aardio.com/zh-cn/doc/library-guide/std/win/_.html#findEx">win.findEx</a>  </p></li>
 <li><p>调用示例：   </p>
@@ -116,7 +116,7 @@ console.logPause(&quot;找到目标程序中的文本框句柄：&quot;, hedit )
 <p>所有参数都是可选参数,但一般应指定父窗口标题与控件文本.<br>
 这个函数基本是结合了winex.find与winex.findEx的功能,首先查找符合条件的父窗口,再查找它是否包含符合条件的控件窗口.您可以打开winex库查看此函数的源代码.  </p>
 
-<p>winex.findExists同样支持使用模糊匹配来查找类名、标题，支持 <a href="../../builtin/string/patterns.html" tppabs="https://www.aardio.com/zh-cn/doc/library-guide/builtin/string/patterns.html">模式查找语法</a> 。  </p>
+<p>winex.findExists同样支持使用模糊匹配来查找类名、标题，支持 <a href="https://www.aardio.com/zh-cn/doc/library-guide/builtin/string/patterns.html">模式查找语法</a> 。  </p>
 
 <p>这个函数是非常有用的一个函数.  </p></li>
 <li><p>调用示例：   </p>
@@ -183,7 +183,7 @@ console.pause(true);
 
 <p>所有参数都是可选参数,但一般应指定父窗口标题与控件文本.<br>
 这个函数内部调用winex.findExists,所以参数用法与winex.findExists完全一致,请参考此函数说明.<br>
-winex.wait同样支持使用模糊匹配来查找类名、标题，支持 <a href="../../builtin/string/patterns.html" tppabs="https://www.aardio.com/zh-cn/doc/library-guide/builtin/string/patterns.html">模式查找语法</a> 。  </p>
+winex.wait同样支持使用模糊匹配来查找类名、标题，支持 <a href="https://www.aardio.com/zh-cn/doc/library-guide/builtin/string/patterns.html">模式查找语法</a> 。  </p>
 
 <p>该函数指定一些可选的参数,等待指定的窗口创建,然后返回.<br>
 可使用 winex.waitTimeout 指定超时值(以毫秒为单位),如果此属性为null空值,表示永不超时.<br>
@@ -258,7 +258,7 @@ winex.wait同样支持使用模糊匹配来查找类名、标题，支持 <a hre
 <p><code>winex.enum( 回调函数,父窗口句柄 = 桌面窗口,要查找的类名,要查找的标题,要查找的控件ID )</code></p></li>
 <li><p>函数说明：   </p>
 
-<p>在指定的父窗口枚举所有子窗口、除回调函数以外，所有参数为可选参数。类名与标题支持 <a href="../../builtin/string/patterns.html" tppabs="https://www.aardio.com/zh-cn/doc/library-guide/builtin/string/patterns.html">模式语法</a> 。  </p>
+<p>在指定的父窗口枚举所有子窗口、除回调函数以外，所有参数为可选参数。类名与标题支持 <a href="https://www.aardio.com/zh-cn/doc/library-guide/builtin/string/patterns.html">模式语法</a> 。  </p>
 
 <p>每查找到一个窗口就调用第一个参数指定的回调函数。回调函数按下面的格式定义：</p>
 
@@ -324,7 +324,7 @@ console.pause(true);
 <p><code>winex.each( 要查找的类名,要查找的标题,父窗口句柄 = 桌面窗口 )</code></p></li>
 <li><p>函数说明：   </p>
 
-<p>父窗口句柄为可选参数，默认为桌面窗口。类名和标题都支持 <a href="../../builtin/string/patterns.html" tppabs="https://www.aardio.com/zh-cn/doc/library-guide/builtin/string/patterns.html">模式查找语法</a> 。  </p>
+<p>父窗口句柄为可选参数，默认为桌面窗口。类名和标题都支持 <a href="https://www.aardio.com/zh-cn/doc/library-guide/builtin/string/patterns.html">模式查找语法</a> 。  </p>
 
 <p>winex.each 创建一个可用于 <a href="../../../language-reference/statements/looping.html#for-in" tppabs="https://www.aardio.com/zh-cn/doc/language-reference/statements/looping.html#for-in">for in</a> 语句的迭代器函数，用于广度遍历同一子级的子窗口。  </p></li>
 </ol>
@@ -435,7 +435,7 @@ console.pause(true);
 
 <p>第一个参数为目标窗口句柄。<br>
 自第二个参数开始可选添加任意多个参数，可用字符串表示菜单项标题，或用数值表示菜单序号。<br>
-菜单标题支持 <a href="../../builtin/string/patterns.html" tppabs="https://www.aardio.com/zh-cn/doc/library-guide/builtin/string/patterns.html">模式查找语法</a> ，菜单序号自1开始(第一个子菜单序号为1。</p></li>
+菜单标题支持 <a href="https://www.aardio.com/zh-cn/doc/library-guide/builtin/string/patterns.html">模式查找语法</a> ，菜单序号自1开始(第一个子菜单序号为1。</p></li>
 <li><p>调用示例： </p>
 
 <pre><code class="aardio language-aardio">//导入winex库
@@ -491,7 +491,7 @@ winex.click( hwnd,menuid)
 <p>其他参考 <a href="#attach">winex.attach</a> 函数。</p></li>
 </ol>
 
-<p><a href="winex.md" tppabs="https://www.aardio.com/zh-cn/doc/library-guide/std/winex/winex.md">Markdown 格式</a></p>
+<p><a href="https://www.aardio.com/zh-cn/doc/library-guide/std/winex/winex.md">Markdown 格式</a></p>
 
 </body> 
 </html>

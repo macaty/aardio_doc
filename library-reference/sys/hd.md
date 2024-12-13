@@ -1,80 +1,78 @@
-# sys.hd 库模块帮助文档
+[aardio 文档](../../index.htm "aardio 编程语言文档首页")
 
-<a id="sys.hd"></a>
+# sys.hd 库模块帮助文�?
 ## sys.hd 成员列表
 
-用于获取硬盘序列号  
-注意在VISTA以后系统需要管理权限
+用于获取硬盘序列�?
+注意在VISTA以后系统需要管理权�?
+### sys.hd.getInfo()
 
-<a id="sys.hd.getInfo"></a>
-### sys.hd.getInfo() 
- 读取硬盘IDSECTOR结构信息  
-可选在参数中指定硬盘序号,不指定参数时自动获取可用序号,  
-  
+读取硬盘IDSECTOR结构信息
+
+可选在参数中指定硬盘序�?不指定参数时自动获取可用序号,
+
 [返回对象:syshdinfObject](#syshdinfObject)
 
-<a id="syshdinfObject"></a>
 ## syshdinfObject 成员列表
 
+### syshdinfObject.sFirmwareRev
 
-<a id="syshdinfObject.sFirmwareRev"></a>
-### syshdinfObject.sFirmwareRev 
- 硬盘硬件版本  
+硬盘硬件版本
+
 请自行使用string.trim函数去掉首尾空格
 
-<a id="syshdinfObject.sModelNumber"></a>
-### syshdinfObject.sModelNumber 
- 硬盘型号  
+### syshdinfObject.sModelNumber
+
+硬盘型号
+
 请自行使用string.trim函数去掉首尾空格
 
-<a id="syshdinfObject.sSerialNumber"></a>
-### syshdinfObject.sSerialNumber 
- 硬盘生产序号  
+### syshdinfObject.sSerialNumber
+
+硬盘生产序号
+
 请自行使用string.trim函数去掉首尾空格
 
-<a id="syshdinfObject.ulTotalAddressableSectors"></a>
-### syshdinfObject.ulTotalAddressableSectors 
- 
+### syshdinfObject.ulTotalAddressableSectors
 
-```aardio
+```aardio aardio
 ulTotalAddressableSectors
+
 ```
 
+### syshdinfObject.wBufferSize
 
+缓冲大小
 
-<a id="syshdinfObject.wBufferSize"></a>
-### syshdinfObject.wBufferSize 
- 缓冲大小
+### syshdinfObject.wBufferType
 
-<a id="syshdinfObject.wBufferType"></a>
-### syshdinfObject.wBufferType 
- 缓冲类型
+缓冲类型
 
-<a id="syshdinfObject.wCapabilities"></a>
-### syshdinfObject.wCapabilities 
- 支持功能  
-不同的二进制位表示硬盘是否支持指定功能
+### syshdinfObject.wCapabilities
 
-<a id="syshdinfObject.wGenConfig"></a>
-### syshdinfObject.wGenConfig 
- 基本信息字
+支持功能
 
-<a id="syshdinfObject.wNumCyls"></a>
-### syshdinfObject.wNumCyls 
- 柱面数
+不同的二进制位表示硬盘是否支持指定功�?
+### syshdinfObject.wGenConfig
 
-<a id="syshdinfObject.wNumHeads"></a>
-### syshdinfObject.wNumHeads 
- 磁头数
+基本信息�?
+### syshdinfObject.wNumCyls
 
-<a id="syshdinfObject.wNumSectorsPerTrack"></a>
-### syshdinfObject.wNumSectorsPerTrack 
- 每磁道扇区数
+柱面�?
+### syshdinfObject.wNumHeads
 
-<a id="syshdinfObject.wReserved2"></a>
-### syshdinfObject.wReserved2 
- 保留
+磁头�?
+### syshdinfObject.wNumSectorsPerTrack
 
-<a id="syshdinfObject.wUltraDMA"></a>
-### syshdinfObject.wUltraDMA 
- Ultra DMA支持能力
+每磁道扇区数
+
+### syshdinfObject.wReserved2
+
+保留
+
+### syshdinfObject.wUltraDMA
+
+Ultra DMA支持能力
+
+[Markdown 格式](https://www.aardio.com/zh-cn/doc/library-reference/sys/hd.md)
+

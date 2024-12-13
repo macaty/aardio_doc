@@ -35,10 +35,10 @@ console.varDump( $keywords )
 console.pause(true);
 </code></pre>
 
-<p><a href="../../../library-reference/preg/_.html#:%7E:text=replace" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/preg/_.html#:%7E:text=replace">preg 对象的 replace 函数</a> 用法类似模式匹配函数 <a href="../../builtin/string/matching.html#replace" tppabs="https://www.aardio.com/zh-cn/doc/library-guide/builtin/string/matching.html#replace">string.replace</a>，
+<p><a href="https://www.aardio.com/zh-cn/doc/library-reference/preg/_.html#:%7E:text=replace">preg 对象的 replace 函数</a> 用法类似模式匹配函数 <a href="https://www.aardio.com/zh-cn/doc/library-guide/builtin/string/matching.html#replace">string.replace</a>，
 同样可以将替换对象指定为回调函数、替换表、字符串(支持反向引用捕获组)。  </p>
 
-<p><a href="../../../library-reference/preg/_.html#:%7E:text=gmatch" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/preg/_.html#:%7E:text=gmatch">preg 对象的全局查找函数 gmatch </a>  用法也类似模式匹配函数 <a href="../../builtin/string/matching.html#gmatch" tppabs="https://www.aardio.com/zh-cn/doc/library-guide/builtin/string/matching.html#gmatch">string.gmatch</a> 。 </p>
+<p><a href="https://www.aardio.com/zh-cn/doc/library-reference/preg/_.html#:%7E:text=gmatch">preg 对象的全局查找函数 gmatch </a>  用法也类似模式匹配函数 <a href="https://www.aardio.com/zh-cn/doc/library-guide/builtin/string/matching.html#gmatch">string.gmatch</a> 。 </p>
 
 <p>下面是一个完整的示例：</p>
 
@@ -401,7 +401,7 @@ console.pause()
 
 <p>非捕获组有更好的性能，并且非捕获组不记录匹配的内容，反向引用也会忽略非捕获组（不计数）。</p>
 
-<p>aardio 模式匹配中则是使用尖括号包含的 <a href="../../builtin/string/patterns.html#non-cap" tppabs="https://www.aardio.com/zh-cn/doc/library-guide/builtin/string/patterns.html#non-cap">元序列</a> 创建非捕获组，格式为 <code>&lt;subpattern&gt;</code>。</p>
+<p>aardio 模式匹配中则是使用尖括号包含的 <a href="https://www.aardio.com/zh-cn/doc/library-guide/builtin/string/patterns.html#non-cap">元序列</a> 创建非捕获组，格式为 <code>&lt;subpattern&gt;</code>。</p>
 
 <h4>4） 原子分组(Atomic Groups)</h4>
 
@@ -417,7 +417,7 @@ console.pause()
 
 <p>并且在有些情况下，我们需要禁用回溯才能避免匹配到不需要的结果。</p>
 
-<p>示例：  <a id="atomic-group-example" href="atomic-group-example" tppabs="https://www.aardio.com/zh-cn/doc/library-guide/ext/preg/atomic-group-example">&#x23;</a></p>
+<p>示例：  <a id="atomic-group-example" href="https://www.aardio.com/zh-cn/doc/library-guide/ext/preg/atomic-group-example">&#x23;</a></p>
 
 <pre><code class="aardio language-aardio">import console; 
 import preg;
@@ -438,7 +438,7 @@ console.pause();
 
 <p>解决方法是改用匹配成功就不会往回走的原子分组，将上面的 <code>(endif|end if|end)</code> 改为 <code>(?&gt;endif|end if|end)</code>就可以成功。</p>
 
-<p>参考：<a href="../../builtin/string/patterns.html#atomic-group-example" tppabs="https://www.aardio.com/zh-cn/doc/library-guide/builtin/string/patterns.html#atomic-group-example">在 aardio 模式匹配语法文档中查看相同的示例</a></p>
+<p>参考：<a href="https://www.aardio.com/zh-cn/doc/library-guide/builtin/string/patterns.html#atomic-group-example">在 aardio 模式匹配语法文档中查看相同的示例</a></p>
 
 <h3>3. 单词边界(Word Boundaries)</h3>
 
@@ -620,7 +620,7 @@ import console;
 var regex,err = preg(&quot;/([\x80-\xFF]+)/&quot;);
 </code></pre>
 
-<p><a href="_.md" tppabs="https://www.aardio.com/zh-cn/doc/library-guide/ext/preg/_.md">Markdown 格式</a></p>
+<p><a href="https://www.aardio.com/zh-cn/doc/library-guide/ext/preg/_.md">Markdown 格式</a></p>
 
 </body> 
 </html>

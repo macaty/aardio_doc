@@ -1,105 +1,101 @@
-# chm.compiler 库模块帮助文档
+[aardio 文档](../../index.htm "aardio 编程语言文档首页")
 
-<a id="chm"></a>
+# chm.compiler 库模块帮助文�?
 ## chm 成员列表
 
+### chm.compiler("HHP文件路径")
 
-<a id="chm.compiler"></a>
-### chm.compiler("HHP文件路径") 
- 创建可打开CHM工程文件
+创建可打开CHM工程文件
 
-<a id="chm.compiler"></a>
-### chm.compiler() 
- [返回对象:chmCompilerObject](#chmCompilerObject)
+### chm.compiler()
 
-<a id="chmCompilerObject"></a>
+[返回对象:chmCompilerObject](#chmCompilerObject)
+
 ## chmCompilerObject 成员列表
 
+### chmCompilerObject.compile()
 
-<a id="chmCompilerObject.compile"></a>
-### chmCompilerObject.compile() 
- 编译生成CHM文件  
+编译生成CHM文件
+
 可选在参数中指定输出CHM文件路径
 
-<a id="chmCompilerObject.compiledFile"></a>
-### chmCompilerObject.compiledFile 
- 输出的CHM文件路径
+### chmCompilerObject.compiledFile
 
-<a id="chmCompilerObject.contentsFile"></a>
-### chmCompilerObject.contentsFile 
- 目录文件
+输出的CHM文件路径
 
-<a id="chmCompilerObject.defaultFont"></a>
-### chmCompilerObject.defaultFont 
- 默认字体,默认为 "Tahoma,10,0"
+### chmCompilerObject.contentsFile
 
-<a id="chmCompilerObject.defaultTopic"></a>
-### chmCompilerObject.defaultTopic 
- 默认首页
+目录文件
 
-<a id="chmCompilerObject.defaultWindow"></a>
-### chmCompilerObject.defaultWindow 
- 默认窗体名字
+### chmCompilerObject.defaultFont
 
-<a id="chmCompilerObject.displayCompileProgress"></a>
-### chmCompilerObject.displayCompileProgress 
- 是否显示进度,默认为"Yes"
+默认字体,默认�?"Tahoma,10,0"
 
-<a id="chmCompilerObject.fullTextSearch"></a>
-### chmCompilerObject.fullTextSearch 
- 是否全文搜索,默认为 "Yes"
+### chmCompilerObject.defaultTopic
 
-<a id="chmCompilerObject.hhpInfo"></a>
-### chmCompilerObject.hhpInfo 
- 配置文件  
-  
+默认首页
+
+### chmCompilerObject.defaultWindow
+
+默认窗体名字
+
+### chmCompilerObject.displayCompileProgress
+
+是否显示进度,默认�?Yes"
+
+### chmCompilerObject.fullTextSearch
+
+是否全文搜索,默认�?"Yes"
+
+### chmCompilerObject.hhpInfo
+
+配置文件
+
 [返回对象:iniObject](#iniObject)
 
-<a id="chmCompilerObject.indexFile"></a>
-### chmCompilerObject.indexFile 
- 索引文件
+### chmCompilerObject.indexFile
 
-<a id="chmCompilerObject.language"></a>
-### chmCompilerObject.language 
- LCID 语言代码
+索引文件
 
-<a id="chmCompilerObject.navigationPaneWidth"></a>
-### chmCompilerObject.navigationPaneWidth 
- 左侧导航栏宽度,默认为 220
+### chmCompilerObject.language
 
-<a id="chmCompilerObject.navigationStyle"></a>
-### chmCompilerObject.navigationStyle 
- 左侧导航栏样式,数值,  
-默认为 0x60420
+LCID 语言代码
 
-<a id="chmCompilerObject.onPrint"></a>
-### chmCompilerObject.onPrint 
- 
+### chmCompilerObject.navigationPaneWidth
 
-```aardio
+左侧导航栏宽�?默认�?220
+
+### chmCompilerObject.navigationStyle
+
+左侧导航栏样�?数�?
+
+默认�?0x60420
+
+### chmCompilerObject.onPrint
+
+```aardio aardio
 chmCompilerObject.onPrint = function( str ){
-	io.print( str )/*参数为输出信息,  
-此回调函数返回 true 继续编译*/
-	return true;
+    io.print( str )/*参数为输出信�?
+此回调函数返�?true 继续编译*/
+    return true;
 }
+
 ```
 
+### chmCompilerObject.onProgress
 
-
-<a id="chmCompilerObject.onProgress"></a>
-### chmCompilerObject.onProgress 
- 
-
-```aardio
+```aardio aardio
 chmCompilerObject.onProgress = function( str ){
-	io.print( str )/*参数指示进度,  
-此回调函数返回 true 继续编译*/
-	return true;
+    io.print( str )/*参数指示进度,
+此回调函数返�?true 继续编译*/
+    return true;
 }
+
 ```
 
+### chmCompilerObject.title
 
+窗口标题
 
-<a id="chmCompilerObject.title"></a>
-### chmCompilerObject.title 
- 窗口标题
+[Markdown 格式](https://www.aardio.com/zh-cn/doc/library-reference/chm/compiler.md)
+

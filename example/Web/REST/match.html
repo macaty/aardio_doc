@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - 用 web.rest 客户端调用 HTTP API - 自动模式匹配'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - 用 web.rest 客户端调用 HTTP API - 自动模式匹配</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 用 web.rest 客户端调用 HTTP API - 自动模式匹配</h1><pre><code class="aardio language-aardio">//用 web.rest 客户端调用 HTTP API - 自动模式匹配
+import console; 
+console.showLoading(&quot;获取外网IP&quot;);
+
+import web.rest.client;
+var http = web.rest.client();
+
+//声明 API，参数 @3 指定的模式串用于匹配返回数据
+var api = http.api(&quot;http://myip.ipip.net&quot;,,&quot;(\d+\.\d+\.\d+\.\d+)&quot;);
+
+//调用 HTTP 接口 
+var ip = api.get();
+
+//显示查询结果
+console.log( ip  );
+
+console.pause(true);  
+</code></pre>
+<a href="https://www.aardio.com/zh-cn/doc/example/Web/REST/match.md">Markdown 格式</a>
+</body> 
+</html>

@@ -1,63 +1,59 @@
-# sys.info 库模块帮助文档
+[aardio 文档](../../index.htm "aardio 编程语言文档首页")
 
-<a id="sys"></a>
+# sys.info 库模块帮助文�?
 ## sys 成员列表
 
+### sys.info
 
-<a id="sys.info"></a>
-### sys.info 
- 获取 SYSTEM_INFO
+获取 SYSTEM\_INFO
 
-<a id="sys.info"></a>
-### sys.info() 
- 调用 GetSystemInfo() 获取 SYSTEM_INFO结构体   
-  
+### sys.info()
+
+调用 GetSystemInfo() 获取 SYSTEM\_INFO结构�?
 [返回对象:sysInfoObject](#sysInfoObject)
 
-<a id="sysInfoObject"></a>
 ## sysInfoObject 成员列表
 
+### sysInfoObject.dwActiveProcessorMask
 
-<a id="sysInfoObject.dwActiveProcessorMask"></a>
-### sysInfoObject.dwActiveProcessorMask 
- CPU掩码
+CPU掩码
 
-<a id="sysInfoObject.dwAllocationGranularity"></a>
-### sysInfoObject.dwAllocationGranularity 
- 已被分配的虚拟内存空间粒度
+### sysInfoObject.dwAllocationGranularity
 
-<a id="sysInfoObject.dwNumberOfProcessors"></a>
-### sysInfoObject.dwNumberOfProcessors 
- CPU数目
+已被分配的虚拟内存空间粒�?
+### sysInfoObject.dwNumberOfProcessors
 
-<a id="sysInfoObject.dwPageSize"></a>
-### sysInfoObject.dwPageSize 
- 被API函数 VirtualAlloc 使用的页大小
+CPU数目
 
-<a id="sysInfoObject.dwProcessorType"></a>
-### sysInfoObject.dwProcessorType 
- CPU类型
+### sysInfoObject.dwPageSize
 
-<a id="sysInfoObject.isX64"></a>
-### sysInfoObject.isX64() 
- 是否64位处理器
+被API函数 VirtualAlloc 使用的页大小
 
-<a id="sysInfoObject.lpMaximumApplicationAddress"></a>
-### sysInfoObject.lpMaximumApplicationAddress 
- 程序可以访问的最高内存地址
+### sysInfoObject.dwProcessorType
 
-<a id="sysInfoObject.lpMinimumApplicationAddress"></a>
-### sysInfoObject.lpMinimumApplicationAddress 
- 程序可以访问的最低内存地址
+CPU类型
 
-<a id="sysInfoObject.wProcessorArchitecture"></a>
-### sysInfoObject.wProcessorArchitecture 
- CPU体系结构
+### sysInfoObject.isX64()
 
-<a id="sysInfoObject.wProcessorLevel"></a>
-### sysInfoObject.wProcessorLevel 
- 处理器级别
+是否64位处理器
 
-<a id="sysInfoObject.wProcessorRevision"></a>
-### sysInfoObject.wProcessorRevision 
- 修订版本号
+### sysInfoObject.lpMaximumApplicationAddress
+
+程序可以访问的最高内存地址
+
+### sysInfoObject.lpMinimumApplicationAddress
+
+程序可以访问的最低内存地址
+
+### sysInfoObject.wProcessorArchitecture
+
+CPU体系结构
+
+### sysInfoObject.wProcessorLevel
+
+处理器级�?
+### sysInfoObject.wProcessorRevision
+
+修订版本�?
+[Markdown 格式](https://www.aardio.com/zh-cn/doc/library-reference/sys/info.md)
+

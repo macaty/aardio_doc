@@ -1,11 +1,15 @@
-# sys.locale.abbrevNames 库模块帮助文档
+[aardio 文档](../../../index.htm "aardio 编程语言文档首页")
 
-<a id="sys.locale"></a>
+# sys.locale.abbrevNames 库模块帮助文�?
 ## sys.locale 成员列表
 
+### sys.locale.abbrevNames
 
-<a id="sys.locale.abbrevNames"></a>
-### sys.locale.abbrevNames 
- 三字母区域语言代码表,  
-键为3字母区域名,值为数值 LCID,  
-相关标准库: sys.locale, string.conv
+三字母区域语言代码�?
+
+键为3字母区域�?值为数�?LCID,
+
+相关标准�? sys.locale, string.conv
+
+[Markdown 格式](https://www.aardio.com/zh-cn/doc/library-reference/sys/locale/abbrevNames.md)
+

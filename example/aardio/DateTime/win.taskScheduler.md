@@ -1,6 +1,8 @@
+[aardio 文档](../../../index.htm "aardio 编程语言文档首页")
+
 # aardio 范例: 计划任务
 
-```aardio
+```aardio aardio
 //计划任务
 import win.ui;
 /*DSG{{*/
@@ -14,30 +16,30 @@ edit={cls="edit";left=16;top=24;right=592;bottom=384;edge=1;hscroll=1;multiline=
 import win.taskScheduler;
 var taskScheduler = win.taskScheduler( winform );
 
-var task  = taskScheduler.create("间隔一秒执行",function(){
-    winform.edit.print( "间隔一秒执行",time() );
+var task  = taskScheduler.create("间隔一秒执�?,function(){
+    winform.edit.print( "间隔一秒执�?,time() );
 } )
 
 //设定计划任务执行时间方案
-task.interval = {  
+task.interval = {
    second = 1;
 }
 
-var task2 = taskScheduler.create("每次到 23:28 分执行",function(){
-    winform.edit.print( "每次到 20:28 分执行",time() );
-    
+var task2 = taskScheduler.create("每次�?23:28 分执�?,function(){
+    winform.edit.print( "每次�?20:28 分执�?,time() );
+
     //可创建线程执行耗时任务
-    thread.invoke( 
-    	function(winform){
-    		
-    	},winform
+    thread.invoke(
+        function(winform){
+
+        },winform
     )
 } )
 
 //设定计划任务执行时间方案
-task2.time = { 
-	minute = 28; 
-	hour = 20 ;
+task2.time = {
+    minute = 28;
+    hour = 20 ;
 }
 
 //启动计划任务
@@ -45,4 +47,8 @@ taskScheduler.start();
 
 winform.show();
 win.loopMessage();
+
 ```
+
+[Markdown 格式](https://www.aardio.com/zh-cn/doc/example/aardio/DateTime/win.taskScheduler.md)
+

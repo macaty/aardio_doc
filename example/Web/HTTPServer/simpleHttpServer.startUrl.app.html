@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - 设置多线程服务端'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - 设置多线程服务端</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 设置多线程服务端</h1><pre><code class="aardio language-aardio">//设置多线程服务端
+import win.ui;
+/*DSG{{*/
+mainForm = win.form(text=&quot;多线程服务端进阶&quot;;right=759;bottom=469)
+mainForm.add(
+edit={cls=&quot;edit&quot;;left=20;top=9;right=744;bottom=196;dl=1;dr=1;dt=1;edge=1;multiline=1;vscroll=1;z=1};
+static={cls=&quot;static&quot;;text=&quot;Static&quot;;left=20;top=207;right=740;bottom=451;db=1;dl=1;dr=1;dt=1;z=2}
+)
+/*}}*/
+
+import wsock.tcp.simpleHttpServer;
+
+/*
+可在 wsock.tcp.simpleHttpServer 名字空间指定 startUrl 函数的预设选项,
+具体有哪些选项请查看 wsock.tcp.simpleHttpServer.startUrl() 函数源码。
+直接使用 wsock.tcp.simpleHttpServer.mainThread 也行。
+*/
+namespace wsock.tcp.simpleHttpServer{
+    //startIp = &quot;0.0.0.0&quot;; //不限制本机 IP
+    //startPort = 8615; //不指定端口时会自动分配空闲端口
+    threadGlobal = { mainForm = ..mainForm }; //指定 HTTP 服务线程的默认全局变量,注意定义线程函数的作用域同名变量不能是局部变量
+}
+
+//io.open() //打开控制台查看线程错误信息
+var url = wsock.tcp.simpleHttpServer.startUrl( 
+    function(response,request,session){
+
+        response.write(&quot;hello &lt;a href=&#39;/test/&quot; + string.random(10) + &quot;&#39;&gt;点这里&lt;/a&gt;&quot;);
+        mainForm.edit.print( &quot;HTTP 请求：&quot;,request.path );
+
+        /*
+        如果想更高级一点，这里还可以来个 web.rpc.jsonServer,
+        参考「范例 / Web 应用 / JSON / HTTP-RPC-JSON 服务端 」
+        */
+    }
+);  
+
+import web.form;
+var wb = web.form(mainForm.static);
+wb.go(url);
+
+mainForm.show();
+win.loopMessage();
+
+</code></pre>
+<a href="https://www.aardio.com/zh-cn/doc/example/Web/HTTPServer/simpleHttpServer.startUrl.app.md">Markdown 格式</a>
+</body> 
+</html>

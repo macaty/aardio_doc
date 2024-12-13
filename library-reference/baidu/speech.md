@@ -1,22 +1,23 @@
-# baidu.speech 库模块帮助文档
+[aardio 文档](../../index.htm "aardio 编程语言文档首页")
 
-<a id="baidu"></a>
+# baidu.speech 库模块帮助文�?
 ## baidu 成员列表
 
+### baidu.speech()
 
-<a id="baidu.speech"></a>
-### baidu.speech() 
- 创建百度API语音合成客户端  
-[点里打开百度API文档](http://ai.baidu.com/docs)   
-  
-[返回对象:webRestClientObject](https://www.aardio.com/zh-cn/doc/library-reference/web/rest/client.html#webRestClientObject)
+创建百度API语音合成客户�?
+[点里打开百度API文档](http://ai.baidu.com/docs)
 
-<a id="baidu.speech"></a>
+[返回对象:webRestClientObject](../web/rest/client.html#webRestClientObject)
+
 ## baidu.speech 成员列表
 
-百度语音合成客户端支持库,  
-文档：http://ai.baidu.com/docs#/TTS-API/0bda9a98
+百度语音合成客户端支持库,
 
-<a id="baidu.speech.voices"></a>
-### baidu.speech.voices 
- 所有语音库名称组成的数组
+文档�?[http://ai.baidu.com/docs#/TTS-API/0bda9a98](http://ai.baidu.com/docs#/TTS-API/0bda9a98)
+
+### baidu.speech.voices
+
+所有语音库名称组成的数�?
+[Markdown 格式](https://www.aardio.com/zh-cn/doc/library-reference/baidu/speech.md)
+

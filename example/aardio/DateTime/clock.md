@@ -1,19 +1,19 @@
-# aardio 范例: 液晶计时器
+[aardio 文档](../../../index.htm "aardio 编程语言文档首页")
 
-```aardio
-//液晶计时器
-import fonts.fontAwesome;
+# aardio 范例: 液晶计时�?
+```aardio aardio
+//液晶计时�?import fonts.fontAwesome;
 import win.ui;
 /*DSG{{*/
-var winform = win.form(text="液晶计时器";left=-20;top=50;right=327;bottom=362;bgcolor=16777215;border="none";max=false)
+var winform = win.form(text="液晶计时�?;left=-20;top=50;right=327;bottom=362;bgcolor=16777215;border="none";max=false)
 winform.add(
 bk={cls="bk";left=0;top=0;right=349;bottom=27;bgcolor=10789024;z=9};
 btnClock={cls="plus";text="启动时钟";left=68;top=163;right=180;bottom=195;bgcolor=13234329;border={radius=6};notify=1;z=2};
 btnColor={cls="plus";text='\uF013';left=287;top=83;right=312;bottom=108;border={radius=6};color=9868950;font=LOGFONT(name='FontAwesome';charset=0);notify=1;z=10};
-btnCountDownTimer={cls="plus";text="启动倒计时";left=202;top=117;right=314;bottom=149;bgcolor=13234329;border={radius=6};notify=1;z=3};
+btnCountDownTimer={cls="plus";text="启动倒计�?;left=202;top=117;right=314;bottom=149;bgcolor=13234329;border={radius=6};notify=1;z=3};
 btnPause={cls="plus";text='\uF04C';left=188;top=214;right=220;bottom=245;border={radius=6};color=2368548;font=LOGFONT(name='FontAwesome';charset=0);notify=1;z=7};
 btnStop={cls="plus";text='\uF04D';left=243;top=214;right=275;bottom=245;border={radius=6};color=2368548;font=LOGFONT(name='FontAwesome';charset=0);notify=1;z=8};
-btnTimer={cls="plus";text="启动计时器";left=200;top=163;right=312;bottom=195;bgcolor=13234329;border={radius=6};notify=1;z=4};
+btnTimer={cls="plus";text="启动计时�?;left=200;top=163;right=312;bottom=195;bgcolor=13234329;border={radius=6};notify=1;z=4};
 datetimepick={cls="datetimepick";left=35;top=121;right=190;bottom=147;edge=1;transparent=1;updown=1;z=5};
 lbTip={cls="static";text="双击时间切换悬浮显示模式";left=35;top=264;right=322;bottom=288;transparent=1;z=6};
 plusClock={cls="plus";left=60;top=33;right=279;bottom=93;notify=1;z=1}
@@ -21,164 +21,168 @@ plusClock={cls="plus";left=60;top=33;right=279;bottom=93;notify=1;z=1}
 /*}}*/
 
 var style = {
-	icon = {
-		background={
-			active=0xFF0078B0;
-			hover=0xFF00AEFF;
-			default=0;
-		}; 
-	};
-	button = {
-		background={
-			active=0xFF0078B0;
-			hover=0xFF00AEFF; 
-			disabled=0xFFCCCCCC;
-		}; 
-	}
+    icon = {
+        background={
+            active=0xFF0078B0;
+            hover=0xFF00AEFF;
+            default=0;
+        };
+    };
+    button = {
+        background={
+            active=0xFF0078B0;
+            hover=0xFF00AEFF;
+            disabled=0xFFCCCCCC;
+        };
+    }
 }
-	
-winform.btnStop.skin(style.icon) 
+
+winform.btnStop.skin(style.icon)
 winform.btnPause.skin(style.icon)
-winform.btnCountDownTimer.skin(style.button) 
+winform.btnCountDownTimer.skin(style.button)
 winform.btnClock.skin(style.button)
 winform.btnTimer.skin(style.button)
 
 import win.ui.lcdClock;
 var lcdClock = win.ui.lcdClock(winform.plusClock);
-if(!lcdClock.setImageAttributes) error("请先更新 win.ui.lcdClock 扩展库",2)
+if(!lcdClock.setImageAttributes) error("请先更新 win.ui.lcdClock 扩展�?,2)
 lcdClock.startClock();
 
 winform.onMinimize = function(lParam){
-	winform.plusClock.orphanWindow(true)
-	win.setTopmost(winform.plusClock.hwnd)
-	winform.modifyStyleEx(0x40000/*_WS_EX_APPWINDOW*/,0x80/*_WS_EX_TOOLWINDOW*/);
-	winform.transparent(0)
-	winform.plusClock.floating = true;
-	return true;
+    winform.plusClock.orphanWindow(true)
+    win.setTopmost(winform.plusClock.hwnd)
+    winform.modifyStyleEx(0x40000/*_WS_EX_APPWINDOW*/,0x80/*_WS_EX_TOOLWINDOW*/);
+    winform.transparent(0)
+    winform.plusClock.floating = true;
+    return true;
 }
 
 winform.plusClock.onMouseDown = function(wParam,lParam){
-	if( winform.plusClock.floating ) {
-		::User32.SendMessage(owner.hwnd,0xA1/*_WM_NCLBUTTONDOWN*/,2/*_HTCAPTION*/,0);
-	}	
-	else {
-		winform.hitCaption();
-	}
+    if( winform.plusClock.floating ) {
+        ::User32.SendMessage(owner.hwnd,0xA1/*_WM_NCLBUTTONDOWN*/,2/*_HTCAPTION*/,0);
+    }
+    else {
+        winform.hitCaption();
+    }
 }
 
 winform.plusClock.onMouseDoubleClick = function(wParam,lParam){
     if( !winform.plusClock.floating ) {
         winform.hitMin();
-    	return;
+        return;
     }
-    
-	winform.plusClock.floating = false;
-	
-	winform.transparent(false)
-	win.setTopmost(winform.plusClock.hwnd,false)
-	winform.modifyStyleEx(0x80/*_WS_EX_TOOLWINDOW*/,0x40000/*_WS_EX_APPWINDOW*/);
-	winform.resize();
-	winform.datetimepick.redraw();
+
+    winform.plusClock.floating = false;
+
+    winform.transparent(false)
+    win.setTopmost(winform.plusClock.hwnd,false)
+    winform.modifyStyleEx(0x80/*_WS_EX_TOOLWINDOW*/,0x40000/*_WS_EX_APPWINDOW*/);
+    winform.resize();
+    winform.datetimepick.redraw();
 }
 
 winform.btnClock.oncommand = function(id,event){
-	lcdClock.startClock()   
-	winform.btnClock.disabled = true;
-	winform.btnCountDownTimer.disabled = false;
-	winform.btnTimer.disabled = false;
+    lcdClock.startClock()
+    winform.btnClock.disabled = true;
+    winform.btnCountDownTimer.disabled = false;
+    winform.btnTimer.disabled = false;
 }
 
 import fsys.media;
 winform.btnCountDownTimer.oncommand = function(id,event){
     winform.btnClock.disabled = false;
-	winform.btnCountDownTimer.disabled = true;
-	winform.btnTimer.disabled = false
-	
-	lcdClock.startCountDownTimer(,function(){
-		winform.btnCountDownTimer.disabled = false;
-		fsys.media.playSound("C:\Windows\media\Ring05.wav")
-	})
+    winform.btnCountDownTimer.disabled = true;
+    winform.btnTimer.disabled = false
+
+    lcdClock.startCountDownTimer(,function(){
+        winform.btnCountDownTimer.disabled = false;
+        fsys.media.playSound("C:\Windows\media\Ring05.wav")
+    })
 }
 
 winform.btnTimer.oncommand = function(id,event){
-	lcdClock.startTimer();
-	
-	winform.btnClock.disabled = false;
-	winform.btnCountDownTimer.disabled = false;
-	winform.btnTimer.disabled = true;
+    lcdClock.startTimer();
+
+    winform.btnClock.disabled = false;
+    winform.btnCountDownTimer.disabled = false;
+    winform.btnTimer.disabled = true;
 }
 
 winform.btnPause.oncommand = function(id,event){
-	lcdClock.pause();
-	
-	winform.btnClock.disabled = false;
-	winform.btnCountDownTimer.disabled = false;
-	winform.btnTimer.disabled = false;
+    lcdClock.pause();
+
+    winform.btnClock.disabled = false;
+    winform.btnCountDownTimer.disabled = false;
+    winform.btnTimer.disabled = false;
 }
 
-winform.datetimepick.setFormat("' 设置倒计时:'HH':'mm':'ss");
+winform.datetimepick.setFormat("' 设置倒计�?'HH':'mm':'ss");
 winform.datetimepick.time = time.iso8601(0);
 winform.datetimepick.onnotify = function(id,code,ptr){
-	if(code == 0xFFFFFD09/*_DTN_DATETIMECHANGE*/){ 
-		lcdClock.resetCountDownTimer( winform.datetimepick.time )
-		winform.btnClock.disabled = false;
-		winform.btnCountDownTimer.disabled = false;
-		winform.btnTimer.disabled = false
-	}
+    if(code == 0xFFFFFD09/*_DTN_DATETIMECHANGE*/){
+        lcdClock.resetCountDownTimer( winform.datetimepick.time )
+        winform.btnClock.disabled = false;
+        winform.btnCountDownTimer.disabled = false;
+        winform.btnTimer.disabled = false
+    }
 }
 
 winform.btnStop.oncommand = function(id,event){
-	lcdClock.stop();
-	
-	winform.btnClock.disabled = false;
-	winform.btnCountDownTimer.disabled = false;
-	winform.btnTimer.disabled = false;
+    lcdClock.stop();
+
+    winform.btnClock.disabled = false;
+    winform.btnCountDownTimer.disabled = false;
+    winform.btnTimer.disabled = false;
 }
 
 import win.ui.simpleWindow2;
 var simpleWindow2 = win.ui.simpleWindow2(winform);
 
-import win.ui.tooltip; 
-var tooltipCtrl = win.ui.tooltip( winform );//在窗口上创建tooltip控件 
+import win.ui.tooltip;
+var tooltipCtrl = win.ui.tooltip( winform );//在窗口上创建tooltip控件
 tooltipCtrl.addTool(winform.btnStop,"停止计时" )
-tooltipCtrl.addTool(winform.btnPause,"暂停计时" ) 
-tooltipCtrl.addTool(winform.btnClock,"显示时钟，不会清零计时器" ) 
-tooltipCtrl.addTool(simpleWindow2.titlebarMin,"点这里隐藏窗口并悬浮显示计时器" )  
+tooltipCtrl.addTool(winform.btnPause,"暂停计时" )
+tooltipCtrl.addTool(winform.btnClock,"显示时钟，不会清零计时器" )
+tooltipCtrl.addTool(simpleWindow2.titlebarMin,"点这里隐藏窗口并悬浮显示计时�? )
 tooltipCtrl.addTool(winform.plusClock,"鼠标左键按住可以拖动,双击可以切换显示模式" )
 
 import fsys.config;
 var config = fsys.config(io.appData("aardio/std/lcdClock"))
 if(config.setting.color){
-	lcdClock.setColor(config.setting.color);
+    lcdClock.setColor(config.setting.color);
 }
 
 winform.btnColor.skin({
-	background={
-		active=0xFF0078B0;
-		hover=0xFF00AEFF;
-	}; 
+    background={
+        active=0xFF0078B0;
+        hover=0xFF00AEFF;
+    };
 })
 
 import win.ui.ctrl.pick;
 winform.btnColor.oncommand = function(id,event){
-	var picker = win.ui.ctrl.pick(winform);
-	
-	if(config.setting.color){
-		picker.setColor(config.setting.color);
-	}
-	picker.onColorChange = function(argb){
-		lcdClock.setColor(argb);
-		config.setting.color = argb;
-	}
-	
-	picker.onInitDialog = function(){
-		win.center(picker.hwnd,winform.hwnd);
-		picker.top = winform.top + winform.btnColor.bottom;
-	}
-	
-	picker.doModal()
+    var picker = win.ui.ctrl.pick(winform);
+
+    if(config.setting.color){
+        picker.setColor(config.setting.color);
+    }
+    picker.onColorChange = function(argb){
+        lcdClock.setColor(argb);
+        config.setting.color = argb;
+    }
+
+    picker.onInitDialog = function(){
+        win.center(picker.hwnd,winform.hwnd);
+        picker.top = winform.top + winform.btnColor.bottom;
+    }
+
+    picker.doModal()
 }
 
-winform.show() 
+winform.show()
 win.loopMessage();
+
 ```
+
+[Markdown 格式](https://www.aardio.com/zh-cn/doc/example/aardio/DateTime/clock.md)
+

@@ -1,77 +1,66 @@
-# unqlite.cursor 库模块帮助文档
+[aardio 文档](../../index.htm "aardio 编程语言文档首页")
 
-<a id="unqliteCursorObject"></a>
+# unqlite.cursor 库模块帮助文�?
 ## unqliteCursorObject 成员列表
 
+### unqliteCursorObject.data()
 
-<a id="unqliteCursorObject.data"></a>
-### unqliteCursorObject.data() 
- 返回当前值
+返回当前�?
+### unqliteCursorObject.dataObject()
 
-<a id="unqliteCursorObject.dataObject"></a>
-### unqliteCursorObject.dataObject() 
- 返回表对象值
+返回表对象�?
+### unqliteCursorObject.delete()
 
-<a id="unqliteCursorObject.delete"></a>
-### unqliteCursorObject.delete() 
- 删除当前行,可选在参数中指定键名
+删除当前�?可选在参数中指定键�?
+### unqliteCursorObject.each()
 
-<a id="unqliteCursorObject.each"></a>
-### unqliteCursorObject.each() 
- 
+```aardio aardio
+for(k,v in unqliteCursorObject.each() ){
 
-```aardio
-for(k,v in unqliteCursorObject.each() ){ 
-	
 }
+
 ```
 
+### unqliteCursorObject.eachObject()
 
+```aardio aardio
+for(k,v in unqliteCursorObject.eachObject() ){
 
-<a id="unqliteCursorObject.eachObject"></a>
-### unqliteCursorObject.eachObject() 
- 
-
-```aardio
-for(k,v in unqliteCursorObject.eachObject() ){ 
-	
 }
+
 ```
 
+### unqliteCursorObject.first()
 
+移动到首�?
+### unqliteCursorObject.key()
 
-<a id="unqliteCursorObject.first"></a>
-### unqliteCursorObject.first() 
- 移动到首行
+返回当前键名
 
-<a id="unqliteCursorObject.key"></a>
-### unqliteCursorObject.key() 
- 返回当前键名
+### unqliteCursorObject.last()
 
-<a id="unqliteCursorObject.last"></a>
-### unqliteCursorObject.last() 
- 移动到尾行
+移动到尾�?
+### unqliteCursorObject.next()
 
-<a id="unqliteCursorObject.next"></a>
-### unqliteCursorObject.next() 
- 后移一行
+后移一�?
+### unqliteCursorObject.prev()
 
-<a id="unqliteCursorObject.prev"></a>
-### unqliteCursorObject.prev() 
- 前移一行
+前移一�?
+### unqliteCursorObject.release()
 
-<a id="unqliteCursorObject.release"></a>
-### unqliteCursorObject.release() 
- 关闭游标对象
+关闭游标对象
 
-<a id="unqliteCursorObject.reset"></a>
-### unqliteCursorObject.reset() 
- 重置游标
+### unqliteCursorObject.reset()
 
-<a id="unqliteCursorObject.seek"></a>
-### unqliteCursorObject.seek("键名") 
- 移动游标到指定键
+重置游标
 
-<a id="unqliteCursorObject.valid"></a>
-### unqliteCursorObject.valid() 
- 是否有效数据
+### unqliteCursorObject.seek("键名")
+
+移动游标到指定键
+
+### unqliteCursorObject.valid()
+
+是否有效数据
+
+[Markdown 格式](https://www.aardio.com/zh-cn/doc/library-reference/unqlite/cursor.md)
+

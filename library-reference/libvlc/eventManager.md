@@ -1,282 +1,215 @@
-# libvlc.eventManager 库模块帮助文档
+[aardio 文档](../../index.htm "aardio 编程语言文档首页")
 
-<a id="vlcEventManagerObject"></a>
+# libvlc.eventManager 库模块帮助文�?
 ## vlcEventManagerObject 成员列表
 
+### vlcEventManagerObject.mediaPlayerBackward
 
-<a id="vlcEventManagerObject.mediaPlayerBackward"></a>
-### vlcEventManagerObject.mediaPlayerBackward 
- 
-
-```aardio
+```aardio aardio
 vlcEventManagerObject.mediaPlayerBackward = function(event){
-	io.print("mediaPlayerBackward")
+    io.print("mediaPlayerBackward")
 }
+
 ```
 
+### vlcEventManagerObject.mediaPlayerBuffering
 
-
-<a id="vlcEventManagerObject.mediaPlayerBuffering"></a>
-### vlcEventManagerObject.mediaPlayerBuffering 
- 
-
-```aardio
+```aardio aardio
 vlcEventManagerObject.mediaPlayerBuffering = function(event){
-	io.print("mediaPlayerBuffering",event.newCache)
+    io.print("mediaPlayerBuffering",event.newCache)
 }
+
 ```
 
+### vlcEventManagerObject.mediaPlayerESAdded
 
-
-<a id="vlcEventManagerObject.mediaPlayerESAdded"></a>
-### vlcEventManagerObject.mediaPlayerESAdded 
- 
-
-```aardio
+```aardio aardio
 vlcEventManagerObject.mediaPlayerESAdded = function(event){
-	io.print("mediaPlayerESAdded",event.newScrambled)
+    io.print("mediaPlayerESAdded",event.newScrambled)
 }
+
 ```
 
+### vlcEventManagerObject.mediaPlayerESDeleted
 
-
-<a id="vlcEventManagerObject.mediaPlayerESDeleted"></a>
-### vlcEventManagerObject.mediaPlayerESDeleted 
- 
-
-```aardio
+```aardio aardio
 vlcEventManagerObject.mediaPlayerESDeleted = function(event){
-	io.print("mediaPlayerESDeleted",event.newScrambled)
+    io.print("mediaPlayerESDeleted",event.newScrambled)
 }
+
 ```
 
+### vlcEventManagerObject.mediaPlayerESSelected
 
-
-<a id="vlcEventManagerObject.mediaPlayerESSelected"></a>
-### vlcEventManagerObject.mediaPlayerESSelected 
- 
-
-```aardio
+```aardio aardio
 vlcEventManagerObject.mediaPlayerESSelected = function(event){
-	io.print("mediaPlayerESSelected",event.newScrambled)
+    io.print("mediaPlayerESSelected",event.newScrambled)
 }
+
 ```
 
+### vlcEventManagerObject.mediaPlayerEncounteredError
 
-
-<a id="vlcEventManagerObject.mediaPlayerEncounteredError"></a>
-### vlcEventManagerObject.mediaPlayerEncounteredError 
- 
-
-```aardio
+```aardio aardio
 vlcEventManagerObject.mediaPlayerEncounteredError = function(event){
-	io.print("mediaPlayerEncounteredError")
+    io.print("mediaPlayerEncounteredError")
 }
+
 ```
 
+### vlcEventManagerObject.mediaPlayerEndReached
 
-
-<a id="vlcEventManagerObject.mediaPlayerEndReached"></a>
-### vlcEventManagerObject.mediaPlayerEndReached 
- 
-
-```aardio
+```aardio aardio
 vlcEventManagerObject.mediaPlayerEndReached = function(event){
-	io.print("mediaPlayerEndReached")
+    io.print("mediaPlayerEndReached")
 }
+
 ```
 
+### vlcEventManagerObject.mediaPlayerForward
 
-
-<a id="vlcEventManagerObject.mediaPlayerForward"></a>
-### vlcEventManagerObject.mediaPlayerForward 
- 
-
-```aardio
+```aardio aardio
 vlcEventManagerObject.mediaPlayerForward = function(event){
-	io.print("mediaPlayerForward")
+    io.print("mediaPlayerForward")
 }
+
 ```
 
+### vlcEventManagerObject.mediaPlayerLengthChanged
 
-
-<a id="vlcEventManagerObject.mediaPlayerLengthChanged"></a>
-### vlcEventManagerObject.mediaPlayerLengthChanged 
- 
-
-```aardio
+```aardio aardio
 vlcEventManagerObject.mediaPlayerLengthChanged = function(event){
-	io.print("mediaPlayerSnapshotTaken",event.newLength)
+    io.print("mediaPlayerSnapshotTaken",event.newLength)
 }
+
 ```
 
+### vlcEventManagerObject.mediaPlayerMediaChanged
 
-
-<a id="vlcEventManagerObject.mediaPlayerMediaChanged"></a>
-### vlcEventManagerObject.mediaPlayerMediaChanged 
- 
-
-```aardio
+```aardio aardio
 vlcEventManagerObject.mediaPlayerMediaChanged = function(event){
-	io.print("mediaPlayerPositionChanged",event.newMedia)
+    io.print("mediaPlayerPositionChanged",event.newMedia)
 }
+
 ```
 
+### vlcEventManagerObject.mediaPlayerNothingSpecial
 
-
-<a id="vlcEventManagerObject.mediaPlayerNothingSpecial"></a>
-### vlcEventManagerObject.mediaPlayerNothingSpecial 
- 
-
-```aardio
+```aardio aardio
 vlcEventManagerObject.mediaPlayerNothingSpecial = function(event){
-	io.print("mediaPlayerNothingSpecial",event.metaType)
+    io.print("mediaPlayerNothingSpecial",event.metaType)
 }
+
 ```
 
+### vlcEventManagerObject.mediaPlayerOpening
 
-
-<a id="vlcEventManagerObject.mediaPlayerOpening"></a>
-### vlcEventManagerObject.mediaPlayerOpening 
- 
-
-```aardio
+```aardio aardio
 vlcEventManagerObject.mediaPlayerOpening = function(event){
-	io.print("mediaPlayerOpening",event.newPosition)
+    io.print("mediaPlayerOpening",event.newPosition)
 }
+
 ```
 
+### vlcEventManagerObject.mediaPlayerPausableChanged
 
-
-<a id="vlcEventManagerObject.mediaPlayerPausableChanged"></a>
-### vlcEventManagerObject.mediaPlayerPausableChanged 
- 
-
-```aardio
+```aardio aardio
 vlcEventManagerObject.mediaPlayerPausableChanged = function(event){
-	io.print("mediaPlayerPausableChanged",event.metaType)
+    io.print("mediaPlayerPausableChanged",event.metaType)
 }
+
 ```
 
+### vlcEventManagerObject.mediaPlayerPaused
 
-
-<a id="vlcEventManagerObject.mediaPlayerPaused"></a>
-### vlcEventManagerObject.mediaPlayerPaused 
- 
-
-```aardio
+```aardio aardio
 vlcEventManagerObject.mediaPlayerPaused = function(event){
-	io.print("mediaPlayerPaused")
+    io.print("mediaPlayerPaused")
 }
+
 ```
 
+### vlcEventManagerObject.mediaPlayerPlaying
 
-
-<a id="vlcEventManagerObject.mediaPlayerPlaying"></a>
-### vlcEventManagerObject.mediaPlayerPlaying 
- 
-
-```aardio
+```aardio aardio
 vlcEventManagerObject.mediaPlayerPlaying = function(event){
-	io.print("mediaPlayerPlaying")
+    io.print("mediaPlayerPlaying")
 }
+
 ```
 
+### vlcEventManagerObject.mediaPlayerPositionChanged
 
-
-<a id="vlcEventManagerObject.mediaPlayerPositionChanged"></a>
-### vlcEventManagerObject.mediaPlayerPositionChanged 
- 
-
-```aardio
+```aardio aardio
 vlcEventManagerObject.mediaPlayerPositionChanged = function(event){
-	io.print("mediaPlayerPositionChanged",event.newPosition)
+    io.print("mediaPlayerPositionChanged",event.newPosition)
 }
+
 ```
 
+### vlcEventManagerObject.mediaPlayerScrambledChanged
 
-
-<a id="vlcEventManagerObject.mediaPlayerScrambledChanged"></a>
-### vlcEventManagerObject.mediaPlayerScrambledChanged 
- 
-
-```aardio
+```aardio aardio
 vlcEventManagerObject.mediaPlayerScrambledChanged = function(event){
-	io.print("mediaPlayerScrambledChanged",event.newScrambled)
+    io.print("mediaPlayerScrambledChanged",event.newScrambled)
 }
+
 ```
 
+### vlcEventManagerObject.mediaPlayerSeekableChanged
 
-
-<a id="vlcEventManagerObject.mediaPlayerSeekableChanged"></a>
-### vlcEventManagerObject.mediaPlayerSeekableChanged 
- 
-
-```aardio
+```aardio aardio
 vlcEventManagerObject.mediaPlayerSeekableChanged = function(event){
-	io.print("mediaPlayerSeekableChanged",event.newSeekable)
+    io.print("mediaPlayerSeekableChanged",event.newSeekable)
 }
+
 ```
 
+### vlcEventManagerObject.mediaPlayerSnapshotTaken
 
-
-<a id="vlcEventManagerObject.mediaPlayerSnapshotTaken"></a>
-### vlcEventManagerObject.mediaPlayerSnapshotTaken 
- 
-
-```aardio
+```aardio aardio
 vlcEventManagerObject.mediaPlayerSnapshotTaken = function(event){
-	var filename = ..string.fromto(event.pUtfFilename,65001,0,true);
-	io.print("mediaPlayerSnapshotTaken",filename)
+    var filename = ..string.fromto(event.pUtfFilename,65001,0,true);
+    io.print("mediaPlayerSnapshotTaken",filename)
 }
+
 ```
 
+### vlcEventManagerObject.mediaPlayerStopped
 
-
-<a id="vlcEventManagerObject.mediaPlayerStopped"></a>
-### vlcEventManagerObject.mediaPlayerStopped 
- 
-
-```aardio
+```aardio aardio
 vlcEventManagerObject.mediaPlayerStopped = function(event){
-	io.print("mediaPlayerStopped")
+    io.print("mediaPlayerStopped")
 }
+
 ```
 
+### vlcEventManagerObject.mediaPlayerTimeChanged
 
-
-<a id="vlcEventManagerObject.mediaPlayerTimeChanged"></a>
-### vlcEventManagerObject.mediaPlayerTimeChanged 
- 
-
-```aardio
+```aardio aardio
 vlcEventManagerObject.mediaPlayerTimeChanged = function(event){
-	io.print("mediaPlayerPositionChanged",event.newTime)
+    io.print("mediaPlayerPositionChanged",event.newTime)
 }
+
 ```
 
+### vlcEventManagerObject.mediaPlayerTitleChanged
 
-
-<a id="vlcEventManagerObject.mediaPlayerTitleChanged"></a>
-### vlcEventManagerObject.mediaPlayerTitleChanged 
- 
-
-```aardio
+```aardio aardio
 vlcEventManagerObject.mediaPlayerTitleChanged = function(event){
-	io.print("mediaPlayerTitleChanged",event.newTitle)
+    io.print("mediaPlayerTitleChanged",event.newTitle)
 }
+
 ```
 
+### vlcEventManagerObject.mediaPlayerVout
 
-
-<a id="vlcEventManagerObject.mediaPlayerVout"></a>
-### vlcEventManagerObject.mediaPlayerVout 
- 
-
-```aardio
+```aardio aardio
 vlcEventManagerObject.mediaPlayerVout = function(event){
-	io.print("mediaPlayerVout",event.newCount)
+    io.print("mediaPlayerVout",event.newCount)
 }
+
 ```
 
+[Markdown 格式](https://www.aardio.com/zh-cn/doc/library-reference/libvlc/eventManager.md)
 

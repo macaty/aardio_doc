@@ -1,47 +1,41 @@
-# libvlc.ax 库模块帮助文档
+[aardio 文档](../../index.htm "aardio 编程语言文档首页")
 
-<a id="libvlc"></a>
+# libvlc.ax 库模块帮助文�?
 ## libvlc 成员列表
 
+### libvlc.ax
 
-<a id="libvlc.ax"></a>
-### libvlc.ax 
- LibVLC COM 控件
+LibVLC COM 控件
 
 创建 LibVLC 控件
 
-<a id="libvlc.ax"></a>
-### libvlc.ax() 
- [返回对象:libVlcAxObject](#libVlcAxObject)
+### libvlc.ax()
 
-<a id="libvlc.ax"></a>
-### libvlc.ax(winform) 
- 参数 @winform 指定宿主窗口或控件对象
+[返回对象:libVlcAxObject](#libVlcAxObject)
 
-<a id="libVlcAxObject"></a>
+### libvlc.ax(winform)
+
+参数 @winform 指定宿主窗口或控件对�?
 ## libVlcAxObject 成员列表
 
+### libVlcAxObject.MediaPlayerPositionChanged
 
-<a id="libVlcAxObject.MediaPlayerPositionChanged"></a>
-### libVlcAxObject.MediaPlayerPositionChanged 
- 
-
-```aardio
+```aardio aardio
 libVlcAxObject.MediaPlayerPositionChanged = function(pos){
-	_/*播放进度改变回调此函数，pos 为当前进度*/
+    _/*播放进度改变回调此函数，pos 为当前进�?/
 }
+
 ```
 
-
-
-<a id="libVlcAxObject.Playlist"></a>
 ## libVlcAxObject.Playlist 成员列表
 
+### libVlcAxObject.Playlist.Add()
 
-<a id="libVlcAxObject.Playlist.Add"></a>
-### libVlcAxObject.Playlist.Add() 
- 添加视频地址，返回播放列表 ID
+添加视频地址，返回播放列�?ID
 
-<a id="libVlcAxObject.Playlist.PlayItem"></a>
-### libVlcAxObject.Playlist.PlayItem() 
- 播放视频，参数指定播放列表 ID
+### libVlcAxObject.Playlist.PlayItem()
+
+播放视频，参数指定播放列�?ID
+
+[Markdown 格式](https://www.aardio.com/zh-cn/doc/library-reference/libvlc/ax.md)
+

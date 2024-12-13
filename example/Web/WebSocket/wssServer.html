@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - WSS 服务端'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - WSS 服务端</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: WSS 服务端</h1><pre><code class="aardio language-aardio">//WSS 服务端
+import win.ui;
+/*DSG{{*/
+var winform = win.form(text=&quot;wss 服务端&quot;;right=759;bottom=469)
+winform.add(
+edit={cls=&quot;edit&quot;;left=12;top=13;right=744;bottom=448;edge=1;multiline=1;z=1}
+)
+/*}}*/
+
+import console; 
+import web.SocketSharp;//打开控制台可查看服务端错误输出
+
+//加载 SSL 证书后可改为 wss:// 。
+var wssv = web.SocketSharp.Server.WebSocketServer(&quot;wss://localhost:8877&quot;) 
+
+//生成测试证书，ws 协议不需要
+import web.SocketSharp.Pfx;
+wssv.SslConfiguration.ServerCertificate = System.Security.Cryptography.X509Certificates.X509Certificate2(
+    web.SocketSharp.Pfx(&quot;/test.pfx&quot;,&quot;123456&quot;) 
+);
+
+/*
+第二个参数用于定义一个 WebSocket 会话类。
+每次创建新的 WebSocket 连接时会调用类创建WebSocket 会话实例。 
+*/
+wssv.AddWebSocketService(&quot;/echo&quot;,class {
+
+    onMessage = function(e){
+        /*
+        this.socket 会自动绑定为 WebSocketSharp.Server.WebSocketBehavior 实例。
+        用法请参考 WebSocketSharp 文档。
+
+        必须定义 this.onMessage 事件用于接收消息。
+        可选定义 this.onOpen, this.onClose, this.onError 事件。
+        这几个事件与 WebSocketSharp.Server.WebSocketBehavio 的同名事件用法相同。
+        唯一不同的是首字母小写。
+
+        this.send() 等价于调用 this.socket.Send()
+        this.sendAsync() 等价于调用 this.socket.SendAsync()
+        唯一区别是首字母小写。
+        */ 
+
+        winform.edit.print(&quot;服务端收到消息&quot;,e.data)
+
+        //同步发送，群发用 this.broadcast
+        this.send(&quot;你好我是服务端&quot;)
+
+        //异步发送，成功回调参数 @2，异步群发用 broadcastAsync
+        this.sendAsync(&quot;你好我是服务端&quot;,function(completed){
+
+        } ) 
+    }  
+});
+
+//启动服务器
+wssv.Start();
+
+winform.onDestroy = function(){ 
+    wssv.Stop();//关闭服务器，不然下次启动，短时间内端口会是占用状态
+}
+
+winform.show();
+win.loopMessage();
+</code></pre>
+<a href="https://www.aardio.com/zh-cn/doc/example/Web/WebSocket/wssServer.md">Markdown 格式</a>
+</body> 
+</html>

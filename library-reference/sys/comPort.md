@@ -1,46 +1,45 @@
-# sys.comPort 库模块帮助文档
+[aardio 文档](../../index.htm "aardio 编程语言文档首页")
 
-<a id="sys.comPort"></a>
+# sys.comPort 库模块帮助文�?
 ## sys.comPort 成员列表
 
+### sys.comPort.find()
 
-<a id="sys.comPort.find"></a>
-### sys.comPort.find() 
- [返回对象:sysComPortObject](#sysComPortObject)
+[返回对象:sysComPortObject](#sysComPortObject)
 
-<a id="sys.comPort.find"></a>
-### sys.comPort.find(关键字) 
- 在 COM 端口描述以及设备友好名称中搜索指定的关键字,  
-返回找到的 COM 端口信息
+### sys.comPort.find(关键�?
 
-<a id="sys.comPort.list"></a>
-### sys.comPort.list() 
- 获取串口列表
+�?COM 端口描述以及设备友好名称中搜索指定的关键�?
 
-<a id="sysComPortObject"></a>
+返回找到�?COM 端口信息
+
+### sys.comPort.list()
+
+获取串口列表
+
 ## sysComPortObject 成员列表
 
+### sysComPortObject.classGuid
 
-<a id="sysComPortObject.classGuid"></a>
-### sysComPortObject.classGuid 
- 设备 GUID
+设备 GUID
 
-<a id="sysComPortObject.description"></a>
-### sysComPortObject.description 
- 设备描述
+### sysComPortObject.description
 
-<a id="sysComPortObject.deviceName"></a>
-### sysComPortObject.deviceName 
- 设备名
+设备描述
 
-<a id="sysComPortObject.friendlyName"></a>
-### sysComPortObject.friendlyName 
- 设备友好名称
+### sysComPortObject.deviceName
 
-<a id="sysComPortObject.index"></a>
-### sysComPortObject.index 
- 在list函数返回的串口数组中的索引值
+设备�?
+### sysComPortObject.friendlyName
 
-<a id="sysComPortObject.portName"></a>
-### sysComPortObject.portName 
- 端口名，例如 COM1, COM2
+设备友好名称
+
+### sysComPortObject.index
+
+在list函数返回的串口数组中的索引�?
+### sysComPortObject.portName
+
+端口名，例如 COM1, COM2
+
+[Markdown 格式](https://www.aardio.com/zh-cn/doc/library-reference/sys/comPort.md)
+

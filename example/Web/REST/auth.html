@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - 用 web.rest 客户端调用 HTTP API - 登录认证'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - 用 web.rest 客户端调用 HTTP API - 登录认证</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 用 web.rest 客户端调用 HTTP API - 登录认证</h1><pre><code class="aardio language-aardio">//用 web.rest 客户端调用 HTTP API - 登录认证
+import console;
+import web.rest.jsonClient;
+console.showLoading(&quot;正在登录&quot;)
+
+//创建 HTTP 客户端
+var http = web.rest.jsonClient();
+
+/*
+使用默认的 Authorization 请求头指定认证 token。
+调用 http.setAuth 会清除 http.setAuthToken 的设置，
+调用 http.setAuthToken  也会清除 http.setAuth 的设置。
+*/
+http.setAuthToken(&quot;token&quot;);
+
+//设置登录信息，支持 Basic , Digest 认证
+http.setAuth(&quot;user&quot;,&quot;passwd&quot;);
+
+var api = http.api( &quot;http://httpbin.org&quot; );
+
+//发送 GET 请求
+var info = api[&quot;digest-auth&quot;].auth[&quot;user&quot;][&quot;passwd&quot;].get();
+//var info = http.get( &quot;http://httpbin.org/digest-auth/auth/user/passwd&quot; );
+console.dumpJson(info); 
+
+console.pause();
+</code></pre>
+<a href="https://www.aardio.com/zh-cn/doc/example/Web/REST/auth.md">Markdown 格式</a>
+</body> 
+</html>

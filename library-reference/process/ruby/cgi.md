@@ -1,22 +1,21 @@
-# process.ruby.cgi 库模块帮助文档
+[aardio 文档](../../../index.htm "aardio 编程语言文档首页")
 
-<a id="process.ruby"></a>
+# process.ruby.cgi 库模块帮助文�?
 ## process.ruby 成员列表
 
+### process.ruby.cgi
 
-<a id="process.ruby.cgi"></a>
-### process.ruby.cgi 
- 用于HTTP服务器创建Ruby CGI进程  
-适用于 wsock.tcp.simpleHttpServer 或 wsock.tcp.asynHttpServer
+用于HTTP服务器创建Ruby CGI进程
 
-<a id="process.ruby.cgi"></a>
-### process.ruby.cgi(response,request,cgiPath,...) 
- 
+适用�?wsock.tcp.simpleHttpServer �?wsock.tcp.asynHttpServer
 
-```aardio
-response,@request参数为HTTP服务器的请求与响应对象,  
-@cgiPath指定 ruby.exe的路径,  
-可选添加任意个php-cgi.exe的启动参数
+### process.ruby.cgi(response,request,cgiPath,...)
+
+```aardio aardio
+response,@request参数为HTTP服务器的请求与响应对�?
+@cgiPath指定 ruby.exe的路�?
+可选添加任意个php-cgi.exe的启动参�?
 ```
 
+[Markdown 格式](https://www.aardio.com/zh-cn/doc/library-reference/process/ruby/cgi.md)
 

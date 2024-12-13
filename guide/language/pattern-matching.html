@@ -87,7 +87,7 @@ console.pause();
 var str = string.match(&quot;12345678&quot;,&quot;[1230-9]&quot;)   
 </code></pre>
 
-<p>参考：<a href="../../library-guide/builtin/string/patterns.html#set" tppabs="https://www.aardio.com/zh-cn/doc/library-guide/builtin/string/patterns.html#set">模式语法 - 字符集合</a></p>
+<p>参考：<a href="https://www.aardio.com/zh-cn/doc/library-guide/builtin/string/patterns.html#set">模式语法 - 字符集合</a></p>
 
 <h3>5. 元序列</h3>
 
@@ -103,7 +103,7 @@ var str = string.match(&quot;12345678&quot;,&quot;&lt;1230-9&gt;&quot;)
 
 <p>元序列具有原子性，在内部执行贪婪与激进的匹配规则，只要能匹配到内容就会尽力向后走，并且不会在元序列内执行回溯匹配。</p>
 
-<p>参考：<a href="../../library-guide/builtin/string/patterns.html#metasequence" tppabs="https://www.aardio.com/zh-cn/doc/library-guide/builtin/string/patterns.html#metasequence">模式语法 - 元序列</a></p>
+<p>参考：<a href="https://www.aardio.com/zh-cn/doc/library-guide/builtin/string/patterns.html#metasequence">模式语法 - 元序列</a></p>
 
 <h2>二、运算符</h2>
 
@@ -141,7 +141,7 @@ var str = string.match(&quot;12345678&quot;,&quot;\d+&quot;)
 var str = string.match(&quot;12345678&quot;,&quot;\d+\s*&quot;) //这里的&quot;\s*&quot;匹配零个或多个空格   
 </code></pre>
 
-<p>其他运算符请参考：<a href="../../library-guide/builtin/string/patterns.html#operators" tppabs="https://www.aardio.com/zh-cn/doc/library-guide/builtin/string/patterns.html#operators">模式语法 - 运算符</a></p>
+<p>其他运算符请参考：<a href="https://www.aardio.com/zh-cn/doc/library-guide/builtin/string/patterns.html#operators">模式语法 - 运算符</a></p>
 
 <h2>三、模式匹配应用实例</h2>
 
@@ -179,7 +179,7 @@ var str = string.match(&quot;12345678&quot;,&quot;\d+\s*&quot;) //这里的&quot
 <pre><code class="aardio language-aardio">var str = string.match(&quot;身份证号码&quot;,&quot;\d{14,14}&lt;\d\d\d&gt;*[\dxX]&quot; )   
 </code></pre>
 
-<p>上面的 <code>&lt;\d\d\d&gt;</code> 是一个<a href="../../library-guide/builtin/string/patterns.html#metasequence" tppabs="https://www.aardio.com/zh-cn/doc/library-guide/builtin/string/patterns.html#metasequence">自定义的元序列（ metasequence ）</a>。 </p>
+<p>上面的 <code>&lt;\d\d\d&gt;</code> 是一个<a href="https://www.aardio.com/zh-cn/doc/library-guide/builtin/string/patterns.html#metasequence">自定义的元序列（ metasequence ）</a>。 </p>
 
 <p>像这些，多动手折腾很快会明白，别人灌输给你的知识永远没有自已探索到的理解深刻。</p></li>
 <li><p>首尾锚点</p>
@@ -200,7 +200,7 @@ var str = string.match(&quot;12345678&quot;,&quot;\d+\s*&quot;) //这里的&quot
 
 <p>如果身份证前后不仅仅是空格，还可能有别的字符，哪怎么办呢？  </p>
 
-<p>这里我们可以接触一个新的概念：<a href="../../library-guide/builtin/string/patterns.html#boundary" tppabs="https://www.aardio.com/zh-cn/doc/library-guide/builtin/string/patterns.html#boundary">边界断言</a>。</p>
+<p>这里我们可以接触一个新的概念：<a href="https://www.aardio.com/zh-cn/doc/library-guide/builtin/string/patterns.html#boundary">边界断言</a>。</p>
 
 <p>边界断言是在子模式前面加一个表示否定的感叹号，表示从不匹配（左侧）到匹配（右侧）的边界。</p>
 
@@ -237,11 +237,11 @@ console.pause(true);
 <p>参考：</p>
 
 <ul>
-<li><p><a href="../../library-guide/builtin/string/patterns.html" tppabs="https://www.aardio.com/zh-cn/doc/library-guide/builtin/string/patterns.html">模式匹配语法</a></p></li>
-<li><p><a href="../../library-guide/builtin/string/matching.html" tppabs="https://www.aardio.com/zh-cn/doc/library-guide/builtin/string/matching.html">模式匹配函数</a> </p></li>
+<li><p><a href="https://www.aardio.com/zh-cn/doc/library-guide/builtin/string/patterns.html">模式匹配语法</a></p></li>
+<li><p><a href="https://www.aardio.com/zh-cn/doc/library-guide/builtin/string/matching.html">模式匹配函数</a> </p></li>
 </ul>
 
-<p><a href="pattern-matching.md" tppabs="https://www.aardio.com/zh-cn/doc/guide/language/pattern-matching.md">Markdown 格式</a></p>
+<p><a href="https://www.aardio.com/zh-cn/doc/guide/language/pattern-matching.md">Markdown 格式</a></p>
 
 </body> 
 </html>

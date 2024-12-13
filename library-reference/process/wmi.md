@@ -1,466 +1,332 @@
-# process.wmi 库模块帮助文档
+[aardio 文档](../../index.htm "aardio 编程语言文档首页")
 
-<a id="process"></a>
+# process.wmi 库模块帮助文�?
 ## process 成员列表
 
+### process.wmi()
 
-<a id="process.wmi"></a>
-### process.wmi() 
- 参数@1指定进程ID，返回WMI进程对象  
+参数@1指定进程ID，返回WMI进程对象
+
 省略参数则默认取当前进程 ID
 
 [返回对象:processWmiObject](#processWmiObject)
 
-<a id="processWmiObject"></a>
 ## processWmiObject 成员列表
 
+### processWmiObject.CSCreationClassName
 
-<a id="processWmiObject.CSCreationClassName"></a>
-### processWmiObject.CSCreationClassName 
- 
-
-```aardio
+```aardio aardio
 CSCreationClassName
+
 ```
 
+### processWmiObject.CSName
 
-
-<a id="processWmiObject.CSName"></a>
-### processWmiObject.CSName 
- 
-
-```aardio
+```aardio aardio
 CSName
+
 ```
 
+### processWmiObject.Caption
 
-
-<a id="processWmiObject.Caption"></a>
-### processWmiObject.Caption 
- 
-
-```aardio
+```aardio aardio
 Caption
+
 ```
 
+### processWmiObject.CommandLine
 
-
-<a id="processWmiObject.CommandLine"></a>
-### processWmiObject.CommandLine 
- 
-
-```aardio
+```aardio aardio
 CommandLine
+
 ```
 
+### processWmiObject.CreationClassName
 
-
-<a id="processWmiObject.CreationClassName"></a>
-### processWmiObject.CreationClassName 
- 
-
-```aardio
+```aardio aardio
 CreationClassName
+
 ```
 
+### processWmiObject.CreationDate
 
-
-<a id="processWmiObject.CreationDate"></a>
-### processWmiObject.CreationDate 
- 
-
-```aardio
+```aardio aardio
 CreationDate
+
 ```
 
+### processWmiObject.Description
 
-
-<a id="processWmiObject.Description"></a>
-### processWmiObject.Description 
- 
-
-```aardio
+```aardio aardio
 Description
+
 ```
 
+### processWmiObject.ExecutablePath
 
-
-<a id="processWmiObject.ExecutablePath"></a>
-### processWmiObject.ExecutablePath 
- 
-
-```aardio
+```aardio aardio
 ExecutablePath
+
 ```
 
+### processWmiObject.ExecutionState
 
-
-<a id="processWmiObject.ExecutionState"></a>
-### processWmiObject.ExecutionState 
- 
-
-```aardio
+```aardio aardio
 ExecutionState
+
 ```
 
+### processWmiObject.Handle
 
-
-<a id="processWmiObject.Handle"></a>
-### processWmiObject.Handle 
- 
-
-```aardio
+```aardio aardio
 Handle
+
 ```
 
+### processWmiObject.HandleCount
 
-
-<a id="processWmiObject.HandleCount"></a>
-### processWmiObject.HandleCount 
- 
-
-```aardio
+```aardio aardio
 HandleCount
+
 ```
 
+### processWmiObject.InstallDate
 
-
-<a id="processWmiObject.InstallDate"></a>
-### processWmiObject.InstallDate 
- 
-
-```aardio
+```aardio aardio
 InstallDate
+
 ```
 
+### processWmiObject.KernelModeTime
 
-
-<a id="processWmiObject.KernelModeTime"></a>
-### processWmiObject.KernelModeTime 
- 
-
-```aardio
+```aardio aardio
 KernelModeTime
+
 ```
 
+### processWmiObject.MaximumWorkingSetSize
 
-
-<a id="processWmiObject.MaximumWorkingSetSize"></a>
-### processWmiObject.MaximumWorkingSetSize 
- 
-
-```aardio
+```aardio aardio
 MaximumWorkingSetSize
+
 ```
 
+### processWmiObject.MinimumWorkingSetSize
 
-
-<a id="processWmiObject.MinimumWorkingSetSize"></a>
-### processWmiObject.MinimumWorkingSetSize 
- 
-
-```aardio
+```aardio aardio
 MinimumWorkingSetSize
+
 ```
 
+### processWmiObject.Name
 
-
-<a id="processWmiObject.Name"></a>
-### processWmiObject.Name 
- 
-
-```aardio
+```aardio aardio
 Name
+
 ```
 
+### processWmiObject.OSCreationClassName
 
-
-<a id="processWmiObject.OSCreationClassName"></a>
-### processWmiObject.OSCreationClassName 
- 
-
-```aardio
+```aardio aardio
 OSCreationClassName
+
 ```
 
+### processWmiObject.OSName
 
-
-<a id="processWmiObject.OSName"></a>
-### processWmiObject.OSName 
- 
-
-```aardio
+```aardio aardio
 OSName
+
 ```
 
+### processWmiObject.OtherOperationCount
 
-
-<a id="processWmiObject.OtherOperationCount"></a>
-### processWmiObject.OtherOperationCount 
- 
-
-```aardio
+```aardio aardio
 OtherOperationCount
+
 ```
 
+### processWmiObject.OtherTransferCount
 
-
-<a id="processWmiObject.OtherTransferCount"></a>
-### processWmiObject.OtherTransferCount 
- 
-
-```aardio
+```aardio aardio
 OtherTransferCount
+
 ```
 
+### processWmiObject.PageFaults
 
-
-<a id="processWmiObject.PageFaults"></a>
-### processWmiObject.PageFaults 
- 
-
-```aardio
+```aardio aardio
 PageFaults
+
 ```
 
+### processWmiObject.PageFileUsage
 
-
-<a id="processWmiObject.PageFileUsage"></a>
-### processWmiObject.PageFileUsage 
- 
-
-```aardio
+```aardio aardio
 PageFileUsage
+
 ```
 
+### processWmiObject.ParentProcessId
 
-
-<a id="processWmiObject.ParentProcessId"></a>
-### processWmiObject.ParentProcessId 
- 
-
-```aardio
+```aardio aardio
 ParentProcessId
+
 ```
 
+### processWmiObject.PeakPageFileUsage
 
-
-<a id="processWmiObject.PeakPageFileUsage"></a>
-### processWmiObject.PeakPageFileUsage 
- 
-
-```aardio
+```aardio aardio
 PeakPageFileUsage
+
 ```
 
+### processWmiObject.PeakVirtualSize
 
-
-<a id="processWmiObject.PeakVirtualSize"></a>
-### processWmiObject.PeakVirtualSize 
- 
-
-```aardio
+```aardio aardio
 PeakVirtualSize
+
 ```
 
+### processWmiObject.PeakWorkingSetSize
 
-
-<a id="processWmiObject.PeakWorkingSetSize"></a>
-### processWmiObject.PeakWorkingSetSize 
- 
-
-```aardio
+```aardio aardio
 PeakWorkingSetSize
+
 ```
 
+### processWmiObject.Priority
 
-
-<a id="processWmiObject.Priority"></a>
-### processWmiObject.Priority 
- 
-
-```aardio
+```aardio aardio
 Priority
+
 ```
 
+### processWmiObject.PrivatePageCount
 
-
-<a id="processWmiObject.PrivatePageCount"></a>
-### processWmiObject.PrivatePageCount 
- 
-
-```aardio
+```aardio aardio
 PrivatePageCount
+
 ```
 
+### processWmiObject.ProcessId
 
-
-<a id="processWmiObject.ProcessId"></a>
-### processWmiObject.ProcessId 
- 
-
-```aardio
+```aardio aardio
 ProcessId
+
 ```
 
+### processWmiObject.QuotaNonPagedPoolUsage
 
-
-<a id="processWmiObject.QuotaNonPagedPoolUsage"></a>
-### processWmiObject.QuotaNonPagedPoolUsage 
- 
-
-```aardio
+```aardio aardio
 QuotaNonPagedPoolUsage
+
 ```
 
+### processWmiObject.QuotaPagedPoolUsage
 
-
-<a id="processWmiObject.QuotaPagedPoolUsage"></a>
-### processWmiObject.QuotaPagedPoolUsage 
- 
-
-```aardio
+```aardio aardio
 QuotaPagedPoolUsage
+
 ```
 
+### processWmiObject.QuotaPeakNonPagedPoolUsage
 
-
-<a id="processWmiObject.QuotaPeakNonPagedPoolUsage"></a>
-### processWmiObject.QuotaPeakNonPagedPoolUsage 
- 
-
-```aardio
+```aardio aardio
 QuotaPeakNonPagedPoolUsage
+
 ```
 
+### processWmiObject.QuotaPeakPagedPoolUsage
 
-
-<a id="processWmiObject.QuotaPeakPagedPoolUsage"></a>
-### processWmiObject.QuotaPeakPagedPoolUsage 
- 
-
-```aardio
+```aardio aardio
 QuotaPeakPagedPoolUsage
+
 ```
 
+### processWmiObject.ReadOperationCount
 
-
-<a id="processWmiObject.ReadOperationCount"></a>
-### processWmiObject.ReadOperationCount 
- 
-
-```aardio
+```aardio aardio
 ReadOperationCount
+
 ```
 
+### processWmiObject.ReadTransferCount
 
-
-<a id="processWmiObject.ReadTransferCount"></a>
-### processWmiObject.ReadTransferCount 
- 
-
-```aardio
+```aardio aardio
 ReadTransferCount
+
 ```
 
+### processWmiObject.SessionId
 
-
-<a id="processWmiObject.SessionId"></a>
-### processWmiObject.SessionId 
- 
-
-```aardio
+```aardio aardio
 SessionId
+
 ```
 
+### processWmiObject.Status
 
-
-<a id="processWmiObject.Status"></a>
-### processWmiObject.Status 
- 
-
-```aardio
+```aardio aardio
 Status
+
 ```
 
+### processWmiObject.TerminationDate
 
-
-<a id="processWmiObject.TerminationDate"></a>
-### processWmiObject.TerminationDate 
- 
-
-```aardio
+```aardio aardio
 TerminationDate
+
 ```
 
+### processWmiObject.ThreadCount
 
-
-<a id="processWmiObject.ThreadCount"></a>
-### processWmiObject.ThreadCount 
- 
-
-```aardio
+```aardio aardio
 ThreadCount
+
 ```
 
+### processWmiObject.UserModeTime
 
-
-<a id="processWmiObject.UserModeTime"></a>
-### processWmiObject.UserModeTime 
- 
-
-```aardio
+```aardio aardio
 UserModeTime
+
 ```
 
+### processWmiObject.VirtualSize
 
-
-<a id="processWmiObject.VirtualSize"></a>
-### processWmiObject.VirtualSize 
- 
-
-```aardio
+```aardio aardio
 VirtualSize
+
 ```
 
+### processWmiObject.WindowsVersion
 
-
-<a id="processWmiObject.WindowsVersion"></a>
-### processWmiObject.WindowsVersion 
- 
-
-```aardio
+```aardio aardio
 WindowsVersion
+
 ```
 
+### processWmiObject.WorkingSetSize
 
-
-<a id="processWmiObject.WorkingSetSize"></a>
-### processWmiObject.WorkingSetSize 
- 
-
-```aardio
+```aardio aardio
 WorkingSetSize
+
 ```
 
+### processWmiObject.WriteOperationCount
 
-
-<a id="processWmiObject.WriteOperationCount"></a>
-### processWmiObject.WriteOperationCount 
- 
-
-```aardio
+```aardio aardio
 WriteOperationCount
+
 ```
 
+### processWmiObject.WriteTransferCount
 
-
-<a id="processWmiObject.WriteTransferCount"></a>
-### processWmiObject.WriteTransferCount 
- 
-
-```aardio
+```aardio aardio
 WriteTransferCount
+
 ```
 
+[Markdown 格式](https://www.aardio.com/zh-cn/doc/library-reference/process/wmi.md)
 
