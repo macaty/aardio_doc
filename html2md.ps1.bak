@@ -1,5 +1,5 @@
 ﻿# 设置全程编码
-$PSDefaultParameterValues['Out-File:Encoding'] = 'string'
+$PSDefaultParameterValues['Out-File:Encoding'] = 'default'
 
 # 获取当前脚本所在目录
 $currentDirectory = Split-Path -Parent $MyInvocation.MyCommand.Path

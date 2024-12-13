@@ -1,4 +1,4 @@
-﻿[aardio 文档](../../../index.htm "aardio 编程语言文档首页")
+[aardio 文档](../../../index.htm "aardio 编程语言文档首页")
 
 # aardio 范例: 数组
 

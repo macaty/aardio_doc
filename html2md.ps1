@@ -17,8 +17,6 @@ foreach ($htmlFile in $htmlFiles) {
 
     # 执行 html2md 命令
     & 'C:\Users\lichaofu\Documents\GitHub\aardio_doc\html2md.exe' -i $htmlFile | Out-File $mdFile
-	
-	#-Encoding utf-8
 
     Write-Host "已将 $htmlFile 转换为 $mdFile"
 }
