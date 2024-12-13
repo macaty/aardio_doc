@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - 自动检测插入U盘'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - 自动检测插入U盘</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 自动检测插入U盘</h1><pre><code class="aardio language-aardio">//自动检测U盘
+import win.ui;
+/*DSG{{*/
+var winform = win.form(text=&quot;自动检测插入U盘&quot;;right=481;bottom=275)
+winform.add(
+edit={cls=&quot;edit&quot;;left=15;top=15;right=470;bottom=263;edge=1;multiline=1;z=1}
+)
+/*}}*/
+
+import sys.storage;
+import win.util.deviceNotification;
+var devWatcher = win.util.deviceNotification(winform);
+
+devWatcher.onVolumeArrival = function(devData,pDevData){
+    if( devData.isMedia ){
+        winform.edit.print(&quot;插入光盘&quot;,devData.drives[1] )
+    }
+    elseif( devData.isNet ){
+        winform.edit.print(&quot;添加网络卷&quot;,devData.drives[1])
+    }
+    elseif( sys.storage.isUsbDevice(devData.drives[1]) ){
+        if( devData.driveType == 3/*_DRIVE_FIXED*/){
+            winform.edit.print(&quot;插入 USB 移动硬盘&quot;,devData.drives[1])
+        }
+        elseif( devData.driveType == 2/*_DRIVE_REMOVABLE*/) {
+            winform.edit.print(&quot;插入 U盘&quot;,devData.drives[1])
+        }
+    }
+}
+
+devWatcher.onVolumeRemoveComplete = function(devData,pDevData){
+    if( devData.isMedia ){
+        winform.edit.print(&quot;移除光盘&quot;,devData.drives[1] )
+    }
+    elseif( devData.isNet ){
+        winform.edit.print(&quot;移除网络卷&quot;,devData.drives[1])
+    }
+    else{
+        winform.edit.print(&quot;移除卷&quot;,devData.drives[1])
+    } 
+}
+
+var usbDevices = sys.storage.getUsbDevices();
+if(#usbDevices) winform.edit.print(table.flat(usbDevices));
+winform.edit.print(#usbDevices?&quot;请插入或移除U盘&quot;:&quot;请插入U盘&quot;);
+
+winform.show(); 
+win.loopMessage();
+</code></pre>
+<a href="deviceNotification.md" tppabs="https://www.aardio.com/zh-cn/doc/example/System/Hardware/deviceNotification.md">Markdown 格式</a>
+</body> 
+</html>

@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - 简单鼠标连点'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - 简单鼠标连点</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 简单鼠标连点</h1><pre><code class="aardio language-aardio">//简单鼠标连点
+
+import win;
+import win.util.tray
+import key.hook;
+import mouse;
+
+/*
+按1开始连点
+按2停止
+按3退出&quot;,&quot;简单连点程序
+*/
+
+hook = key.hook()
+hook.proc=function(msg,vkcode,scancode){
+    var kn = key.getName( vkcode );
+    if( kn==&quot;1&quot;  ){
+        clickHere = true;
+    }
+    elseif( kn==&quot;2&quot;  ){
+        clickHere = false;
+    }
+    elseif( kn==&quot;3&quot;  ){
+        win.quitMessage()
+    }
+
+}
+
+while( win.delay(1) ){
+    if( clickHere )
+        mouse.click();
+}
+
+</code></pre>
+<a href="clickHere.md" tppabs="https://www.aardio.com/zh-cn/doc/example/Automation/Input/clickHere.md">Markdown 格式</a>
+</body> 
+</html>

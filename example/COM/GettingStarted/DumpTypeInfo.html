@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - COM 接口 - 查看对象'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - COM 接口 - 查看对象</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: COM 接口 - 查看对象</h1><pre><code class="aardio language-aardio">//COM 接口 - 查看对象
+import win.ui;
+/*DSG{{*/
+var winform = win.form(text=&quot;获取COM对象成员列表&quot;;right=759;bottom=469)
+winform.add(
+edit={cls=&quot;richedit&quot;;left=15;top=10;right=744;bottom=443;db=1;dl=1;dr=1;dt=1;edge=1;hscroll=1;multiline=1;vscroll=1;z=1}
+)
+/*}}*/
+
+winform.edit.limit = 0xFFFFF;
+
+//创建 COM 对象,注意服务器系统没这个控件
+var wmPlayer = com.CreateObject(&quot;WMPlayer.OCX&quot;); 
+
+//输出 COM 对象支持的属性和方法
+//winform.edit.print( com.DumpTypeInfo(wmPlayer) ) 
+//也可以通过 console.dump(wmPlayer) 自动调用 com.DumpTypeInfo(wmPlayer) 
+
+//输出更详细的 COM 对象类型库文档
+import com.tlbDoc;
+var tlbDoc = com.tlbDoc( wmPlayer );
+winform.edit.print(tlbDoc);
+
+//这里定义一个事件监听器，目的是拦截所有事件名称
+com.Connect(wmPlayer,  { 
+    @{ _get = function(eventName){ 
+        winform.edit.print(&quot;此对象支持事件:&quot;,eventName) 
+    } } 
+});
+
+wmPlayer.url = &quot;http://download.aardio.com/v10.files/demo/mp3/lrc.mp3&quot;
+
+winform.show();
+win.loopMessage();
+
+</code></pre>
+<a href="DumpTypeInfo.md" tppabs="https://www.aardio.com/zh-cn/doc/example/COM/GettingStarted/DumpTypeInfo.md">Markdown 格式</a>
+</body> 
+</html>

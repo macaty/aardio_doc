@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - raw.memory 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - raw.memory 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>raw.memory 库模块帮助文档</h1>
+
+<p><a id="raw"></a></p>
+
+<h2>raw 成员列表</h2>
+
+<p><a id="raw.memory"></a></p>
+
+<h3>raw.memory()</h3>
+
+<p><a href="#rawMemoryObject">返回对象:rawMemoryObject</a></p>
+
+<p><a id="raw.memory"></a></p>
+
+<h3>raw.memory(内存大小,填充数据)</h3>
+
+<p>分配全局堆内存并返回句柄,<br>
+可选使用结构体或字符串等指定默认填充数据<br>
+指定默认值时可以省略参数@1</p>
+
+<p><a id="raw.memory"></a></p>
+
+<h2>raw.memory 成员列表</h2>
+
+<p>调用::GlobalAlloc分配内存</p>
+
+<p><a id="raw.memory.allocHandle"></a></p>
+
+<h3>raw.memory.allocHandle()</h3>
+
+<p><a href="#rawMemoryObject">返回对象:rawMemoryObject</a></p>
+
+<p><a id="raw.memory.allocHandle"></a></p>
+
+<h3>raw.memory.allocHandle(内存大小,填充数据)</h3>
+
+<p>分配全局堆内存并返回句柄,<br>
+可选使用结构体或字符串等指定默认填充数据<br>
+指定默认值时可以省略参数@1</p>
+
+<p><a id="raw.memory.allocPointer"></a></p>
+
+<h3>raw.memory.allocPointer()</h3>
+
+<p><a href="#rawMemoryObject">返回对象:rawMemoryObject</a></p>
+
+<p><a id="raw.memory.allocPointer"></a></p>
+
+<h3>raw.memory.allocPointer(内存大小,填充数据)</h3>
+
+<p>分配内存并返回指针<br>
+无需lock即可直接使用指针,<br>
+可选使用结构体或字符串等指定默认填充数据<br>
+指定默认值时可以省略参数@1<br>
+可选使用参数3指定是否自动析构,默认值为true</p>
+
+<p><a id="rawMemoryObject"></a></p>
+
+<h2>rawMemoryObject 成员列表</h2>
+
+<p><a id="rawMemoryObject.free"></a></p>
+
+<h3>rawMemoryObject.free()</h3>
+
+<p>释放内存</p>
+
+<p><a id="rawMemoryObject.lockPointer"></a></p>
+
+<h3>rawMemoryObject.lockPointer()</h3>
+
+<p>返回可用内存指针</p>
+
+<p><a id="rawMemoryObject.realloc"></a></p>
+
+<h3>rawMemoryObject.realloc()</h3>
+
+<p><a href="#rawMemoryObject">返回对象:rawMemoryObject</a></p>
+
+<p><a id="rawMemoryObject.realloc"></a></p>
+
+<h3>rawMemoryObject.realloc(内存大小)</h3>
+
+<p>调整内存大小,<br>
+内存指针只能缩小,而内存句柄可以任意调整大小</p>
+
+<p><a id="rawMemoryObject.size"></a></p>
+
+<h3>rawMemoryObject.size()</h3>
+
+<p>返回内存大小</p>
+
+<p><a id="rawMemoryObject.unLockPointer"></a></p>
+
+<h3>rawMemoryObject.unLockPointer()</h3>
+
+<p>释放内存指针</p>
+
+<p><a href="memory.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/raw/memory.md">Markdown 格式</a></p>
+
+</body> 
+</html>

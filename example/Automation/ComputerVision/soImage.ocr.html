@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - 简单 OCR 代码生成器'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - 简单 OCR 代码生成器</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 简单 OCR 代码生成器</h1><pre><code class="aardio language-aardio">//简单 OCR 生成器
+import win.ui;
+/*DSG{{*/
+var winform = win.form(text=&quot;简单 OCR 代码生成器&quot;;right=562;bottom=584)
+winform.add(
+btnNext={cls=&quot;button&quot;;text=&quot;获取下一个图像&quot;;left=390;top=144;right=548;bottom=180;dr=1;dt=1;z=7};
+editDict={cls=&quot;edit&quot;;left=12;top=238;right=548;bottom=571;db=1;dl=1;dr=1;dt=1;edge=1;hscroll=1;multiline=1;vscroll=1;z=4};
+editText={cls=&quot;edit&quot;;left=151;top=145;right=362;bottom=177;dr=1;dt=1;edge=1;z=5};
+editUrl={cls=&quot;edit&quot;;left=149;top=11;right=548;bottom=41;dl=1;dr=1;dt=1;edge=1;multiline=1;z=1};
+plusImage={cls=&quot;plus&quot;;left=148;top=64;right=382;bottom=128;dr=1;dt=1;repeat=&quot;scale&quot;;z=3};
+static={cls=&quot;static&quot;;text=&quot;图像下载网址：&quot;;left=20;top=15;right=144;bottom=39;align=&quot;right&quot;;dt=1;transparent=1;z=2};
+static2={cls=&quot;static&quot;;text=&quot;输入图像上的文本:&quot;;left=16;top=149;right=142;bottom=172;align=&quot;right&quot;;dr=1;dt=1;transparent=1;z=6};
+static3={cls=&quot;static&quot;;text=&quot;字库与识别代码：&quot;;left=23;top=206;right=488;bottom=244;transparent=1;z=8}
+)
+/*}}*/
+
+/*
+这是一个不需要第三方组件的简单 OCR 实现，仅适用于识别规则数字。
+请理解自行车里开不出航天飞机，复杂图文请改用其他 OCR 组件。
+*/
+
+import soImage;
+import inet.http;
+import util.table;
+
+var imageDict = {};
+var imageData; 
+winform.btnNext.oncommand = function(id,event){
+    if(#imageData){
+        var text = winform.editText.text;
+        if(#text != #imageData ){
+            winform.editText.showErrorTip(&quot;必须输入图像上的&quot;+#imageData +&quot;个字符&quot;);
+            return;
+        }
+
+        for(i=1;#imageData;1){
+            imageDict[ text[[i]] ] = imageData[i];
+        }
+
+        import string.template;
+        var strCode = string.template();
+        strCode.template = /***
+//字库
+var dict = ${dict}
+
+import win.ui;
+/*DSG{{*/
+var winform = win.form(text=&quot;OCR 示例&quot;;right=427;bottom=224)
+winform.add(
+edit={cls=&quot;edit&quot;;left=220;top=164;right=396;bottom=203;edge=1;z=2};
+plus={cls=&quot;plus&quot;;left=27;top=17;right=398;bottom=121;z=1}
+)
+/*}}*/
+
+import inet.http;
+import soImage;
+
+//下载图像
+var img = soImage();
+img.loadUrl(&quot;${url}&quot;);
+winform.plus.background = img.getBytes(&quot;*.jpg&quot;);
+
+//识别
+winform.edit.text = img.ocr(dict);
+
+winform.show();
+win.loopMessage();
+        ***/
+
+        winform.editDict.text =  strCode.format(
+            url = winform.editUrl.text;
+            dict = ..util.table.stringify(imageDict,&#39;\t&#39;); 
+        );
+    }
+
+    var img = soImage();
+    if(! img.loadUrl(winform.editUrl.text) ){
+        winform.editUrl.showWarningTip(&quot;获取图像失败，请指定正确网址。&quot;);
+        return;
+    }
+
+    winform.plusImage.background = img.getBytes(&quot;*.jpg&quot;)
+
+    imageData = img.splitBinString();
+
+    winform.editText.text = &quot;&quot;;
+    winform.editText.setFocus(); 
+    winform.editText.showInfoTip(&quot;请输入验证码上的数字&quot;);
+}
+
+winform.editText.onOk = function(){ 
+    winform.btnNext.oncommand();
+    return true;    
+}
+
+winform.show();
+win.loopMessage();
+</code></pre>
+<a href="soImage.ocr.md" tppabs="https://www.aardio.com/zh-cn/doc/example/Automation/ComputerVision/soImage.ocr.md">Markdown 格式</a>
+</body> 
+</html>

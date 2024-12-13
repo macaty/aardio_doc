@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - fsys.cookies 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - fsys.cookies 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>fsys.cookies 库模块帮助文档</h1>
+
+<p><a id="fsys"></a></p>
+
+<h2>fsys 成员列表</h2>
+
+<p><a id="fsys.cookies"></a></p>
+
+<h3>fsys.cookies</h3>
+
+<p>netscape/curl cookie文件格式解析器</p>
+
+<p><a id="fsys.cookies"></a></p>
+
+<h3>fsys.cookies()</h3>
+
+<p>创建netscape/curl cookie文件格式解析器<br>
+此对象包含解析后的cookie数组,并包含以域名为键的cookie数组值,  </p>
+
+<p>每个cookie的字段含义如下：<br>
+domain = 域名<br>
+flag = 给定域的所有计算机是否可访问该值<br>
+path = cookie路径<br>
+secure = cookie是否仅适用于https连接<br>
+expires = 过期时间,<br>
+这是一个time.gmt对象,RFC1123格式的时间值<br>
+会话cookie这个字段的值为null<br>
+name = cookie名字<br>
+value = cookie的值  </p>
+
+<p><a href="#fsyscookiesObject">返回对象:fsyscookiesObject</a></p>
+
+<p><a id="fsyscookiesObject"></a></p>
+
+<h2>fsyscookiesObject 成员列表</h2>
+
+<p><a id="fsyscookiesObject.clear"></a></p>
+
+<h3>fsyscookiesObject.clear()</h3>
+
+<p>清空已加载的cookie</p>
+
+<p><a id="fsyscookiesObject.get"></a></p>
+
+<h3>fsyscookiesObject.get()</h3>
+
+<p>返回指定网址或域名的cookies,<br>
+可用参数@1指定网址,也可以用参数@1指定域名,参数@2指定网站路径<br>
+不指定网站路径时默认为&quot;/&quot;</p>
+
+<p><a id="fsyscookiesObject.getCookies"></a></p>
+
+<h3>fsyscookiesObject.getCookies()</h3>
+
+<p>返回键值对组成的cookies字符串,可用于http请求头,失败返回null,<br>
+可用参数@1指定网址,也可以用参数@1指定域名,参数@2指定网站路径<br>
+不指定网站路径时默认为&quot;/&quot;</p>
+
+<p><a id="fsyscookiesObject.header"></a></p>
+
+<h3>fsyscookiesObject.header</h3>
+
+<p>cookie文件头描述,一般不用指定</p>
+
+<p><a id="fsyscookiesObject.load"></a></p>
+
+<h3>fsyscookiesObject.load()</h3>
+
+<p>自文件加载cookie，参数指定类型<br>
+此函数会清空之前加载的cookie</p>
+
+<p><a id="fsyscookiesObject.mixin"></a></p>
+
+<h3>fsyscookiesObject.mixin(_)</h3>
+
+<p>混入兼容cookie数组</p>
+
+<p><a id="fsyscookiesObject.parse"></a></p>
+
+<h3>fsyscookiesObject.parse()</h3>
+
+<p>解析多行cookie文本,参数指定字符串<br>
+此函数会清空之前加载的cookie</p>
+
+<p><a id="fsyscookiesObject.parseLine"></a></p>
+
+<h3>fsyscookiesObject.parseLine()</h3>
+
+<p>解析一行cookie文本,参数指定字符串<br>
+此函数 不会 清空之前加载的cookie</p>
+
+<p><a id="fsyscookiesObject.push"></a></p>
+
+<h3>fsyscookiesObject.push</h3>
+
+<p>更新或添加cookie,参数应当是一个表,<br>
+如果指定域下已经存在同名cookie，则更新cookie<br>
+否则添加cookie</p>
+
+<p><a id="fsyscookiesObject.push"></a></p>
+
+<h3>fsyscookiesObject.push(cookie)</h3>
+
+<pre><code class="aardio language-aardio">fsyscookiesObject.push( {  
+    domain = domain;  
+    flag  = flag;  
+    path = path;  
+    secure = secure;  
+    expires = ..time.gmt() ;  
+    name = name;  
+    value = value;  
+    httpOnly = httpOnly;  
+})
+</code></pre>
+
+<p><a id="fsyscookiesObject.save"></a></p>
+
+<h3>fsyscookiesObject.save()</h3>
+
+<p>保存到文件,参数指定文件路径</p>
+
+<p><a id="fsyscookiesObject.stringify"></a></p>
+
+<h3>fsyscookiesObject.stringify()</h3>
+
+<p>所有cooke转换为字符串</p>
+
+<p><a id="fsyscookiesObject.stringifyLine"></a></p>
+
+<h3>fsyscookiesObject.stringifyLine()</h3>
+
+<p>cookie转换为字符串，参数指定索引<br>
+也可以直接传入一个cookie对象</p>
+
+<p><a id="fsyscookiesObject.stringifySetCookieLine"></a></p>
+
+<h3>fsyscookiesObject.stringifySetCookieLine()</h3>
+
+<p>cookie转换为HTTP Set-Cookie响应头格式,<br>
+参数指定索引,也可以直接传入一个cookie对象,<br>
+可选使用参数指定前缀，不指定时默认为&quot;Set-Cookie: &quot;,<br>
+成功返回非空字符串</p>
+
+<p><a href="cookies.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/fsys/cookies.md">Markdown 格式</a></p>
+
+</body> 
+</html>

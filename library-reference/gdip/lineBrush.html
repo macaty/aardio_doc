@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - gdip.lineBrush 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - gdip.lineBrush 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>gdip.lineBrush 库模块帮助文档</h1>
+
+<p><a id="gdip"></a></p>
+
+<h2>gdip 成员列表</h2>
+
+<p><a id="gdip.CreateLineBrush"></a></p>
+
+<h3>gdip.CreateLineBrush</h3>
+
+<pre><code class="aardio language-aardio">$.api(&quot;GdipCreateLineBrush&quot;,&quot;int(struct pt,struct pt2,int c,int c2,int wrap,ptr&amp; lineGd)&quot;)
+</code></pre>
+
+<p><a id="gdip.CreateLineBrushFromRect"></a></p>
+
+<h3>gdip.CreateLineBrushFromRect</h3>
+
+<pre><code class="aardio language-aardio">$.api(&quot;GdipCreateLineBrushFromRect&quot;,&quot;int(struct rect,int c,int c2,int Mode,int wrap,ptr&amp; lineGd)&quot;)
+</code></pre>
+
+<p><a id="gdip.CreateLineBrushFromRectWithAngle"></a></p>
+
+<h3>gdip.CreateLineBrushFromRectWithAngle</h3>
+
+<pre><code class="aardio language-aardio">$.api(&quot;GdipCreateLineBrushFromRectWithAngle&quot;,&quot;int(struct  rect,int c,int c2,float angle,bool scalable,int wrap,ptr&amp; lineGd)&quot;)
+</code></pre>
+
+<p><a id="gdip.lineBrush"></a></p>
+
+<h3>gdip.lineBrush</h3>
+
+<p>线性渐变笔刷</p>
+
+<p><a id="gdip.lineBrush"></a></p>
+
+<h3>gdip.lineBrush()</h3>
+
+<p><a href="#gdiplineBrushObject">返回对象:gdiplineBrushObject</a></p>
+
+<p><a id="gdip.lineBrush"></a></p>
+
+<h3>gdip.lineBrush(渐变区块,起始颜色,结束颜色,渐变模式)</h3>
+
+<p>创建线性渐变笔刷<br>
+区块为::RECTF结构体,可增加angle成员指定斜角方向,正值为顺时针<br>
+使用数值表示颜色分量:0xAARRGGBB<br>
+注意与RGB的分量顺序是反过来的<br>
+渐变模式可省略,默认为_GdipLinearGradientModeHorizontal</p>
+
+<p><a id="gdip.lineBrush"></a></p>
+
+<h3>gdip.lineBrush(起始坐标,结束坐标,起始颜色,结束颜色)</h3>
+
+<p>创建线性渐变笔刷<br>
+坐标为::POINTF结构体,<br>
+使用数值表示颜色分量:0xAARRGGBB<br>
+注意与RGB的分量顺序是反过来的</p>
+
+<p><a id="gdiplineBrushObject"></a></p>
+
+<h2>gdiplineBrushObject 成员列表</h2>
+
+<p><a id="gdiplineBrushObject.delete"></a></p>
+
+<h3>gdiplineBrushObject.delete()</h3>
+
+<p>释放笔刷对象</p>
+
+<p><a id="gdiplineBrushObject.gammaCorrection"></a></p>
+
+<h3>gdiplineBrushObject.gammaCorrection</h3>
+
+<p>是否启用灰度校正</p>
+
+<p><a id="gdiplineBrushObject.getLineColors"></a></p>
+
+<h3>gdiplineBrushObject.getLineColors()</h3>
+
+<p>返回起始颜色,结束颜色</p>
+
+<p><a id="gdiplineBrushObject.getRect"></a></p>
+
+<h3>gdiplineBrushObject.getRect()</h3>
+
+<p>返回::RECTF结构体  </p>
+
+<p><a href="core.html#rectfObject" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/gdip/core.html#rectfObject">返回对象:rectfObject</a></p>
+
+<p><a id="gdiplineBrushObject.setLineColors"></a></p>
+
+<h3>gdiplineBrushObject.setLineColors(起始颜色,结束颜色)</h3>
+
+<p>使用数值表示颜色分量:0xAARRGGBB</p>
+
+<p><a id="gdiplineBrushObject.wrapMode"></a></p>
+
+<h3>gdiplineBrushObject.wrapMode</h3>
+
+<p><em>GdipWrapMode</em>_/*填充的包围模式*/</p>
+
+<p><a href="lineBrush.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/gdip/lineBrush.md">Markdown 格式</a></p>
+
+</body> 
+</html>

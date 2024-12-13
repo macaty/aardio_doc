@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - gdip.pathGradientBrush 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - gdip.pathGradientBrush 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>gdip.pathGradientBrush 库模块帮助文档</h1>
+
+<p><a id="gdip"></a></p>
+
+<h2>gdip 成员列表</h2>
+
+<p><a id="gdip.pathGradientBrush"></a></p>
+
+<h3>gdip.pathGradientBrush</h3>
+
+<p>路径渐变笔刷</p>
+
+<p><a id="gdip.pathGradientBrush"></a></p>
+
+<h3>gdip.pathGradientBrush()</h3>
+
+<p><a href="#gdippathGradientbrushObject">返回对象:gdippathGradientbrushObject</a></p>
+
+<p><a id="gdip.pathGradientBrush"></a></p>
+
+<h3>gdip.pathGradientBrush(路径对象)</h3>
+
+<p>参数是gdip.path对象</p>
+
+<p><a id="gdippathGradientbrushObject"></a></p>
+
+<h2>gdippathGradientbrushObject 成员列表</h2>
+
+<p><a id="gdippathGradientbrushObject.delete"></a></p>
+
+<h3>gdippathGradientbrushObject.delete()</h3>
+
+<p>释放路径对象</p>
+
+<p><a id="gdippathGradientbrushObject.gammaCorrection"></a></p>
+
+<h3>gdippathGradientbrushObject.gammaCorrection</h3>
+
+<p>是否允许伽马校正</p>
+
+<p><a id="gdippathGradientbrushObject.setBlend"></a></p>
+
+<h3>gdippathGradientbrushObject.setBlend(颜色因子数组,位置因子数组)</h3>
+
+<p>参数@1使用小数表示的百分比代表色彩渐变的度,<br>
+0表示起点色,1表示完全转变为终点色<br>
+合成位置中0表示起点,1表示终点,第一个合成位置必须是0,最后一个必须是1</p>
+
+<p><a id="gdippathGradientbrushObject.setCenterColor"></a></p>
+
+<h3>gdippathGradientbrushObject.setCenterColor(颜色)</h3>
+
+<p>指定中心颜色<br>
+颜色请使用0xAARRGGBB格式数值</p>
+
+<p><a id="gdippathGradientbrushObject.setCenterPoint"></a></p>
+
+<h3>gdippathGradientbrushObject.setCenterPoint(x,y)</h3>
+
+<p>设置中心点坐标</p>
+
+<p><a id="gdippathGradientbrushObject.setFocusScales"></a></p>
+
+<h3>gdippathGradientbrushObject.setFocusScales(x聚焦缩放,y聚焦缩放)</h3>
+
+<p>对中心焦点进行缩放,参数为x轴、y轴的缩放比例,<br>
+使中心颜色不仅显示在中心点,而是显示于围绕中心点进行缩放的路径内，<br>
+被缩放的中心焦点路径内部使用中心颜色填充</p>
+
+<p><a id="gdippathGradientbrushObject.setInterpolationColors"></a></p>
+
+<h3>gdippathGradientbrushObject.setInterpolationColors(插值颜色数组,插值位置数组)</h3>
+
+<p>定义多色渐变<br>
+数组元素都是数值,长度必须相等<br>
+插值位置以小数表示百分比,开始必须为0表示外边界,最后一个必须为1</p>
+
+<p><a id="gdippathGradientbrushObject.setSurroundColors"></a></p>
+
+<h3>gdippathGradientbrushObject.setSurroundColors(颜色数组)</h3>
+
+<p>指定环绕颜色<br>
+参数可以是数组,也可以是多个颜色数值参数,<br>
+颜色请使用0xAARRGGBB格式数值</p>
+
+<p><a href="pathGradientBrush.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/gdip/pathGradientBrush.md">Markdown 格式</a></p>
+
+</body> 
+</html>

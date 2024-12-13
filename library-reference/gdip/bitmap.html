@@ -1,0 +1,808 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - gdip.bitmap 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - gdip.bitmap 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>gdip.bitmap 库模块帮助文档</h1>
+
+<p><a id="gdip"></a></p>
+
+<h2>gdip 成员列表</h2>
+
+<p><a id="gdip.BitmapData"></a></p>
+
+<h3>gdip.BitmapData</h3>
+
+<pre><code class="aardio language-aardio">class {  
+    int Width;
+    int Height;
+    int Stride;
+    int PixelFormat;
+    pointer Scan0;
+    int Reserved;  
+}
+</code></pre>
+
+<p><a id="gdip.BitmapData"></a></p>
+
+<h3>gdip.BitmapData()</h3>
+
+<p><a href="#gdiBitmapDataObject">返回对象:gdiBitmapDataObject</a></p>
+
+<p><a id="gdip.BitmapGetPixel"></a></p>
+
+<h3>gdip.BitmapGetPixel</h3>
+
+<pre><code class="aardio language-aardio">$.api(&quot;GdipBitmapGetPixel&quot;,&quot;int(POINTER Bitmap,int x,int y,int&amp; color)&quot;)
+</code></pre>
+
+<p><a id="gdip.BitmapLockBits"></a></p>
+
+<h3>gdip.BitmapLockBits</h3>
+
+<pre><code class="aardio language-aardio">$.api(&quot;GdipBitmapLockBits&quot;,&quot;int(POINTER Bitmap,struct rect,int flags,int PixelFormat,struct&amp; lockedBitmapData)&quot;)
+</code></pre>
+
+<p><a id="gdip.BitmapSetPixel"></a></p>
+
+<h3>gdip.BitmapSetPixel</h3>
+
+<pre><code class="aardio language-aardio">$.api(&quot;GdipBitmapSetPixel&quot;,&quot;int(POINTER Bitmap,int x,int y,int color)&quot;)
+</code></pre>
+
+<p><a id="gdip.BitmapSetResolution"></a></p>
+
+<h3>gdip.BitmapSetResolution</h3>
+
+<pre><code class="aardio language-aardio">$.api(&quot;GdipBitmapSetResolution&quot;,&quot;int(POINTER Bitmap,float xdpi,float ydpi)&quot;)
+</code></pre>
+
+<p><a id="gdip.BitmapUnlockBits"></a></p>
+
+<h3>gdip.BitmapUnlockBits</h3>
+
+<pre><code class="aardio language-aardio">$.api(&quot;GdipBitmapUnlockBits&quot;,&quot;int(POINTER Bitmap,struct  lockedBitmapData)&quot;)
+</code></pre>
+
+<p><a id="gdip.CloneBitmapArea"></a></p>
+
+<h3>gdip.CloneBitmapArea</h3>
+
+<pre><code class="aardio language-aardio">$.api(&quot;GdipCloneBitmapArea&quot;,&quot;int(float x,float y,float cx,float cy,int pixFormat,ptr bmp,ptr&amp; bmp2)&quot;)
+</code></pre>
+
+<p><a id="gdip.CreateBitmapFromFile"></a></p>
+
+<h3>gdip.CreateBitmapFromFile</h3>
+
+<pre><code class="aardio language-aardio">$.api(&quot;GdipCreateBitmapFromFile&quot;,&quot;int(string FileName,pointer&amp; Bitmap)&quot;)
+</code></pre>
+
+<p><a id="gdip.CreateBitmapFromGraphics"></a></p>
+
+<h3>gdip.CreateBitmapFromGraphics</h3>
+
+<pre><code class="aardio language-aardio">$.api(&quot;GdipCreateBitmapFromGraphics&quot;,&quot;int(int Width,int Height,pointer Graphics,pointer&amp; Bitmap)&quot;)
+</code></pre>
+
+<p><a id="gdip.CreateBitmapFromHBITMAP"></a></p>
+
+<h3>gdip.CreateBitmapFromHBITMAP</h3>
+
+<pre><code class="aardio language-aardio">$.api(&quot;GdipCreateBitmapFromHBITMAP&quot;,&quot;int(POINTER hbm,int hpal,pointer&amp; Bitmap)&quot;)
+</code></pre>
+
+<p><a id="gdip.CreateBitmapFromHICON"></a></p>
+
+<h3>gdip.CreateBitmapFromHICON</h3>
+
+<pre><code class="aardio language-aardio">$.api(&quot;GdipCreateBitmapFromHICON&quot;,&quot;int(POINTER hicon,pointer&amp; Bitmap)&quot;)
+</code></pre>
+
+<p><a id="gdip.CreateBitmapFromScan0"></a></p>
+
+<h3>gdip.CreateBitmapFromScan0</h3>
+
+<pre><code class="aardio language-aardio">$.api(&quot;GdipCreateBitmapFromScan0&quot;,&quot;int(int Width,int Height,int stride,int PixelFormat,pointer scan0,pointer&amp; Bitmap)&quot;)
+</code></pre>
+
+<p><a id="gdip.CreateBitmapFromStream"></a></p>
+
+<h3>gdip.CreateBitmapFromStream</h3>
+
+<pre><code class="aardio language-aardio">$.api(&quot;GdipCreateBitmapFromStream&quot;,&quot;int(POINTER stream,pointer&amp; Bitmap)&quot;)
+</code></pre>
+
+<p><a id="gdip.CreateHBITMAPFromBitmap"></a></p>
+
+<h3>gdip.CreateHBITMAPFromBitmap</h3>
+
+<pre><code class="aardio language-aardio">$.api(&quot;GdipCreateHBITMAPFromBitmap&quot;,&quot;int(POINTER Bitmap,pointer&amp; hbmReturn,int background)&quot;)
+</code></pre>
+
+<p><a id="gdip.bitmap"></a></p>
+
+<h3>gdip.bitmap()</h3>
+
+<p><a href="bitmap.html#gdipbitmapObject" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/gdip/bitmap.html#gdipbitmapObject">返回对象:gdipbitmapObject</a></p>
+
+<p><a id="gdip.bitmap"></a></p>
+
+<h3>gdip.bitmap(com.picture对象)</h3>
+
+<p>com.pictrue对象转换为GDI+位图</p>
+
+<p><a id="gdip.bitmap"></a></p>
+
+<h3>gdip.bitmap(graphics对象,100,100)</h3>
+
+<p>从指定的graphics对象创建GDI+位图副本<br>
+对位图的修改不会影响原来的graphics对象<br>
+参数(graphics对象,宽度,高度)</p>
+
+<p><a id="gdip.bitmap"></a></p>
+
+<h3>gdip.bitmap(位图句柄)</h3>
+
+<p>从位图句柄创建bitmap对象<br>
+不会销毁传入的位图,须自行释放</p>
+
+<p><a id="gdip.bitmap"></a></p>
+
+<h3>gdip.bitmap(图标句柄,1/*_IMAGE_ICON*/)</h3>
+
+<p>从图标句柄创建bitmap对象<br>
+不会销毁传入的位图,须自行释放</p>
+
+<p><a id="gdip.bitmap"></a></p>
+
+<h3>gdip.bitmap(图片文件路径或数据)</h3>
+
+<p>创建GDI+位图对象<br>
+如果事先导入标准库 inet.http,这里也可以直接传入图像网址</p>
+
+<p><a id="gdip.bitmap"></a></p>
+
+<h3>gdip.bitmap(宽,高)</h3>
+
+<p>创建指定大小空位图</p>
+
+<p><a id="gdip.bitmap"></a></p>
+
+<h3>gdip.bitmap(宽,高,像素格式,内存指针,行扫描宽度)</h3>
+
+<p>自内存指针创建指定大小位图<br>
+像素格式使用 _GdipPixelFormat 前缀的常量表示。<br>
+行扫描宽度一般指素所占字节数乘以图像宽度，必须对齐为4字节的整数倍</p>
+
+<p><a id="gdip.createBitmapFromHandle"></a></p>
+
+<h3>gdip.createBitmapFromHandle( ,_IMAGE类型)</h3>
+
+<p>从句柄创建位图对象</p>
+
+<p><a id="gdip.loadBitmapFromString"></a></p>
+
+<h3>gdip.loadBitmapFromString(请输入图片数据)</h3>
+
+<p>从内存字符串直接创建位图</p>
+
+<p><a id="gdip.loadCachedBitmap"></a></p>
+
+<h3>gdip.loadCachedBitmap</h3>
+
+<p>创建并返回图像,如果不是动画则缓存该位图</p>
+
+<p><a id="gdip.loadCachedBitmap"></a></p>
+
+<h3>gdip.loadCachedBitmap(图像路径或数组,缓存键名)</h3>
+
+<p>缓存名为可选参数,默认以路径为缓存名<br>
+如果参数@1是图像数据则可以使用参数@2指定缓存名,  </p>
+
+<p>返回位图对象,<br>
+如果缓存键名明确指定为false，<br>
+则不使用缓存直接创建并返回位图</p>
+
+<p><a id="gdip.bitmap"></a></p>
+
+<h2>gdip.bitmap 成员列表</h2>
+
+<p>位图对象</p>
+
+<p>创建位图对象<br>
+失败返回null,以及错误信息</p>
+
+<p><a id="gdip.bitmap.is"></a></p>
+
+<h3>gdip.bitmap.is()</h3>
+
+<p>参数 @1 是否 gdip.bitmap 对象</p>
+
+<p><a id="global"></a></p>
+
+<h2>全局对象 成员列表</h2>
+
+<p><a id="loadCachedBitmap()"></a></p>
+
+<h3>loadCachedBitmap()</h3>
+
+<p><a href="bitmap.html#gdipbitmapObject" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/gdip/bitmap.html#gdipbitmapObject">返回对象:gdipbitmapObject</a></p>
+
+<p><a id="gdiBitmapDataObject"></a></p>
+
+<h2>gdiBitmapDataObject 成员列表</h2>
+
+<p><a id="gdiBitmapDataObject.Height"></a></p>
+
+<h3>gdiBitmapDataObject.Height</h3>
+
+<p>高度</p>
+
+<p><a id="gdiBitmapDataObject.PixelFormat"></a></p>
+
+<h3>gdiBitmapDataObject.PixelFormat</h3>
+
+<p>像素格式，<br>
+使用 _GdipPixelFormat 前缀的常量表示</p>
+
+<p><a id="gdiBitmapDataObject.Scan0"></a></p>
+
+<h3>gdiBitmapDataObject.Scan0</h3>
+
+<p>字节数组指针</p>
+
+<p><a id="gdiBitmapDataObject.Stride"></a></p>
+
+<h3>gdiBitmapDataObject.Stride</h3>
+
+<p>每行字节宽度，一般指像素所占字节数乘以图像宽度。<br>
+该宽度总是对齐为4字节的整数倍,可能比像素所占的字节宽度大。<br>
+该值如果为负数表示Scan0指向最后一行</p>
+
+<p><a id="gdiBitmapDataObject.Width"></a></p>
+
+<h3>gdiBitmapDataObject.Width</h3>
+
+<p>宽度</p>
+
+<p><a id="gdiBitmapDataObject.bits.rows.bytes[]"></a></p>
+
+<h3>gdiBitmapDataObject.bits.rows.bytes[]</h3>
+
+<p>字节数组<br>
+32位RGB,每像数字节顺序为Blue,Green,Red,Alpha<br>
+24位RGB,每像数字节顺序为Blue,Green,Red</p>
+
+<p><a id="gdiBitmapDataObject.bits.rows.pixels[]"></a></p>
+
+<h3>gdiBitmapDataObject.bits.rows.pixels[]</h3>
+
+<p>像素数组,32位整数<br>
+使用lockData32获取32位位图数据时才有这个值</p>
+
+<p><a id="gdiBitmapDataObject.bits.rows[]"></a></p>
+
+<h3>gdiBitmapDataObject.bits.rows[]</h3>
+
+<p>像素行数组</p>
+
+<p><a id="gdipbitmapObject"></a></p>
+
+<h2>gdipbitmapObject 成员列表</h2>
+
+<p><a id="gdipbitmapObject.activeFrame"></a></p>
+
+<h3>gdipbitmapObject.activeFrame</h3>
+
+<p>当前帧索引<br>
+修改该属性请使用SelectActiveFrame函数</p>
+
+<p><a id="gdipbitmapObject.clone"></a></p>
+
+<h3>gdipbitmapObject.clone</h3>
+
+<p>复制位图</p>
+
+<p><a id="gdipbitmapObject.clone"></a></p>
+
+<h3>gdipbitmapObject.clone()</h3>
+
+<p><a href="bitmap.html#gdipbitmapObject" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/gdip/bitmap.html#gdipbitmapObject">返回对象:gdipbitmapObject</a></p>
+
+<p><a id="gdipbitmapObject.clone"></a></p>
+
+<h3>gdipbitmapObject.clone(x,y,cx,cy,pixelFormat)</h3>
+
+<p>x,y指定复制区域起始坐标<br>
+cx,cy指定复制区域大小,所有参数可选,默认复制全图<br>
+像素格式默认为_GdipPixelFormat32bppARGB</p>
+
+<p><a id="gdipbitmapObject.copy"></a></p>
+
+<h3>gdipbitmapObject.copy()</h3>
+
+<p>复制位图<br>
+可选在参数中指定gdip.imageAttributes对象用于控制显示属性</p>
+
+<p><a href="bitmap.html#gdipbitmapObject" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/gdip/bitmap.html#gdipbitmapObject">返回对象:gdipbitmapObject</a></p>
+
+<p><a id="gdipbitmapObject.copyHandle"></a></p>
+
+<h3>gdipbitmapObject.copyHandle(&quot;icon&quot;)</h3>
+
+<p>创建并返回 HICON 图标句柄。<br>
+调用者负责释放返回的位图句柄。</p>
+
+<p><a id="gdipbitmapObject.copyHandle"></a></p>
+
+<h3>gdipbitmapObject.copyHandle(宽度,高度)</h3>
+
+<p>创建并返回 HBITMAP 位图句柄。<br>
+可选指定宽度、高度参数。<br>
+调用者负责释放返回的位图句柄。</p>
+
+<p><a id="gdipbitmapObject.createAnimation"></a></p>
+
+<h3>gdipbitmapObject.createAnimation</h3>
+
+<p>如果图像是一个动画,创建定时器执行动画<br>
+注意每个图像同时只能在一个窗口上创建动画<br>
+创建动画前自动删除之前创建的动画定时器<br>
+如果图像不是动画,此函数不执行任何操作<br>
+成功返回定时器ID</p>
+
+<p><a id="gdipbitmapObject.createAnimation"></a></p>
+
+<h3>gdipbitmapObject.createAnimation(窗口对象,回调函数)</h3>
+
+<p>在窗口上创建定时器,<br>
+每帧动画触发回调函数,<br>
+回调函数owner参数被设为参数@1指定的窗口对象  </p>
+
+<p>如果不指定控件,则默认指定为上次创建动画的控件,<br>
+如果不指定回调函数,则默认指定为控件的redrawTransparent函数</p>
+
+<p><a id="gdipbitmapObject.dispose"></a></p>
+
+<h3>gdipbitmapObject.dispose()</h3>
+
+<p>释放图像<br>
+此对象支持自动释放,不必手工调用此函数</p>
+
+<p><a id="gdipbitmapObject.eachFrame"></a></p>
+
+<h3>gdipbitmapObject.eachFrame</h3>
+
+<p>如果图像支持动画，则返回一个帧迭代器。<br>
+否则此函数返回 null。</p>
+
+<p><a id="gdipbitmapObject.eachFrame"></a></p>
+
+<h3>gdipbitmapObject.eachFrame(loopCount)</h3>
+
+<p>遍历动画帧。<br>
+每次调用帧迭代器切换到下一帧并返回当前帧所需延时，帧索引。<br>
+动画完成迭代器返回 null 。<br>
+可选用 @loopCount 参数指定循环所有帧的次数，0 为无限循环。<br>
+不指定参数则获取图像默认循环次数。  </p>
+
+<p>示例：  </p>
+
+<pre><code class="aardio language-aardio">for delay,frame in bmp.eachFrame(1) {  
+    bmp.save(&quot;/&quot;+frame+&quot;.gif&quot;);  
+}  
+</code></pre>
+
+<p><a id="gdipbitmapObject.eachProperty"></a></p>
+
+<h3>gdipbitmapObject.eachProperty</h3>
+
+<pre><code class="aardio language-aardio">for( id,propertyItem in gdipbitmapObject.eachProperty() ){
+     propertyItem.
+}
+</code></pre>
+
+<p><a id="gdipbitmapObject.eachProperty"></a></p>
+
+<h3>gdipbitmapObject.eachProperty()</h3>
+
+<p><a href="#gdipExifItemObject">返回对象:gdipExifItemObject</a></p>
+
+<p><a id="gdipbitmapObject.expandBitmap"></a></p>
+
+<h3>gdipbitmapObject.expandBitmap</h3>
+
+<p>使用九宫格绘图创建新的位图对象,<br>
+九宫格切图后边角四格固定,中间五格拉伸</p>
+
+<p><a id="gdipbitmapObject.expandBitmap"></a></p>
+
+<h3>gdipbitmapObject.expandBitmap()</h3>
+
+<p><a href="bitmap.html#gdipbitmapObject" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/gdip/bitmap.html#gdipbitmapObject">返回对象:gdipbitmapObject</a></p>
+
+<p><a id="gdipbitmapObject.expandBitmap"></a></p>
+
+<h3>gdipbitmapObject.expandBitmap(输出宽,输出高,上,右,下,左)</h3>
+
+<p>所有参数为数值,不可省略<br>
+返回新的位图对象</p>
+
+<p><a id="gdipbitmapObject.frameDimension"></a></p>
+
+<h3>gdipbitmapObject.frameDimension</h3>
+
+<p>当前分辨率GUID</p>
+
+<p><a id="gdipbitmapObject.getFrameDelays"></a></p>
+
+<h3>gdipbitmapObject.getFrameDelays()</h3>
+
+<p>返回多帧图像每帧延时数值组成的数组,<br>
+延时单位为厘秒,即0.01秒</p>
+
+<p><a id="gdipbitmapObject.getFrameDimensionsList"></a></p>
+
+<h3>gdipbitmapObject.getFrameDimensionsList()</h3>
+
+<p>图像帧分辨率列表<br>
+该值是GUID数组</p>
+
+<p><a id="gdipbitmapObject.getGraphics"></a></p>
+
+<h3>gdipbitmapObject.getGraphics()</h3>
+
+<p>从图像创建画布  </p>
+
+<p><a href="#gdipgraphicsObject">返回对象:gdipgraphicsObject</a></p>
+
+<p><a id="gdipbitmapObject.getLoopCount"></a></p>
+
+<h3>gdipbitmapObject.getLoopCount()</h3>
+
+<p>动画循环次数<br>
+0为一直循环</p>
+
+<p><a id="gdipbitmapObject.getPixel"></a></p>
+
+<h3>gdipbitmapObject.getPixel(x,y)</h3>
+
+<p>读取位图指定坐标(x,y)的ARGB颜色值</p>
+
+<p><a id="gdipbitmapObject.getPixelFormat"></a></p>
+
+<h3>gdipbitmapObject.getPixelFormat()</h3>
+
+<p>返回像素格式</p>
+
+<p><a id="gdipbitmapObject.getPropertyIds"></a></p>
+
+<h3>gdipbitmapObject.getPropertyIds()</h3>
+
+<p>返回所有属性ID数组</p>
+
+<p><a id="gdipbitmapObject.getPropertyItem"></a></p>
+
+<h3>gdipbitmapObject.getPropertyItem()</h3>
+
+<p><a href="#gdipExifItemObject">返回对象:gdipExifItemObject</a></p>
+
+<p><a id="gdipbitmapObject.getPropertyItem"></a></p>
+
+<h3>gdipbitmapObject.getPropertyItem(属性ID)</h3>
+
+<p>返回字段</p>
+
+<p><a id="gdipbitmapObject.getResolution"></a></p>
+
+<h3>gdipbitmapObject.getResolution()</h3>
+
+<p>返回分辨率xdpi,ydpi</p>
+
+<p><a id="gdipbitmapObject.getThumbnail"></a></p>
+
+<h3>gdipbitmapObject.getThumbnail()</h3>
+
+<p><a href="image.html#gdipimageObject" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/gdip/image.html#gdipimageObject">返回对象:gdipimageObject</a></p>
+
+<p><a id="gdipbitmapObject.getThumbnail"></a></p>
+
+<h3>gdipbitmapObject.getThumbnail(宽度,高度,是否保持比例)</h3>
+
+<p>获取缩略图,<br>
+返回 gdip.image 对象.<br>
+宽度,高度指定新的像素大小,也可以用小于1大于0的小数指定缩放百分比.</p>
+
+<p><a id="gdipbitmapObject.height"></a></p>
+
+<h3>gdipbitmapObject.height</h3>
+
+<p>高度</p>
+
+<p><a id="gdipbitmapObject.isCached"></a></p>
+
+<h3>gdipbitmapObject.isCached()</h3>
+
+<p>该对象已被缓存</p>
+
+<p><a id="gdipbitmapObject.isPlaying"></a></p>
+
+<h3>gdipbitmapObject.isPlaying()</h3>
+
+<p>是否正在播放动画</p>
+
+<p><a id="gdipbitmapObject.isValid"></a></p>
+
+<h3>gdipbitmapObject.isValid()</h3>
+
+<p>图像是否有效<br>
+dispose函数释放以后返回false</p>
+
+<p><a id="gdipbitmapObject.lockData"></a></p>
+
+<h3>gdipbitmapObject.lockData</h3>
+
+<p>锁定图像内存<br>
+返回gdip.BitmapData结构体<br>
+与lockMemory不同的是使用bits数组存储图像数据</p>
+
+<p><a id="gdipbitmapObject.lockData"></a></p>
+
+<h3>gdipbitmapObject.lockData()</h3>
+
+<p><a href="#gdiBitmapDataObject">返回对象:gdiBitmapDataObject</a></p>
+
+<p><a id="gdipbitmapObject.lockData"></a></p>
+
+<h3>gdipbitmapObject.lockData(rect,_GdipPixelFormat32bppARGB,flags)</h3>
+
+<p>所有参数可选，<br>
+默认使用图像的像素格式。<br>
+@rect 参数可用 ::RECT 结构体指定区块位置</p>
+
+<p><a id="gdipbitmapObject.lockData32"></a></p>
+
+<h3>gdipbitmapObject.lockData32</h3>
+
+<p>如果返回32位像素格式<br>
+则bits.rows[].pixels[]像素数组非空<br>
+否则返回bits.rows[].bytes字节数组</p>
+
+<p><a id="gdipbitmapObject.lockData32"></a></p>
+
+<h3>gdipbitmapObject.lockData32()</h3>
+
+<p><a href="#gdiBitmapDataObject">返回对象:gdiBitmapDataObject</a></p>
+
+<p><a id="gdipbitmapObject.lockData32"></a></p>
+
+<h3>gdipbitmapObject.lockData32(rect,_GdipPixelFormat32bppARGB,flags)</h3>
+
+<p>所有参数可选，<br>
+默认使用_GdipPixelFormat32bppARGB像素格式获取数据。<br>
+@rect 参数可用 ::RECT 结构体指定区块位置</p>
+
+<p><a id="gdipbitmapObject.lockMemory"></a></p>
+
+<h3>gdipbitmapObject.lockMemory</h3>
+
+<p>锁定图像内存<br>
+返回gdip.BitmapData结构体</p>
+
+<p><a id="gdipbitmapObject.lockMemory"></a></p>
+
+<h3>gdipbitmapObject.lockMemory()</h3>
+
+<p><a href="#gdiBitmapDataObject">返回对象:gdiBitmapDataObject</a></p>
+
+<p><a id="gdipbitmapObject.lockMemory"></a></p>
+
+<h3>gdipbitmapObject.lockMemory(rect,_GdipPixelFormat32bppARGB,flags)</h3>
+
+<p>所有参数可选，<br>
+默认使用图像的像素格式。<br>
+@rect 参数可用 ::RECT 结构体指定区块位置</p>
+
+<p><a id="gdipbitmapObject.origHeight"></a></p>
+
+<h3>gdipbitmapObject.origHeight</h3>
+
+<p>原始高度，<br>
+对于一个 gdip.bitmap 对象会一直缓存第一次读取的值</p>
+
+<p><a id="gdipbitmapObject.origWidth"></a></p>
+
+<h3>gdipbitmapObject.origWidth</h3>
+
+<p>原始宽度，<br>
+对于一个 gdip.bitmap 对象会一直缓存第一次读取的值</p>
+
+<p><a id="gdipbitmapObject.removePropertyItem"></a></p>
+
+<h3>gdipbitmapObject.removePropertyItem(属性ID)</h3>
+
+<p>移除字段</p>
+
+<p><a id="gdipbitmapObject.rotateFlip"></a></p>
+
+<h3>gdipbitmapObject.rotateFlip(_GdipRotate指定翻转选项)</h3>
+
+<p>翻转图片</p>
+
+<p><a id="gdipbitmapObject.save"></a></p>
+
+<h3>gdipbitmapObject.save(&quot;字符串参数&quot;)</h3>
+
+<p>保存图像<br>
+使用参数指定的文件路径或加载图片时的路径<br>
+根据后缀名自动设定格式,<br>
+可选在参数@3使用gdip.encoder.parameter数组指定保存参数</p>
+
+<p><a id="gdipbitmapObject.save"></a></p>
+
+<h3>gdipbitmapObject.save(&quot;字符串参数&quot;,80)</h3>
+
+<p>保存图像<br>
+使用参数指定的文件路径或加载图片时的路径<br>
+根据后缀名自动设定格式<br>
+jpg文件可使用第二个参数指定图像质量,<br>
+可选在参数@3使用 gdip.encoder.parameter 数组指定保存参数</p>
+
+<p><a id="gdipbitmapObject.saveAdd"></a></p>
+
+<h3>gdipbitmapObject.saveAdd()</h3>
+
+<p>添加当前图像到多帧图像</p>
+
+<p><a id="gdipbitmapObject.saveAdd"></a></p>
+
+<h3>gdipbitmapObject.saveAdd(图像)</h3>
+
+<p>添加其他gdip.image或gdip.bitmap对象到多帧图像,<br>
+可选使用参数2指定saveFlag，可选在参数@3使用gdip.encoder.parameter数组指定保存参数</p>
+
+<p><a id="gdipbitmapObject.saveAdd"></a></p>
+
+<h3>gdipbitmapObject.saveAdd(图像路径)</h3>
+
+<p>创建多帧图像,参数指定保存路径,<br>
+使用saveAdd添加帧，添加帧参数@1不能指定路径,<br>
+添加所有帧以后调用saveFlush函数即可</p>
+
+<p><a id="gdipbitmapObject.saveToBuffer"></a></p>
+
+<h3>gdipbitmapObject.saveToBuffer(后缀名,输出质量)</h3>
+
+<p>保存图像到 buffer，返回 buffer,<br>
+后缀名默认为&quot;*.jpg&quot;,质量默认为100,<br>
+可选在参数@3使用gdip.encoder.parameter数组指定保存参数</p>
+
+<p><a id="gdipbitmapObject.saveToStream"></a></p>
+
+<h3>gdipbitmapObject.saveToStream</h3>
+
+<p>保存到内存流对象<br>
+该函数成功返回值为流对象</p>
+
+<p><a id="gdipbitmapObject.saveToStream"></a></p>
+
+<h3>gdipbitmapObject.saveToStream()</h3>
+
+<p><a href="../fsys/stream.html#fsysStreamObject" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/fsys/stream.html#fsysStreamObject">返回对象:fsysStreamObject</a></p>
+
+<p><a id="gdipbitmapObject.saveToStream"></a></p>
+
+<h3>gdipbitmapObject.saveToStream(流对象,后缀名,输出质量)</h3>
+
+<p>流对象请使用 fsys.stream 创建<br>
+后缀名默认为&quot;*.jpg&quot;,质量默认为100,<br>
+可选在参数@4使用gdip.encoder.parameter数组指定保存参数</p>
+
+<p><a id="gdipbitmapObject.selectActiveFrame"></a></p>
+
+<h3>gdipbitmapObject.selectActiveFrame(帧序号)</h3>
+
+<p>设置当前动画帧</p>
+
+<p><a id="gdipbitmapObject.setFrameDelays"></a></p>
+
+<h3>gdipbitmapObject.setFrameDelays()</h3>
+
+<p>修改多帧图像每帧延时数值<br>
+参数必须是由数值组成的非空数组,<br>
+延时单位为厘秒,即0.01秒<br>
+必须在调用saveAdd以前设置</p>
+
+<p><a id="gdipbitmapObject.setPixel"></a></p>
+
+<h3>gdipbitmapObject.setPixel(x,y,argb)</h3>
+
+<p>设定位图指定坐标(x,y)的ARGB颜色值</p>
+
+<p><a id="gdipbitmapObject.setPropertyItem"></a></p>
+
+<h3>gdipbitmapObject.setPropertyItem(字段结构体)</h3>
+
+<p>修改字段</p>
+
+<p><a id="gdipbitmapObject.setResolution"></a></p>
+
+<h3>gdipbitmapObject.setResolution(xdpi,ydpi)</h3>
+
+<p>设置分辨率<br>
+注意只能用来设置新建位图</p>
+
+<p><a id="gdipbitmapObject.split"></a></p>
+
+<h3>gdipbitmapObject.split</h3>
+
+<p>将图片按指定的行数列数平均拆分为小图片</p>
+
+<p><a id="gdipbitmapObject.split().map"></a></p>
+
+<h3>gdipbitmapObject.split().map(命名表)</h3>
+
+<pre><code class="aardio language-aardio">gdipbitmapObject.split().map(  
+    default = 1;  
+    hover = 2;  
+    active = 3;/*返回一个新表  
+键保持与参数相同,值自动设置为指定位置的图像*/  
+)
+</code></pre>
+
+<p><a id="gdipbitmapObject.split"></a></p>
+
+<h3>gdipbitmapObject.split(列数,行数,上,右,下,左)</h3>
+
+<p>将图片按指定的行数列数平均拆分为小图片<br>
+可选指定小图片的上、右、下、左边距<br>
+返回一维数组</p>
+
+<p><a id="gdipbitmapObject.stopAnimation"></a></p>
+
+<h3>gdipbitmapObject.stopAnimation()</h3>
+
+<p>如果此图像已运行动画，则停止动画</p>
+
+<p><a id="gdipbitmapObject.totalFrames"></a></p>
+
+<h3>gdipbitmapObject.totalFrames</h3>
+
+<p>动画帧总数<br>
+不是动画返回1</p>
+
+<p><a id="gdipbitmapObject.unlockData"></a></p>
+
+<h3>gdipbitmapObject.unlockData(bmpData)</h3>
+
+<p>解锁图像内存<br>
+参数必须是lockData,lockData32函数锁定返回的gdip.BitmapData结构体</p>
+
+<p><a id="gdipbitmapObject.unlockMemory"></a></p>
+
+<h3>gdipbitmapObject.unlockMemory(bmpData)</h3>
+
+<p>解锁图像内存<br>
+参数必须是lockMemory函数锁定返回的gdip.BitmapData结构体</p>
+
+<p><a id="gdipbitmapObject.width"></a></p>
+
+<h3>gdipbitmapObject.width</h3>
+
+<p>宽度</p>
+
+<p><a href="bitmap.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/gdip/bitmap.md">Markdown 格式</a></p>
+
+</body> 
+</html>

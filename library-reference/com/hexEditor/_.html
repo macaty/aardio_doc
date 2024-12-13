@@ -1,0 +1,286 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - com.hexEditor 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - com.hexEditor 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>com.hexEditor 库模块帮助文档</h1>
+
+<p><a id="com"></a></p>
+
+<h2>com 成员列表</h2>
+
+<p><a id="com.hexEditor"></a></p>
+
+<h3>com.hexEditor()</h3>
+
+<p><a href="#hexEditorObject">返回对象:hexEditorObject</a></p>
+
+<p><a id="com.hexEditor"></a></p>
+
+<h3>com.hexEditor(winform)</h3>
+
+<p>创建十六进制编辑器<br>
+参数为窗口或控件对象</p>
+
+<p><a id="hexEditorObject"></a></p>
+
+<h2>hexEditorObject 成员列表</h2>
+
+<p><a id="hexEditorObject.accessData"></a></p>
+
+<h3>hexEditorObject.accessData(callback)</h3>
+
+<pre><code class="aardio language-aardio">hexEditorObject.accessData( function(dataPtr,size){  
+    /*获取当前编辑的数据指针，  
+dataPtr 为数据指针, size 为数据长度。  
+不可保存 dataPtr 指针并在回调函数外部使用 */  
+})
+</code></pre>
+
+<p><a id="hexEditorObject.copy"></a></p>
+
+<h3>hexEditorObject.copy()</h3>
+
+<p>复制选区</p>
+
+<p><a id="hexEditorObject.cut"></a></p>
+
+<h3>hexEditorObject.cut()</h3>
+
+<p>剪切选区</p>
+
+<p><a id="hexEditorObject.deselect"></a></p>
+
+<h3>hexEditorObject.deselect()</h3>
+
+<p>取消选区</p>
+
+<p><a id="hexEditorObject.find"></a></p>
+
+<h3>hexEditorObject.find</h3>
+
+<p>查找并选中数据</p>
+
+<p><a id="hexEditorObject.find"></a></p>
+
+<h3>hexEditorObject.find(模找模式串,开始位置)</h3>
+
+<p>查找并选中数据。<br>
+参数 @1 支持模式匹配语法，<br>
+开始位置以字节计数</p>
+
+<p><a id="hexEditorObject.findNext"></a></p>
+
+<h3>hexEditorObject.findNext(模找模式串)</h3>
+
+<p>查找下一个并选中数据。<br>
+参数 @1 支持模式匹配语法，</p>
+
+<p><a id="hexEditorObject.getBuffer"></a></p>
+
+<h3>hexEditorObject.getBuffer()</h3>
+
+<p>获取修改后的数据<br>
+返回值为buffer类型字节数组,<br>
+返回值不会自动更新数据,必须调用getBuffer()函数才能得到最新的修改后的数据</p>
+
+<p><a id="hexEditorObject.getCaretPos"></a></p>
+
+<h3>hexEditorObject.getCaretPos()</h3>
+
+<p>返回光标位置</p>
+
+<p><a id="hexEditorObject.getCodePage"></a></p>
+
+<h3>hexEditorObject.getCodePage()</h3>
+
+<p>返回代码页</p>
+
+<p><a id="hexEditorObject.getDataModified"></a></p>
+
+<h3>hexEditorObject.getDataModified()</h3>
+
+<p>数据是否已被用户修改</p>
+
+<p><a id="hexEditorObject.getFontHeight"></a></p>
+
+<h3>hexEditorObject.getFontHeight()</h3>
+
+<p>返回字体大小</p>
+
+<p><a id="hexEditorObject.getSelBuffer"></a></p>
+
+<h3>hexEditorObject.getSelBuffer()</h3>
+
+<p>获取选区数据，<br>
+如果选区非空返回 buffer 对象。<br>
+否则返回 null</p>
+
+<p><a id="hexEditorObject.getSelHex"></a></p>
+
+<h3>hexEditorObject.getSelHex()</h3>
+
+<p>如果选区非空，<br>
+返回选区数据的 16 进制编码文本。<br>
+可选用参数 @1 指定编码前缀，默认为 \x</p>
+
+<p><a id="hexEditorObject.getsel"></a></p>
+
+<h3>hexEditorObject.getsel()</h3>
+
+<p>返回选区开始位置,结束位置<br>
+0 为无选区</p>
+
+<p><a id="hexEditorObject.load"></a></p>
+
+<h3>hexEditorObject.load()</h3>
+
+<p>加载文件，<br>
+参数 @1 指定文件路径，支持资源文件</p>
+
+<p><a id="hexEditorObject.onCaretPositionChanged"></a></p>
+
+<h3>hexEditorObject.onCaretPositionChanged</h3>
+
+<pre><code class="aardio language-aardio">
+import win.debounce;  
+hexEditorObject.onCaretPositionChanged = win.debounce(function(caretPos,selStart,selEnd){  
+    /*光标或选区变更时触发此事件。  
+caretPos 为光标位置，selStart 为选区开始位置，  
+selEnd 为选区结束位置*/  
+});
+</code></pre>
+
+<p><a id="hexEditorObject.paste"></a></p>
+
+<h3>hexEditorObject.paste()</h3>
+
+<p>粘贴数据</p>
+
+<p><a id="hexEditorObject.replace"></a></p>
+
+<h3>hexEditorObject.replace</h3>
+
+<p>替换当前选区数据</p>
+
+<p><a id="hexEditorObject.replace"></a></p>
+
+<h3>hexEditorObject.replace(数据)</h3>
+
+<p>替换当前选区数据，<br>
+数据可以是字符串、buffer类型数据等</p>
+
+<p><a id="hexEditorObject.selectAll"></a></p>
+
+<h3>hexEditorObject.selectAll()</h3>
+
+<p>全选</p>
+
+<p><a id="hexEditorObject.setAllowChangeSize"></a></p>
+
+<h3>hexEditorObject.setAllowChangeSize()</h3>
+
+<p>是否允许改变长度,默认值为false</p>
+
+<p><a id="hexEditorObject.setAppearance"></a></p>
+
+<h3>hexEditorObject.setAppearance()</h3>
+
+<p>0为扁平相式，1为2D边框</p>
+
+<p><a id="hexEditorObject.setBackColor"></a></p>
+
+<h3>hexEditorObject.setBackColor()</h3>
+
+<p>设置背景颜色,数值 color</p>
+
+<p><a id="hexEditorObject.setBuffer"></a></p>
+
+<h3>hexEditorObject.setBuffer</h3>
+
+<p>加载数据</p>
+
+<p><a id="hexEditorObject.setBuffer"></a></p>
+
+<h3>hexEditorObject.setBuffer(数据,开始地址)</h3>
+
+<p>数据可以是字符串、buffer类型数据等,<br>
+数据总是从开始显示，开始地址参数仅用于左侧栏显示地址的开始值</p>
+
+<p><a id="hexEditorObject.setCodePage"></a></p>
+
+<h3>hexEditorObject.setCodePage()</h3>
+
+<p>设置代码页,<br>
+默认值为 65001（UTF-8 编码）,0 为系统 ANSI 编码</p>
+
+<p><a id="hexEditorObject.setColumns"></a></p>
+
+<h3>hexEditorObject.setColumns()</h3>
+
+<p>显示的列数，设为0时根据控件宽度自动计算列数</p>
+
+<p><a id="hexEditorObject.setDigitsInAddress"></a></p>
+
+<h3>hexEditorObject.setDigitsInAddress()</h3>
+
+<p>设置地址栏显示的数位,默认为 4</p>
+
+<p><a id="hexEditorObject.setFontHeight"></a></p>
+
+<h3>hexEditorObject.setFontHeight()</h3>
+
+<p>设置字体大小,默认为 14</p>
+
+<p><a id="hexEditorObject.setForeColor"></a></p>
+
+<h3>hexEditorObject.setForeColor()</h3>
+
+<p>设置文本颜色,数值 Text color</p>
+
+<p><a id="hexEditorObject.setShowAddress"></a></p>
+
+<h3>hexEditorObject.setShowAddress()</h3>
+
+<p>设为 true 显示地址栏</p>
+
+<p><a id="hexEditorObject.setShowAscii"></a></p>
+
+<h3>hexEditorObject.setShowAscii()</h3>
+
+<p>设为 true 显示 ASCII 字符</p>
+
+<p><a id="hexEditorObject.setsel"></a></p>
+
+<h3>hexEditorObject.setsel</h3>
+
+<p>设置选区</p>
+
+<p><a id="hexEditorObject.setsel"></a></p>
+
+<h3>hexEditorObject.setsel(开始位置,结束位置)</h3>
+
+<p>设置选区,<br>
+参数以字节为单位，1 表示第 1 个字节。<br>
+参数指定的位置超出长度或小于 1 时不执行任何操作</p>
+
+<p><a id="hexEditorObject.size"></a></p>
+
+<h3>hexEditorObject.size()</h3>
+
+<p>获取当前编辑的数据长度</p>
+
+<p><a href="_.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/com/hexEditor/_.md">Markdown 格式</a></p>
+
+</body> 
+</html>

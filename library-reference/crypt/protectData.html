@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - crypt.protectData 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - crypt.protectData 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>crypt.protectData 库模块帮助文档</h1>
+
+<p><a id="crypt.protectData"></a></p>
+
+<h2>crypt.protectData 成员列表</h2>
+
+<p>DPAPI 加解密</p>
+
+<p><a id="crypt.protectData.decrypt"></a></p>
+
+<h3>crypt.protectData.decrypt(dataIn,unhex,flags)</h3>
+
+<pre><code class="aardio language-aardio">dataIn 指定加密数据,  
+@unhex 指定是否对@dataIn进行16进制解码,省略时默认为true  
+可选用 @flags 指定选项  
+如果解密系统加密数据失败,  
+请先尝试在管理权限下用 thread.token.impersonate(&quot;winlogon.exe&quot;) 获取 SYSTEM 身份
+</code></pre>
+
+<p><a id="crypt.protectData.encrypt"></a></p>
+
+<h3>crypt.protectData.encrypt(dataIn,description,hex,flags)</h3>
+
+<pre><code class="aardio language-aardio">dataIn 指定要加密的数据，允许传入字符串,buffer,  
+可选用 @hex 参数指定是否对返回值进行16进制编码,默认为true  
+可选用 @flags 指定选项
+</code></pre>
+
+<h3>自动完成常量</h3>
+
+<p>_CRYPTPROTECT_AUDIT=0x10<br>
+_CRYPTPROTECT_LOCAL_MACHINE=4<br>
+_CRYPTPROTECT_UI_FORBIDDEN=1  </p>
+
+<p><a href="protectData.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/crypt/protectData.md">Markdown 格式</a></p>
+
+</body> 
+</html>

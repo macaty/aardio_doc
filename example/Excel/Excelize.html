@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - Excelize'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - Excelize</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: Excelize</h1><pre><code class="aardio language-aardio">//Excelize
+import console.int;
+
+assert(_WIN10_LATER,&quot;操作系统版本太低&quot;);
+import golang.excelize;
+
+//创建 Yaegi（Go 脚本）解释器
+//教程: https://mp.weixin.qq.com/s/_YBW0kN2uJ_pBekNF_b0WQ
+var go = golang.excelize();
+
+//直接用 Go 语法写脚本。 
+go.eval(`
+package main
+
+import (
+    &quot;fmt&quot;
+    &quot;github.com/xuri/excelize/v2&quot;
+)
+
+func CreateExcel(path string)  string {
+
+   //下面是 Excelize 官网范例
+    f := excelize.NewFile();
+
+    defer func() {
+        if err := f.Close(); err != nil {
+            fmt.Println(err)
+        }
+    }()
+
+    // 创建新表格.
+    index, err := f.NewSheet(&quot;Sheet2&quot;)
+    if err != nil {
+        fmt.Println(err)
+        return &quot;&quot;
+    }
+
+    // 设置单元格的值.
+    f.SetCellValue(&quot;Sheet2&quot;, &quot;A2&quot;, &quot;Hello world.&quot;)
+    f.SetCellValue(&quot;Sheet1&quot;, &quot;B2&quot;, 100)
+
+    // 设置工作簿的当前激活表格
+    f.SetActiveSheet(index)
+
+    // 保存表格到指定的路径
+    if err := f.SaveAs(path); err != nil {
+        fmt.Println(err)
+    } 
+
+    //读单元格的值
+    cell, err := f.GetCellValue(&quot;Sheet1&quot;, &quot;B2&quot;)
+    if err != nil {
+        fmt.Println(err)
+        return &quot;&quot;
+    }
+
+    return cell;
+} 
+`) 
+
+//准备调用参数
+var path = io.fullpath(&quot;/hello.xlsx&quot;);
+
+//在 aardio 中直接调用 Go 函数 
+var ret = go.CreateExcel( path );
+
+//查看 Go 函数的返回值
+console.log( ret );  
+</code></pre>
+<a href="Excelize.md" tppabs="https://www.aardio.com/zh-cn/doc/example/Excel/Excelize.md">Markdown 格式</a>
+</body> 
+</html>

@@ -1,0 +1,295 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - com.comm 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - com.comm 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>com.comm 库模块帮助文档</h1>
+
+<p><a id="com"></a></p>
+
+<h2>com 成员列表</h2>
+
+<p><a id="com.comm"></a></p>
+
+<h3>com.comm</h3>
+
+<p>MSComm串口通信控件</p>
+
+<p><a id="com.comm"></a></p>
+
+<h3>com.comm()</h3>
+
+<p>创建MSComm串口通信控件  </p>
+
+<p><a href="#mscomm32Object">返回对象:mscomm32Object</a></p>
+
+<p><a id="com.comm"></a></p>
+
+<h3>com.comm(false)</h3>
+
+<p>创建MSComm串口通信控件<br>
+禁用onComm事件</p>
+
+<p><a id="mscomm32Object"></a></p>
+
+<h2>mscomm32Object 成员列表</h2>
+
+<p><a id="mscomm32Object.break"></a></p>
+
+<h3>mscomm32Object.break</h3>
+
+<p>布尔值,设置或清除中断信号</p>
+
+<p><a id="mscomm32Object.cdHolding"></a></p>
+
+<h3>mscomm32Object.cdHolding</h3>
+
+<p>布尔值<br>
+通过查询 Carrier Detect (CD) 线的状态确定当前是否有传输</p>
+
+<p><a id="mscomm32Object.cdTimeout"></a></p>
+
+<h3>mscomm32Object.cdTimeout</h3>
+
+<p>数值,CD超时</p>
+
+<p><a id="mscomm32Object.comInputModeBinary"></a></p>
+
+<h3>mscomm32Object.comInputModeBinary</h3>
+
+<p>设为InputMode的值时以二进制模式取回数据</p>
+
+<p><a id="mscomm32Object.comInputModeText"></a></p>
+
+<h3>mscomm32Object.comInputModeText</h3>
+
+<p>设为InputMode的值时以文本方式取回数据</p>
+
+<p><a id="mscomm32Object.comNone"></a></p>
+
+<h3>mscomm32Object.comNone</h3>
+
+<p>没有握手。</p>
+
+<p><a id="mscomm32Object.comRTS"></a></p>
+
+<h3>mscomm32Object.comRTS</h3>
+
+<p>RTS/CT握手</p>
+
+<p><a id="mscomm32Object.comRTSXOnXOff"></a></p>
+
+<h3>mscomm32Object.comRTSXOnXOff</h3>
+
+<p>RTS和XON/XOFF握手</p>
+
+<p><a id="mscomm32Object.comXOnXOff"></a></p>
+
+<h3>mscomm32Object.comXOnXOff</h3>
+
+<p>XON/XOFF 握手</p>
+
+<p><a id="mscomm32Object.commEvent"></a></p>
+
+<h3>mscomm32Object.commEvent</h3>
+
+<p>onComm事件代码</p>
+
+<p><a id="mscomm32Object.commId"></a></p>
+
+<h3>mscomm32Object.commId</h3>
+
+<p>数值<br>
+串口被打开时，被API所调用的串口句柄或称标志，这也意味着能利用API接口函数去修改这个常量</p>
+
+<p><a id="mscomm32Object.commPort"></a></p>
+
+<h3>mscomm32Object.commPort</h3>
+
+<p>数值,指定端口号</p>
+
+<p><a id="mscomm32Object.ctsHolding"></a></p>
+
+<h3>mscomm32Object.ctsHolding</h3>
+
+<p>布尔值<br>
+确定是否可通过查询 Clear To Send (CTS) 线的状态发送数</p>
+
+<p><a id="mscomm32Object.ctsTimeout"></a></p>
+
+<h3>mscomm32Object.ctsTimeout</h3>
+
+<p>数值,CTS超时</p>
+
+<p><a id="mscomm32Object.dsrHolding"></a></p>
+
+<h3>mscomm32Object.dsrHolding</h3>
+
+<p>布尔值<br>
+确定 Data Set Ready (DSR) 线的状态。<br>
+Data Set Ready 信号由调制解调器发送到相连计算机，指示作好操作准备。<br>
+该属性在运行时为只读。</p>
+
+<p><a id="mscomm32Object.dsrTimeout"></a></p>
+
+<h3>mscomm32Object.dsrTimeout</h3>
+
+<p>数值,DSR超时</p>
+
+<p><a id="mscomm32Object.dtrEnable"></a></p>
+
+<h3>mscomm32Object.dtrEnable</h3>
+
+<p>布尔值<br>
+设置为 True，端口打开时DRT线设置为高电平，端口关闭时，设置为低电平</p>
+
+<p><a id="mscomm32Object.eofEnable"></a></p>
+
+<h3>mscomm32Object.eofEnable</h3>
+
+<p>布尔值,<br>
+确定在输入过程中 MSComm 控件是否寻找文件结尾 (EOF) 字符<br>
+如果找到 EOF 字符，将停止输入并激活 OnComm 事件，<br>
+此时 CommEvent 属性设置为 comEvEOF</p>
+
+<p><a id="mscomm32Object.getInput"></a></p>
+
+<h3>mscomm32Object.getInput()</h3>
+
+<p>读取输入数据,与input属性作用相同</p>
+
+<p><a id="mscomm32Object.handshaking"></a></p>
+
+<h3>mscomm32Object.handshaking</h3>
+
+<p>设置硬件握手信号</p>
+
+<p><a id="mscomm32Object.inBufferCount"></a></p>
+
+<h3>mscomm32Object.inBufferCount</h3>
+
+<p>数值，当前接收缓冲区接收到的数据的长度</p>
+
+<p><a id="mscomm32Object.inBufferSize"></a></p>
+
+<h3>mscomm32Object.inBufferSize</h3>
+
+<p>数值，接收缓冲区的大小,默认值为1024,也可以自己设</p>
+
+<p><a id="mscomm32Object.input"></a></p>
+
+<h3>mscomm32Object.input</h3>
+
+<p>输入数据</p>
+
+<p><a id="mscomm32Object.inputLen"></a></p>
+
+<h3>mscomm32Object.inputLen</h3>
+
+<p>数值,确定被 input 属性读取的字符数。<br>
+设置为 0，则读取缓冲区中全部的内容</p>
+
+<p><a id="mscomm32Object.inputMode"></a></p>
+
+<h3>mscomm32Object.inputMode</h3>
+
+<p>设置输入方式<br>
+使用对象的comInputModeText,comInputModeBinary常量赋值</p>
+
+<p><a id="mscomm32Object.interval"></a></p>
+
+<h3>mscomm32Object.interval</h3>
+
+<p>数值,时间间隔,单位为毫秒,缺省为1000</p>
+
+<p><a id="mscomm32Object.nullDiscard"></a></p>
+
+<h3>mscomm32Object.nullDiscard</h3>
+
+<p>布尔值,是否将null字符传输给接收缓冲区</p>
+
+<p><a id="mscomm32Object.onComm"></a></p>
+
+<h3>mscomm32Object.onComm</h3>
+
+<pre><code class="aardio language-aardio">mscomm32Object.onComm = function(event){
+    if( event == mscomm32Object.comEvReceive ){ 
+        io.print( &quot;收到数据:&quot;,mscomm32Object.input ); 
+    }   
+}
+</code></pre>
+
+<p><a id="mscomm32Object.outBufferCount"></a></p>
+
+<h3>mscomm32Object.outBufferCount</h3>
+
+<p>数值,当前发送缓冲区中数据的长度<br>
+赋值为0可清空输出缓冲区</p>
+
+<p><a id="mscomm32Object.outBufferSize"></a></p>
+
+<h3>mscomm32Object.outBufferSize</h3>
+
+<p>数值,发送缓冲区的大小,默认值为1024,也可以自己设定</p>
+
+<p><a id="mscomm32Object.output"></a></p>
+
+<h3>mscomm32Object.output</h3>
+
+<p>发送数据，只写属性<br>
+如果赋值为字符串，则以文本模式发送<br>
+如果赋值为buffer类型字节数组,则以二进制模式发送数据</p>
+
+<p><a id="mscomm32Object.parityReplace"></a></p>
+
+<h3>mscomm32Object.parityReplace</h3>
+
+<p>当发生奇偶校验错误时，设置并返回替换数据流中一个非法字符的字符</p>
+
+<p><a id="mscomm32Object.portOpen"></a></p>
+
+<h3>mscomm32Object.portOpen</h3>
+
+<p>布尔值,端口是否打开</p>
+
+<p><a id="mscomm32Object.rThreshold"></a></p>
+
+<h3>mscomm32Object.rThreshold</h3>
+
+<p>数值,设置收到多少个字符后触发OnComm事件</p>
+
+<p><a id="mscomm32Object.rtsEnable"></a></p>
+
+<h3>mscomm32Object.rtsEnable</h3>
+
+<p>布尔值<br>
+设置为 True，端口打开时RTS线设置为高电平，端口关闭时，设置为低电平</p>
+
+<p><a id="mscomm32Object.sThreshold"></a></p>
+
+<h3>mscomm32Object.sThreshold</h3>
+
+<p>数值,若设置为 0（缺省值），数据传输事件不会产生 OnComm 事件。<br>
+若设置为 1，当传输缓冲区完全空时，产生 OnComm 事件</p>
+
+<p><a id="mscomm32Object.settings"></a></p>
+
+<h3>mscomm32Object.settings</h3>
+
+<p>字符串,设置波特率等参数<br>
+例如&quot;9600,N,8,1&quot;</p>
+
+<p><a href="_.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/com/comm/_.md">Markdown 格式</a></p>
+
+</body> 
+</html>

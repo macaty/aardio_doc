@@ -1,0 +1,1445 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - gdi 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - gdi 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>gdi 库模块帮助文档</h1>
+
+<p><a id="gdi"></a></p>
+
+<h2>gdi 成员列表</h2>
+
+<p><a id="gdi.ARGB"></a></p>
+
+<h3>gdi.ARGB</h3>
+
+<p>合并 ARGB 分量并返回 ARGB 颜色数值</p>
+
+<p><a id="gdi.ARGB"></a></p>
+
+<h3>gdi.ARGB(红,绿,蓝,透明度)</h3>
+
+<p>合并 ARGB 分量并返回 ARGB 颜色数值<br>
+表示 Alpha 值的 A 分量范围为 0~0xFF，0 为完全透明。  </p>
+
+<p>ARGB 颜色值一般用于 GDI+,plus 控件等<br>
+ARGB 值内存格式用字符串表示就是 &#39;\xBB\xGG\xRR\xAA&#39;。<br>
+用结构体表示就是 { BYTE b;BYTE g;BYTE r;BYTE a; }<br>
+数值的书写顺序是反过来的，所以写为 0xAARRGGBB 。  </p>
+
+<p>那么为什么叫 ARGB 颜色值，而不是 BGRA 颜色值呢？<br>
+一定要找个理由就是念着顺口，GDI+ 头文件就是这样命名，约定俗成就是规则。<br>
+纠结这个正反顺序，就好比纠结『东西』为什么不叫『西东』一样毫无意义</p>
+
+<p><a id="gdi.BITMAP"></a></p>
+
+<h3>gdi.BITMAP()</h3>
+
+<p>位图信息<br>
+!gdi_bitmap.bmType = 类型</p>
+
+<p><a id="gdi.RGB"></a></p>
+
+<h3>gdi.RGB</h3>
+
+<p>合并 RGB 分量并返回 RGB 颜色数值</p>
+
+<p><a id="gdi.RGB"></a></p>
+
+<h3>gdi.RGB(红,绿,蓝)</h3>
+
+<p>合并 RGB 分量并返回 RGB 颜色数值，<br>
+可选用参数 @4 指定 A 分量返回 RGBA 颜色数值。  </p>
+
+<p>RGB 颜色值一般用于GDI，传统控件。<br>
+RGB 颜色值存储格式用字符串表示为 &#39;\xRR\xGG\xBB&#39;，<br>
+用结构体表示  { BYTE r;BYTE g;BYTE b; }<br>
+数值虽然也是低位存储在前（小端字节序），但书写数值时是高位在前，<br>
+所以RGB 颜色数值写为 0xBBGGRR，这不叫『写反了』。<br>
+纠结这个正反顺序，就好比纠结『东西』为什么不叫『西东』一样毫无意义</p>
+
+<p><a id="gdi.RGBQUAD"></a></p>
+
+<h3>gdi.RGBQUAD(红,绿,蓝)</h3>
+
+<p>创建 RGBQUAD 结构体</p>
+
+<p><a id="gdi.argbReverse"></a></p>
+
+<h3>gdi.argbReverse(颜色数值)</h3>
+
+<p>RGB 颜色数值转 ARGB 颜色数值,<br>
+RGB 分量中 R、B 的位置互换,并修改高位透明分量为 0xFF</p>
+
+<p><a id="gdi.blendFunction"></a></p>
+
+<h3>gdi.blendFunction()</h3>
+
+<p><a href="#blendFunctionObject">返回对象:blendFunctionObject</a></p>
+
+<p><a id="gdi.blendFunction"></a></p>
+
+<h3>gdi.blendFunction(透明度,透明选项)</h3>
+
+<p>创建透明混合参数,<br>
+透明度为1到255,默认为255<br>
+透明选项默认为1</p>
+
+<p><a id="gdi.clientBuffer"></a></p>
+
+<h3>gdi.clientBuffer</h3>
+
+<pre><code class="aardio language-aardio">gdi.clientBuffer( hwnd,  
+    function( hdc,hMemDc,hMemBitmap,width,height ){  
+        /*窗口客户区双缓冲绘图,此函数不可返回任何值*/  
+        ::BitBlt(hdc, 0, 0, width, height, hMemDc, 0, 0, 0xCC0020/*_SRCCOPY*/);  
+    }  
+)
+</code></pre>
+
+<p><a id="gdi.colorParse"></a></p>
+
+<h3>gdi.colorParse(&quot;#FFFFFF&quot;)</h3>
+
+<p>解析网页兼容的颜色代码<br>
+支持 #RGB,#RRGGBB,#RRGGBBAA 三种格式,#号可省略,<br>
+#RGB,#RRGGBB 返回 GDI 兼容的RGB值<br>
+#RRGGBBAA 返回 GDI+ 兼容的 ARGB 格式颜色值<br>
+失败返回null</p>
+
+<p><a id="gdi.colorStringify"></a></p>
+
+<h3>gdi.colorStringify(颜色数值,是否ARGB格式)</h3>
+
+<p>生成网页兼容的文本<br>
+如果是 ARGB 数值，返回 #RRGGBBAA 格式字符串<br>
+#RRGGBBAA 可用于 HTMLayout,Sciter,以及新版的 Chrome 也可以支持</p>
+
+<p><a id="gdi.doubleBuffer"></a></p>
+
+<h3>gdi.doubleBuffer</h3>
+
+<pre><code class="aardio language-aardio">gdi.doubleBuffer( hdc,width,height,  
+    function( hdc,hMemDc,hMemBitmap ){  
+        /*双缓冲绘图,此函数不可返回任何值*/  
+        ::BitBlt(hdc, 0, 0, width, height, hMemDc, 0, 0, 0xCC0020/*_SRCCOPY*/);  
+    }  
+)
+</code></pre>
+
+<p><a id="gdi.drawBitmap"></a></p>
+
+<h3>gdi.drawBitmap</h3>
+
+<p>九宫格贴图</p>
+
+<p><a id="gdi.drawBitmap"></a></p>
+
+<h3>gdi.drawBitmap(hdc,位图句柄,rect,t,r,b,l)</h3>
+
+<p>在目标DC上绘图<br>
+t,r,b,l依次为上、右、下、左九宫格切图,<br>
+如果不指定r,t,b,l则显示原图不拉伸<br>
+r,t,b,l都为0则直接拉伸全图</p>
+
+<p><a id="gdi.drawLine"></a></p>
+
+<h3>gdi.drawLine(hdc,x1,y1,x2,y2,...)</h3>
+
+<p>在hdc指定句柄的绘图设备上移动到x1,y1坐标,<br>
+开始画线到x2,y2指定的坐标点,<br>
+可选添加任意个坐标点参数继续向后画线</p>
+
+<p><a id="gdi.drawText"></a></p>
+
+<h3>gdi.drawText(hdc,font,s,rect,format)</h3>
+
+<p>输出文本<br>
+hdc参数指定绘图设备句柄,font参数指定LOGFONT字体对象,<br>
+rect应使用::RECT结构体指定输出区块,<br>
+format为可选参数使用_DT_前缀常量指定输出选项</p>
+
+<p><a id="gdi.drawTextCenter"></a></p>
+
+<h3>gdi.drawTextCenter(hdc,font,s,rect,format)</h3>
+
+<p>居中对齐输出文本,<br>
+hdc参数指定绘图设备句柄,font参数指定LOGFONT字体对象,<br>
+rect应使用::RECT结构体指定输出区块,<br>
+format为可选参数使用_DT_前缀常量指定输出选项</p>
+
+<p><a id="gdi.fillGradient"></a></p>
+
+<h3>gdi.fillGradient(hdc,rect,clr,clr2,mode)</h3>
+
+<p>使用clr,clr2指定的渐变颜色填充矩形<br>
+hdc参数指定绘图设备句柄<br>
+rect应使用::RECT结构体指定输出区块<br>
+mode为可选参数,默认为水平渐变,指定为1则为垂直方向渐变</p>
+
+<p><a id="gdi.fillRect"></a></p>
+
+<h3>gdi.fillRect(hdc,color,rect)</h3>
+
+<p>使用color指定的颜色填充矩形<br>
+hdc参数指定绘图设备句柄<br>
+rect应使用::RECT结构体指定输出区块  </p>
+
+<p>如果不需要指定新的颜色,可改为调用::PatBlt即可<br>
+如果需要指定笔刷,调用::FillRect即可</p>
+
+<p><a id="gdi.getBitmapBits"></a></p>
+
+<h3>gdi.getBitmapBits</h3>
+
+<p>获取位图数据<br>
+返回值为cdata指针,以及数据读取长度<br>
+无数据返回空值</p>
+
+<p><a id="gdi.getBitmapBits"></a></p>
+
+<h3>gdi.getBitmapBits(位图句柄,长度)</h3>
+
+<p>成功返回读取内存,以及读取长度</p>
+
+<p><a id="gdi.getBitmapInfo"></a></p>
+
+<h3>gdi.getBitmapInfo()</h3>
+
+<p><a href="#gdiBitmapObject">返回对象:gdiBitmapObject</a></p>
+
+<p><a id="gdi.getBitmapInfo"></a></p>
+
+<h3>gdi.getBitmapInfo(位图句柄)</h3>
+
+<p>返回BITMAT结构体</p>
+
+<p><a id="gdi.getBitmapObject"></a></p>
+
+<h3>gdi.getBitmapObject(hdc)</h3>
+
+<p>返回当前设备位图对象</p>
+
+<p><a id="gdi.getDpi"></a></p>
+
+<h3>gdi.getDpi(hdc,hwnd)</h3>
+
+<p>获取屏幕DPI,即每英寸像素点数,<br>
+参数可选</p>
+
+<p><a id="gdi.getDpiScale"></a></p>
+
+<h3>gdi.getDpiScale(hdc,hwnd)</h3>
+
+<p>获取屏幕DPI缩放系数,<br>
+参数可选,<br>
+返回2个表示百分比的小数值,1表示100%,<br>
+第一个返回值为 x 轴缩放,第二个返回值为 y 轴缩放,<br>
+2个返回值通常都是一样的</p>
+
+<p><a id="gdi.getFont"></a></p>
+
+<h3>gdi.getFont()</h3>
+
+<p><a href="#logfontObject">返回对象:logfontObject</a></p>
+
+<p><a id="gdi.getFont"></a></p>
+
+<h3>gdi.getFont(窗口句柄)</h3>
+
+<p>返回窗口字体,LOGFONT对象<br>
+如果窗口仍然是使用系统字体,返回空值<br>
+不应使用此函数获取系统字体</p>
+
+<p><a id="gdi.getIconInfo"></a></p>
+
+<h3>gdi.getIconInfo</h3>
+
+<p>获取图标信息</p>
+
+<p><a id="gdi.getIconInfo"></a></p>
+
+<h3>gdi.getIconInfo()</h3>
+
+<p><a href="#gdicoinfoObject">返回对象:gdicoinfoObject</a></p>
+
+<p><a id="gdi.getIconInfo"></a></p>
+
+<h3>gdi.getIconInfo(句柄)</h3>
+
+<p>参数不可为空</p>
+
+<p><a id="gdi.getPixel"></a></p>
+
+<h3>gdi.getPixel</h3>
+
+<p>抓像素颜色</p>
+
+<p><a id="gdi.getPixel"></a></p>
+
+<h3>gdi.getPixel(x,y,hwnd)</h3>
+
+<p>句柄为可选参数</p>
+
+<p><a id="gdi.getRgb"></a></p>
+
+<h3>gdi.getRgb(RGB颜色数值)</h3>
+
+<p>此函数返回R(红),G（绿）,B（蓝）三个分量。<br>
+函数名由 &quot;get R,G,B &quot; 组合而成，表示三个返回值的顺序。  </p>
+
+<p>参数 @1 指定 RGB 颜色数值。<br>
+RGB 颜色值一般用于GDI，传统控件。<br>
+RGB 颜色值存储格式用字符串表示为 &#39;\xRR\xGG\xBB&#39;，<br>
+用结构体表示  { BYTE r;BYTE g;BYTE b; }<br>
+数值虽然也是低位存储在前（小端字节序），但书写数值时是高位在前，<br>
+所以RGB 颜色数值写为 0xBBGGRR，这不叫『写反了』。<br>
+纠结这个正反顺序，就好比纠结『东西』为什么不叫『西东』一样毫无意义</p>
+
+<p><a id="gdi.getRgba"></a></p>
+
+<h3>gdi.getRgba(ARGB颜色数值)</h3>
+
+<p>返回R(红),G（绿）,B（蓝),A（透明度) 4个分量<br>
+函数名由 &quot;get R,G,B,A &quot; 组合而成，表示四个返回值的顺序<br>
+表示 Alpha 值的 A 分量范围为 0~0xFF，0 为完全透明。  </p>
+
+<p>ARGB 颜色值一般用于 GDI+,plus 控件等<br>
+ARGB 值内存格式用字符串表示就是 &#39;\xBB\xGG\xRR\xAA&#39;。<br>
+用结构体表示就是 { BYTE b;BYTE g;BYTE r;BYTE a; }<br>
+数值的书写顺序是反过来的，所以写为 0xAARRGGBB 。  </p>
+
+<p>那么为什么叫 ARGB 颜色值，而不是 BGRA 颜色值呢？<br>
+一定要找个理由就是念着顺口，GDI+ 头文件就是这样命名，约定俗成就是规则。<br>
+纠结这个正反顺序，就好比纠结『东西』为什么不叫『西东』一样毫无意义</p>
+
+<p><a id="gdi.getSystemFont"></a></p>
+
+<h3>gdi.getSystemFont( _DEFAULT_GUI_FONT )</h3>
+
+<p>获取界面缺省字体并转换为LOGFONT</p>
+
+<p><a id="gdi.getSystemFont"></a></p>
+
+<h3>gdi.getSystemFont( _SYSTEM_FONT )</h3>
+
+<p>获取系统字体并转换为LOGFONT</p>
+
+<p><a id="gdi.getTextExtent"></a></p>
+
+<h3>gdi.getTextExtent(hdc,str)</h3>
+
+<p>获取字符串输出后的宽度,高度,返回2个值<br>
+参数@1为目标DC，参数@2指定字符串</p>
+
+<p><a id="gdi.layeredBuffer"></a></p>
+
+<h3>gdi.layeredBuffer</h3>
+
+<pre><code class="aardio language-aardio">gdi.layeredBuffer( winform.hwnd,    
+    function( hdc,hMemDc,hMemBitmap,width,height,left,top,hwnd,blendFunction ){  
+
+        /*在hMemDc上绘图即可*/  
+
+        ..gdi.updateLayeredWindow( hwnd,hMemDc,::SIZE(width,height) ,blendFunction  );    
+    }  
+)
+</code></pre>
+
+<p><a id="gdi.lineTo"></a></p>
+
+<h3>gdi.lineTo(hdc,x1,y1,...)</h3>
+
+<p>开始画线到x1,y1指定的坐标点,<br>
+可选添加任意个坐标点参数继续向后画线</p>
+
+<p><a id="gdi.paint"></a></p>
+
+<h3>gdi.paint</h3>
+
+<pre><code class="aardio language-aardio">gdi.paint( hwnd,  
+    function( hdc,width, height,rcPaint,fErase,paintStruct ){  
+        /*此函数只能用于wndproc内部处理_WM_PAINT消息*/  
+        ::BitBlt(hdc, 0, 0, width, height, hMemDc, 0, 0, 0xCC0020/*_SRCCOPY*/);  
+    }   
+);
+</code></pre>
+
+<p><a id="gdi.paintBuffer"></a></p>
+
+<h3>gdi.paintBuffer</h3>
+
+<pre><code class="aardio language-aardio">gdi.paintBuffer( hwnd,  
+    function( hdc,hMemDc,hMemBitmap,width,height,rcPaint,fErase,paintStruct ){  
+        /*专用于_WM_PAINT消息内创建内存DC绘图  
+此函数自动负责内存DC到DC设备间的双向BitBlt复制操作*/  
+        ::BitBlt(hdc, 0, 0, width, height, hMemDc, 0, 0, 0xCC0020/*_SRCCOPY*/);  
+    }   
+);
+</code></pre>
+
+<p><a id="gdi.rgbReverse"></a></p>
+
+<h3>gdi.rgbReverse(颜色数值)</h3>
+
+<p>ARGB 颜色数值转 RGB 颜色数值,<br>
+RGB 分量中 R、B 的位置互换</p>
+
+<p><a id="gdi.roundRect"></a></p>
+
+<h3>gdi.roundRect(hdc,rect,cx,cy)</h3>
+
+<p>输出圆角矩形<br>
+hdc参数指定绘图设备句柄<br>
+rect应使用::RECT结构体指定输出区块,cx,cy指定圆角大小</p>
+
+<p><a id="gdi.selectBrush"></a></p>
+
+<h3>gdi.selectBrush(callback,hdc,bgolor,color,width,style)</h3>
+
+<pre><code class="aardio language-aardio">gdi.selectBrush(  
+    function(hdc,pen,brush){  
+
+        ::FillRect(hdc,::RECT(0,0,100,100),brush);  
+
+        var font = ::LOGFONT(weight=800;color=0x000000);  
+        gdi.textOut(hdc,font,&quot;TEST&quot;,0,0);  
+
+        /*在指定绘图设备hdc选择新的笔刷和画笔  
+参数bgolor指定笔刷颜色,参数color指定画笔颜色,如果不指定color则不创建画笔,  
+注意GDI使用RGB格式的颜色值,用16进制数值可写为0xBBGGRR格式,  
+width为可选参数用于指定画笔宽度,style为可选参数用于指定画笔样式  
+回调参数中brush为新的笔刷,如果指定了color参数则回调参数pen为新的画笔  
+此函数在回调函数执行完以后负责销毁笔刷、画笔并复原绘图设备*/  
+    },hdc,0xFFFFFF,0x000000)
+</code></pre>
+
+<p><a id="gdi.selectPen"></a></p>
+
+<h3>gdi.selectPen(callback,hdc,color,width,style)</h3>
+
+<pre><code class="aardio language-aardio">gdi.selectPen(  
+    function(hdc,pen){  
+
+        gdi.drawLine(hdc,0,0,100,100)/*在指定绘图设备hdc选择新的画笔,参数color指定画笔颜色,  
+注意GDI使用RGB格式的颜色值,用16进制数值可写为0xBBGGRR格式,  
+width为可选参数用于指定画笔宽度,style为可选参数用于指定画笔样式  
+回调参数中pen为新的画笔  
+此函数在回调函数执行完以后负责销毁画笔并复原绘图设备*/  
+    },hdc,0xFFFFFF,0x000000)
+</code></pre>
+
+<p><a id="gdi.setFont"></a></p>
+
+<h3>gdi.setFont</h3>
+
+<p>设置窗口字体,返回字体句柄<br>
+直接调用此函数必须自行管理字体生命周期</p>
+
+<p><a id="gdi.setFont"></a></p>
+
+<h3>gdi.setFont(窗口句柄,LOGFONT对象,窗口DPI缩放比例)</h3>
+
+<p>第二个参数是字体句柄、或 LOGFONT 结构体,<br>
+使用 LOGFONT 对象作为参数将创建新的逻辑字体句柄，函数将返回该句柄。<br>
+参数 @3 仅在使用 point 单位时用于修正窗体口与系统 DPI 不一致的问题。</p>
+
+<p><a id="gdi.setPixel"></a></p>
+
+<h3>gdi.setPixel</h3>
+
+<p>修改像素颜色</p>
+
+<p><a id="gdi.setPixel"></a></p>
+
+<h3>gdi.setPixel(x,y,color,hwnd)</h3>
+
+<p>句柄为可选参数</p>
+
+<p><a id="gdi.textOut"></a></p>
+
+<h3>gdi.textOut(hdc,font,str,x,y)</h3>
+
+<p>输出文本<br>
+hdc参数指定绘图设备句柄,font参数指定LOGFONT字体对象,<br>
+可选参数x,y指定输出坐标</p>
+
+<p><a id="gdi.updateLayeredWindow"></a></p>
+
+<h3>gdi.updateLayeredWindow</h3>
+
+<p>更新分层窗口</p>
+
+<p><a id="gdi.updateLayeredWindow"></a></p>
+
+<h3>gdi.updateLayeredWindow(hwnd,hdcSrc,size,blend,ptDst,ptSrc,hdcDst,crKey,flags)</h3>
+
+<p>除参数1以外,所有参数可选<br>
+参数用法与同名API相同,请参考微软文档<br>
+注意参数顺序与API不同,请参考该函数源码</p>
+
+<p><a id="gdi.windowBuffer"></a></p>
+
+<h3>gdi.windowBuffer</h3>
+
+<pre><code class="aardio language-aardio">gdi.windowBuffer( hwnd,  
+    function( hdc,hMemDc,hMemBitmap,width,height ){  
+        /*窗口双缓冲绘图,此函数不可返回任何值*/  
+        ::BitBlt(hdc, 0, 0, width, height, hMemDc, 0, 0, 0xCC0020/*_SRCCOPY*/);  
+    }  
+)
+</code></pre>
+
+<p><a id="::LOGFONT"></a></p>
+
+<h2>::LOGFONT 成员列表</h2>
+
+<p><a id="::LOGFONT.is"></a></p>
+
+<h3>::LOGFONT.is()</h3>
+
+<p>检查参数@1是否 ::LOGFONT 结构体，返回布尔值</p>
+
+<p><a id="blendFunctionObject"></a></p>
+
+<h2>blendFunctionObject 成员列表</h2>
+
+<p><a id="blendFunctionObject.alphaFormat"></a></p>
+
+<h3>blendFunctionObject.alphaFormat</h3>
+
+<p>默认为1,<br>
+即AC_SRC_ALPHA:使用图像自带透明通道</p>
+
+<p><a id="blendFunctionObject.blendFlags"></a></p>
+
+<h3>blendFunctionObject.blendFlags</h3>
+
+<p>必须是0</p>
+
+<p><a id="blendFunctionObject.blendOp"></a></p>
+
+<h3>blendFunctionObject.blendOp</h3>
+
+<p>必须是0</p>
+
+<p><a id="blendFunctionObject.sourceConstantAlpha"></a></p>
+
+<h3>blendFunctionObject.sourceConstantAlpha</h3>
+
+<p>透明度值 1~255<br>
+如果要使用图像本身的透明值,设为255<br>
+默认值为255</p>
+
+<p><a id="gdi.     this"></a></p>
+
+<h2>gdi.     this 成员列表</h2>
+
+<p><a id="gdi.     this.rgbRed"></a></p>
+
+<h3>gdi.        this.rgbRed</h3>
+
+<pre><code class="aardio language-aardio">r;
+</code></pre>
+
+<p><a id="gdi.?"></a></p>
+
+<h2>gdi.? 成员列表</h2>
+
+<p><a id="gdi.?.getFont"></a></p>
+
+<h3>gdi.?.getFont</h3>
+
+<p><a href="#logfontObject">返回对象:logfontObject</a></p>
+
+<p><a id="gdi.this"></a></p>
+
+<h2>gdi.this 成员列表</h2>
+
+<p><a id="gdi.this.rgbBlue"></a></p>
+
+<h3>gdi.this.rgbBlue</h3>
+
+<pre><code class="aardio language-aardio">b;
+</code></pre>
+
+<p><a id="gdi.this.rgbGreen"></a></p>
+
+<h3>gdi.this.rgbGreen</h3>
+
+<pre><code class="aardio language-aardio">g;
+</code></pre>
+
+<p><a id="gdi.this.rgbReserved"></a></p>
+
+<h3>gdi.this.rgbReserved</h3>
+
+<pre><code class="aardio language-aardio">q;
+</code></pre>
+
+<p><a id="gdiBitmapObject"></a></p>
+
+<h2>gdiBitmapObject 成员列表</h2>
+
+<p><a id="gdiBitmapObject.bmBits"></a></p>
+
+<h3>gdiBitmapObject.bmBits</h3>
+
+<p>指向存储像素阵列的数组</p>
+
+<p><a id="gdiBitmapObject.bmBitsPixel"></a></p>
+
+<h3>gdiBitmapObject.bmBitsPixel</h3>
+
+<p>调色板颜色位数</p>
+
+<p><a id="gdiBitmapObject.bmHeight"></a></p>
+
+<h3>gdiBitmapObject.bmHeight</h3>
+
+<p>高度</p>
+
+<p><a id="gdiBitmapObject.bmPlanes"></a></p>
+
+<h3>gdiBitmapObject.bmPlanes</h3>
+
+<p>调色板颜色数</p>
+
+<p><a id="gdiBitmapObject.bmType"></a></p>
+
+<h3>gdiBitmapObject.bmType</h3>
+
+<p>类型</p>
+
+<p><a id="gdiBitmapObject.bmWidth"></a></p>
+
+<h3>gdiBitmapObject.bmWidth</h3>
+
+<p>宽度</p>
+
+<p><a id="gdiBitmapObject.bmWidthBytes"></a></p>
+
+<h3>gdiBitmapObject.bmWidthBytes</h3>
+
+<p>每行光栅所占字节数,必须为偶数</p>
+
+<p><a id="gdicoinfoObject"></a></p>
+
+<h2>gdicoinfoObject 成员列表</h2>
+
+<p><a id="gdicoinfoObject.fIcon"></a></p>
+
+<h3>gdicoinfoObject.fIcon</h3>
+
+<p>是否图标</p>
+
+<p><a id="gdicoinfoObject.hbmColor"></a></p>
+
+<h3>gdicoinfoObject.hbmColor</h3>
+
+<p>位图句柄</p>
+
+<p><a id="gdicoinfoObject.hbmMask"></a></p>
+
+<h3>gdicoinfoObject.hbmMask</h3>
+
+<p>掩码位图句柄</p>
+
+<p><a id="gdicoinfoObject.xHotspot"></a></p>
+
+<h3>gdicoinfoObject.xHotspot</h3>
+
+<p>热点坐标x</p>
+
+<p><a id="gdicoinfoObject.yHotspot"></a></p>
+
+<h3>gdicoinfoObject.yHotspot</h3>
+
+<p>热点坐标u</p>
+
+<p><a id="logfontObject"></a></p>
+
+<h2>logfontObject 成员列表</h2>
+
+<p><a id="logfontObject.bold"></a></p>
+
+<h3>logfontObject.bold</h3>
+
+<p>是否为粗体</p>
+
+<p><a id="logfontObject.charset"></a></p>
+
+<h3>logfontObject.charset</h3>
+
+<p>字符集代码,请参考标准库 gdi 中 _CHARSET 后缀常量</p>
+
+<p><a id="logfontObject.clip"></a></p>
+
+<h3>logfontObject.clip</h3>
+
+<p>剪辑精度</p>
+
+<p><a id="logfontObject.color"></a></p>
+
+<h3>logfontObject.color</h3>
+
+<p>字体颜色</p>
+
+<p><a id="logfontObject.createIndirect"></a></p>
+
+<h3>logfontObject.createIndirect</h3>
+
+<p>创建可用于GDI设备的逻辑字体<br>
+并返回字体句柄</p>
+
+<p><a id="logfontObject.createIndirect"></a></p>
+
+<h3>logfontObject.createIndirect(hdc,hwnd,own)</h3>
+
+<p>创建可用于绘图设备的逻辑字体,并返回对象句柄<br>
+hdc,hwnd为可选参数用于转换point单位,默认为屏幕dc<br>
+参数@3指定是否由当前对象是否持有该字体句柄</p>
+
+<p><a id="logfontObject.deleteIndirect"></a></p>
+
+<h3>logfontObject.deleteIndirect()</h3>
+
+<p>删除createIndirect函数创建并管理生存期的字体<br>
+必须确认该字体确实不再被使用</p>
+
+<p><a id="logfontObject.detach"></a></p>
+
+<h3>logfontObject.detach()</h3>
+
+<p>分离并返回字体句柄<br>
+并将对象的字体句柄置为空,<br>
+已分离的句柄必须自行管理生存期并负责释放</p>
+
+<p><a id="logfontObject.esc"></a></p>
+
+<h3>logfontObject.esc</h3>
+
+<p>字符串相对页面底端角度</p>
+
+<p><a id="logfontObject.family"></a></p>
+
+<h3>logfontObject.family</h3>
+
+<p>字符间距和族</p>
+
+<p><a id="logfontObject.getPointSize"></a></p>
+
+<h3>logfontObject.getPointSize(hdc,hwnd)</h3>
+
+<p>返回点数大小<br>
+可选使用参数hdc指定绘图设备句柄,或使用hwnd指定获取hdc的窗口</p>
+
+<p><a id="logfontObject.h"></a></p>
+
+<h3>logfontObject.h</h3>
+
+<p>指定字符的高度，逻辑单位，<br>
+字体映射器会将此值转换为设备单位，<br>
+默认的 MM_TEXT 映射模式下，这个值也就是像素值  </p>
+
+<p>即使用此属性指定字体大小，<br>
+aardio 创建的窗口仍然可以默认支持自动DPI缩放</p>
+
+<p><a id="logfontObject.handle"></a></p>
+
+<h3>logfontObject.handle</h3>
+
+<p>createIndirect 函数创建并管理生存期的字体句柄<br>
+不应直接读写此句柄</p>
+
+<p><a id="logfontObject.italic"></a></p>
+
+<h3>logfontObject.italic</h3>
+
+<p>斜体</p>
+
+<p><a id="logfontObject.name"></a></p>
+
+<h3>logfontObject.name</h3>
+
+<p>字体名称</p>
+
+<p><a id="logfontObject.ori"></a></p>
+
+<h3>logfontObject.ori</h3>
+
+<p>单个字符相对页面底端角度</p>
+
+<p><a id="logfontObject.out"></a></p>
+
+<h3>logfontObject.out</h3>
+
+<p>输出精度</p>
+
+<p><a id="logfontObject.point"></a></p>
+
+<h3>logfontObject.point</h3>
+
+<p>字体点数,<br>
+此为内部只写属性,<br>
+不应当使用直接此属性读写字体点数,<br>
+请改用 getPointSize, setPointSize 函数</p>
+
+<p><a id="logfontObject.quality"></a></p>
+
+<h3>logfontObject.quality</h3>
+
+<p>输出质量</p>
+
+<p><a id="logfontObject.setPointSize"></a></p>
+
+<h3>logfontObject.setPointSize(pt,hdc,hwnd)</h3>
+
+<pre><code class="aardio language-aardio">pt 参数指定字体点数,  
+1点等于 1/72 英寸  
+在不同DPI设置的显示器上,每英寸对应的点数与像素不相同,  
+使用点数单位可在不同DPI设置的显示器上得到相同大小的字体,  
+如果指定了@hdc 或 @hwnd 参数，则自动调用 stripPoint 函数并更新 h 属性指定的逻辑单位
+</code></pre>
+
+<p><a id="logfontObject.strike"></a></p>
+
+<h3>logfontObject.strike</h3>
+
+<p>添加删除线</p>
+
+<p><a id="logfontObject.stripPoint"></a></p>
+
+<h3>logfontObject.stripPoint(hdc,hwnd)</h3>
+
+<p>如果指定了字体点数,转换并更新 h 属性的逻辑单位,<br>
+可选使用参数 @hdc 指定绘图设备句柄,或使用 @hwnd 指定获取 @hdc 的窗口</p>
+
+<p><a id="logfontObject.underline"></a></p>
+
+<h3>logfontObject.underline</h3>
+
+<p>添加下划线</p>
+
+<p><a id="logfontObject.w"></a></p>
+
+<h3>logfontObject.w</h3>
+
+<p>指定字符的宽度，逻辑单位，<br>
+一般不建议指定此参数</p>
+
+<p><a id="logfontObject.weight"></a></p>
+
+<h3>logfontObject.weight</h3>
+
+<p>重量,0到1000<br>
+0为默认值,标准字体为400<br>
+粗体为700</p>
+
+<h3>全局常量</h3>
+
+<p><a id="::AbortPath"></a></p>
+
+<h3>::AbortPath</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;AbortPath&quot;,&quot;int(ptr hdc)&quot;);
+</code></pre>
+
+<p><a id="::AngleArc"></a></p>
+
+<h3>::AngleArc</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;AngleArc&quot;,&quot;int(ptr hdc,int x,int y,int dwRadius,float eStartAngle,float eSweepAngle)&quot;);
+</code></pre>
+
+<p><a id="::Arc"></a></p>
+
+<h3>::Arc</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;Arc&quot;,&quot;int(ptr hdc,int X1,int Y1,int X2,int Y2,int X3,int Y3,int X4,int Y4)&quot;);
+</code></pre>
+
+<p><a id="::ArcTo"></a></p>
+
+<h3>::ArcTo</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;ArcTo&quot;,&quot;int(ptr hdc,int X1,int Y1,int X2,int Y2,int X3,int Y3,int X4,int Y4)&quot;);
+</code></pre>
+
+<p><a id="::BeginPaint"></a></p>
+
+<h3>::BeginPaint</h3>
+
+<pre><code class="aardio language-aardio">u.api(&quot;BeginPaint&quot;,&quot;ptr(addr hwnd,struct &amp;lpPaint)&quot;);
+</code></pre>
+
+<p><a id="::BeginPath"></a></p>
+
+<h3>::BeginPath</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;BeginPath&quot;,&quot;int(ptr hdc)&quot;);
+</code></pre>
+
+<p><a id="::BitBlt"></a></p>
+
+<h3>::BitBlt</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;BitBlt&quot;,&quot;int(ptr hDestDC,int x,int y,int cx,int cy,pointer hSrcDC,int xSrc,int ySrc,int dwRop)&quot;);
+</code></pre>
+
+<p><a id="::CancelDC"></a></p>
+
+<h3>::CancelDC</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;CancelDC&quot;,&quot;int(ptr hdc)&quot;);
+</code></pre>
+
+<p><a id="::CreateBitmap"></a></p>
+
+<h3>::CreateBitmap</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;CreateBitmap&quot;,&quot;ptr(int nWidth,int nHeight,INT nPlanes,INT nBitCount,pointer lpBits)&quot;);
+</code></pre>
+
+<p><a id="::CreateCompatibleBitmap"></a></p>
+
+<h3>::CreateCompatibleBitmap</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;CreateCompatibleBitmap&quot;,&quot;ptr(ptr hdc,int nWidth,int nHeight)&quot;);
+</code></pre>
+
+<p><a id="::CreateCompatibleDC"></a></p>
+
+<h3>::CreateCompatibleDC</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;CreateCompatibleDC&quot;,&quot;ptr(ptr hdc)&quot;);
+</code></pre>
+
+<p><a id="::CreateDC"></a></p>
+
+<h3>::CreateDC</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;CreateDC&quot;,&quot;ptr(str drive,str device,str output,struct initData)&quot;)
+</code></pre>
+
+<p><a id="::CreateFont"></a></p>
+
+<h3>::CreateFont</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;CreateFont&quot;,&quot;ptr(int H,int W,int E,int O,int W,bool I,bool u,int S,int C,int OP,int CP,int Q,int PAF,ustring F)&quot;);
+</code></pre>
+
+<p><a id="::CreateFontIndirect"></a></p>
+
+<h3>::CreateFontIndirect</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;CreateFontIndirect&quot;,&quot;ptr(struct lplf)&quot; )
+</code></pre>
+
+<p><a id="::CreateHatchBrush"></a></p>
+
+<h3>::CreateHatchBrush</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;CreateHatchBrush&quot;,&quot;ptr(int nIndex,int color)&quot;);
+</code></pre>
+
+<p><a id="::CreatePatternBrush"></a></p>
+
+<h3>::CreatePatternBrush</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;CreatePatternBrush&quot;,&quot;ptr(ptr hbm)&quot; )
+</code></pre>
+
+<p><a id="::CreatePen"></a></p>
+
+<h3>::CreatePen</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;CreatePen&quot;,&quot;ptr(int style,int width,int color)&quot;);
+</code></pre>
+
+<p><a id="::CreateSolidBrush"></a></p>
+
+<h3>::CreateSolidBrush</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;CreateSolidBrush&quot;,&quot;ptr(int crColor)&quot;);
+</code></pre>
+
+<p><a id="::DRAWITEMSTRUCT"></a></p>
+
+<h3>::DRAWITEMSTRUCT</h3>
+
+<pre><code class="aardio language-aardio">class {
+    INT CtlType;
+    INT CtlID;
+    INT itemID;
+    INT itemAction;
+    INT itemState;
+    addr hwndItem;
+    pointer hDC;
+    struct rcItem = ::RECT();
+    ptr itemData;
+}
+</code></pre>
+
+<p><a id="::DeleteDC"></a></p>
+
+<h3>::DeleteDC</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;DeleteDC&quot;,&quot;bool(PTR hdc)&quot;);
+</code></pre>
+
+<p><a id="::DeleteObject"></a></p>
+
+<h3>::DeleteObject</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;DeleteObject&quot;,&quot;bool(PTR hObj)&quot;);
+</code></pre>
+
+<p><a id="::DrawEdge"></a></p>
+
+<h3>::DrawEdge</h3>
+
+<pre><code class="aardio language-aardio">u.api(&quot;DrawEdge&quot;,&quot;int(ptr hdc,struct qrc,int edge,int grfFlags)&quot;);
+</code></pre>
+
+<p><a id="::DrawFocusRect"></a></p>
+
+<h3>::DrawFocusRect</h3>
+
+<pre><code class="aardio language-aardio">u.api(&quot;DrawFocusRect&quot;,&quot;int(ptr hdc,struct lpRect)&quot;);
+</code></pre>
+
+<p><a id="::DrawFrameControl"></a></p>
+
+<h3>::DrawFrameControl</h3>
+
+<pre><code class="aardio language-aardio">u.api(&quot;DrawFrameControl&quot;,&quot;int(ptr hdc,struct rc,int un1,int un2)&quot;);
+</code></pre>
+
+<p><a id="::DrawIconEx"></a></p>
+
+<h3>::DrawIconEx</h3>
+
+<pre><code class="aardio language-aardio">u.api(&quot;DrawIconEx&quot;,&quot;int(PTR hdc,int x,int y,pointer hIcon,int cx,int cy,int stepIfAni,pointer hbrFlickerFreeDraw,int flags )&quot; );
+</code></pre>
+
+<p><a id="::DrawText"></a></p>
+
+<h3>::DrawText</h3>
+
+<pre><code class="aardio language-aardio">u.api(&quot;DrawText&quot;,&quot;int(ptr hdc,ustring lpStr,int nCount,struct&amp; lpRect,int wFormat)&quot;);
+</code></pre>
+
+<p><a id="::Ellipse"></a></p>
+
+<h3>::Ellipse</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;Ellipse&quot;,&quot;int(ptr hdc,int X1,int Y1,int X2,int Y2)&quot;);
+</code></pre>
+
+<p><a id="::EndPaint"></a></p>
+
+<h3>::EndPaint</h3>
+
+<pre><code class="aardio language-aardio">u.api(&quot;EndPaint&quot;,&quot;int(addr hwnd,struct lpPaint)&quot;);
+</code></pre>
+
+<p><a id="::EndPath"></a></p>
+
+<h3>::EndPath</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;EndPath&quot;,&quot;int(ptr hdc)&quot;);
+</code></pre>
+
+<p><a id="::FillPath"></a></p>
+
+<h3>::FillPath</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;FillPath&quot;,&quot;int(ptr hdc)&quot;);
+</code></pre>
+
+<p><a id="::FillRect"></a></p>
+
+<h3>::FillRect</h3>
+
+<pre><code class="aardio language-aardio">u.api(&quot;FillRect&quot;,&quot;int(ptr hdc,struct&amp; lpRect,pointer hBrush)&quot;);
+</code></pre>
+
+<p><a id="::FrameRect"></a></p>
+
+<h3>::FrameRect</h3>
+
+<pre><code class="aardio language-aardio">u.api(&quot;FrameRect&quot;,&quot;int(ptr hdc,struct&amp; lpRect,pointer hBrush)&quot;);
+</code></pre>
+
+<p><a id="::GRADIENT_RECT"></a></p>
+
+<h3>::GRADIENT_RECT</h3>
+
+<pre><code class="aardio language-aardio">class {
+    int UpperLeft;
+    int LowerRight;
+}
+</code></pre>
+
+<p><a id="::GdiGradientFill"></a></p>
+
+<h3>::GdiGradientFill</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;GdiGradientFill&quot;,&quot;int(ptr hdc,struct pVertex,int nVertex,struct mesh,int count,int mode)&quot;);
+</code></pre>
+
+<p><a id="::GetBitmapBits"></a></p>
+
+<h3>::GetBitmapBits</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;GetBitmapBits&quot;,&quot;int(ptr hbmp,int len,ptr bits)&quot;)
+</code></pre>
+
+<p><a id="::GetBkColor"></a></p>
+
+<h3>::GetBkColor</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;GetBkColor&quot;,&quot;int(ptr hdc)&quot;);
+</code></pre>
+
+<p><a id="::GetBkMode"></a></p>
+
+<h3>::GetBkMode</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;GetBkMode&quot;,&quot;int(ptr hdc)&quot;);
+</code></pre>
+
+<p><a id="::GetCurrentObject"></a></p>
+
+<h3>::GetCurrentObject</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;GetCurrentObject&quot;,&quot;ptr(ptr hdc,int type)&quot;);
+</code></pre>
+
+<p><a id="::GetDC"></a></p>
+
+<h3>::GetDC</h3>
+
+<pre><code class="aardio language-aardio">u.api(&quot;GetDC&quot;,&quot;ptr(addr hwnd)&quot;);
+</code></pre>
+
+<p><a id="::GetDCEx"></a></p>
+
+<h3>::GetDCEx</h3>
+
+<pre><code class="aardio language-aardio">u.api(&quot;GetDCEx&quot;,&quot;ptr(addr hwnd,int hrgnClip,int flags)&quot;);
+</code></pre>
+
+<p><a id="::GetDeviceCaps"></a></p>
+
+<h3>::GetDeviceCaps</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;GetDeviceCaps&quot;,&quot;int(ptr hdc,int nIndex)&quot;);
+</code></pre>
+
+<p><a id="::GetObject"></a></p>
+
+<h3>::GetObject</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;GetObject&quot;,&quot;int(ptr hObj,int nCount,struct&amp; lpObject)&quot;);
+</code></pre>
+
+<p><a id="::GetPixel"></a></p>
+
+<h3>::GetPixel</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;GetPixel&quot;,&quot;int(ptr hdc,int x,int y)&quot;);
+</code></pre>
+
+<p><a id="::GetStockObject"></a></p>
+
+<h3>::GetStockObject</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;GetStockObject&quot;,&quot;ptr(int i)&quot; )
+</code></pre>
+
+<p><a id="::GetStretchBltMode"></a></p>
+
+<h3>::GetStretchBltMode</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;GetStretchBltMode&quot;,&quot;int(ptr hdc)&quot;);
+</code></pre>
+
+<p><a id="::GetSysColor"></a></p>
+
+<h3>::GetSysColor</h3>
+
+<pre><code class="aardio language-aardio">u.api(&quot;GetSysColor&quot;,&quot;int(int nIndex)&quot;);
+</code></pre>
+
+<p><a id="::GetTextAlign"></a></p>
+
+<h3>::GetTextAlign</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;GetTextAlign&quot;,&quot;int(PTR hdc)&quot;)
+</code></pre>
+
+<p><a id="::GetTextColor"></a></p>
+
+<h3>::GetTextColor</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;GetTextColor&quot;,&quot;int(ptr hdc)&quot;);
+</code></pre>
+
+<p><a id="::GetWindowDC"></a></p>
+
+<h3>::GetWindowDC</h3>
+
+<pre><code class="aardio language-aardio">u.api(&quot;GetWindowDC&quot;,&quot;ptr(addr hwnd)&quot; )
+</code></pre>
+
+<p><a id="::LOGFONT()"></a></p>
+
+<h3>::LOGFONT()</h3>
+
+<p>创建字体[LOGFONT结构体]<br>
+可调用createIndirect生成字体句柄<br>
+gdi.textOut,gdi.drawText 等函数可以直接使用此对象作为参数<br>
+所有窗口及控件的setFont函数可使用此对象作为参数  </p>
+
+<p><a href="#logfontObject">返回对象:logfontObject</a></p>
+
+<p><a id="::LOGFONT(name="Tahoma";point=12 )"></a></p>
+
+<h3>::LOGFONT(name=&quot;Tahoma&quot;;point=12 )</h3>
+
+<p>创建字体对象<br>
+参数表可以使用键值对指定LOGFONT结构体中的字段值,<br>
+参数也可以是另一个LOGFONT结构体,此时复制并创建新的结构体<br>
+point指定字体大小,以点数为单位</p>
+
+<p><a id="::LineTo"></a></p>
+
+<h3>::LineTo</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;LineTo&quot;,&quot;bool(ptr hdc,int x,int y)&quot;);
+</code></pre>
+
+<p><a id="::MEASUREITEMSTRUCT"></a></p>
+
+<h3>::MEASUREITEMSTRUCT</h3>
+
+<pre><code class="aardio language-aardio">class {
+    INT CtlType;
+    INT CtlID;
+    INT itemID;
+    INT itemWidth;
+    INT itemHeight;
+    ptr itemData;
+}
+</code></pre>
+
+<p><a id="::MoveToEx"></a></p>
+
+<h3>::MoveToEx</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;MoveToEx&quot;,&quot;bool(ptr hdc,int x,int y,struct&amp; lpPoint)&quot;);
+</code></pre>
+
+<p><a id="::PAINTSTRUCT"></a></p>
+
+<h3>::PAINTSTRUCT</h3>
+
+<pre><code class="aardio language-aardio">class {
+    pointer hdc;
+    int fErase;
+    struct rcPaint = ::RECT();
+    int fRestore;
+    int fIncUpdate;
+    BYTE rgbReserved[32];
+}
+</code></pre>
+
+<p><a id="::PatBlt"></a></p>
+
+<h3>::PatBlt</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;PatBlt&quot;,&quot;int(PTR hDc,int x,int y,int cx,int cy,INT rop)&quot; )
+</code></pre>
+
+<p><a id="::PrintWindow"></a></p>
+
+<h3>::PrintWindow</h3>
+
+<pre><code class="aardio language-aardio">u.api(&quot;PrintWindow&quot;,&quot;int(addr hwnd,pointer hdcBlt,int nFlags)&quot;);
+</code></pre>
+
+<p><a id="::ReleaseDC"></a></p>
+
+<h3>::ReleaseDC</h3>
+
+<pre><code class="aardio language-aardio">u.api(&quot;ReleaseDC&quot;,&quot;bool(addr hwnd,PTR hdc)&quot;);
+</code></pre>
+
+<p><a id="::RoundRect"></a></p>
+
+<h3>::RoundRect</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;RoundRect&quot;,&quot;int(ptr hdc,int l,int t,int r,int b,int cx,int cy)&quot;);
+</code></pre>
+
+<p><a id="::SelectClipPath"></a></p>
+
+<h3>::SelectClipPath</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;SelectClipPath&quot;,&quot;int(ptr hdc,int iMode)&quot;);
+</code></pre>
+
+<p><a id="::SelectObject"></a></p>
+
+<h3>::SelectObject</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;SelectObject&quot;,&quot;ptr(PTR hdc,ptr hObj)&quot;);
+</code></pre>
+
+<p><a id="::SetBkColor"></a></p>
+
+<h3>::SetBkColor</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;SetBkColor&quot;,&quot;int(ptr hdc,int color)&quot;);
+</code></pre>
+
+<p><a id="::SetBkMode"></a></p>
+
+<h3>::SetBkMode</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;SetBkMode&quot;,&quot;int(ptr hdc,int mode)&quot;);
+</code></pre>
+
+<p><a id="::SetBrushOrgEx"></a></p>
+
+<h3>::SetBrushOrgEx</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;SetBrushOrgEx&quot;,&quot;int(ptr hdc,int xOrg,int yOrg,struct &amp;pt)&quot;);
+</code></pre>
+
+<p><a id="::SetPixel"></a></p>
+
+<h3>::SetPixel</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;SetPixel&quot;,&quot;int(ptr hdc,int x,int y,int crColor)&quot;);
+</code></pre>
+
+<p><a id="::SetStretchBltMode"></a></p>
+
+<h3>::SetStretchBltMode</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;SetStretchBltMode&quot;,&quot;int(ptr hdc,int nStretchMode)&quot;);
+</code></pre>
+
+<p><a id="::SetTextAlign"></a></p>
+
+<h3>::SetTextAlign</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;SetTextAlign&quot;,&quot;int(PTR hdc,INT align)&quot;)
+</code></pre>
+
+<p><a id="::SetTextColor"></a></p>
+
+<h3>::SetTextColor</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;SetTextColor&quot;,&quot;int(ptr hdc,int crColor)&quot;);
+</code></pre>
+
+<p><a id="::StretchBlt"></a></p>
+
+<h3>::StretchBlt</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;StretchBlt&quot;,&quot;int(ptr hdc,int x,int y,int nWidth,int nHeight,pointer hSrcDC,int xSrc,int ySrc,int nSrcWidth,int nSrcHeight,int dwRop)&quot;);
+</code></pre>
+
+<p><a id="::TRIVERTEX"></a></p>
+
+<h3>::TRIVERTEX</h3>
+
+<pre><code class="aardio language-aardio">class {
+    int x;
+    int y;
+    WORD Red;
+    WORD Green;
+    WORD Blue;
+    WORD Alpha;
+}
+</code></pre>
+
+<p><a id="::TextOut"></a></p>
+
+<h3>::TextOut</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;TextOut&quot;,&quot;int(ptr hdc,int x,int y,ustring lpString,int nCount)&quot;);
+</code></pre>
+
+<p><a id="::TransparentBlt"></a></p>
+
+<h3>::TransparentBlt</h3>
+
+<pre><code class="aardio language-aardio">g.api(&quot;GdiTransparentBlt&quot;,&quot;int(ptr hdcDest,int xoriginDest,int yoriginDest,int wDest,int hDest,pointer hdcSrc,int xoriginSrc,int yoriginSrc,int wSrc,int hSrc,INT crTransparent)&quot;);
+</code></pre>
+
+<h3>自动完成常量</h3>
+
+<p>_ANSI_CHARSET=0<br>
+_ARABIC_CHARSET=0xB2<br>
+_BALTIC_CHARSET=0xBA<br>
+_BLACKNESS=0x42<br>
+_CHINESEBIG5_CHARSET=0x88<br>
+_CLR_DEFAULT=0xFF000000<br>
+_CLR_NONE=-1<br>
+_DEFAULT_CHARSET=1<br>
+_DSTINVERT=0x550009<br>
+_EASTEUROPE_CHARSET=0xEE<br>
+_GB2312_CHARSET=0x86<br>
+_GREEK_CHARSET=0xA1<br>
+_HANGEUL_CHARSET=0x81<br>
+_HANGUL_CHARSET=0x81<br>
+_HEBREW_CHARSET=0xB1<br>
+_JOHAB_CHARSET=0x82<br>
+_MAC_CHARSET=0x4D<br>
+_MERGECOPY=0xC000CA<br>
+_MERGEPAINT=0xBB0226<br>
+_NOTSRCCOPY=0x330008<br>
+_NOTSRCERASE=0x1100A6<br>
+_OEM_CHARSET=0xFF<br>
+_PATCOPY=0xF00021<br>
+_PATINVERT=0x5A0049<br>
+_PATPAINT=0xFB0A09<br>
+_RUSSIAN_CHARSET=0xCC<br>
+_SHIFTJIS_CHARSET=0x80<br>
+_SRCAND=0x8800C6<br>
+_SRCCOPY=0xCC0020<br>
+_SRCERASE=0x440328<br>
+_SRCINVERT=0x660046<br>
+_SRCPAINT=0xEE0086<br>
+_STRETCH_ANDSCANS=0x1<br>
+_STRETCH_DELETESCANS=0x3<br>
+_STRETCH_HALFTONE=0x4<br>
+_STRETCH_ORSCANS=0x2<br>
+_SYMBOL_CHARSET=2<br>
+_THAI_CHARSET=0xDE<br>
+_TURKISH_CHARSET=0xA2<br>
+_ULW_ALPHA=0x2<br>
+_ULW_COLORKEY=0x1<br>
+_ULW_OPAQUE=0x4<br>
+_VIETNAMESE_CHARSET=0xA3<br>
+_WHITENESS=0xFF0062  </p>
+
+<p><a href="_.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/gdi/_.md">Markdown 格式</a></p>
+
+</body> 
+</html>

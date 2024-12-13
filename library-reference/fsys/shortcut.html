@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - fsys.shortcut 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - fsys.shortcut 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>fsys.shortcut 库模块帮助文档</h1>
+
+<p><a id="fsys"></a></p>
+
+<h2>fsys 成员列表</h2>
+
+<p><a id="fsys.shortcut"></a></p>
+
+<h3>fsys.shortcut</h3>
+
+<p>快捷方式生成器</p>
+
+<p><a id="fsys.shortcut"></a></p>
+
+<h3>fsys.shortcut(&quot;目标文件根目录&quot; )</h3>
+
+<p>创建快捷方式生成器<br>
+快捷方式参数可指定相对[目标文件根目录]的子路径</p>
+
+<p><a id="fsys.shortcut"></a></p>
+
+<h3>fsys.shortcut()</h3>
+
+<p><a href="#fsysShortcutObject">返回对象:fsysShortcutObject</a></p>
+
+<p><a id="fsysShortcutObject"></a></p>
+
+<h2>fsysShortcutObject 成员列表</h2>
+
+<p><a id="fsysShortcutObject.create"></a></p>
+
+<h3>fsysShortcutObject.create( 参数表 )</h3>
+
+<pre><code class="aardio language-aardio">fsysShortcutObject.create(   
+    url = &quot;网址&quot;;  
+    lnk = &quot;应用程序路径&quot;;/*lnk,url必须且只能指定其中一个  
+其他参数都是可选的可以省略*/  
+    arguments = 启动参数;  
+    filename = 快捷方式文件名;  
+    icon = 应用程序路径图标或图标资源所在程序路径;  
+    iconIndex = 0;    
+    taskBar = true;   
+    startMenu = false;   
+    desktop = true;  
+    programsFolder = &quot;\公司名\&quot;;   
+    allUsers = false;  
+)
+</code></pre>
+
+<p><a id="fsysShortcutObject.delete"></a></p>
+
+<h3>fsysShortcutObject.delete( 参数表 )</h3>
+
+<pre><code class="aardio language-aardio">fsysShortcutObject.delete(   
+    url = &quot;网址&quot;;  
+    lnk = &quot;应用程序路径&quot;;/*lnk,url必须且只能指定其中一个  
+其他参数都是可选的可以省略*/  
+    filename = &quot;快捷方式文件名&quot;;  
+    taskBar = true;   
+    startMenu = false;   
+    desktop = true;  
+    programsFolder = &quot;\公司名\&quot;;   
+)
+</code></pre>
+
+<p><a href="shortcut.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/fsys/shortcut.md">Markdown 格式</a></p>
+
+</body> 
+</html>

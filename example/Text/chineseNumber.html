@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - 中文数值'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - 中文数值</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 中文数值</h1><pre><code class="aardio language-aardio">//中文数值
+import console; 
+import string.chineseNumber; 
+var zh = string.chineseNumber(); 
+
+//中文数值
+console.log( zh.number(&quot;123456789000000000000&quot;) );
+console.log( zh.number(&quot;123,456,789,000,000,000,000&quot;) );
+console.log( zh.number(&quot;10,0000&quot;) );
+console.log( zh.number(&quot;10_0000&quot;) );
+
+console.log( zh.number(12305000.137) );
+console.log( zh.number(1230_5000.137) );
+
+//中文金额
+var zh = string.chineseNumber(&#39;零壹贰叁肆伍陆柒捌玖&#39;,&#39;拾佰仟&#39;); 
+console.log(zh.money(12003089.35));
+console.log(zh.number(&quot;010&quot;)); //票据日期补零
+
+//中文时间
+var zh = string.chineseNumber(&#39;〇一二三四五六七八九&#39;); 
+console.log(zh.datetime());
+console.log(zh.date());
+console.log(zh.time());
+console.pause();
+</code></pre>
+<a href="chineseNumber.md" tppabs="https://www.aardio.com/zh-cn/doc/example/Text/chineseNumber.md">Markdown 格式</a>
+</body> 
+</html>

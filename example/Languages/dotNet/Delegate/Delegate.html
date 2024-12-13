@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - .NET 委托自动支持 aardio 函数对象'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - .NET 委托自动支持 aardio 函数对象</title> 
+<link rel="stylesheet" href="../../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: .NET 委托自动支持 aardio 函数对象</h1><pre><code class="aardio language-aardio">//.NET 委托自动支持 aardio 函数对象
+//.NET 静态委托回调自动支持 aardio 的回调函数，兼容低版本 .NET 2.0
+import dotNet; 
+var compiler = dotNet.createCompiler(&quot;C#&quot;);  
+compiler.Source = /****** 
+namespace CSharpLibrary
+{ 
+    public class Object
+    {
+        //定义一个委托类型
+        public delegate int TestDelegateType(string str,int a);
+
+        //定义一个委托类型字段
+        public TestDelegateType callback;
+
+        //函数与委托的参数、返回值类型要一致
+        public int TestCall(string str,int a){
+            return a + 900;
+        }
+
+        //函数参数传入委托
+        public int Hello(TestDelegateType func)
+        {  
+            return func(&quot;你好&quot;,123); 
+        }
+
+        //函数返回委托
+        public TestDelegateType GetTestDelegate( )
+        {  
+            var n = callback(&quot;你好&quot;,123);
+
+            //函数转换为委托
+            //return new TestDelegateType(TestCall); 
+
+            //.NET 2.0 开始支持隐式转换,可以不用再写 new 了。
+            return TestCall;
+        }
+    }
+}
+******/
+
+compiler.import(&quot;CSharpLibrary&quot;); //编译 C# 代码并导入名字空间
+var netObj = CSharpLibrary.Object();//创建 .NET 对象
+
+import console;
+
+//函数参数传入委托
+netObj.Hello(function(){
+    //无论.NET 回调是否在同一线程，被 .NET 回调的 aardio 函数总是在原调用线程执行（不必考虑多线程规则与同步）。  
+    console.log(&quot;3、aardio 函数被 C# 调用了,参数:&quot;,a,b)
+    return 2; //如果不返回委托指定类型的返回值会导致报错，委托返回值类型为 void 时这里可以不返回值。
+})
+
+//委托回调可以直接赋值为 aardio 函数对象
+netObj.callback = function(a,b){
+    console.log(&quot;1、aardio 函数被 C# 调用了,参数:&quot;,a,b)
+    return 1; 
+} 
+
+//也可以这样追加委托回调函数
+dotNet.delegate.combine(
+    netObj,&quot;callback&quot;,function(a,b){
+        console.log(&quot;2、aardio 函数被 C# 调用了,参数:&quot;,a,b)
+        return 2; 
+    } 
+)
+
+//获取委托的回调对象数组
+var list = netObj.callback.GetInvocationList()
+console.log(list[1]);
+
+//调用 C# 函数，可以在返回值里返回 .NET 委托
+var resultDelegate = netObj.GetTestDelegate();  
+
+//直接调用 .NET 委托。
+var ret = resultDelegate(&quot;调用函数返回的委托&quot;,123);
+console.log(&quot;调用 C# 委托的返回值&quot;,ret);
+
+//通过对像成员获取 .NET 委托对象
+var callback  = netObj.callback;
+
+//可以在 aardio 中直接调用 .NET 委托对象
+callback(&quot;测试&quot;,123)
+
+//下面这样写是作为对象的成员函数调用，委托字段不是成员函数所以会报错
+//netObj.callback(&quot;测试&quot;,123)
+
+console.pause();
+</code></pre>
+<a href="Delegate.md" tppabs="https://www.aardio.com/zh-cn/doc/example/Languages/dotNet/Delegate/Delegate.md">Markdown 格式</a>
+</body> 
+</html>

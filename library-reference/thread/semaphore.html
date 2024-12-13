@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - thread.semaphore 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - thread.semaphore 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>thread.semaphore 库模块帮助文档</h1>
+
+<p><a id="thread"></a></p>
+
+<h2>thread 成员列表</h2>
+
+<p><a id="thread.semaphore"></a></p>
+
+<h3>thread.semaphore</h3>
+
+<p>创建或打开信号量对象,<br>
+返回对象可传入其他线程使用。</p>
+
+<p>信号量可用于进程或线程间同步</p>
+
+<p><a id="thread.semaphore"></a></p>
+
+<h3>thread.semaphore(&quot;信号量对象名称&quot;,10)</h3>
+
+<p>创建信号量同步对象,可以跨进程使用,<br>
+省略名称创建匿名对象,<br>
+参数@2指定最大资源计数,<br>
+可选参数@3指定初始空闲计数，默认等于最大资源计数,<br>
+参数2,参数3仅在首次创建该事件对象是起作用</p>
+
+<p><a id="thread.semaphore"></a></p>
+
+<h3>thread.semaphore()</h3>
+
+<p><a href="#threadSemaphoreObject">返回对象:threadSemaphoreObject</a></p>
+
+<p><a id="thread.semaphore"></a></p>
+
+<h3>thread.semaphore(信号量句柄)</h3>
+
+<p>使用句柄直接打开信号量</p>
+
+<p><a id="thread.semaphore"></a></p>
+
+<h3>thread.semaphore(信号量句柄,true)</h3>
+
+<p>使用句柄直接打开信号量<br>
+添加析构函数负责释放句柄</p>
+
+<p><a id="threadSemaphoreObject"></a></p>
+
+<h2>threadSemaphoreObject 成员列表</h2>
+
+<p><a id="threadSemaphoreObject.close"></a></p>
+
+<h3>threadSemaphoreObject.close()</h3>
+
+<p>关闭信号量对象<br>
+该函数并不关闭信号量内核对象<br>
+当所有引用内核对象的对象关闭,内核对象自动释放</p>
+
+<p><a id="threadSemaphoreObject.conflict"></a></p>
+
+<h3>threadSemaphoreObject.conflict</h3>
+
+<p>如果信号量对象已存在,此属性为真值<br>
+否则为空值</p>
+
+<p><a id="threadSemaphoreObject.release"></a></p>
+
+<h3>threadSemaphoreObject.release()</h3>
+
+<p>线程在处理完共享资源后,<br>
+应在离开时调用此函数将可用资源计数加1<br>
+可在参数中指定要释放的资源计数(默认为1)<br>
+第一个返回值表示函数执行是否成功,<br>
+第二个返回值为原来的资源计数</p>
+
+<p><a id="threadSemaphoreObject.wait"></a></p>
+
+<h3>threadSemaphoreObject.wait()</h3>
+
+<p>等待可用资源计数大于0,<br>
+可选增加一个参数指定超时,以毫秒为单位<br>
+注意此函数应与release()函数配对使用<br>
+在UI线程中应使用非阻塞的waitOne()函数替代</p>
+
+<p><a id="threadSemaphoreObject.waitOne"></a></p>
+
+<h3>threadSemaphoreObject.waitOne()</h3>
+
+<p>等待可用资源计数大于0,<br>
+可选增加一个参数指定超时,以毫秒为单位<br>
+注意此函数应与release()函数配对使用</p>
+
+<p><a href="semaphore.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/thread/semaphore.md">Markdown 格式</a></p>
+
+</body> 
+</html>

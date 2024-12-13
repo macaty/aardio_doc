@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - com.lite 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - com.lite 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>com.lite 库模块帮助文档</h1>
+
+<p><a id="com"></a></p>
+
+<h2>com 成员列表</h2>
+
+<p><a id="com.lite"></a></p>
+
+<h3>com.lite(&quot;x.dll&quot;)</h3>
+
+<p>参数用法与 raw.loadDll() 函数相同,支持内存OCX<br>
+如果该组件不是合法的COM组件,返回null空值</p>
+
+<p><a id="com.lite"></a></p>
+
+<h3>com.lite()</h3>
+
+<p><a href="#comLiteDllObject">返回对象:comLiteDllObject</a></p>
+
+<p><a id="com.lite"></a></p>
+
+<h2>com.lite 成员列表</h2>
+
+<p>免注册 COM 组件调用接口</p>
+
+<p><a id="com.lite.appData"></a></p>
+
+<h3>com.lite.appData</h3>
+
+<p>将@path指定的相对路径转换为系统  %CommonAppData% 目录下的绝对路径</p>
+
+<p><a id="com.lite.appData"></a></p>
+
+<h3>com.lite.appData()</h3>
+
+<p><a href="#comLiteDllObject">返回对象:comLiteDllObject</a></p>
+
+<p><a id="com.lite.appData"></a></p>
+
+<h3>com.lite.appData(path,data)</h3>
+
+<p>可选使用@data指定需要存入的数据,<br>
+在文件路径前加上$符号即可将文件编译到代码中并可作为@data参数,<br>
+只有在存入字节与目标文件内容长度不同时才会更新文件,<br>
+最后使用该路径加载并返回组件对象  </p>
+
+<p>使用这个方法可将控件嵌入EXE以生成独立文件,<br>
+也可以解决一些控件不支持在包含Unicode字符的目录下运行的问题</p>
+
+<p><a id="comLiteDllObject"></a></p>
+
+<h2>comLiteDllObject 成员列表</h2>
+
+<p><a id="comLiteDllObject.createEmbed"></a></p>
+
+<h3>comLiteDllObject.createEmbed</h3>
+
+<p>创建嵌入控件,返回控件容器对象,<br>
+容器对象的 _object 成员是创建的 COM 对象,<br>
+容器对象可通过添加成员函数响应 COM 对象事件，<br>
+容器对象的主要作用是充当访问 COM 对象的中间代理对象。<br>
+通常使用 util.metaProperty 为容器对象添加属性元表，<br>
+属性元表可拦截属性、函数调用并调用 _object 对象,  </p>
+
+<p>createEmbedEx 返回的容器已添加默认代理以直接访问 COM 对象</p>
+
+<p><a id="comLiteDllObject.createEmbed"></a></p>
+
+<h3>comLiteDllObject.createEmbed()</h3>
+
+<p><a href="_.html#embedObject" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/com/_.html#embedObject">返回对象:embedObject</a></p>
+
+<p><a id="comLiteDllObject.createEmbed"></a></p>
+
+<h3>comLiteDllObject.createEmbed(winform,clsId,iid,embedObj)</h3>
+
+<p>创建嵌入控件,返回控件容器对象,<br>
+容器对象的 _object 成员是创建的 COM 对象,<br>
+容器对象可通过添加成员函数响应 COM 对象事件，<br>
+容器对象的主要作用是充当访问 COM 对象的中间代理对象,<br>
+@clsId 指定控件 CLSID,如果控件不是自内存加载,<br>
+则可省略 @clsId 并由 firstCoClassId函数自动获取,<br>
+参数@3指定接口IID,可省略,默认值为 IID_IDispatch,<br>
+可选在参数@4 中指定 COM 对象绑定的容器对象</p>
+
+<p><a id="comLiteDllObject.createEmbedEx"></a></p>
+
+<h3>comLiteDllObject.createEmbedEx</h3>
+
+<p>创建嵌入控件,返回控件容器对象,<br>
+容器对象的 _object 成员是创建的 COM 对象,<br>
+容器对象可通过添加成员函数响应 COM 对象事件，<br>
+容器对象的主要作用是充当访问 COM 对象的中间代理对象。<br>
+此函数返回的容器已添加元表并创建代理以直接访问 COM 对象</p>
+
+<p><a id="comLiteDllObject.createEmbedEx"></a></p>
+
+<h3>comLiteDllObject.createEmbedEx()</h3>
+
+<p><a href="_.html#embedObject" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/com/_.html#embedObject">返回对象:embedObject</a></p>
+
+<p><a id="comLiteDllObject.createEmbedEx"></a></p>
+
+<h3>comLiteDllObject.createEmbedEx(winform,clsId,iid,embedObj)</h3>
+
+<p>创建嵌入控件,返回控件容器对象,<br>
+此函数返回的容器已添加元表并创建代理以直接访问 COM 对象,<br>
+@clsId 指定控件 CLSID,如果控件不是自内存加载,<br>
+则可省略 @clsId 并由 firstCoClassId函数自动获取,<br>
+参数@3指定接口IID,可省略,默认值为 IID_IDispatch,<br>
+可选在参数@4 中指定 COM 对象绑定的容器对象</p>
+
+<p><a id="comLiteDllObject.createInstance"></a></p>
+
+<h3>comLiteDllObject.createInstance()</h3>
+
+<p><a href="#interfaceObject">返回对象:interfaceObject</a></p>
+
+<p><a id="comLiteDllObject.createInstance"></a></p>
+
+<h3>comLiteDllObject.createInstance(clsId,interface)</h3>
+
+<p>创建COM接口<br>
+参数@interface 指定接口类,可省略,<br>
+@interface 认值为 com.interface.IUnknown</p>
+
+<p><a id="comLiteDllObject.createObject"></a></p>
+
+<h3>comLiteDllObject.createObject(clsId,iid)</h3>
+
+<p>创建COM对象<br>
+参数2可省略,默认值为 IID_IDispatch</p>
+
+<p><a id="comLiteDllObject.firstCoClassId"></a></p>
+
+<h3>comLiteDllObject.firstCoClassId()</h3>
+
+<p>获取控件的首个 CLSID,<br>
+通过内存加载控件时此函数不可用</p>
+
+<p><a id="comLiteDllObject.getPath"></a></p>
+
+<h3>comLiteDllObject.getPath()</h3>
+
+<p>返回加载的 DLL 文件路径,<br>
+内存 DLL 返回 null</p>
+
+<p><a id="comLiteDllObject.licenseKey"></a></p>
+
+<h3>comLiteDllObject.licenseKey</h3>
+
+<p>设置创建控件使用的许可证密钥</p>
+
+<p><a id="comLiteDllObject.registerServer"></a></p>
+
+<h3>comLiteDllObject.registerServer()</h3>
+
+<p>注册组件</p>
+
+<p><a id="comLiteDllObject.requestLicKey"></a></p>
+
+<h3>comLiteDllObject.requestLicKey(clsId)</h3>
+
+<p>开发时调用此函数返回许可证密钥</p>
+
+<p><a id="comLiteDllObject.unregisterServer"></a></p>
+
+<h3>comLiteDllObject.unregisterServer()</h3>
+
+<p>卸载组件</p>
+
+<p><a id="embedObject"></a></p>
+
+<h2>embedObject 成员列表</h2>
+
+<p><a id="embedObject._form"></a></p>
+
+<h3>embedObject._form</h3>
+
+<p>COM 控件宿主窗口,<br>
+也就创建控件的构造参数中指定的 aardio 控件或窗口对象<br>
+也是控件窗口的上级父窗口,  </p>
+
+<p><a href="../win/ui/ctrl/static.html#staticObject" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/win/ui/ctrl/static.html#staticObject">返回对象:staticObject</a></p>
+
+<p><a id="embedObject._host"></a></p>
+
+<h3>embedObject._host</h3>
+
+<p>COM 控件宿主对象</p>
+
+<p><a id="embedObject._host.adjust"></a></p>
+
+<h3>embedObject._host.adjust()</h3>
+
+<p>自动调整 COM 控件窗口大小</p>
+
+<p><a id="embedObject._host.close"></a></p>
+
+<h3>embedObject._host.close()</h3>
+
+<p>关闭对象</p>
+
+<p><a id="embedObject._host.doObjectVerb"></a></p>
+
+<h3>embedObject._host.doObjectVerb( _OLEIVERB )</h3>
+
+<p>执行指定的动词命令</p>
+
+<p><a id="embedObject._host.tranacc"></a></p>
+
+<h3>embedObject._host.tranacc(MSG消息对象)</h3>
+
+<p>解析 COM 控件 快捷键,<br>
+如果是快捷键返回真值</p>
+
+<p><a id="embedObject._object"></a></p>
+
+<h3>embedObject._object</h3>
+
+<p>COM 控件对象,<br>
+通过此对象可以访问 COM 对象的成员函数和成员属性,<br>
+ 可改造容器对象并在内部调用 _object 以改进 COM 对象接口<br>
+也可以通过指定容器对象的成员函数以响应 COM 对象的事件</p>
+
+<p><a href="lite.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/com/lite.md">Markdown 格式</a></p>
+
+</body> 
+</html>

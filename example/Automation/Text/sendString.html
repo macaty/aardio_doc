@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - 自动化 - 发送字符串'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - 自动化 - 发送字符串</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 自动化 - 发送字符串</h1><pre><code class="aardio language-aardio">//自动化 - 发送字符串
+import process;
+import key;
+
+//运行程序，并等待主窗口
+process(&quot;notepad.exe&quot;).waitMainWindow();
+
+//延时
+thread.delay(1000);
+
+//发送全选组合键
+key.combine(&quot;CTRL&quot;,&quot;A&quot;);
+
+//发送文本
+key.sendString(&quot;直接发送字符串。&quot;);
+
+//打字效果
+key.send( &quot;这样就可以实现打字效果了。&quot;,200);
+
+/*
+其他发送字符串函数：
+
+winex.say();
+winex.sayIme();
+winex.sayAnsi();
+winex.sayImeAnsi();
+winex.sendString();
+winex.setText();
+winex.key.send();
+*/ 
+</code></pre>
+<a href="sendString.md" tppabs="https://www.aardio.com/zh-cn/doc/example/Automation/Text/sendString.md">Markdown 格式</a>
+</body> 
+</html>

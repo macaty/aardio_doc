@@ -1,0 +1,193 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - crypt.rc4 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - crypt.rc4 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>crypt.rc4 库模块帮助文档</h1>
+
+<p><a id="crypt"></a></p>
+
+<h2>crypt 成员列表</h2>
+
+<p><a id="crypt.rc4"></a></p>
+
+<h3>crypt.rc4</h3>
+
+<p>rc4加密算法</p>
+
+<p><a id="crypt.rc4"></a></p>
+
+<h3>crypt.rc4()</h3>
+
+<p>返回RC4加密容器,<br>
+可选使用一个字符串参数指定密钥向量<br>
+如果要与其他编程语言有相同加解密结果,建议不要设置该参数  </p>
+
+<p><a href="#crypyRc4Object">返回对象:crypyRc4Object</a></p>
+
+<p><a id="crypyRc4Object"></a></p>
+
+<h2>crypyRc4Object 成员列表</h2>
+
+<p><a id="crypyRc4Object.allocBuffer"></a></p>
+
+<h3>crypyRc4Object.allocBuffer</h3>
+
+<p>分配加解密需要用到的 buffer。</p>
+
+<p><a id="crypyRc4Object.allocBuffer"></a></p>
+
+<h3>crypyRc4Object.allocBuffer(大小,块大小)</h3>
+
+<p>分配加解密需要用到的 buffer。<br>
+如果不手动分配，程序将会自动按需分配 buffer。<br>
+参数 @2 可选，可用对象的blockSize属性指定默认块大小。</p>
+
+<p><a id="crypyRc4Object.blockSize"></a></p>
+
+<h3>crypyRc4Object.blockSize</h3>
+
+<p>加密填充的块大小</p>
+
+<p><a id="crypyRc4Object.buffer"></a></p>
+
+<h3>crypyRc4Object.buffer</h3>
+
+<p>加解密时暂存输入输出数据的缓冲区。<br>
+只能通过调用 allocBuffer 函数分配此缓冲区。<br>
+或者由加解密函数自动分配此缓冲区。  </p>
+
+<p>如果未分配缓冲区，或缓冲区大小不够。<br>
+加解密时会重新调用 allocBuffer 函数分配到合适大小。   </p>
+
+<p>一般不应直接访问此属性。</p>
+
+<p><a id="crypyRc4Object.decrypt"></a></p>
+
+<h3>crypyRc4Object.decrypt</h3>
+
+<p>解密数据</p>
+
+<p><a id="crypyRc4Object.decrypt"></a></p>
+
+<h3>crypyRc4Object.decrypt(输入数据,是否已输入全部数据,哈希对象,选项)</h3>
+
+<p>参数 @1 指定字符串或 buffer。<br>
+除第一个参数以外，其他参数都是可选参数。<br>
+分块解密时，参数 @2 必须为 flase 且参数 @1 的长度必须是块大小的倍数。<br>
+成功返回解密文本,失败返回空,<br>
+可使用..lasterr()函数获取错误信息</p>
+
+<p><a id="crypyRc4Object.decrypt"></a></p>
+
+<h3>crypyRc4Object.decrypt(输入缓冲区,输入数据大小,哈希对象,选项)</h3>
+
+<p>参数 @1 指定 buffer 或字符串。<br>
+如果参数 @2 指定的数值小于缓冲区据总长度，解密结束。<br>
+可使用 -1 表示解密结束，且输入数据大小等于缓冲区大小。<br>
+其他参数可忽略不用管。  </p>
+
+<p>成功返回存放解密结果的缓冲区，返回值 2 为解密长度。<br>
+需要分块解密的算法，例如 RSA 算法返回的解密结果为字符串。<br>
+失败返回 null, 错误信息,错误代码。  </p>
+
+<p>用法可参考 decryptFile 函数源码。</p>
+
+<p><a id="crypyRc4Object.decryptFile"></a></p>
+
+<h3>crypyRc4Object.decryptFile</h3>
+
+<p>解密文件</p>
+
+<p><a id="crypyRc4Object.decryptFile"></a></p>
+
+<h3>crypyRc4Object.decryptFile(输入文件,输出文件,缓冲区大小,进度回调函数,哈希对象,选项)</h3>
+
+<p>参数 @1 指定要解密的文件。参数 @2 指定要保存解密结果的文件。<br>
+文件参数都可以指定文件路径、文件对象（兼容 io.file,fsys.file,fsys.stream）。<br>
+可选用参数 @3 指定分块加密的字节长度，默认为 1MB。<br>
+指定字节长度时会自动调整到对齐块大小，参数不需要考虑对齐。<br>
+可选指定进度回调函数，回调参数 @1,@2 分别为输入文件总长度、已读取长度。<br>
+其他调用参数（哈希对象，选项）一般不必指定。  </p>
+
+<p>函数执行成功返回 true，失败返回 null,错误信息。</p>
+
+<p><a id="crypyRc4Object.encrypt"></a></p>
+
+<h3>crypyRc4Object.encrypt</h3>
+
+<p>加密数据</p>
+
+<p><a id="crypyRc4Object.encrypt"></a></p>
+
+<h3>crypyRc4Object.encrypt(输入数据,是否已输入全部数据,哈希对象,选项)</h3>
+
+<p>参数 @1 指定字符串或 buffer。<br>
+除第一个参数以外，其他参数都是可选参数。<br>
+分块加密时，参数 @2 必须为 flase 且参数 @1 的长度必须是块大小的倍数。<br>
+成功返回加密文本,失败返回空,<br>
+可使用..lasterr()函数获取错误信息</p>
+
+<p><a id="crypyRc4Object.encrypt"></a></p>
+
+<h3>crypyRc4Object.encrypt(输入缓冲区,输入数据大小,哈希对象,选项)</h3>
+
+<p>参数 @1 指定 buffer 或字符串。<br>
+如果参数 @2 指定的数值小于缓冲区据总长度，加密结束。<br>
+可使用 -1 表示解密结束，且输入数据大小等于缓冲区大小。<br>
+其他参数可忽略不用管。  </p>
+
+<p>成功返回存放加密结果的缓冲区，返回值 2 为解密长度。<br>
+需要分块解密的算法，例如 RSA 算法返回的解密结果为字符串。<br>
+失败返回 null, 错误信息,错误代码。  </p>
+
+<p>用法可参考 encryptFile 函数源码。</p>
+
+<p><a id="crypyRc4Object.encryptFile"></a></p>
+
+<h3>crypyRc4Object.encryptFile</h3>
+
+<p>加密文件</p>
+
+<p><a id="crypyRc4Object.encryptFile"></a></p>
+
+<h3>crypyRc4Object.encryptFile(输入文件,输出文件,缓冲区大小,进度回调函数,哈希对象,选项)</h3>
+
+<p>参数 @1 指定要加密的文件。参数 @2 指定要保存加密结果的文件。<br>
+文件参数都可以指定文件路径、文件对象（兼容 io.file,fsys.file,fsys.stream）。<br>
+可选用参数 @3 指定分块加密的字节长度，默认为 1MB。<br>
+指定字节长度时会自动调整到对齐块大小，参数不需要考虑对齐。<br>
+可选指定进度回调函数，回调参数 @1,@2 分别为输入文件总长度、已读取长度。<br>
+其他调用参数（哈希对象，选项）一般不必指定。  </p>
+
+<p>函数执行成功返回 true，失败返回 null,错误信息。</p>
+
+<p><a id="crypyRc4Object.hasKey"></a></p>
+
+<h3>crypyRc4Object.hasKey()</h3>
+
+<p>检测是否已设置密钥</p>
+
+<p><a id="crypyRc4Object.setPassword"></a></p>
+
+<h3>crypyRc4Object.setPassword(&quot;密钥&quot;,选项)</h3>
+
+<p>密钥长度为5到16字节,<br>
+密钥超过128位(16字节)时使用MD5转换为哈希值,<br>
+如果密钥长度小于5字节自动填充<code>&#39;\0&#39;</code><br>
+参数@2不需要指定</p>
+
+<p><a href="rc4.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/crypt/rc4.md">Markdown 格式</a></p>
+
+</body> 
+</html>

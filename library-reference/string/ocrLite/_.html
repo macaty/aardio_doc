@@ -1,0 +1,334 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - string.ocrLite 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - string.ocrLite 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>string.ocrLite 库模块帮助文档</h1>
+
+<p><a id="string"></a></p>
+
+<h2>string 成员列表</h2>
+
+<p><a id="string.ocrLite"></a></p>
+
+<h3>string.ocrLite</h3>
+
+<p>识别屏幕或图像上文字的本地组件,开源免费,<br>
+<a href="../../../../../../github.com/aardio/chineseocr_lite_dll/blob/main/LICENSE" tppabs="https://github.com/aardio/chineseocr_lite_dll/blob/main/LICENSE">此扩展库开源许可证（ GPL ）</a></p>
+
+<p>创建OCR对象,所有参数可选,<br>
+在屏幕上找到文字以后可使用 winex.mouse, mouse 等库函数自动点击,<br>
+使用 aardio 工具里的「探测器-&gt;窗口探测器」可生成窗口检测或点击的示例代码</p>
+
+<p><a id="string.ocrLite"></a></p>
+
+<h3>string.ocrLite()</h3>
+
+<p><a href="#stringOcrLiteObject">返回对象:stringOcrLiteObject</a></p>
+
+<p><a id="string.ocrLite"></a></p>
+
+<h3>string.ocrLite(models,outputBitmap,outputConsole,numThreads)</h3>
+
+<p>创建OCR对象,所有参数可选,注意截图范围越小结果越准确,<br>
+@models 参数指定模型目录,或包含模型路径配置的参数表,<br>
+导入 string.ocrLite.defaultModels 可嵌入默认模型,<br>
+指定@outputBitmap为true时OCR结果对象会包含resultBitmap字段,<br>
+@outputConsole 为true会向控制台输出调试信息,<br>
+@outputConsole设为true时会自动以UTF8编码打开控制台,<br>
+@numThreads指定线程数,一般不需要指定</p>
+
+<p><a id="stringOcrLiteObject"></a></p>
+
+<h2>stringOcrLiteObject 成员列表</h2>
+
+<p><a id="stringOcrLiteObject.clickClient"></a></p>
+
+<h3>stringOcrLiteObject.clickClient(hwnd,text,miniSimilar)</h3>
+
+<p>在@hwnd参数指定的窗口上查找并点击@text指定的文本,<br>
+@miniSimilar指定最小相似度,可选参数,默认为 0.5,<br>
+成功返回true</p>
+
+<p><a id="stringOcrLiteObject.close"></a></p>
+
+<h3>stringOcrLiteObject.close()</h3>
+
+<p>关闭对象,<br>
+关闭以后不应再使用此对象,<br>
+默认在对象被回收时会自动关闭</p>
+
+<p><a id="stringOcrLiteObject.config"></a></p>
+
+<h3>stringOcrLiteObject.config(OCR参数表)</h3>
+
+<pre><code class="aardio language-aardio">stringOcrLiteObject.config({ 
+    padding = 50; 
+    maxSideLen = 1024; 
+    boxScoreThresh = 0.6; 
+    boxThresh = 0.3;
+    unClipRatio = 2.0; 
+    doAngle = 1;
+    mostAngle= 1;/*配置OCR参数,细节请参考 chineseocr_lite 项目文档和源码*/
+})
+</code></pre>
+
+<p><a id="stringOcrLiteObject.detectBitmap"></a></p>
+
+<h3>stringOcrLiteObject.detectBitmap()</h3>
+
+<p>传入 gdip.bimap 对象并识别文字,注意截图范围越小结果越准确,<br>
+返回识别结果对象</p>
+
+<p><a href="#stringOcrLiteResultObject">返回对象:stringOcrLiteResultObject</a></p>
+
+<p><a id="stringOcrLiteObject.detectBuffer"></a></p>
+
+<h3>stringOcrLiteObject.detectBuffer()</h3>
+
+<p><a href="#stringOcrLiteResultObject">返回对象:stringOcrLiteResultObject</a></p>
+
+<p><a id="stringOcrLiteObject.detectBuffer"></a></p>
+
+<h3>stringOcrLiteObject.detectBuffer(buffer)</h3>
+
+<p>识别文字并返回识别结果对象,<br>
+buffer指定图像文件的内存数据,<br>
+支持jpg,png,bmp等常见格式</p>
+
+<p><a id="stringOcrLiteObject.detectClient"></a></p>
+
+<h3>stringOcrLiteObject.detectClient()</h3>
+
+<p><a href="#stringOcrLiteResultObject">返回对象:stringOcrLiteResultObject</a></p>
+
+<p><a id="stringOcrLiteObject.detectClient"></a></p>
+
+<h3>stringOcrLiteObject.detectClient(hwnd,x,y,cx,cy)</h3>
+
+<p>自窗口客户区后台截图并识别文字,注意截图范围越小结果越准确,<br>
+必须用 @hwnd 参数指定窗口句柄,<br>
+可选用 @x,y@ 参数指定坐标<br>
+可选用 @cx,@cy 指定宽度和高度,<br>
+返回识别结果对象</p>
+
+<p><a id="stringOcrLiteObject.detectImage"></a></p>
+
+<h3>stringOcrLiteObject.detectImage()</h3>
+
+<p><a href="#stringOcrLiteResultObject">返回对象:stringOcrLiteResultObject</a></p>
+
+<p><a id="stringOcrLiteObject.detectImage"></a></p>
+
+<h3>stringOcrLiteObject.detectImage(...)</h3>
+
+<p>使用传入参数创建 gdip.bimap 对象并识别文字,<br>
+参数与 gdip.bimap 相同,返回识别结果对象<br>
+,注意截图范围越小结果越准确,</p>
+
+<p><a id="stringOcrLiteObject.detectScreen"></a></p>
+
+<h3>stringOcrLiteObject.detectScreen()</h3>
+
+<p><a href="#stringOcrLiteResultObject">返回对象:stringOcrLiteResultObject</a></p>
+
+<p><a id="stringOcrLiteObject.detectScreen"></a></p>
+
+<h3>stringOcrLiteObject.detectScreen(hwnd,x,y,cx,cy)</h3>
+
+<p>自屏幕截图并识别文字,注意截图范围越小结果越准确,<br>
+所有参数可选,可选用 @hwnd 参数指定窗口句柄,<br>
+可选用 @x,y@ 参数指定坐标<br>
+可选用 @cx,@cy 指定宽度和高度,<br>
+返回识别结果对象</p>
+
+<p><a id="stringOcrLiteObject.detectWindow"></a></p>
+
+<h3>stringOcrLiteObject.detectWindow()</h3>
+
+<p><a href="#stringOcrLiteResultObject">返回对象:stringOcrLiteResultObject</a></p>
+
+<p><a id="stringOcrLiteObject.detectWindow"></a></p>
+
+<h3>stringOcrLiteObject.detectWindow(hwnd,x,y,cx,cy)</h3>
+
+<p>自窗口后台截图并识别文字,注意截图范围越小结果越准确,<br>
+必须用 @hwnd 参数指定窗口句柄,<br>
+可选用 @x,y@ 参数指定坐标<br>
+可选用 @cx,@cy 指定宽度和高度,<br>
+返回识别结果对象</p>
+
+<p><a id="stringOcrLiteObject.findClient"></a></p>
+
+<h3>stringOcrLiteObject.findClient(hwnd,text,miniSimilar)</h3>
+
+<p>在@hwnd参数指定的窗口上查找@text指定的文本,<br>
+@miniSimilar指定最小相似度,可选参数,默认为 0.5,<br>
+成功返回true</p>
+
+<p><a id="stringOcrLiteObject.waitClickClient"></a></p>
+
+<h3>stringOcrLiteObject.waitClickClient(hwnd,text,miniSimilar,timeout,hwndWait)</h3>
+
+<p>等待@hwnd参数指定的窗口,查找并点击@text指定的文本,<br>
+@miniSimilar指定最小相似度,可选参数,默认为 0.6,<br>
+@timeout 为可选的超时参数,单位毫秒,<br>
+可选用 @hwndWait 指定等待窗口句柄,不指定则默认值为 @hwnd,<br>
+成功返回true</p>
+
+<p><a id="stringOcrLiteObject.waitClient"></a></p>
+
+<h3>stringOcrLiteObject.waitClient(hwnd,text,miniSimilar,timeout,hwndWait)</h3>
+
+<p>等待@hwnd参数指定的窗口上出现@text指定的文本,<br>
+@miniSimilar指定最小相似度,可选参数,默认为 0.6,<br>
+@timeout 为可选的超时参数,单位毫秒,<br>
+可选用 @hwndWait 指定等待窗口句柄,不指定则默认值为 @hwnd,<br>
+成功返回true</p>
+
+<p><a id="stringOcrLiteResultBlockObject"></a></p>
+
+<h2>stringOcrLiteResultBlockObject 成员列表</h2>
+
+<p><a id="stringOcrLiteResultBlockObject.boxScore"></a></p>
+
+<h3>stringOcrLiteResultBlockObject.boxScore</h3>
+
+<p>文本块置信度,数值</p>
+
+<p><a id="stringOcrLiteResultBlockObject.charScores"></a></p>
+
+<h3>stringOcrLiteResultBlockObject.charScores</h3>
+
+<p>字符置信度数组</p>
+
+<p><a id="stringOcrLiteResultBlockObject.points"></a></p>
+
+<h3>stringOcrLiteResultBlockObject.points</h3>
+
+<p>文本框四角坐标,长度为4的坐标数组,<br>
+每个坐都是包含x,y坐标属性的对象,  </p>
+
+<p><a href="#pointsObject">返回对象:pointsObject</a></p>
+
+<p><a id="stringOcrLiteResultBlockObject.text"></a></p>
+
+<h3>stringOcrLiteResultBlockObject.text</h3>
+
+<p>识别出的全部文本</p>
+
+<p><a id="stringOcrLiteResultObject"></a></p>
+
+<h2>stringOcrLiteResultObject 成员列表</h2>
+
+<p><a id="stringOcrLiteResultObject.blocks"></a></p>
+
+<h3>stringOcrLiteResultObject.blocks</h3>
+
+<p>识别结果文本块数组</p>
+
+<p><a id="stringOcrLiteResultObject.find"></a></p>
+
+<h3>stringOcrLiteResultObject.find</h3>
+
+<p>查找文本,支持模糊匹配</p>
+
+<p><a id="stringOcrLiteResultObject.find"></a></p>
+
+<h3>stringOcrLiteResultObject.find()</h3>
+
+<p><a href="#stringOcrLiteResultBlockObject">返回对象:stringOcrLiteResultBlockObject</a></p>
+
+<p><a id="stringOcrLiteResultObject.find"></a></p>
+
+<h3>stringOcrLiteResultObject.find(txt,miniSimilar,startIndex)</h3>
+
+<p>查找文本,支持模糊匹配,<br>
+参数 @txt 指定要查找的文本,可传入包含多个查询文本的数组,<br>
+@miniSimilar 指定最小相似度,可选参数,<br>
+完全相似为1,完全不相似为0,默认最小相似度为0.5,<br>
+可以降低相似度没有问题,此函数会自动获取相似度最高的结果,<br>
+可选指定起始索引,<br>
+成功返回值@1为匹配的文本块信息,返回值@2为找到的索引</p>
+
+<p><a id="stringOcrLiteResultObject.findPoint"></a></p>
+
+<h3>stringOcrLiteResultObject.findPoint</h3>
+
+<p>查找文本所在的区块正中点坐标,支持模糊匹配</p>
+
+<p><a id="stringOcrLiteResultObject.findPoint"></a></p>
+
+<h3>stringOcrLiteResultObject.findPoint(txt,miniSimilar,startIndex)</h3>
+
+<p>查找文本所在的区块正中点坐标,支持模糊匹配,<br>
+参数 @txt 指定要查找的文本,可传入包含多个查询文本的数组,<br>
+@miniSimilar 指定最小相似度,可选参数,<br>
+完全相似为1,完全不相似为0,默认最小相似度为0.5,<br>
+可以降低相似度没有问题,此函数会自动获取相似度最高的结果,<br>
+可选指定起始索引,<br>
+成功返回坐标值 x,y</p>
+
+<p><a id="stringOcrLiteResultObject.findRect"></a></p>
+
+<h3>stringOcrLiteResultObject.findRect</h3>
+
+<p>查找文本所在的区块,支持模糊匹配</p>
+
+<p><a id="stringOcrLiteResultObject.findRect"></a></p>
+
+<h3>stringOcrLiteResultObject.findRect()</h3>
+
+<p><a href="../../global/_.html#rectObject" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/global/_.html#rectObject">返回对象:rectObject</a></p>
+
+<p><a id="stringOcrLiteResultObject.findRect"></a></p>
+
+<h3>stringOcrLiteResultObject.findRect(txt,miniSimilar,startIndex)</h3>
+
+<p>查找文本所在的区块,支持模糊匹配,<br>
+参数 @txt 指定要查找的文本,可传入包含多个查询文本的数组,<br>
+@miniSimilar 指定最小相似度,可选参数,<br>
+完全相似为1,完全不相似为0,默认最小相似度为0.5,<br>
+可以降低相似度没有问题,此函数会自动获取相似度最高的结果,<br>
+可选指定起始索引,<br>
+成功返回值@1为匹配的::RECT对象,返回值@2为找到的索引</p>
+
+<p><a id="stringOcrLiteResultObject.resultBitmap"></a></p>
+
+<h3>stringOcrLiteResultObject.resultBitmap</h3>
+
+<p>识别结果图像,图像上已经标记了文本框,<br>
+创建 string.ocrLite 对象指定outputBitmap参数为true可启用此字段,<br>
+gdip.bitmap对象  </p>
+
+<p><a href="../../gdip/bitmap.html#gdipbitmapObject" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/gdip/bitmap.html#gdipbitmapObject">返回对象:gdipbitmapObject</a></p>
+
+<p><a id="stringOcrLiteResultObject.search"></a></p>
+
+<h3>stringOcrLiteResultObject.search(subString,miniSimilar)</h3>
+
+<p>查找识别结果是否包含@subString指定的子字符串,支持模糊匹配,<br>
+@miniSimilar 指定最小相似度,可选参数,<br>
+完全相似为1,完全不相似为0,默认最小相似度为0.8,<br>
+字符串较短时建议降低相似度</p>
+
+<p><a id="stringOcrLiteResultObject.text"></a></p>
+
+<h3>stringOcrLiteResultObject.text</h3>
+
+<p>识别出的全部文本</p>
+
+<p><a href="_.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/string/ocrLite/_.md">Markdown 格式</a></p>
+
+</body> 
+</html>

@@ -1,0 +1,340 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - fsys.unrar 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - fsys.unrar 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>fsys.unrar 库模块帮助文档</h1>
+
+<p><a id="fsys"></a></p>
+
+<h2>fsys 成员列表</h2>
+
+<p><a id="fsys.unrar"></a></p>
+
+<h3>fsys.unrar(&quot;rar压缩文件路径&quot;,&quot;解压目录&quot;,&quot;密码&quot;,是否解压)</h3>
+
+<p>创建RAR文件对象<br>
+不存在的目录自动创建<br>
+成功返回unrar对象,失败返回:null,错误信息,错误代码</p>
+
+<p><a id="fsys.unrar"></a></p>
+
+<h3>fsys.unrar()</h3>
+
+<p><a href="#fsysUnrarObject">返回对象:fsysUnrarObject</a></p>
+
+<p><a id="fsys.unrar"></a></p>
+
+<h2>fsys.unrar 成员列表</h2>
+
+<p><a id="fsys.unrar.count"></a></p>
+
+<h3>fsys.unrar.count(&quot;rar压缩文件路径&quot;,&quot;密码&quot;)</h3>
+
+<p>以只读模式打开压缩包<br>
+并计算压缩包内文件总数</p>
+
+<p><a id="fsys.unrar.errMessage"></a></p>
+
+<h3>fsys.unrar.errMessage</h3>
+
+<p>错误代码、错误信息对照表。</p>
+
+<p><a id="fsys.unrar.extract"></a></p>
+
+<h3>fsys.unrar.extract(&quot;rar压缩文件路径&quot;,&quot;解压目录&quot;,&quot;密码&quot;,进度回调函数)</h3>
+
+<pre><code class="aardio language-aardio">fsys.unrar.extract(&quot;rar压缩文件路径&quot;,&quot;解压目录&quot;,&quot;密码&quot;  
+    ,function(percent,totalSize,unpackSize,filename,rarHeader){  
+        /*percent 为解压进度百分比，  
+totalSize 为解压后总大小，math.size64 对象。  
+unpackSize 为已解压大小，math.size64 对象。  
+filename 为当前解压文件名。  
+rarHeader 为当前 RAR 压缩头。  
+函数返回 false 退出解压，无返回值或返回 true 继续操作*/  
+    }  
+)
+</code></pre>
+
+<p><a id="fsys.unrar.extract"></a></p>
+
+<h3>fsys.unrar.extract(&quot;字符串参数&quot;)</h3>
+
+<p>解压文件到压缩包所在目录<br>
+成功返回解压目录<br>
+成功返回解压目录,失败返回:false,错误信息,错误代码</p>
+
+<p><a id="fsys.unrar.size64"></a></p>
+
+<h3>fsys.unrar.size64(&quot;rar压缩文件路径&quot;,&quot;密码&quot;)</h3>
+
+<p>以只读模式打开压缩包<br>
+并返回解压后文件大小</p>
+
+<p><a id="fsys.unrar.size64"></a></p>
+
+<h3>fsys.unrar.size64()</h3>
+
+<p><a href="../../math/_.html#mathSize64Object" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/math/_.html#mathSize64Object">返回对象:mathSize64Object</a></p>
+
+<p><a id="RARHeaderDataObject"></a></p>
+
+<h2>RARHeaderDataObject 成员列表</h2>
+
+<p><a id="RARHeaderDataObject.ArcName"></a></p>
+
+<h3>RARHeaderDataObject.ArcName</h3>
+
+<p>压缩卷名</p>
+
+<p><a id="RARHeaderDataObject.CmtBuf"></a></p>
+
+<h3>RARHeaderDataObject.CmtBuf</h3>
+
+<p>文件注释缓冲区</p>
+
+<p><a id="RARHeaderDataObject.CmtBufSize"></a></p>
+
+<h3>RARHeaderDataObject.CmtBufSize</h3>
+
+<p>注释的缓冲区大小</p>
+
+<p><a id="RARHeaderDataObject.CmtSize"></a></p>
+
+<h3>RARHeaderDataObject.CmtSize</h3>
+
+<p>实际注释大小</p>
+
+<p><a id="RARHeaderDataObject.CmtState"></a></p>
+
+<h3>RARHeaderDataObject.CmtState</h3>
+
+<p>注释状态</p>
+
+<p><a id="RARHeaderDataObject.FileAttr"></a></p>
+
+<h3>RARHeaderDataObject.FileAttr</h3>
+
+<p>文件属性</p>
+
+<p><a id="RARHeaderDataObject.FileCRC"></a></p>
+
+<h3>RARHeaderDataObject.FileCRC</h3>
+
+<p>压缩之前文件的CRC值</p>
+
+<p><a id="RARHeaderDataObject.FileName"></a></p>
+
+<h3>RARHeaderDataObject.FileName</h3>
+
+<p>文件名</p>
+
+<p><a id="RARHeaderDataObject.FileTime"></a></p>
+
+<h3>RARHeaderDataObject.FileTime</h3>
+
+<p>按照MS DOS格式输出的日期和时间</p>
+
+<p><a id="RARHeaderDataObject.Flags"></a></p>
+
+<h3>RARHeaderDataObject.Flags</h3>
+
+<p>输出文件标志</p>
+
+<p><a id="RARHeaderDataObject.HostOS"></a></p>
+
+<h3>RARHeaderDataObject.HostOS</h3>
+
+<p>压缩文件的宿主操作系统</p>
+
+<p><a id="RARHeaderDataObject.Method"></a></p>
+
+<h3>RARHeaderDataObject.Method</h3>
+
+<p>压缩方式</p>
+
+<p><a id="RARHeaderDataObject.PackSize"></a></p>
+
+<h3>RARHeaderDataObject.PackSize</h3>
+
+<p>分卷大小</p>
+
+<p><a id="RARHeaderDataObject.PackSizeHigh"></a></p>
+
+<h3>RARHeaderDataObject.PackSizeHigh</h3>
+
+<p>分卷大小高位</p>
+
+<p><a id="RARHeaderDataObject.UnpSize"></a></p>
+
+<h3>RARHeaderDataObject.UnpSize</h3>
+
+<p>解压后的文件大小</p>
+
+<p><a id="RARHeaderDataObject.UnpSizeHigh"></a></p>
+
+<h3>RARHeaderDataObject.UnpSizeHigh</h3>
+
+<p>解压后的文件大小高位</p>
+
+<p><a id="RARHeaderDataObject.UnpVer"></a></p>
+
+<h3>RARHeaderDataObject.UnpVer</h3>
+
+<p>解压需要的Rar版本。按照10 * Major version + minor version格式给出</p>
+
+<p><a id="fsysUnrarObject"></a></p>
+
+<h2>fsysUnrarObject 成员列表</h2>
+
+<p><a id="fsysUnrarObject.close"></a></p>
+
+<h3>fsysUnrarObject.close()</h3>
+
+<p>关闭文件</p>
+
+<p><a id="fsysUnrarObject.comment"></a></p>
+
+<h3>fsysUnrarObject.comment</h3>
+
+<p>注释，UTF-8 编码</p>
+
+<p><a id="fsysUnrarObject.count"></a></p>
+
+<h3>fsysUnrarObject.count()</h3>
+
+<p>返回压缩包内文件总数</p>
+
+<p><a id="fsysUnrarObject.eachHeader"></a></p>
+
+<h3>fsysUnrarObject.eachHeader( )</h3>
+
+<pre><code class="aardio language-aardio">for(filename,rarHeader in fsysUnrarObject.eachHeader() ){ 
+    if(  ! fsysUnrarObject.extractNext(opMode) ){
+        return false;
+    }
+};
+</code></pre>
+
+<p><a id="fsysUnrarObject.eachHeader"></a></p>
+
+<h3>fsysUnrarObject.eachHeader()</h3>
+
+<p><a href="#RARHeaderDataObject">返回对象:RARHeaderDataObject</a></p>
+
+<p><a id="fsysUnrarObject.extractNext"></a></p>
+
+<h3>fsysUnrarObject.extractNext()</h3>
+
+<p>解压并查找下一个文件<br>
+失败返回:null,错误信息,错误代码<br>
+成功返回true</p>
+
+<p><a id="fsysUnrarObject.lastErrorCode"></a></p>
+
+<h3>fsysUnrarObject.lastErrorCode</h3>
+
+<p>最后发生的错误信息</p>
+
+<p><a id="fsysUnrarObject.lastErrorMessage"></a></p>
+
+<h3>fsysUnrarObject.lastErrorMessage</h3>
+
+<p>最后发生的错误代码</p>
+
+<p><a id="fsysUnrarObject.readHeader"></a></p>
+
+<h3>fsysUnrarObject.readHeader()</h3>
+
+<p>读取下一个文件头,<br>
+成功返回文件头,文件名<br>
+失败返回:null,错误信息,错误代码<br>
+解压完成返回空</p>
+
+<p><a href="#RARHeaderDataObject">返回对象:RARHeaderDataObject</a></p>
+
+<p><a id="fsysUnrarObject.savePath"></a></p>
+
+<h3>fsysUnrarObject.savePath</h3>
+
+<p>返回解压目录</p>
+
+<p><a id="fsysUnrarObject.setCallback"></a></p>
+
+<h3>fsysUnrarObject.setCallback( 回调函数 )</h3>
+
+<pre><code class="aardio language-aardio">fsysUnrarObject.setCallback(  
+    function( msg,userData,pData,dataSize){  
+        if(msg==1/*UCM_PROCESSDATA*/){  
+
+        }  
+        elseif(msg==4/*UCM_NEEDPASSWORDW*/){  
+            raw.copy(pData,string.toUtf16(&quot;password&quot;));  
+        }  
+    }   
+)
+</code></pre>
+
+<p><a id="fsysUnrarObject.size64"></a></p>
+
+<h3>fsysUnrarObject.size64()</h3>
+
+<p>解压后大小,math.size64对象  </p>
+
+<p><a href="../../math/_.html#mathSize64Object" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/math/_.html#mathSize64Object">返回对象:mathSize64Object</a></p>
+
+<p><a id="fsysUnrarObject.skipNext"></a></p>
+
+<h3>fsysUnrarObject.skipNext()</h3>
+
+<p>查找下一个文件<br>
+失败返回:null,错误信息,错误代码<br>
+成功返回true</p>
+
+<p><a id="fsysUnrarObject.testNext"></a></p>
+
+<h3>fsysUnrarObject.testNext()</h3>
+
+<p>测试并查找下一个文件<br>
+失败返回:null,错误信息,错误代码<br>
+成功返回true</p>
+
+<h3>自动完成常量</h3>
+
+<p>_ERAR_BAD_ARCHIVE=0xD<br>
+_ERAR_BAD_DATA=0xC<br>
+_ERAR_ECLOSE=0x11<br>
+_ERAR_ECREATE=0x10<br>
+_ERAR_END_ARCHIVE=0xA<br>
+_ERAR_EOPEN=0xF<br>
+_ERAR_EREAD=0x12<br>
+_ERAR_EWRITE=0x13<br>
+_ERAR_MISSING_PASSWORD=0x16<br>
+_ERAR_NO_MEMORY=0xB<br>
+_ERAR_SMALL_BUF=0x14<br>
+_ERAR_UNKNOWN=0x15<br>
+_ERAR_UNKNOWN_FORMAT=0xE<br>
+_RAR_DLL_VERSION=5<br>
+_RAR_EXTRACT=2<br>
+_RAR_OM_EXTRACT=1<br>
+_RAR_OM_LIST=0<br>
+_RAR_OM_LIST_INCSPLIT=2<br>
+_RAR_SKIP=0<br>
+_RAR_TEST=1<br>
+_RAR_VOL_ASK=0<br>
+_RAR_VOL_NOTIFY=1  </p>
+
+<p><a href="_.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/fsys/unrar/_.md">Markdown 格式</a></p>
+
+</body> 
+</html>

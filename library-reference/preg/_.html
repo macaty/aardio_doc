@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - preg 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - preg 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>preg 库模块帮助文档</h1>
+
+<p><a id="global"></a></p>
+
+<h2>全局对象 成员列表</h2>
+
+<p><a id="preg"></a></p>
+
+<h3>preg</h3>
+
+<p>Perl兼容正则表达式支持库</p>
+
+<p><a id="preg("\w+","uis")"></a></p>
+
+<h3>preg(&quot;\w+&quot;,&quot;uis&quot;)</h3>
+
+<p>创建正则表达式对象,参数一指定正则,<br>
+参数2指定修正符:<br>
+    &quot;i&quot; 忽略大小写,<br>
+    &quot;u&quot; 是否启用UTF8文本匹配并按字符计数 - 使正则表达式可支持中文,<br>
+    &quot;s&quot;表示圆点可以匹配换行  </p>
+
+<p>也可以在参数一中同时指定正则与修正符，例如&quot;/正则/修正符&quot;,<br>
+正则语法错误创建对象失败时返回:null,错误信息,错误代码,错误位置</p>
+
+<p><a id="preg()"></a></p>
+
+<h3>preg()</h3>
+
+<p><a href="#pRegexObject">返回对象:pRegexObject</a></p>
+
+<p><a id="pRegexObject"></a></p>
+
+<h2>pRegexObject 成员列表</h2>
+
+<p><a id="pRegexObject.exec"></a></p>
+
+<h3>pRegexObject.exec(匹配字符串,起始位置,选项)</h3>
+
+<p>匹配字符串,失败返回null空值,<br>
+成功返回值1为字符串数组,第一个元素为匹配结果,后面是其他捕获分组<br>
+返回值2返回对应的匹配位置数组,<br>
+起始位置默认按字节计数,UTF8文本匹配时按字符计数</p>
+
+<p><a id="pRegexObject.find"></a></p>
+
+<h3>pRegexObject.find(匹配字符串,起始位置,选项)</h3>
+
+<p>返回匹配字符串起始位置，结束位置,<br>
+匹配失败返回空,<br>
+起始位置默认按字节计数,UTF8文本匹配时按字符计数,<br>
+参数2,3为可选参数</p>
+
+<p><a id="pRegexObject.free"></a></p>
+
+<h3>pRegexObject.free()</h3>
+
+<p>释放正则对象,正则对象将释放不能再使用,<br>
+对象自动回收时将会自动调用该函数,因此并非必须调用此函数</p>
+
+<p><a id="pRegexObject.gmatch"></a></p>
+
+<h3>pRegexObject.gmatch</h3>
+
+<pre><code class="aardio language-aardio">for m,m2,m3 in pRegexObject.gmatch( /*参数(匹配字符串,起始位置,选项)  
+参数2,3可选*/) {   
+
+}
+</code></pre>
+
+<p><a id="pRegexObject.grep"></a></p>
+
+<h3>pRegexObject.grep(匹配数组,选项)</h3>
+
+<p>返回数组的值匹配正则的新数组,<br>
+参数2可选</p>
+
+<p><a id="pRegexObject.match"></a></p>
+
+<h3>pRegexObject.match(匹配字符串,起始位置,选项)</h3>
+
+<p>匹配字符串并使用多个返回值返回所有捕获分组,<br>
+如果无分组则返回匹配字符串</p>
+
+<p><a id="pRegexObject.namedStringNumber"></a></p>
+
+<h3>pRegexObject.namedStringNumber(&quot;捕获组名字&quot;)</h3>
+
+<p>返回命名捕获组在匹配分组中的索引</p>
+
+<p><a id="pRegexObject.replace"></a></p>
+
+<h3>pRegexObject.replace(匹配字符串,替换字符串,起始位置,替换次数,选项)</h3>
+
+<p>除参数1,2以外其他参数可选,<br>
+替换次数默认为-1,即不限替换次数,<br>
+参数2也可以是回调函数对象,或者替换表对象,用法同string.replace,<br>
+起始位置默认按字节计数,UTF8文本匹配时按字符计数</p>
+
+<p><a id="pRegexObject.split"></a></p>
+
+<h3>pRegexObject.split(拆分字符串,起始位置,选项)</h3>
+
+<p>使用正则表达式指定分隔符拆分字符串并返回数组,<br>
+起始位置默认按字节计数,UTF8文本匹配时按字符计数,<br>
+参数2,3为可选参数</p>
+
+<p><a id="pRegexObject.test"></a></p>
+
+<h3>pRegexObject.test(匹配字符串,起始位置,选项)</h3>
+
+<p>测试正则是否匹配，返回布尔值,<br>
+起始位置默认按字节计数,UTF8文本匹配时按字符计数,<br>
+参数2,3为可选参数</p>
+
+<p><a id="pRegexObject.utf8"></a></p>
+
+<h3>pRegexObject.utf8</h3>
+
+<p>是否启用UTF8文本匹配并按字符计数,<br>
+如果在正则修正符中指定了&quot;u&quot;,在该属性自动设置为true</p>
+
+<h3>自动完成常量</h3>
+
+<p>_PCRE_ANCHORED=0x10<br>
+_PCRE_AUTO_CALLOUT=0x4000<br>
+_PCRE_BSR_ANYCRLF=0x800000<br>
+_PCRE_BSR_UNICODE=0x1000000<br>
+_PCRE_CASELESS=1<br>
+_PCRE_CONFIG_BSR=8<br>
+_PCRE_CONFIG_LINK_SIZE=2<br>
+_PCRE_CONFIG_MATCH_LIMIT=4<br>
+_PCRE_CONFIG_MATCH_LIMIT_RECURSION=7<br>
+_PCRE_CONFIG_NEWLINE=1<br>
+_PCRE_CONFIG_POSIX_MALLOC_THRESHOLD=3<br>
+_PCRE_CONFIG_STACKRECURSE=5<br>
+_PCRE_CONFIG_UNICODE_PROPERTIES=6<br>
+_PCRE_CONFIG_UTF8=0<br>
+_PCRE_DFA_RESTART=0x20000<br>
+_PCRE_DFA_SHORTEST=0x10000<br>
+_PCRE_DOLLAR_ENDONLY=0x20<br>
+_PCRE_DOTALL=4<br>
+_PCRE_DUPNAMES=0x80000<br>
+_PCRE_ERROR_BADCOUNT=-15<br>
+_PCRE_ERROR_BADMAGIC=-4<br>
+_PCRE_ERROR_BADNEWLINE=-23<br>
+_PCRE_ERROR_BADOPTION=-3<br>
+_PCRE_ERROR_BADPARTIAL=-13<br>
+_PCRE_ERROR_BADUTF8=-10<br>
+_PCRE_ERROR_BADUTF8_OFFSET=-11<br>
+_PCRE_ERROR_CALLOUT=-9<br>
+_PCRE_ERROR_DFA_RECURSE=-20<br>
+_PCRE_ERROR_DFA_UCOND=-17<br>
+_PCRE_ERROR_DFA_UITEM=-16<br>
+_PCRE_ERROR_DFA_UMLIMIT=-18<br>
+_PCRE_ERROR_DFA_WSSIZE=-19<br>
+_PCRE_ERROR_INTERNAL=-14<br>
+_PCRE_ERROR_MATCHLIMIT=-8<br>
+_PCRE_ERROR_NOMATCH=-1<br>
+_PCRE_ERROR_NOMEMORY=-6<br>
+_PCRE_ERROR_NOSUBSTRING=-7<br>
+_PCRE_ERROR_NULL=-2<br>
+_PCRE_ERROR_NULLWSLIMIT=-22<br>
+_PCRE_ERROR_PARTIAL=-12<br>
+_PCRE_ERROR_RECURSIONLIMIT=-21<br>
+_PCRE_ERROR_UNKNOWN_NODE=-5<br>
+_PCRE_ERROR_UNKNOWN_OPCODE=-5<br>
+_PCRE_EXTENDED=8<br>
+_PCRE_EXTRA=0x40<br>
+_PCRE_EXTRA_CALLOUT_DATA=4<br>
+_PCRE_EXTRA_MATCH_LIMIT=2<br>
+_PCRE_EXTRA_MATCH_LIMIT_RECURSION=0x10<br>
+_PCRE_EXTRA_STUDY_DATA=1<br>
+_PCRE_EXTRA_TABLES=8<br>
+_PCRE_FIRSTLINE=0x40000<br>
+_PCRE_INFO_BACKREFMAX=3<br>
+_PCRE_INFO_CAPTURECOUNT=2<br>
+_PCRE_INFO_DEFAULT_TABLES=0xB<br>
+_PCRE_INFO_FIRSTBYTE=4<br>
+_PCRE_INFO_FIRSTCHAR=4<br>
+_PCRE_INFO_FIRSTTABLE=5<br>
+_PCRE_INFO_HASCRORLF=0xE<br>
+_PCRE_INFO_JCHANGED=0xD<br>
+_PCRE_INFO_LASTLITERAL=6<br>
+_PCRE_INFO_NAMECOUNT=8<br>
+_PCRE_INFO_NAMEENTRYSIZE=7<br>
+_PCRE_INFO_NAMETABLE=9<br>
+_PCRE_INFO_OKPARTIAL=0xC<br>
+_PCRE_INFO_OPTIONS=0<br>
+_PCRE_INFO_SIZE=1<br>
+_PCRE_INFO_STUDYSIZE=0xA<br>
+_PCRE_JAVASCRIPT_COMPAT=0x2000000<br>
+_PCRE_MULTILINE=2<br>
+_PCRE_NEWLINE_ANY=0x400000<br>
+_PCRE_NEWLINE_ANYCRLF=0x500000<br>
+_PCRE_NEWLINE_CR=0x100000<br>
+_PCRE_NEWLINE_CRLF=0x300000<br>
+_PCRE_NEWLINE_LF=0x200000<br>
+_PCRE_NOTBOL=0x80<br>
+_PCRE_NOTEMPTY=0x400<br>
+_PCRE_NOTEOL=0x100<br>
+_PCRE_NO_AUTO_CAPTURE=0x1000<br>
+_PCRE_NO_START_OPTIMISE=0x4000000<br>
+_PCRE_NO_START_OPTIMIZE=0x4000000<br>
+_PCRE_NO_UTF8_CHECK=0x2000<br>
+_PCRE_PARTIAL=0x8000<br>
+_PCRE_UNGREEDY=0x200<br>
+_PCRE_UTF8=0x800  </p>
+
+<p><a href="_.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/preg/_.md">Markdown 格式</a></p>
+
+</body> 
+</html>

@@ -1,0 +1,251 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - com.shell 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - com.shell 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>com.shell 库模块帮助文档</h1>
+
+<p><a id="com"></a></p>
+
+<h2>com 成员列表</h2>
+
+<p><a id="com.shell"></a></p>
+
+<h3>com.shell()</h3>
+
+<p>返回 ..com.CreateObject(&quot;Shell.Application&quot;) 创建的对象  </p>
+
+<p><a href="#ComShellObject">返回对象:ComShellObject</a></p>
+
+<p><a id="com.shell"></a></p>
+
+<h2>com.shell 成员列表</h2>
+
+<p><a id="com.shell.activateApp"></a></p>
+
+<h3>com.shell.activateApp(aumid,arguments,options)</h3>
+
+<p>打开 APP 应用。<br>
+参数@1 指定 Application User Model ID。<br>
+如果参数 @1 不含感叹号，则自动查找并添加合适的应用程序 ID。  </p>
+
+<p>com.shell.eachApp 可以获取 应用的 AUMID,<br>
+也可以将应用拖到桌面上,然后打开快捷方式的属性在taget中查看，<br>
+参数 @2，@3 为可选参数。</p>
+
+<p><a id="com.shell.eachApp"></a></p>
+
+<h3>com.shell.eachApp</h3>
+
+<pre><code class="aardio language-aardio">for i,item in com.shell.eachApp(){ 
+    console.log( item.name,item.path );/*遍历WIN10 appsFolder目录下安装的应用  
+item.path 是应用的 AUMID 或者原生程序路径*/
+}
+</code></pre>
+
+<p><a id="com.shell.eachApp"></a></p>
+
+<h3>com.shell.eachApp()</h3>
+
+<p><a href="#comShellAppItemObject">返回对象:comShellAppItemObject</a></p>
+
+<p><a id="com.shell.eachWindow"></a></p>
+
+<h3>com.shell.eachWindow()</h3>
+
+<pre><code class="aardio language-aardio">for i,shWnd in com.shell.eachWindow(){  
+    var typeName = com.GetTypeInfo(shWnd.document).GetDocumentation().name;  
+    if(typeName==&quot;IShellFolderViewDual3&quot; || typeName==&quot;IShellFolderViewDual2&quot;){  
+        var items = shWnd.document.SelectedItems();  
+        for index,item in com.each(items) {  
+            console.log(item.Path,shWnd.HWND);/*资源管理器被选中的文件路径与所在窗口句柄*/  
+        }   
+    }   
+}  
+
+[返回对象:comShellWndObject](#comShellWndObject)
+</code></pre>
+
+<p><a id="com.shell.findActivateApp"></a></p>
+
+<h3>com.shell.findActivateApp(name,path,arguments,options)</h3>
+
+<p>查找指定的 APP，打开 APP 应用。<br>
+可用 @name 指定应用名搜索关键字，<br>
+或用 @path 指定应用路径搜索关键字。<br>
+参数支持模式匹配语法。<br>
+参数 @3，@4 为可选参数。</p>
+
+<p><a id="com.shell.findApp"></a></p>
+
+<h3>com.shell.findApp(name,path)</h3>
+
+<p>查找指定的 APP 是否安装。<br>
+成功则返回对象的 name 字段为应用名，path 字段为应用路径。<br>
+失败返回 null 。  </p>
+
+<p>可用 @name 指定应用名搜索关键字，<br>
+或用 @path 指定应用路径搜索关键字。<br>
+参数支持模式匹配语法</p>
+
+<p><a id="ComShellObject"></a></p>
+
+<h2>ComShellObject 成员列表</h2>
+
+<p><a id="ComShellObject.CascadeWindows"></a></p>
+
+<h3>ComShellObject.CascadeWindows()</h3>
+
+<p>层叠窗口</p>
+
+<p><a id="ComShellObject.ControlPanelItem"></a></p>
+
+<h3>ComShellObject.ControlPanelItem(&quot;字符串参数&quot;)</h3>
+
+<p>打开控制面板指定项目<br>
+也可以改用 raw.execute(&quot;control.exe&quot;,&quot;__.cpl&quot;)</p>
+
+<p><a id="ComShellObject.MinimizeAll"></a></p>
+
+<h3>ComShellObject.MinimizeAll()</h3>
+
+<p>最小化所有窗口</p>
+
+<p>最小化所有窗口</p>
+
+<p><a id="ComShellObject.NameSpace"></a></p>
+
+<h3>ComShellObject.NameSpace(&quot;字符串参数&quot;)</h3>
+
+<p>打开指定的目录对象</p>
+
+<p><a id="ComShellObject.NameSpace"></a></p>
+
+<h3>ComShellObject.NameSpace()</h3>
+
+<p><a href="#comShellFolderObject">返回对象:comShellFolderObject</a></p>
+
+<p><a id="ComShellObject.SetTime"></a></p>
+
+<h3>ComShellObject.SetTime()</h3>
+
+<p>打开日期时间设置</p>
+
+<p><a id="ComShellObject.TileVertically"></a></p>
+
+<h3>ComShellObject.TileVertically()</h3>
+
+<p>纵向平铺窗口</p>
+
+<p><a id="ComShellObject.UndoMinimizeALL"></a></p>
+
+<h3>ComShellObject.UndoMinimizeALL()</h3>
+
+<p>撤消全部最小化</p>
+
+<p><a id="ComShellObject.ileHorizontally"></a></p>
+
+<h3>ComShellObject.ileHorizontally()</h3>
+
+<p>横向平铺窗口</p>
+
+<p><a id="comShellAppItemObject"></a></p>
+
+<h2>comShellAppItemObject 成员列表</h2>
+
+<p><a id="comShellAppItemObject.name"></a></p>
+
+<h3>comShellAppItemObject.name</h3>
+
+<p>应用名称</p>
+
+<p><a id="comShellAppItemObject.path"></a></p>
+
+<h3>comShellAppItemObject.path</h3>
+
+<p>应用路径</p>
+
+<p><a id="comShellFolderObject"></a></p>
+
+<h2>comShellFolderObject 成员列表</h2>
+
+<p><a id="comShellFolderObject.CopyHere"></a></p>
+
+<h3>comShellFolderObject.CopyHere()</h3>
+
+<p>复制文件到当前目录。<br>
+参数 @1 可以指定源文件路径。<br>
+参数 @2 可选指定 <em>FOF</em> 前缀的常量数值（多个值用 | 组合）</p>
+
+<p><a id="comShellFolderObject.InvokeVerb"></a></p>
+
+<h3>comShellFolderObject.InvokeVerb(&quot;Copy&quot;)</h3>
+
+<p>调用菜单命令<br>
+菜单命令并不完全等价于菜单显示文本，而且与语言无关。<br>
+所以在中文系统上不需要改为中文字符串。</p>
+
+<p>调用菜单命令<br>
+菜单命令并不完全等价于菜单显示文本，而且与语言无关。<br>
+所以在中文系统上不需要改为中文字符串。</p>
+
+<p><a id="comShellFolderObject.Items"></a></p>
+
+<h3>comShellFolderObject.Items()</h3>
+
+<p>返回子项目集合。<br>
+返回值可用 com.each 遍历。</p>
+
+<p><a id="comShellFolderObject.MoveHere"></a></p>
+
+<h3>comShellFolderObject.MoveHere()</h3>
+
+<p>移动文件到当前目录。<br>
+参数 @1 可以指定源文件路径。<br>
+参数 @2 可选指定 <em>FOF</em> 前缀的常量数值（多个值用 | 组合）</p>
+
+<p><a id="comShellFolderObject.ParentFolder"></a></p>
+
+<h3>comShellFolderObject.ParentFolder</h3>
+
+<p>父目录  </p>
+
+<p><a href="#comShellFolderObject">返回对象:comShellFolderObject</a></p>
+
+<p><a id="comShellFolderObject.ParseName"></a></p>
+
+<h3>comShellFolderObject.ParseName(&quot;字符串参数&quot;)</h3>
+
+<p>返回指定的文件或目录，参数指定文件名</p>
+
+<p><a id="comShellFolderObject.ParseName"></a></p>
+
+<h3>comShellFolderObject.ParseName()</h3>
+
+<pre><code class="aardio language-aardio">!comShellFolder.P
+</code></pre>
+
+<p><a id="comShellWndObject"></a></p>
+
+<h2>comShellWndObject 成员列表</h2>
+
+<p><a id="comShellWndObject.document"></a></p>
+
+<h3>comShellWndObject.document</h3>
+
+<p>文档对象</p>
+
+<p><a href="shell.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/com/shell.md">Markdown 格式</a></p>
+
+</body> 
+</html>

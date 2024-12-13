@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - thread.works 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - thread.works 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>thread.works 库模块帮助文档</h1>
+
+<p><a id="thread"></a></p>
+
+<h2>thread 成员列表</h2>
+
+<p><a id="thread.works"></a></p>
+
+<h3>thread.works</h3>
+
+<p>线程工作项管理</p>
+
+<p><a id="thread.works"></a></p>
+
+<h3>thread.works()</h3>
+
+<p><a href="#threadWorkObject">返回对象:threadWorkObject</a></p>
+
+<p><a id="thread.works"></a></p>
+
+<h3>thread.works(线程数,工作函数,等待延时,初始化函数,...)</h3>
+
+<pre><code class="aardio language-aardio">thread.works(线程数,工作函数,等待延时,初始化函数,...works( 20,  
+    function(arguments,...) {  
+        /*arguments为线程任务传递的参数,  
+其他参数为创建thread.work时的附加参数,  
+这些附加参数也会传递给初始化函数*/  
+        return &quot;返回值&quot;  
+    }   
+);
+</code></pre>
+
+<p><a id="threadWorkObject"></a></p>
+
+<h2>threadWorkObject 成员列表</h2>
+
+<p><a id="threadWorkObject.busy"></a></p>
+
+<h3>threadWorkObject.busy()</h3>
+
+<p>是否有未完成任务</p>
+
+<p><a id="threadWorkObject.clear"></a></p>
+
+<h3>threadWorkObject.clear()</h3>
+
+<p>清空已添加的任务</p>
+
+<p><a id="threadWorkObject.each"></a></p>
+
+<h3>threadWorkObject.each</h3>
+
+<pre><code class="aardio language-aardio">for( idx,args in threadWorkObject.each() ){
+    /*遍历所有待执行任务,  
+该函数会暂停所有任务*/
+}
+</code></pre>
+
+<p><a id="threadWorkObject.finished"></a></p>
+
+<h3>threadWorkObject.finished()</h3>
+
+<p>是否有未完成任务或未读取的任务返回值</p>
+
+<p><a id="threadWorkObject.getHandleById"></a></p>
+
+<h3>threadWorkObject.getHandleById(线程ID)</h3>
+
+<p>使用线程ID返回线程句柄<br>
+不可关闭该句柄</p>
+
+<p><a id="threadWorkObject.peek"></a></p>
+
+<h3>threadWorkObject.peek()</h3>
+
+<p>是否有线程完成了新的任务并返回了新的值，<br>
+注意如果线程返回的是null将被忽略</p>
+
+<p><a id="threadWorkObject.pop"></a></p>
+
+<h3>threadWorkObject.pop()</h3>
+
+<p>弹出工作函数完成任务后的返回值，<br>
+注意如果线程返回的是null将被忽略</p>
+
+<p><a id="threadWorkObject.push"></a></p>
+
+<h3>threadWorkObject.push()</h3>
+
+<p>添加调用实参到任务列表尾部<br>
+可使用table对象传递多个参数给任务函数<br>
+工作函数将自动获取参数并执行任务,<br>
+此函数会等待空闲线程,等待时界面线程仍然可以处理窗口消息</p>
+
+<p><a id="threadWorkObject.queueCount"></a></p>
+
+<h3>threadWorkObject.queueCount()</h3>
+
+<p>排队等候执行的任务数目</p>
+
+<p><a id="threadWorkObject.quit"></a></p>
+
+<h3>threadWorkObject.quit()</h3>
+
+<p>通知所有线程退出<br>
+并等待线程关闭</p>
+
+<p><a id="threadWorkObject.resume"></a></p>
+
+<h3>threadWorkObject.resume()</h3>
+
+<p>所有线程继续执行<br>
+可选在参数中指定线程ID</p>
+
+<p><a id="threadWorkObject.suspend"></a></p>
+
+<h3>threadWorkObject.suspend()</h3>
+
+<p>所有线程暂停<br>
+可选在参数中指定线程ID<br>
+注意线程是否正在使用互斥锁</p>
+
+<p><a id="threadWorkObject.update"></a></p>
+
+<h3>threadWorkObject.update(索引,参数)</h3>
+
+<p>更新任务参数\该函数只能在each循环内部使用</p>
+
+<p><a id="threadWorkObject.wait"></a></p>
+
+<h3>threadWorkObject.wait()</h3>
+
+<p>等待所有任务完成,<br>
+可指定一个回调函数作为参数接收工作项返回值  </p>
+
+<p>建议在界面线程使用定时器替代此函数</p>
+
+<p><a id="threadWorkObject.waitClose"></a></p>
+
+<h3>threadWorkObject.waitClose()</h3>
+
+<p>等待所有任务完成<br>
+通知所有线程退出,并等待所有线程关闭.<br>
+可指定一个回调函数作为参数接收工作项返回值  </p>
+
+<p>建议在界面线程使用定时器替代此函数</p>
+
+<p><a href="works.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/thread/works.md">Markdown 格式</a></p>
+
+</body> 
+</html>

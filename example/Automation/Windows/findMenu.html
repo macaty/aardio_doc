@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - 窗口自动化 - 操作窗口菜单'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - 窗口自动化 - 操作窗口菜单</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 窗口自动化 - 操作窗口菜单</h1><pre><code class="aardio language-aardio">//窗口自动化 - 操作窗口菜单
+import winex; 
+import process;
+import win.version;
+
+error(&quot;代码仅适用传统窗口菜单，Win11 记事本已改版&quot;);
+
+var prcs = process(&quot;Notepad&quot;);
+var hwnd = winex.find(&quot;Notepad&quot;,,prcs.id);
+var hEdit = winex.findEx(hwnd,1,&quot;Edit&quot;);
+winex.sendString(&quot;test&quot;,hEdit);
+
+//查找指定的菜单( &quot;文件&quot; 菜单下的 &quot;另存为&quot; )
+//var hMenu,menuId = winex.findMenu(hwnd ,&quot;文件&quot;,&quot;另存为&quot;);
+//winex.click(hwnd,menuId);
+
+//点击菜单项( &quot;文件&quot; 菜单下的 &quot;另存为&quot; )
+winex.click( hwnd,&quot;文件&quot;,&quot;另存为&quot;) 
+
+/*
+注意这种方式仅用于点击传统窗口菜单，
+无句柄菜单请改用 string.ocrLite 或 dotNet.ocr 等屏幕找字组件。
+*/
+
+</code></pre>
+<a href="findMenu.md" tppabs="https://www.aardio.com/zh-cn/doc/example/Automation/Windows/findMenu.md">Markdown 格式</a>
+</body> 
+</html>

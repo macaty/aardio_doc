@@ -1,0 +1,233 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - com.interface.IMultiLanguage2 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - com.interface.IMultiLanguage2 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>com.interface.IMultiLanguage2 库模块帮助文档</h1>
+
+<p><a id="com.interface.IMultiLanguage2"></a></p>
+
+<h2>com.interface.IMultiLanguage2 成员列表</h2>
+
+<p>IMultiLanguage2接口</p>
+
+<p><a id="com.interface.IMultiLanguage2.Create"></a></p>
+
+<h3>com.interface.IMultiLanguage2.Create()</h3>
+
+<p>创建 CMultiLanguage对象并获取IMultiLanguage2  </p>
+
+<p><a href="#IMultiLanguage2Object">返回对象:IMultiLanguage2Object</a></p>
+
+<p><a id="IMultiLanguage2Object"></a></p>
+
+<h2>IMultiLanguage2Object 成员列表</h2>
+
+<p><a id="IMultiLanguage2Object.detectInputCodepage"></a></p>
+
+<h3>IMultiLanguage2Object.detectInputCodepage</h3>
+
+<p>检测输入数据的代码页<br>
+同一段内存数据可能是不同的编码,编码检测结果通常是不准确的,<br>
+即使是系统提供的 IMultiLanguage2 也一样,不然为什么需要 BOM 呢?<br>
+所以建议大家使用 aardio 默认就支持的 UTF-8!</p>
+
+<p><a id="IMultiLanguage2Object.detectInputCodepage"></a></p>
+
+<h3>IMultiLanguage2Object.detectInputCodepage(字符串,最大返回个数,选项,优选代码页)</h3>
+
+<p>检测输入数据的代码页<br>
+参数@1可以是任意编码的字符串或 buffer 对象,<br>
+其他参数可选  </p>
+
+<p>返回值是一个数组,每个数组包含一个描述代码页信息的结构体</p>
+
+<p><a id="IMultiLanguage2Object.detectInputCodepageEx"></a></p>
+
+<h3>IMultiLanguage2Object.detectInputCodepageEx()</h3>
+
+<p>检测输入数据库的代码页，成功直接返回数值<br>
+n参数@1可以是任意编码的字符串或 buffer 对象<br>
+同一段内存数据可能是不同的编码,编码检测结果通常是不准确的,<br>
+即使是系统提供的 IMultiLanguage2 也一样,不然为什么需要 BOM 呢?<br>
+所以建议大家使用 aardio 默认就支持的 UTF-8!</p>
+
+<p><a id="IMultiLanguage2Object.detectInputCodepageInStream"></a></p>
+
+<h3>IMultiLanguage2Object.detectInputCodepageInStream(流对象,最大返回个数,选项,优选代码页)</h3>
+
+<p>检测输入数据的代码页<br>
+参数@1可以是任意编码 fsys.stream等任何兼容IStream接口的对象,<br>
+其他参数可选  </p>
+
+<p>返回值是一个数组,每个数组包含一个描述代码页信息的结构体</p>
+
+<p><a id="IMultiLanguage2Object.detectInputCodepageInStreamEx"></a></p>
+
+<h3>IMultiLanguage2Object.detectInputCodepageInStreamEx()</h3>
+
+<p>检测输入数据的代码页,检测输入数据库的代码页，成功直接返回数值<br>
+参数@1可以是任意编码 fsys.stream等任何兼容IStream接口的对象,</p>
+
+<p><a id="IMultiLanguage2Object.eachCodepage"></a></p>
+
+<h3>IMultiLanguage2Object.eachCodepage()</h3>
+
+<p><a href="#MIMECPINFOObject">返回对象:MIMECPINFOObject</a></p>
+
+<p><a id="IMultiLanguage2Object.eachCodepage"></a></p>
+
+<h3>IMultiLanguage2Object.eachCodepage(flags,langId)</h3>
+
+<pre><code class="aardio language-aardio">for( cpInfo in IMultiLanguage2Object.eachCodepage() ){
+    /*遍历代码页,cpInfo为MIMECPINFO结构体*/
+}
+</code></pre>
+
+<p><a id="IMultiLanguage2Object.fromto"></a></p>
+
+<h3>IMultiLanguage2Object.fromto</h3>
+
+<p>怪异模式转换文本编码,返回转换后的字符串,<br>
+如果一段文件明明是A编码，却错误地作为B编码处理甚至错误地转换为了C编码,<br>
+就称为怪异模式转换，怪异模式转换需要以同样的怪异模式才能还原。  </p>
+
+<p>aardio 存在特别的UTF标记可以自动避免这种怪异模式转换，<br>
+但如果你有来自于其他程序怪异模式转换导致的乱码，可使用此函数，<br>
+此函数会内部调用 string.fromto 转换，并在转换清除源字符串的 UTF 标记<br>
+转换后如果存在 UTF 标记则予以保留。  </p>
+
+<p>此字符串具有自动识别和修复 UTF-8 编码的作用</p>
+
+<p><a id="IMultiLanguage2Object.fromto"></a></p>
+
+<h3>IMultiLanguage2Object.fromto(字符串,源编码,目标编码,...)</h3>
+
+<p>怪异模式转换文本编码,返回转换后的字符串,<br>
+此函数仅用于修复一些老旧软件因为怪异模式转换导致的乱码，<br>
+普通编码转换应使用 string.fromto 函数可自动避免怪异模式。  </p>
+
+<p>源编码与目标编码使用代码页表示,UTF8 代码页 65001,<br>
+如果源字符串是 UTF-8 字符串，而源编码参数不是 65001，<br>
+此函数会先将字符串自 UTF-8 转换为源编码，再转换为目标编码，  </p>
+
+<p>如果目标编码不是 65001，但实际转换结果却是 UTF-8 字符串，<br>
+此函数会自动修复字符串为 UTF-8 字符串，<br>
+可指定任意个数的目标编码,上一个目标编码是下一个转换源编码，<br>
+目标编码为负数则不转换到该编码,并以该编码为源编码做下一次转换</p>
+
+<p><a id="IMultiLanguage2Object.getCodePageDescription"></a></p>
+
+<h3>IMultiLanguage2Object.getCodePageDescription(codepage,lcid)</h3>
+
+<p>返回代码页描述文本,<br>
+参数@1指定代码页,可选用参数@2指定语言ID</p>
+
+<p><a id="IMultiLanguage2Object.getCodePageInfo"></a></p>
+
+<h3>IMultiLanguage2Object.getCodePageInfo()</h3>
+
+<p><a href="#MIMECPINFOObject">返回对象:MIMECPINFOObject</a></p>
+
+<p><a id="IMultiLanguage2Object.getCodePageInfo"></a></p>
+
+<h3>IMultiLanguage2Object.getCodePageInfo(codepage,lcid)</h3>
+
+<p>返回代码页的详细信息,<br>
+参数@1指定代码页,可选用参数@2指定语言ID</p>
+
+<p><a id="MIMECPINFOObject"></a></p>
+
+<h2>MIMECPINFOObject 成员列表</h2>
+
+<p><a id="MIMECPINFOObject.bGDICharset"></a></p>
+
+<h3>MIMECPINFOObject.bGDICharset</h3>
+
+<p>GDI 字符集代码<br>
+参考标准库 gdi 中 _CHARSET 后缀的常量</p>
+
+<p><a id="MIMECPINFOObject.bodyCharset"></a></p>
+
+<h3>MIMECPINFOObject.bodyCharset</h3>
+
+<p>默认字符集</p>
+
+<p><a id="MIMECPINFOObject.description"></a></p>
+
+<h3>MIMECPINFOObject.description</h3>
+
+<p>描述</p>
+
+<p><a id="MIMECPINFOObject.fixedWidthFont"></a></p>
+
+<h3>MIMECPINFOObject.fixedWidthFont</h3>
+
+<p>默认等宽字体</p>
+
+<p><a id="MIMECPINFOObject.flags"></a></p>
+
+<h3>MIMECPINFOObject.flags</h3>
+
+<p><em>MIMECONTF</em> 选项</p>
+
+<p><a id="MIMECPINFOObject.headerCharset"></a></p>
+
+<h3>MIMECPINFOObject.headerCharset</h3>
+
+<p>邮件头默认字符集</p>
+
+<p><a id="MIMECPINFOObject.proportionalFont"></a></p>
+
+<h3>MIMECPINFOObject.proportionalFont</h3>
+
+<p>默认字体</p>
+
+<p><a id="MIMECPINFOObject.uiCodePage"></a></p>
+
+<h3>MIMECPINFOObject.uiCodePage</h3>
+
+<p>代码页</p>
+
+<p><a id="MIMECPINFOObject.uiFamilyCodePage"></a></p>
+
+<h3>MIMECPINFOObject.uiFamilyCodePage</h3>
+
+<p>共享代码页</p>
+
+<p><a id="MIMECPINFOObject.webCharset"></a></p>
+
+<h3>MIMECPINFOObject.webCharset</h3>
+
+<p>浏览器默认字符集</p>
+
+<h3>自动完成常量</h3>
+
+<p>_MIMECONTF_BROWSER=2<br>
+_MIMECONTF_EXPORT=0x400<br>
+_MIMECONTF_IMPORT=8<br>
+_MIMECONTF_MAILNEWS=1<br>
+_MIMECONTF_MIME_IE4=0x10000000<br>
+_MIMECONTF_MIME_LATEST=0x20000000<br>
+_MIMECONTF_MIME_REGISTRY=0x40000000<br>
+_MIMECONTF_MINIMAL=4<br>
+_MIMECONTF_PRIVCONVERTER=0x10000<br>
+_MIMECONTF_SAVABLE_BROWSER=0x200<br>
+_MIMECONTF_SAVABLE_MAILNEWS=0x100<br>
+_MIMECONTF_VALID=0x20000<br>
+_MIMECONTF_VALID_NLS=0x40000  </p>
+
+<p><a href="IMultiLanguage2.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/com/interface/IMultiLanguage2.md">Markdown 格式</a></p>
+
+</body> 
+</html>

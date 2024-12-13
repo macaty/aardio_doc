@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - 打开设置'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - 打开设置</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 打开设置</h1><pre><code class="aardio language-aardio">//打开设置
+import process.control;
+
+//打开系统代理设置页
+if(_WIN10_LATER) raw.execute(&quot;ms-settings:network-proxy&quot;); 
+else raw.execute(&quot;control.exe&quot;,&quot;inetcpl.cpl,,4&quot;); 
+
+/*
+import process.rundll;
+process.rundll(&quot;sysdm.cpl&quot;).EditEnvironmentVariables() //打开环境变量设置
+process.rundll().Control_RunDLL(&quot;sysdm.cpl&quot;) //打开系统属性
+process.rundll().Control_RunDLL(&quot;inetcpl.cpl&quot;,,4) //打开 Internet 属性窗口并切换到『连接』选项卡
+*/
+
+/*
+//打开 Internet 属性窗口并切换到『连接』选项卡
+process.control(&quot;inetcpl.cpl&quot;,,4) 
+
+//打开卸载程序管理，启动参数可以指定为 process.joinArguments() 函数支持的数组或表。
+process.control(&quot;/name&quot;,&quot;Microsoft.ProgramsAndFeatures&quot;)  
+
+//打开系统用户管理（高级）
+process.control(&quot;userpasswords2&quot;)
+
+//打开 WIN10 设置
+process.control(&quot;ms-settings:&quot;)
+
+//打开 外观 背景 设置
+process.control(&quot;ms-settings:personalization-background&quot;)
+
+//打开系统用户管理
+process.control(&quot;nusrmgr.cpl&quot;)
+
+//打开系统用户管理（高级）
+process.control(&quot;userpasswords2&quot;)
+
+//打开控制面板高级模式
+import process;
+process.explore(&quot;shell:::{ED7BA470-8E54-465E-825C-99712043E01C}&quot;)
+*/
+</code></pre>
+<a href="settings.md" tppabs="https://www.aardio.com/zh-cn/doc/example/System/Settings/settings.md">Markdown 格式</a>
+</body> 
+</html>

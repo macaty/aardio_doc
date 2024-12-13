@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - raw.apiHook 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - raw.apiHook 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>raw.apiHook 库模块帮助文档</h1>
+
+<p><a id="raw"></a></p>
+
+<h2>raw 成员列表</h2>
+
+<p><a id="raw.apiHook"></a></p>
+
+<h3>raw.apiHook</h3>
+
+<p>安装到当前线程的API函数钩子，不是来自当然线程的调用忽略。<br>
+多线程钩子请使用 thread.apiHook</p>
+
+<p><a id="raw.apiHook"></a></p>
+
+<h3>raw.apiHook()</h3>
+
+<p><a href="#rawApihookObject">返回对象:rawApihookObject</a></p>
+
+<p><a id="raw.apiHook"></a></p>
+
+<h3>raw.apiHook(DLL文件名,API函数名,函数原型,钩子函数)</h3>
+
+<pre><code class="aardio language-aardio">raw.apiHook(  
+    &quot;user32.dll&quot;,  
+    &quot;GetCursorPos&quot;,  
+    &quot;bool(pointer lpPoint )&quot;,   
+    function( lpPoint ){  
+        owner.callApi(lpPoint);   
+
+        raw.mixin( lpPoint,{  
+                int x = 123;   
+                int y = 456   
+        } );  
+
+        /*可选通过 owner.callApi 调用原始函数,  
+结构体等回调时必须传为指针参数,  
+可通过 raw.mixin 修改修结构而不改变指针地址*/  
+        return true;  
+    }  
+).install();
+</code></pre>
+
+<p><a id="global"></a></p>
+
+<h2>全局对象 成员列表</h2>
+
+<p><a id="getPointerAddress(指针)"></a></p>
+
+<h3>getPointerAddress(指针)</h3>
+
+<p>返回数值类型指针地址</p>
+
+<p><a id="rawApihookObject"></a></p>
+
+<h2>rawApihookObject 成员列表</h2>
+
+<p><a id="rawApihookObject.install"></a></p>
+
+<h3>rawApihookObject.install()</h3>
+
+<p>安装钩子  </p>
+
+<p><a href="#rawApihookObject">返回对象:rawApihookObject</a></p>
+
+<p><a id="rawApihookObject.unInstall"></a></p>
+
+<h3>rawApihookObject.unInstall()</h3>
+
+<p>卸载钩子</p>
+
+<p><a href="apiHook.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/raw/apiHook.md">Markdown 格式</a></p>
+
+</body> 
+</html>

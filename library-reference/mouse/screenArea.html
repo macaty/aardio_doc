@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - mouse.screenArea 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - mouse.screenArea 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>mouse.screenArea 库模块帮助文档</h1>
+
+<p><a id="mouse"></a></p>
+
+<h2>mouse 成员列表</h2>
+
+<p><a id="mouse.screenArea"></a></p>
+
+<h3>mouse.screenArea</h3>
+
+<p>屏幕选区工具</p>
+
+<p>创建屏幕选区工具,<br>
+如果已打开屏幕选区则返回 null</p>
+
+<p><a id="mouse.screenArea"></a></p>
+
+<h3>mouse.screenArea()</h3>
+
+<p><a href="#MouseScreenAreaObject">返回对象:MouseScreenAreaObject</a></p>
+
+<p><a id="mouse.screenArea"></a></p>
+
+<h3>mouse.screenArea(winform)</h3>
+
+<p>参数 @1 指定父窗口</p>
+
+<p><a id="MouseScreenAreaObject"></a></p>
+
+<h2>MouseScreenAreaObject 成员列表</h2>
+
+<p><a id="MouseScreenAreaObject.close"></a></p>
+
+<h3>MouseScreenAreaObject.close()</h3>
+
+<p>关闭创建屏幕选区工具</p>
+
+<p><a id="MouseScreenAreaObject.doModal"></a></p>
+
+<h3>MouseScreenAreaObject.doModal(/*请指定所有者窗口\n可省略此参数*/)</h3>
+
+<p>此函数创建屏幕选区工具并显示为模态对话框，  </p>
+
+<p>模态对话框应是独立窗口，并显示在所有者窗口前面。  </p>
+
+<p>模态对话框会自己创建自己的消息循环，<br>
+并阻止调用模态对话框的代码继续向后运行 - 直到模态对话框被关闭。</p>
+
+<p><a id="MouseScreenAreaObject.onSelectionChanged"></a></p>
+
+<h3>MouseScreenAreaObject.onSelectionChanged</h3>
+
+<pre><code class="aardio language-aardio">MouseScreenAreaObject.onSelectionChanged = function(rc){
+    /*rc 为表示当前选区的::RECT 结构体*/
+    owner.close();
+}
+</code></pre>
+
+<p><a id="MouseScreenAreaObject.show"></a></p>
+
+<h3>MouseScreenAreaObject.show(false)</h3>
+
+<p>隐藏创建屏幕选区工具</p>
+
+<p><a id="MouseScreenAreaObject.show"></a></p>
+
+<h3>MouseScreenAreaObject.show(true)</h3>
+
+<p>显示创建屏幕选区工具</p>
+
+<p><a id="MouseScreenAreaObject.mask"></a></p>
+
+<h2>MouseScreenAreaObject.mask 成员列表</h2>
+
+<p><a id="MouseScreenAreaObject.mask.foreground"></a></p>
+
+<h3>MouseScreenAreaObject.mask.foreground</h3>
+
+<p>设置遮罩颜色，0xAARRGGBB 格式数值</p>
+
+<p><a href="screenArea.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/mouse/screenArea.md">Markdown 格式</a></p>
+
+</body> 
+</html>

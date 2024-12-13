@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - 窗口自动化 - 入门'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - 窗口自动化 - 入门</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 窗口自动化 - 入门</h1><pre><code class="aardio language-aardio">//窗口自动化 - 入门
+import winex.key;
+import process;
+
+//运行写字板
+if( !process.executeWaitInput(&quot;wordpad.exe&quot;) ){
+    error(&quot;系统未安装写字板&quot;);
+}
+
+//查找并等待激活的窗口
+var hwnd,hCtrl = winex.waitActive(,,&quot;WordPadClass&quot;,&quot;RICHEDIT50W&quot;); 
+
+//win.setFocus,winex.key.combine 等必须要绑定到目标输入线程
+winex.attach(hwnd,function(){
+
+    //设置焦点
+    win.setFocus(hCtrl)
+
+    //输入一些内容 (你知道aardio发送文本的方式共有多少种吗?)
+    winex.key.send(hCtrl,&quot;Test&quot; )
+    thread.delay(100)
+
+    //后台发送CTRL+A组合键 
+    winex.key.combine(hwnd,&quot;CTRL&quot;,&quot;A&quot;)
+
+    //后台发送ALT+F组合键
+    winex.key.altClick(hwnd,&quot;F&quot; )
+})
+
+
+</code></pre>
+<a href="winex.md" tppabs="https://www.aardio.com/zh-cn/doc/example/Automation/Windows/winex.md">Markdown 格式</a>
+</body> 
+</html>

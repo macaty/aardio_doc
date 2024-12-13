@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - string.database 库 - 读写 CSV 文件'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - string.database 库 - 读写 CSV 文件</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: string.database 库 - 读写 CSV 文件</h1><pre><code class="aardio language-aardio">//string.database 库 - 读写 CSV 文件
+import console;
+import string.database;
+
+//创建 CSV 数据库对象
+var csv = string.database(&quot;,&quot;);
+
+//CSV 格式测试数据
+var txt = /*
+Name,Starred,Contact_Id
+&quot;孟轲&quot;,&quot;0&quot;,0
+*/ 
+
+//解析数据
+var csvTable = csv.parse(txt); 
+console.dump( csvTable ); //这里的 csvTable 与 csv.dataTable 是同一个对象
+
+//添加多行数据到 csv.dataTable （也就是上面的 csvTable ）
+csv.push(
+    {&quot;张九龄&quot;,&quot;1&quot;,1 },
+    {&quot;张九龄2&quot;,&quot;2&quot;,2 }
+);
+
+//也可以添加一行的多个列
+csv.push(&quot;张九龄3&quot;,&quot;3&quot;,3);
+
+//保存为 UTF-8 编码 CSV 文件
+csv.save(&quot;/utf8.csv&quot;);
+
+//参数 @3 为 true 则向文件追加数据
+csv.save(&quot;/utf8.csv&quot;,{{ &quot;孟轲2&quot;,&quot;2&quot;,2} },true); 
+
+//保存为 ANSI 编码 CSV 文件
+csv.saveA(&quot;/ansi.csv&quot;); 
+
+//转换为文本
+var str = csv.stringify(); 
+
+//在参数中指定要转换的其他数据表也是可以的
+var str = csv.stringify(csvTable); 
+
+//输出到控制台
+console.dump(str);
+console.more();
+
+//读取 CSV 文件
+var csvTable = csv.load(&quot;/utf8.csv&quot;)
+
+//输出 JSON 到控制台
+console.dumpJson(csvTable);
+
+//逐行读取并解析 CSV 文件为列数组。
+for tab in csv.each(&quot;/utf8.csv&quot;) {
+    console.dumpTable(tab);
+}
+console.pause();
+</code></pre>
+<a href="string.database.md" tppabs="https://www.aardio.com/zh-cn/doc/example/Database/csv/string.database.md">Markdown 格式</a>
+</body> 
+</html>

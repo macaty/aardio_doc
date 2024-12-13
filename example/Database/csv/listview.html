@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - 使用 listview 导入导出 CSV 数据'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - 使用 listview 导入导出 CSV 数据</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 使用 listview 导入导出 CSV 数据</h1><pre><code class="aardio language-aardio">//使用 listview 导入导出 CSV 数据
+import win.ui;
+import string.database;
+import fsys.dlg;
+/*DSG{{*/
+var winform = win.form(text=&quot;CSV 导入导出示例&quot;;right=759;bottom=469)
+winform.add(
+btnExport={cls=&quot;button&quot;;text=&quot;导出 CSV&quot;;left=597;top=415;right=732;bottom=450;db=1;dr=1;z=3};
+btnImport={cls=&quot;button&quot;;text=&quot;导入 CSV&quot;;left=25;top=415;right=160;bottom=450;db=1;dl=1;z=2};
+listview={cls=&quot;listview&quot;;left=51;top=23;right=700;bottom=385;edge=1;z=1}
+)
+/*}}*/
+
+// 导入 CSV 文件到 listview
+winform.btnImport.oncommand = function(id,event){
+    var path = fsys.dlg.open(&quot;CSV 文件|*.csv||&quot;,&quot;选择要导入的 CSV 文件&quot;);
+    if(!path) return;
+
+    var db = string.database();
+    var data = db.load(path);  
+
+    winform.listview.setTable(data)  
+}
+
+// 从 listview 导出到 CSV 文件
+winform.btnExport.oncommand = function(id,event){
+
+    var dataTable =  winform.listview.getTable(true);
+    var path = fsys.dlg.save(&quot;CSV 文件|*.csv||&quot;,&quot;选择保存位置&quot;);
+    if(!path) return;
+
+    // 创建 CSV 数据库
+    var csv = string.database();
+
+    // 保存 CSV 到文件
+    csv.save(path,dataTable);  
+
+    winform.msgbox(&quot;CSV 文件导出成功！&quot;);
+}
+
+winform.show();
+win.loopMessage();
+</code></pre>
+<a href="listview.md" tppabs="https://www.aardio.com/zh-cn/doc/example/Database/csv/listview.md">Markdown 格式</a>
+</body> 
+</html>

@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - 属性'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - 属性</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 属性</h1><pre><code class="aardio language-aardio">//属性
+//此功能调用 .NET 组件，相关范例：调用其他语言 &gt; dotNet
+//探测工具 loadcodex(&quot;~\tools\Spy\inspect.aardio&quot;)
+import console.int;
+import System.Windows.Automation;
+
+Automation = System.Windows.Automation; 
+AutomationElement = Automation.AutomationElement;
+
+var focusElement = AutomationElement.RootElement.FocusedElement;
+if(focusElement){ 
+
+    //获取 UIA 元素当前属性，参数 @2 为 true 忽略默认属性
+    //https://learn.microsoft.com/en-us/dotnet/api/system.windows.automation.automationelement.getcurrentpropertyvalue?view=netframework-4.0
+    var hwnd = focusElement.GetCurrentPropertyValue(AutomationElement.NativeWindowHandleProperty, true);
+    if(hwnd == AutomationElement.NotSupported){
+        console.log(&quot;获取焦点窗口句柄失败&quot;)
+    }
+    else {
+        console.log(&quot;焦点输口句柄&quot;,hwnd)
+    }
+
+    //窗口句柄的默认属性为 0，所以上面的代码可以简化为
+    var hwnd = focusElement.GetCurrentPropertyValue(AutomationElement.NativeWindowHandleProperty);
+    if(hwnd) console.log(&quot;焦点输口句柄&quot;,hwnd);
+
+    //也可以通过 Current 对象直接访问当前属性（支持默认属性）
+    //https://learn.microsoft.com/en-us/dotnet/api/system.windows.automation.automationelement.current?view=netframework-4.0
+    var hwnd = focusElement.Current.NativeWindowHandle;
+    if(hwnd) console.log(&quot;焦点输口句柄&quot;,hwnd);
+}
+</code></pre>
+<a href="UIA-Property.md" tppabs="https://www.aardio.com/zh-cn/doc/example/Automation/UIA/UIA-Property.md">Markdown 格式</a>
+</body> 
+</html>

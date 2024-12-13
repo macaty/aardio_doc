@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - 窗口背景贴图'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - 窗口背景贴图</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 窗口背景贴图</h1><pre><code class="aardio language-aardio">//背景贴图
+import win.ui;
+/*DSG{{*/
+var winform = win.form(text=&quot;窗口背景贴图&quot;;right=759;bottom=469)
+winform.add(
+bk={cls=&quot;bk&quot;;text=&quot;无窗口贴图控件&quot;;left=563;top=70;right=736;bottom=408;bgcolor=65535;z=3};
+plus={cls=&quot;plus&quot;;left=72;top=66;right=498;bottom=288;bgcolor=32768;z=1};
+plus2={cls=&quot;plus&quot;;left=14;top=164;right=440;bottom=386;bgcolor=8421504;z=2}
+)
+/*}}*/
+
+/*
+使用此事件可以直接将背景画到缓存好的位图上以后，由aardio一次输出，
+如果不是经常变动的图像,直接画到背景上可以避免添加多余的控件窗口,避免窗口间的重叠干扰导致的问题。
+*/
+import gdip.graphics;
+var bmp = com.picture.loadBitmap(&quot;~\extensions\wizard\project2\forms\images\winform.jpg&quot;);
+winform.onDrawBackground  = function(hdc,rc){
+    gdi.fillRect(hdc,0x00008C,rc.copy(,150));
+    gdi.fillRect(hdc,0x468C00,rc.copy(200));
+
+    //九宫格贴图
+    gdi.drawBitmap(hdc,bmp,rc.move(200,150),140,140,100,225);
+
+    var font = ::LOGFONT(weight=400;point=9;color=0xFF);
+    gdi.drawTextCenter(hdc,font,&quot;改变窗口大小试试,任意位置贴图都可以支持九宫格&quot;,rc.move(120,150));
+}
+
+/*
+用下面的函数让plus直接绘图到窗口背景上
+*/
+winform.plus.directDrawBackgroundOnly();
+
+winform.plus2.background = 0x90808080;
+winform.plus.background = 0x90008000;
+
+winform.disableDragFullWindow = false;
+
+winform.show();
+win.loopMessage();
+</code></pre>
+<a href="drawBackground.md" tppabs="https://www.aardio.com/zh-cn/doc/example/Graphics/drawBackground.md">Markdown 格式</a>
+</body> 
+</html>

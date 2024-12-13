@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - 已知文件夹'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - 已知文件夹</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 已知文件夹</h1><pre><code class="aardio language-aardio">//已知文件夹
+import console; 
+import fsys.knownFolder;
+
+/*
+有部分目录用 io.getSpecial() 无法获取。
+例如系统下载目录，这些目录可以用下面的 fsys.knownFolder 获取。
+参数@1 指定目录 GUID，GUID 可以是 16 字节的字符串，也可以是 win.guid 支持的格式。
+*/
+var path = fsys.knownFolder(&quot;374DE290-123F-4565-9164-39C4925E467B&quot;);
+
+console.log(&quot;系统下载目录：&quot;,path );
+console.pause(true);
+</code></pre>
+<a href="knownFolder.md" tppabs="https://www.aardio.com/zh-cn/doc/example/File/SpecialPath/knownFolder.md">Markdown 格式</a>
+</body> 
+</html>

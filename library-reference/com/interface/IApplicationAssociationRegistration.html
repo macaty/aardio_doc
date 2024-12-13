@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - com.interface.IApplicationAssociationRegistration 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - com.interface.IApplicationAssociationRegistration 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>com.interface.IApplicationAssociationRegistration 库模块帮助文档</h1>
+
+<p><a id="com.interface.IApplicationAssociationRegistration"></a></p>
+
+<h2>com.interface.IApplicationAssociationRegistration 成员列表</h2>
+
+<p>主要用于默认浏览器设置<br>
+普通文件关联不必要调用此接口</p>
+
+<p><a id="com.interface.IApplicationAssociationRegistration.create"></a></p>
+
+<h3>com.interface.IApplicationAssociationRegistration.create()</h3>
+
+<p>创建文件关联管理  </p>
+
+<p><a href="#IApplicationAssociationRegistrationObject">返回对象:IApplicationAssociationRegistrationObject</a></p>
+
+<p><a id="IAppAssociationInfoObject"></a></p>
+
+<h2>IAppAssociationInfoObject 成员列表</h2>
+
+<p><a id="IAppAssociationInfoObject.command"></a></p>
+
+<h3>IAppAssociationInfoObject.command</h3>
+
+<p>命令行</p>
+
+<p><a id="IAppAssociationInfoObject.icon"></a></p>
+
+<h3>IAppAssociationInfoObject.icon</h3>
+
+<p>图标</p>
+
+<p><a id="IAppAssociationInfoObject.name"></a></p>
+
+<h3>IAppAssociationInfoObject.name</h3>
+
+<p>关联名</p>
+
+<p><a id="IApplicationAssociationRegistrationObject"></a></p>
+
+<h2>IApplicationAssociationRegistrationObject 成员列表</h2>
+
+<p><a id="IApplicationAssociationRegistrationObject.changeNotify"></a></p>
+
+<h3>IApplicationAssociationRegistrationObject.changeNotify()</h3>
+
+<p>刷新文件关联</p>
+
+<p><a id="IApplicationAssociationRegistrationObject.clearUserAssociations"></a></p>
+
+<h3>IApplicationAssociationRegistrationObject.clearUserAssociations()</h3>
+
+<p>清除当前用户文件与协议关联并恢复公用设置</p>
+
+<p><a id="IApplicationAssociationRegistrationObject.getAssociationInfo"></a></p>
+
+<h3>IApplicationAssociationRegistrationObject.getAssociationInfo(&quot;Internet Explorer&quot;,&quot;http&quot;)</h3>
+
+<p>返加文件关联信息  </p>
+
+<p><a href="#IAppAssociationInfoObject">返回对象:IAppAssociationInfoObject</a></p>
+
+<p><a id="IApplicationAssociationRegistrationObject.getAssociationInfo"></a></p>
+
+<h3>IApplicationAssociationRegistrationObject.getAssociationInfo()</h3>
+
+<p><a href="#IAppAssociationInfoObject">返回对象:IAppAssociationInfoObject</a></p>
+
+<p><a id="IApplicationAssociationRegistrationObject.lstBrowser"></a></p>
+
+<h3>IApplicationAssociationRegistrationObject.lstBrowser()</h3>
+
+<p>返回已安装的浏览器应用程序ID以及路径对应表</p>
+
+<p><a id="IApplicationAssociationRegistrationObject.queryAppIsDefault"></a></p>
+
+<h3>IApplicationAssociationRegistrationObject.queryAppIsDefault(&quot;http&quot;,,,&quot;Internet Explorer&quot;)</h3>
+
+<p>检测浏览器是否关联指定的协议或后缀名<br>
+后缀名首字符追必须是圆点</p>
+
+<p><a id="IApplicationAssociationRegistrationObject.queryCurrentDefault"></a></p>
+
+<h3>IApplicationAssociationRegistrationObject.queryCurrentDefault(&quot;http&quot;)</h3>
+
+<p>返回协义关联的启动命令行或后缀名关联的文档类型<br>
+后缀名首字符追必须是圆点</p>
+
+<p><a id="IApplicationAssociationRegistrationObject.setAppAsDefault"></a></p>
+
+<h3>IApplicationAssociationRegistrationObject.setAppAsDefault(&quot;Internet Explorer&quot;,&quot;http&quot;)</h3>
+
+<p>设置指定协议或后缀名的文件关联<br>
+win7可用,xp仅兼容式支持IE,win8已禁止使用此函数</p>
+
+<p><a id="IApplicationAssociationRegistrationObject.setAppAsDefaultAll"></a></p>
+
+<h3>IApplicationAssociationRegistrationObject.setAppAsDefaultAll(&quot;Internet Explorer&quot;)</h3>
+
+<p>恢复默认浏览器关联<br>
+win7可用,xp仅兼容式支持IE,win8已禁止使用此函数</p>
+
+<h3>自动完成常量</h3>
+
+<p>_AL_EFFECTIVE=1<br>
+_AL_MACHINE=0<br>
+_AL_USER=2<br>
+_AT_FILEEXTENSION=0<br>
+_AT_MIMETYPE=3<br>
+_AT_STARTMENUCLIENT=2<br>
+_AT_URLPROTOCOL=1  </p>
+
+<p><a href="IApplicationAssociationRegistration.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/com/interface/IApplicationAssociationRegistration.md">Markdown 格式</a></p>
+
+</body> 
+</html>

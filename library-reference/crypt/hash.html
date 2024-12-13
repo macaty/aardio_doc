@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - crypt.hash 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - crypt.hash 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>crypt.hash 库模块帮助文档</h1>
+
+<p><a id="crypt"></a></p>
+
+<h2>crypt 成员列表</h2>
+
+<p><a id="crypt.hash"></a></p>
+
+<h3>crypt.hash()</h3>
+
+<p><a href="#cryptHashObject">返回对象:cryptHashObject</a></p>
+
+<p><a id="cryptHashObject"></a></p>
+
+<h2>cryptHashObject 成员列表</h2>
+
+<p><a id="cryptHashObject.deriveKey"></a></p>
+
+<h3>cryptHashObject.deriveKey(算法ID,选项)</h3>
+
+<p>导出会话密钥设置为容器对象当前密钥<br>
+会话密钥由容器对象管理,该函数成功返回true</p>
+
+<p>从哈希表中派生密钥,<br>
+参数可选,算法ID默认为_CALG_RC4,选项默认为0<br>
+密钥自动绑定到CSP密钥容器对象<br>
+该函数无返回值</p>
+
+<p><a id="cryptHashObject.destroy"></a></p>
+
+<h3>cryptHashObject.destroy()</h3>
+
+<p>删除哈希对象</p>
+
+<p><a id="cryptHashObject.getHexValue"></a></p>
+
+<h3>cryptHashObject.getHexValue()</h3>
+
+<p>返回十六进制哈希值(大写)</p>
+
+<p><a id="cryptHashObject.getHexValue"></a></p>
+
+<h3>cryptHashObject.getHexValue(false)</h3>
+
+<p>返回十六进制哈希值(小写)</p>
+
+<p><a id="cryptHashObject.getValue"></a></p>
+
+<h3>cryptHashObject.getValue()</h3>
+
+<p>返回原始哈希值数据,<br>
+即未转换为16进制</p>
+
+<p><a id="cryptHashObject.hashBuffer"></a></p>
+
+<h3>cryptHashObject.hashBuffer(buffer,长度)</h3>
+
+<p>参数@1 可以是 raw.buffer 创建的 buffer 对象或者结构体。<br>
+长度为可选参数。  </p>
+
+<p>hash 前缀的函数都可以多次调用连续计算。</p>
+
+<p><a id="cryptHashObject.hashData"></a></p>
+
+<h3>cryptHashObject.hashData(字符串)</h3>
+
+<p>计算哈希值。<br>
+hash 前缀的函数都可以多次调用连续计算。</p>
+
+<p><a id="cryptHashObject.hashFile"></a></p>
+
+<h3>cryptHashObject.hashFile(文件路径)</h3>
+
+<p>计算文件哈希值。<br>
+hash 前缀的函数都可以多次调用连续计算。</p>
+
+<p><a id="cryptHashObject.sign"></a></p>
+
+<h3>cryptHashObject.sign(keySpec,flags)</h3>
+
+<p>返回签名<br>
+可选用 @keySpec 参数中指定密钥类型,<br>
+@flags 不必指定,默认为_AT_SIGNATURE<br>
+导入密钥时请改为_AT_KEYEXCHANGE</p>
+
+<p><a id="cryptHashObject.size"></a></p>
+
+<h3>cryptHashObject.size()</h3>
+
+<p>返回摘要值字节长度</p>
+
+<p><a href="hash.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/crypt/hash.md">Markdown 格式</a></p>
+
+</body> 
+</html>

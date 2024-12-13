@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - fsys.update.app 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - fsys.update.app 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>fsys.update.app 库模块帮助文档</h1>
+
+<p><a id="fsys.update"></a></p>
+
+<h2>fsys.update 成员列表</h2>
+
+<p><a id="fsys.update.app"></a></p>
+
+<h3>fsys.update.app</h3>
+
+<p>执行更新程序</p>
+
+<p><a id="fsys.update.app"></a></p>
+
+<h3>fsys.update.app()</h3>
+
+<p><a href="#fsysUpdateAppObject">返回对象:fsysUpdateAppObject</a></p>
+
+<p><a id="fsys.update.app"></a></p>
+
+<h3>fsys.update.app(更新源,目标目录,是否保留更新补丁,是否允许移除文件)</h3>
+
+<p>创建更新程序,<br>
+如果参数@3为true，则更新后不删除源补丁<br>
+如果参数@4指定为false，则更新时不删除在新版补丁中已移除的旧版本文件。</p>
+
+<p><a id="fsysUpdateAppObject"></a></p>
+
+<h2>fsysUpdateAppObject 成员列表</h2>
+
+<p><a id="fsysUpdateAppObject.apply"></a></p>
+
+<h3>fsysUpdateAppObject.apply()</h3>
+
+<p>创建更新线程,安装更新</p>
+
+<p><a id="fsysUpdateAppObject.onCopyBegin"></a></p>
+
+<h3>fsysUpdateAppObject.onCopyBegin</h3>
+
+<pre><code class="aardio language-aardio">fsysUpdateAppObject.onCopyBegin = function(total){
+     /*开始复制文件*/
+}
+</code></pre>
+
+<p><a id="fsysUpdateAppObject.onCopyFailed"></a></p>
+
+<h3>fsysUpdateAppObject.onCopyFailed</h3>
+
+<pre><code class="aardio language-aardio">fsysUpdateAppObject.onCopyFailed = function(path){
+     /*文件被占用,返回false取消更新*/
+}
+</code></pre>
+
+<p><a id="fsysUpdateAppObject.onCopyFile"></a></p>
+
+<h3>fsysUpdateAppObject.onCopyFile</h3>
+
+<pre><code class="aardio language-aardio">fsysUpdateAppObject.onCopyFile = function(path,count){
+     /*开始复制参数@1指定的文件,返回false取消更新*/
+}
+</code></pre>
+
+<p><a id="fsysUpdateAppObject.onEnd"></a></p>
+
+<h3>fsysUpdateAppObject.onEnd</h3>
+
+<pre><code class="aardio language-aardio">fsysUpdateAppObject.onEnd = function(succeeded){
+     /*更新操作已全部完成*/
+}
+</code></pre>
+
+<p><a id="fsysUpdateAppObject.onError"></a></p>
+
+<h3>fsysUpdateAppObject.onError</h3>
+
+<pre><code class="aardio language-aardio">fsysUpdateAppObject.onError = function(err,filename){
+    io.print(&quot;更新遇到错误:&quot;,err,filename/*导致错误的文件路径或URL  
+该值可能为空*/ )
+}
+</code></pre>
+
+<p><a id="fsysUpdateAppObject.onProcessCheck"></a></p>
+
+<h3>fsysUpdateAppObject.onProcessCheck</h3>
+
+<pre><code class="aardio language-aardio">fsysUpdateAppObject.onProcessCheck = function(paths){
+     /*参数是更新程序所在目录下已运行的进程路径,  
+返回false取消更新*/
+}
+</code></pre>
+
+<p><a id="fsysUpdateAppObject.onProcessFailed"></a></p>
+
+<h3>fsysUpdateAppObject.onProcessFailed</h3>
+
+<pre><code class="aardio language-aardio">fsysUpdateAppObject.onProcessFailed = function(paths){
+     /*更新程序需要退出进程,  
+参数是程序启动路径数组  
+返回false取消更新*/
+}
+</code></pre>
+
+<p><a id="fsysUpdateAppObject.updateInfo.description"></a></p>
+
+<h3>fsysUpdateAppObject.updateInfo.description</h3>
+
+<p>更新说明</p>
+
+<p><a id="fsysUpdateAppObject.updateInfo.version"></a></p>
+
+<h3>fsysUpdateAppObject.updateInfo.version</h3>
+
+<p>更新的软件版本号</p>
+
+<p><a href="app.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/fsys/update/app.md">Markdown 格式</a></p>
+
+</body> 
+</html>

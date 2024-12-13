@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - 发送字符串'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - 发送字符串</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 发送字符串</h1><pre><code class="aardio language-aardio">//发送字符串
+import key;
+
+//发送按键,不区分双字符键,受输入法影响
+key.send( &quot;abcdeHIJK12345~!@#$%^&amp;*()_+&quot; ); 
+
+//发送中英文字符串，不受输入法影响
+key.sendString(&quot;发送字符串abcd&quot;)
+
+key.pressEx( &quot;CTRL&quot;,&quot;A&quot; )
+
+/*
+其他发送字符串函数：
+
+winex.say();
+winex.sayIme();
+winex.sayAnsi();
+winex.sayImeAnsi();
+winex.sendString();
+winex.setText();
+winex.key.send();
+*/
+</code></pre>
+<a href="sendString.md" tppabs="https://www.aardio.com/zh-cn/doc/example/Automation/Input/sendString.md">Markdown 格式</a>
+</body> 
+</html>

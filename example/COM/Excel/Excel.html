@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - Excel 基础操作'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - Excel 基础操作</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: Excel 基础操作</h1><pre><code class="aardio language-aardio">//Excel 基础操作
+import console;
+import com.excel; 
+
+console.showLoading(&quot; 正在启动 Excel &quot;);
+var excel,err = com.excel(); 
+assert(excel,err);
+
+excel.alerts = false; //关闭界面提示与屏幕更新
+/*
+excel.Visible = true;//显示 Excel 界面
+excel.alerts = true;//允许界面提示与屏幕更新
+excel.Application.ScreenUpdating = true;//单独设置屏幕更新
+https://docs.microsoft.com/en-us/office/vba/api/excel.application%28object%29
+*/
+
+var book = excel.WorkBooks.Add(); //创建工作簿
+//book = excel.Open( &quot;\test.xls&quot; );
+
+var sheet = excel.ActiveWorkbook.Sheets(1);
+var cell = sheet.Cells(1,1);
+
+//https://docs.microsoft.com/en-us/office/vba/api/excel.range.value2
+cell.Value2 = &quot;haha&quot;;   
+
+console.log( cell.Text );
+
+//遍列所有单元格
+for(i,values in excel.eachValue(1) ){ 
+    console.log(&quot;行号&quot;+i,table.tostring(values));  
+}
+
+//下面两种方法都可以输入常量，_xl 前缀会触发智能提示（推荐这种）
+excel.Calculation = -4105/*_xlCalculationAutomatic*/
+excel.Calculation = excel.xlCalculationAutomatic;
+
+excel.Quit(); //退出
+//所有存储 Excel 创建或返回对象的变量离开作用域并被回收后才会完全退出 Excel ,可调用 collectgarbage(&quot;collect&quot;) 提前回收资源
+
+console.pause();
+</code></pre>
+<a href="Excel.md" tppabs="https://www.aardio.com/zh-cn/doc/example/COM/Excel/Excel.md">Markdown 格式</a>
+</body> 
+</html>

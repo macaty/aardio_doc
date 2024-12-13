@@ -1,0 +1,804 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - com.dsoFramer 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - com.dsoFramer 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>com.dsoFramer 库模块帮助文档</h1>
+
+<p><details>  <summary>说明</summary>  <p></p>
+
+<p>DsoFramer 主要是通过 activeDocument 获取活动文档并操作文档对象。</p>
+
+<p>Word 文档对象请参考：
+<a href="../../../../../../docs.microsoft.com/en-us/office/vba/api/word.document" tppabs="https://docs.microsoft.com/en-us/office/vba/api/word.document">https://docs.microsoft.com/en-us/office/vba/api/word.document</a></p>
+
+<p>Excel 文档对象请参考： 
+<a href="../../../../../../docs.microsoft.com/en-us/office/vba/api/excel.workbook" tppabs="https://docs.microsoft.com/en-us/office/vba/api/excel.workbook">https://docs.microsoft.com/en-us/office/vba/api/excel.workbook</a></p>
+
+<p>PowerPoint 文档对象请参考： 
+<a href="../../../../../../docs.microsoft.com/en-us/office/vba/api/powerpoint.presentation" tppabs="https://docs.microsoft.com/en-us/office/vba/api/powerpoint.presentation">https://docs.microsoft.com/en-us/office/vba/api/powerpoint.presentation</a></p>
+
+<p></p></details></p>
+
+<p><a id="com"></a></p>
+
+<h2>com 成员列表</h2>
+
+<p><a id="com.dsoFramer"></a></p>
+
+<h3>com.dsoFramer</h3>
+
+<p>DsoFramer 是微软免费开源的控件,<br>
+用于嵌入 Word、 Excel、 PPT 等 Office 文档，兼容 WPS。<br>
+要求不高还是挺不错的,而且此扩展库已实现免注册调用,<br>
+不需要注册控件,而且可以生成独立EXE文件,<br>
+当然 DsoFramer 本身并不完美，<br>
+如果有更高的要求，这是开源控件请自行改进,<br>
+本人不对此控件提供技术支持</p>
+
+<p><a id="com.dsoFramer"></a></p>
+
+<h3>com.dsoFramer()</h3>
+
+<p><a href="#comDsoFramerObject">返回对象:comDsoFramerObject</a></p>
+
+<p><a id="com.dsoFramer"></a></p>
+
+<h3>com.dsoFramer(winform)</h3>
+
+<p>参数是窗体或控件对象</p>
+
+<p><a id="comDsoFramerObject"></a></p>
+
+<h2>comDsoFramerObject 成员列表</h2>
+
+<p><a id="comDsoFramerObject.BeforeDocumentClosed"></a></p>
+
+<h3>comDsoFramerObject.BeforeDocumentClosed</h3>
+
+<pre><code class="aardio language-aardio">comDsoFramerObject.BeforeDocumentClosed = function(){
+    /*当文档关闭前触发*/    
+}
+</code></pre>
+
+<p><a id="comDsoFramerObject.Insert"></a></p>
+
+<h3>comDsoFramerObject.Insert(&quot;文件&quot;)</h3>
+
+<p>插入文件到当前位置,<br>
+如果文件是图像,请将参数@2指定为true</p>
+
+<p><a id="comDsoFramerObject.InsertFront"></a></p>
+
+<h3>comDsoFramerObject.InsertFront(&quot;文件&quot;)</h3>
+
+<p>插入文件到头部,<br>
+如果文件是图像,请将参数@2指定为true</p>
+
+<p><a id="comDsoFramerObject.InsertRear"></a></p>
+
+<h3>comDsoFramerObject.InsertRear(&quot;文件&quot;)</h3>
+
+<p>插入文件到尾部,<br>
+如果文件是图像,请将参数@2指定为true</p>
+
+<p><a id="comDsoFramerObject.OnDocActivated"></a></p>
+
+<h3>comDsoFramerObject.OnDocActivated</h3>
+
+<pre><code class="aardio language-aardio">comDsoFramerObject.OnDocActivated = function(isActivated){
+    /*当组件激活或取消激活时触发*/ 
+}
+</code></pre>
+
+<p><a id="comDsoFramerObject.OnDocumentClosed"></a></p>
+
+<h3>comDsoFramerObject.OnDocumentClosed</h3>
+
+<pre><code class="aardio language-aardio">comDsoFramerObject.OnDocumentClosed = function(){
+    /*当文档关闭时调用*/    
+}
+</code></pre>
+
+<p><a id="comDsoFramerObject.OnDocumentOpened"></a></p>
+
+<h3>comDsoFramerObject.OnDocumentOpened</h3>
+
+<pre><code class="aardio language-aardio">comDsoFramerObject.OnDocumentOpened = function( path, document){
+    /*新建或打开文档触发此事件*/
+}
+</code></pre>
+
+<p><a id="comDsoFramerObject.OnFileCommand"></a></p>
+
+<h3>comDsoFramerObject.OnFileCommand</h3>
+
+<pre><code class="aardio language-aardio">comDsoFramerObject.OnFileCommand = function(item,cancel){
+    /*用户选择菜单命令触发,  
+可通过返回 cancel 值为 true 取消命令*/   
+}
+</code></pre>
+
+<p><a id="comDsoFramerObject.OnPPTBeforeRightClick"></a></p>
+
+<h3>comDsoFramerObject.OnPPTBeforeRightClick</h3>
+
+<pre><code class="aardio language-aardio">comDsoFramerObject.OnPPTBeforeRightClick = function(selection,isCancel){
+    /* */       
+}
+</code></pre>
+
+<p><a id="comDsoFramerObject.OnPrintPreviewExit"></a></p>
+
+<h3>comDsoFramerObject.OnPrintPreviewExit</h3>
+
+<pre><code class="aardio language-aardio">comDsoFramerObject.OnPrintPreviewExit = function(){
+    /*打印预览关闭时触发*/ 
+}
+</code></pre>
+
+<p><a id="comDsoFramerObject.OnScreenModeChanged"></a></p>
+
+<h3>comDsoFramerObject.OnScreenModeChanged</h3>
+
+<pre><code class="aardio language-aardio">comDsoFramerObject.OnScreenModeChanged = function(isFullScreenMode){
+    /*用户选择菜单命令触发,  
+可通过返回 cancel 值为 true 取消命令*/   
+}
+</code></pre>
+
+<p><a id="comDsoFramerObject.OnSheetBeforeDoubleClick"></a></p>
+
+<h3>comDsoFramerObject.OnSheetBeforeDoubleClick</h3>
+
+<pre><code class="aardio language-aardio">comDsoFramerObject.OnSheetBeforeDoubleClick = function(sheetName, row, col, cancel){
+    /* */       
+}
+</code></pre>
+
+<p><a id="comDsoFramerObject.OnSheetBeforeRightClick"></a></p>
+
+<h3>comDsoFramerObject.OnSheetBeforeRightClick</h3>
+
+<pre><code class="aardio language-aardio">comDsoFramerObject.OnSheetBeforeRightClick = function(sheetName, row, col, cancel){
+    /* */       
+}
+</code></pre>
+
+<p><a id="comDsoFramerObject.OnSheetChange"></a></p>
+
+<h3>comDsoFramerObject.OnSheetChange</h3>
+
+<pre><code class="aardio language-aardio">comDsoFramerObject.OnSheetChange = function(sheetName, row, col){
+    /* */       
+}
+</code></pre>
+
+<p><a id="comDsoFramerObject.OnSheetselectionChange"></a></p>
+
+<h3>comDsoFramerObject.OnSheetselectionChange</h3>
+
+<pre><code class="aardio language-aardio">comDsoFramerObject.OnSheetselectionChange = function(sheetName,row, col){
+    /* */       
+}
+</code></pre>
+
+<p><a id="comDsoFramerObject.OnWordBeforeDoubleClick"></a></p>
+
+<h3>comDsoFramerObject.OnWordBeforeDoubleClick</h3>
+
+<pre><code class="aardio language-aardio">comDsoFramerObject.OnWordBeforeDoubleClick = function(selection,isCancel){
+    /* */       
+}
+</code></pre>
+
+<p><a id="comDsoFramerObject.OnWordBeforeRightClick"></a></p>
+
+<h3>comDsoFramerObject.OnWordBeforeRightClick</h3>
+
+<pre><code class="aardio language-aardio">comDsoFramerObject.OnWordBeforeRightClick = function(selection,isCancel){
+    /* */       
+}
+</code></pre>
+
+<p><a id="comDsoFramerObject.OnWordWPSSelChange"></a></p>
+
+<h3>comDsoFramerObject.OnWordWPSSelChange</h3>
+
+<pre><code class="aardio language-aardio">comDsoFramerObject.OnWordWPSSelChange = function(selection){
+    /* */       
+}
+</code></pre>
+
+<p><a id="comDsoFramerObject.SaveAsTypes"></a></p>
+
+<h3>comDsoFramerObject.SaveAsTypes()</h3>
+
+<p>获取发前活动文档可用的所有保存格式选项,<br>
+可用于 saveAs 函数的每 2 个参数,<br>
+可以通过activeDocument 获取格式选项,例如 activeDocument.ppSaveAsRTF</p>
+
+<p><a id="comDsoFramerObject._form"></a></p>
+
+<h3>comDsoFramerObject._form</h3>
+
+<p><a href="../../win/ui/_.html#winform" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/win/ui/_.html#winform">返回对象:winform</a></p>
+
+<p><a id="comDsoFramerObject._object"></a></p>
+
+<h3>comDsoFramerObject._object</h3>
+
+<p>DsoFramer控件</p>
+
+<p><a id="comDsoFramerObject.activeDocumentTypeName"></a></p>
+
+<h3>comDsoFramerObject.activeDocumentTypeName()</h3>
+
+<p>当前活动文档类型名称,<br>
+可能的返回值: &quot;PowerPoint&quot;,&quot;Excel&quot;,&quot;Word&quot;<br>
+如果当前是无效的文档，返回 null</p>
+
+<p><a id="comDsoFramerObject.addMark"></a></p>
+
+<h3>comDsoFramerObject.addMark(书签名,值)</h3>
+
+<p>= 添加书签</p>
+
+<p><a id="comDsoFramerObject.backColor"></a></p>
+
+<h3>comDsoFramerObject.backColor</h3>
+
+<p>背景颜色</p>
+
+<p><a id="comDsoFramerObject.borderColor"></a></p>
+
+<h3>comDsoFramerObject.borderColor</h3>
+
+<p>边框颜色</p>
+
+<p><a id="comDsoFramerObject.borderStyle"></a></p>
+
+<h3>comDsoFramerObject.borderStyle</h3>
+
+<p>边框样式,数值:<br>
+dsoBorderNone = 0<br>
+dsoBorderFlat = 1<br>
+dsoBorder3D = 2<br>
+dsoBorder3DThin = 3</p>
+
+<p><a id="comDsoFramerObject.caption"></a></p>
+
+<h3>comDsoFramerObject.caption</h3>
+
+<p>标题</p>
+
+<p><a id="comDsoFramerObject.createNewExcel"></a></p>
+
+<h3>comDsoFramerObject.createNewExcel()</h3>
+
+<p>创建新EXCEL文档</p>
+
+<p><a id="comDsoFramerObject.createNewWord"></a></p>
+
+<h3>comDsoFramerObject.createNewWord()</h3>
+
+<p>创建新WORD文档</p>
+
+<p><a id="comDsoFramerObject.delMark"></a></p>
+
+<h3>comDsoFramerObject.delMark(书签名,值)</h3>
+
+<p>删除书签</p>
+
+<p><a id="comDsoFramerObject.deleteLocalFile"></a></p>
+
+<h3>comDsoFramerObject.deleteLocalFile(文件路径)</h3>
+
+<p>删除本地文件</p>
+
+<p><a id="comDsoFramerObject.documentFullName"></a></p>
+
+<h3>comDsoFramerObject.documentFullName</h3>
+
+<p>文档名</p>
+
+<p><a id="comDsoFramerObject.foreColor"></a></p>
+
+<h3>comDsoFramerObject.foreColor</h3>
+
+<p>前景颜色背景颜色</p>
+
+<p><a id="comDsoFramerObject.getMark"></a></p>
+
+<h3>comDsoFramerObject.getMark(书签名,值)</h3>
+
+<p>定位书签</p>
+
+<p><a id="comDsoFramerObject.getRevCount"></a></p>
+
+<h3>comDsoFramerObject.getRevCount()</h3>
+
+<p>返回修证次数</p>
+
+<p><a id="comDsoFramerObject.getRevInfo"></a></p>
+
+<h3>comDsoFramerObject.getRevInfo(index,lType)</h3>
+
+<p>返回修订详情</p>
+
+<p><a id="comDsoFramerObject.getTempFilePath"></a></p>
+
+<h3>comDsoFramerObject.getTempFilePath()</h3>
+
+<p>返回临时文件路径</p>
+
+<p><a id="comDsoFramerObject.hwndControl"></a></p>
+
+<h3>comDsoFramerObject.hwndControl</h3>
+
+<p>控件窗口</p>
+
+<p><a id="comDsoFramerObject.hwndDoc"></a></p>
+
+<h3>comDsoFramerObject.hwndDoc</h3>
+
+<p>文档窗口</p>
+
+<p><a id="comDsoFramerObject.isDirty"></a></p>
+
+<h3>comDsoFramerObject.isDirty</h3>
+
+<p>是否修改</p>
+
+<p><a id="comDsoFramerObject.isReadOnly"></a></p>
+
+<h3>comDsoFramerObject.isReadOnly</h3>
+
+<p>是否只读</p>
+
+<p><a id="comDsoFramerObject.menubar"></a></p>
+
+<h3>comDsoFramerObject.menubar</h3>
+
+<p>是否显示菜单栏</p>
+
+<p><a id="comDsoFramerObject.modalState"></a></p>
+
+<h3>comDsoFramerObject.modalState</h3>
+
+<p>模态状态</p>
+
+<p><a id="comDsoFramerObject.officeVersion"></a></p>
+
+<h3>comDsoFramerObject.officeVersion</h3>
+
+<p>office版本</p>
+
+<p><a id="comDsoFramerObject.openFile"></a></p>
+
+<h3>comDsoFramerObject.openFile(&quot;文件&quot;,&quot;Word.Document&quot;)</h3>
+
+<p>打开各种 office 文件,参数2为可选参数,<br>
+如果不指定参数@2,则根据后缀名自动设置,<br>
+打开文件后使用 activeDocument 属性操作文档对象</p>
+
+<p><a id="comDsoFramerObject.openUrl"></a></p>
+
+<h3>comDsoFramerObject.openUrl(&quot;网址&quot;,&quot;Word.Document&quot;,用户名,密码)</h3>
+
+<p>参数2为可选参数,<br>
+如果不指定参数@2,则根据后缀名自动设置,<br>
+打开文件后使用 activeDocument 属性操作文档对象</p>
+
+<p><a id="comDsoFramerObject.protectDoc"></a></p>
+
+<h3>comDsoFramerObject.protectDoc(_wdAllow,&quot;PWD&quot;)</h3>
+
+<p>保护文档</p>
+
+<p><a id="comDsoFramerObject.save"></a></p>
+
+<h3>comDsoFramerObject.save(&quot;文件&quot;,true)</h3>
+
+<p>保存文档</p>
+
+<p><a id="comDsoFramerObject.saveAs"></a></p>
+
+<h3>comDsoFramerObject.saveAs(&quot;文件&quot;,格式选项)</h3>
+
+<p>保存文档，<br>
+可用的格式选项使用 SaveAsTypes 函数查看,<br>
+可以通过activeDocument 获取格式选项,例如 activeDocument.ppSaveAsRTF</p>
+
+<p>保存文档，见下面的常量列表</p>
+
+<p><a id="comDsoFramerObject.setCurrTime"></a></p>
+
+<h3>comDsoFramerObject.setCurrTime(&quot;时间&quot;)</h3>
+
+<p>设置当前时间</p>
+
+<p><a id="comDsoFramerObject.setDocVariable"></a></p>
+
+<h3>comDsoFramerObject.setDocVariable(name,value,opt)</h3>
+
+<p>设置文档变量,opt可使用二进制数值:<br>
+第一位为1:  表示update域关联的,<br>
+第二位为1:  表示如果没有这个变量则添加</p>
+
+<p><a id="comDsoFramerObject.setFieldFile"></a></p>
+
+<h3>comDsoFramerObject.setFieldFile(书签名,值)</h3>
+
+<p>插入文件</p>
+
+<p><a id="comDsoFramerObject.setFieldFile"></a></p>
+
+<h3>comDsoFramerObject.setFieldFile(书签名,值,命令)</h3>
+
+<p>设置和创建书签<br>
+此函数用法建议查看一下源码,<br>
+参考其他几个调用这个函数的函数</p>
+
+<p><a id="comDsoFramerObject.setFieldJpg"></a></p>
+
+<h3>comDsoFramerObject.setFieldJpg(书签名,值)</h3>
+
+<p>插入图像</p>
+
+<p><a id="comDsoFramerObject.setMenuDisplay"></a></p>
+
+<h3>comDsoFramerObject.setMenuDisplay(_MNU)</h3>
+
+<p>设置菜单<br>
+可以使用按位或的多个选项</p>
+
+<p><a id="comDsoFramerObject.setPageAs"></a></p>
+
+<h3>comDsoFramerObject.setPageAs(strLocalFile,lPageNum,lType)</h3>
+
+<p>分页保存</p>
+
+<p><a id="comDsoFramerObject.setValue"></a></p>
+
+<h3>comDsoFramerObject.setValue(value,name)</h3>
+
+<p>设置基本信息,<br>
+例如设置只读密码  setValue(&quot;password&quot;,&quot;::DOCPROP:PassWord&quot;)<br>
+设置修改密码 setValue(&quot;password&quot;,&quot;::DOCPROP:WritePW&quot;)</p>
+
+<p><a id="comDsoFramerObject.showDialog"></a></p>
+
+<h3>comDsoFramerObject.showDialog(dlgType)</h3>
+
+<p>显示对话框,<br>
+@dlgType 指定对话框类型,数值：<br>
+dsoDialogNew = 0<br>
+dsoDialogOpen = 1<br>
+dsoDialogSave = 2<br>
+dsoDialogSaveCopy = 3<br>
+dsoDialogPrint = 4<br>
+dsoDialogPageSetup = 5<br>
+dsoDialogProperties = 6</p>
+
+<p><a id="comDsoFramerObject.showMasterView"></a></p>
+
+<h3>comDsoFramerObject.showMasterView()</h3>
+
+<p>大纲视图</p>
+
+<p><a id="comDsoFramerObject.showNormalView"></a></p>
+
+<h3>comDsoFramerObject.showNormalView()</h3>
+
+<p>标准视图</p>
+
+<p><a id="comDsoFramerObject.showOutlineView"></a></p>
+
+<h3>comDsoFramerObject.showOutlineView()</h3>
+
+<p>大纲视图</p>
+
+<p><a id="comDsoFramerObject.showPrintPreview"></a></p>
+
+<h3>comDsoFramerObject.showPrintPreview()</h3>
+
+<p>打印预览视图</p>
+
+<p><a id="comDsoFramerObject.showPrintView"></a></p>
+
+<h3>comDsoFramerObject.showPrintView()</h3>
+
+<p>打印视图</p>
+
+<p><a id="comDsoFramerObject.showRevisions"></a></p>
+
+<h3>comDsoFramerObject.showRevisions(true)</h3>
+
+<p>是否显示修订留痕</p>
+
+<p><a id="comDsoFramerObject.showView"></a></p>
+
+<h3>comDsoFramerObject.showView(viewType)</h3>
+
+<p>设置文档显示模式,<br>
+建议改用 showNormalView,showOutlineView 等函数</p>
+
+<p><a id="comDsoFramerObject.showWebView"></a></p>
+
+<h3>comDsoFramerObject.showWebView()</h3>
+
+<p>显示web视图</p>
+
+<p><a id="comDsoFramerObject.titlebar"></a></p>
+
+<h3>comDsoFramerObject.titlebar</h3>
+
+<p>是否显示标题栏</p>
+
+<p><a id="comDsoFramerObject.titlebarColor"></a></p>
+
+<h3>comDsoFramerObject.titlebarColor</h3>
+
+<p>标题栏</p>
+
+<p><a id="comDsoFramerObject.titlebarTextColor"></a></p>
+
+<h3>comDsoFramerObject.titlebarTextColor</h3>
+
+<p>标题栏文本颜色</p>
+
+<p><a id="comDsoFramerObject.toolbars"></a></p>
+
+<h3>comDsoFramerObject.toolbars</h3>
+
+<p>是否显示工具栏</p>
+
+<p><a id="comDsoFramerObject.unProtectDoc"></a></p>
+
+<h3>comDsoFramerObject.unProtectDoc(_wdAllow,&quot;PWD&quot;)</h3>
+
+<p>解保护文档</p>
+
+<p><a id="comDsoFramerObject._host"></a></p>
+
+<h2>comDsoFramerObject._host 成员列表</h2>
+
+<p><a id="comDsoFramerObject._host._adjust"></a></p>
+
+<h3>comDsoFramerObject._host._adjust()</h3>
+
+<p>自动调整控件窗口大小</p>
+
+<p><a id="comDsoFramerObject._host.doObjectVerb"></a></p>
+
+<h3>comDsoFramerObject._host.doObjectVerb( _OLEIVERB )</h3>
+
+<p>执行指定的动词命令</p>
+
+<p><a id="comDsoFramerObject._host.tranacc"></a></p>
+
+<h3>comDsoFramerObject._host.tranacc(MSG消息对象)</h3>
+
+<p>解析快捷键,<br>
+如果是快捷键返回真值</p>
+
+<p><a id="comDsoFramerObject.activeDocument"></a></p>
+
+<h2>comDsoFramerObject.activeDocument 成员列表</h2>
+
+<p>活动文档<br>
+Word 文档对象 <a href="../../../../../../docs.microsoft.com/en-us/office/vba/api/word.document" tppabs="https://docs.microsoft.com/en-us/office/vba/api/word.document">https://docs.microsoft.com/en-us/office/vba/api/word.document</a><br>
+Excel 文档对象 <a href="../../../../../../docs.microsoft.com/en-us/office/vba/api/excel.workbook" tppabs="https://docs.microsoft.com/en-us/office/vba/api/excel.workbook">https://docs.microsoft.com/en-us/office/vba/api/excel.workbook</a><br>
+PowerPoint 文档对象 <a href="../../../../../../docs.microsoft.com/en-us/office/vba/api/powerpoint.presentation" tppabs="https://docs.microsoft.com/en-us/office/vba/api/powerpoint.presentation">https://docs.microsoft.com/en-us/office/vba/api/powerpoint.presentation</a></p>
+
+<p>当前文档对象</p>
+
+<p><a id="comDsoFramerObject.activeDocument.ActiveSheet"></a></p>
+
+<h3>comDsoFramerObject.activeDocument.ActiveSheet</h3>
+
+<p>活动 Excel 表格  </p>
+
+<p><a href="#excelSheetObject">返回对象:excelSheetObject</a></p>
+
+<p><a id="comDsoFramerObject.activeDocument.Charts"></a></p>
+
+<h3>comDsoFramerObject.activeDocument.Charts(&quot;字符串参数&quot;)</h3>
+
+<p>返回 Excel  指定名称的图表</p>
+
+<p><a id="comDsoFramerObject.activeDocument.DialogSheets"></a></p>
+
+<h3>comDsoFramerObject.activeDocument.DialogSheets(&quot;字符串参数&quot;)</h3>
+
+<p>返回 Excel  指定名称的对话框工作表</p>
+
+<p><a id="comDsoFramerObject.activeDocument.Names"></a></p>
+
+<h3>comDsoFramerObject.activeDocument.Names(1)</h3>
+
+<p><a href="#excelBookNameObject">返回对象:excelBookNameObject</a></p>
+
+<p><a id="comDsoFramerObject.activeDocument.Sheets"></a></p>
+
+<h3>comDsoFramerObject.activeDocument.Sheets()</h3>
+
+<p><a href="#excelSheetObject">返回对象:excelSheetObject</a></p>
+
+<p><a id="comDsoFramerObject.activeDocument.Sheets"></a></p>
+
+<h3>comDsoFramerObject.activeDocument.Sheets(1)</h3>
+
+<p>返回 Excel 工作簿上的指定工作表</p>
+
+<p><a id="comDsoFramerObject.activeDocument.Subject"></a></p>
+
+<h3>comDsoFramerObject.activeDocument.Subject</h3>
+
+<p>设置 Excel  主题</p>
+
+<p><a id="comDsoFramerObject.activeDocument.Title"></a></p>
+
+<h3>comDsoFramerObject.activeDocument.Title</h3>
+
+<p>设置 Excel  标题</p>
+
+<p><a id="comDsoFramerObject.activeDocument.Worksheets"></a></p>
+
+<h3>comDsoFramerObject.activeDocument.Worksheets(&quot;字符串参数&quot;)</h3>
+
+<p>返回 Excel  指定名称的工作表</p>
+
+<p><a id="comDsoFramerObject.activeDocument.close"></a></p>
+
+<h3>comDsoFramerObject.activeDocument.close()</h3>
+
+<p>关闭 Excel  工作簿</p>
+
+<p><a id="comDsoFramerObject.activeDocument.Names"></a></p>
+
+<h2>comDsoFramerObject.activeDocument.Names 成员列表</h2>
+
+<p><a id="comDsoFramerObject.activeDocument.Names.count"></a></p>
+
+<h3>comDsoFramerObject.activeDocument.Names.count</h3>
+
+<p>Excel 表格名称计数</p>
+
+<p><a id="comDsoFramerObject.activeDocument.Sheets"></a></p>
+
+<h2>comDsoFramerObject.activeDocument.Sheets 成员列表</h2>
+
+<p><a href="#excelSheetObject">返回对象:excelSheetObject</a></p>
+
+<p><a id="comDsoFramerObject.activeDocument.Sheets.Count"></a></p>
+
+<h3>comDsoFramerObject.activeDocument.Sheets.Count</h3>
+
+<p>Excel 工作表总数</p>
+
+<p><a id="comDsoFramerObject.activeDocument.Sheets.Item"></a></p>
+
+<h3>comDsoFramerObject.activeDocument.Sheets.Item()</h3>
+
+<p>返回指定的 Excel  工作表</p>
+
+<p><a id="comDsoFramerObject.activeDocument.SlideShowSettings"></a></p>
+
+<h2>comDsoFramerObject.activeDocument.SlideShowSettings 成员列表</h2>
+
+<p><a id="comDsoFramerObject.activeDocument.SlideShowSettings.Run"></a></p>
+
+<h3>comDsoFramerObject.activeDocument.SlideShowSettings.Run()</h3>
+
+<p>全屏播放 PPT</p>
+
+<h3>自动完成常量</h3>
+
+<p>_MNU_CLOSE=4<br>
+_MNU_NEW=1<br>
+_MNU_OPEN=2<br>
+_MNU_PGSETUP=0x64<br>
+_MNU_PRINT=0x256<br>
+_MNU_PRINTPV=0x126<br>
+_MNU_PROPS=0x32<br>
+_MNU_SAVE=8<br>
+_MNU_SAVEAS=0x16<br>
+_dsoBorder3D=2<br>
+_dsoBorder3DThin=3<br>
+_dsoBorderFlat=1<br>
+_ppSaveAsAddIn=8<br>
+_ppSaveAsBMP=0x13<br>
+_ppSaveAsDefault=0xB<br>
+_ppSaveAsGIF=0x10<br>
+_ppSaveAsHTML=0xC<br>
+_ppSaveAsHTMLDual=0xE<br>
+_ppSaveAsHTMLv3=0xD<br>
+_ppSaveAsJPG=0x11<br>
+_ppSaveAsMetaFile=0xF<br>
+_ppSaveAsPNG=0x12<br>
+_ppSaveAsPowerPoint3=4<br>
+_ppSaveAsPowerPoint4=3<br>
+_ppSaveAsPowerPoint4FarEast=0xA<br>
+_ppSaveAsPowerPoint7=2<br>
+_ppSaveAsPresentation=1<br>
+_ppSaveAsRTF=6<br>
+_ppSaveAsShow=7<br>
+_ppSaveAsTemplate=5<br>
+_wdAllowOnlyComments=1<br>
+_wdAllowOnlyFormFields=2<br>
+_wdAllowOnlyRevisions=0<br>
+_wdFormatDOSText=4<br>
+_wdFormatDOSTextLineBreaks=5<br>
+_wdFormatDocument=0<br>
+_wdFormatEncodedText=7<br>
+_wdFormatHTML=8<br>
+_wdFormatRTF=6<br>
+_wdFormatTemplate=1<br>
+_wdFormatText=2<br>
+_wdFormatTextLineBreaks=3<br>
+_wdFormatUnicodeText=7<br>
+_wdMasterView=5<br>
+_wdNoProtection=-1<br>
+_wdNormalView=1<br>
+_wdOutlineView=2<br>
+_wdPrintPreview=4<br>
+_wdPrintView=3<br>
+_wdWebView=6<br>
+_xlAddIn=0x12<br>
+_xlCSV=6<br>
+_xlCSVMSDOS=0x18<br>
+_xlCSVMac=0x16<br>
+_xlCSVWindows=0x17<br>
+_xlCurrentPlatformText=-4158<br>
+_xlDBF2=7<br>
+_xlDBF3=8<br>
+_xlDBF4=0xB<br>
+_xlDIF=9<br>
+_xlExcel2=0x10<br>
+_xlExcel2FarEast=0x1B<br>
+_xlExcel3=0x1D<br>
+_xlExcel4=0x21<br>
+_xlExcel4Workbook=0x23<br>
+_xlExcel5=0x27<br>
+_xlExcel7=0x27<br>
+_xlExcel9795=0x2B<br>
+_xlHtml=0x2C<br>
+_xlIntlAddIn=0x1A<br>
+_xlIntlMacro=0x19<br>
+_xlSYLK=2<br>
+_xlTemplate=0x11<br>
+_xlTextMSDOS=0x15<br>
+_xlTextMac=0x13<br>
+_xlTextPrinter=0x24<br>
+_xlTextWindows=0x14<br>
+_xlUnicodeText=0x2A<br>
+_xlWJ2WD1=0xE<br>
+_xlWJ3=0x28<br>
+_xlWJ3FJ3=0x29<br>
+_xlWK1=5<br>
+_xlWK1ALL=0x1F<br>
+_xlWK1FMT=0x1E<br>
+_xlWK3=0xF<br>
+_xlWK3FM3=0x20<br>
+_xlWK4=0x26<br>
+_xlWKS=4<br>
+_xlWQ1=0x22<br>
+_xlWorkbookNormal=-4143<br>
+_xlWorks2FarEast=0x1C  </p>
+
+<p><a href="_.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/com/dsoFramer/_.md">Markdown 格式</a></p>
+
+</body> 
+</html>

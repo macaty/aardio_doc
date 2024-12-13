@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - raw.pefile 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - raw.pefile 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>raw.pefile 库模块帮助文档</h1>
+
+<p><a id="raw"></a></p>
+
+<h2>raw 成员列表</h2>
+
+<p><a id="raw.pefile"></a></p>
+
+<h3>raw.pefile</h3>
+
+<p>用于分析PE文件<br>
+用法请参考 aardio 工具 / 探测器 / DLL 查看工具</p>
+
+<p><a id="raw.pefile"></a></p>
+
+<h3>raw.pefile()</h3>
+
+<p><a href="#rawPeFileObject">返回对象:rawPeFileObject</a></p>
+
+<p><a id="raw.pefile"></a></p>
+
+<h3>raw.pefile(path)</h3>
+
+<p>参数指定 PE 文件路径</p>
+
+<p><a id="rawPeFileObject"></a></p>
+
+<h2>rawPeFileObject 成员列表</h2>
+
+<p><a id="rawPeFileObject.exportDeclaration"></a></p>
+
+<h3>rawPeFileObject.exportDeclaration()</h3>
+
+<p>导出 aardio 格式的导出函数声明，<br>
+仅支持使用C++修饰名导出的 API 函数,<br>
+导出的 aardio 代码仅供参考。</p>
+
+<p><a id="rawPeFileObject.getClrHeader"></a></p>
+
+<h3>rawPeFileObject.getClrHeader()</h3>
+
+<p>获取 .Net 程序的 CLR 头信息<br>
+如果不是 .Net 程序返回 null</p>
+
+<p><a id="rawPeFileObject.getExportDirectory"></a></p>
+
+<h3>rawPeFileObject.getExportDirectory()</h3>
+
+<p>返回导出表信息,失败或无导出表返回 null。<br>
+用法请查看函数源码</p>
+
+<p><a id="rawPeFileObject.getExportNameItems"></a></p>
+
+<h3>rawPeFileObject.getExportNameItems()</h3>
+
+<p>返回一个包含所有导出函数名信息的数组,<br>
+每个数组成员包含 &quot;ordinal&quot;;&quot;address&quot;;&quot;name&quot; 三个字段<br>
+返回对象的 fields 属性是一个列名数组,<br>
+返回对象可以作为 listview 控件的 setTable 函数参数使用  </p>
+
+<p>失败或无导出表返回 null。</p>
+
+<p><a id="rawPeFileObject.getImportDirectory"></a></p>
+
+<h3>rawPeFileObject.getImportDirectory()</h3>
+
+<p>返回导入表信息,<br>
+用法请查看函数源码</p>
+
+<p><a id="rawPeFileObject.getSectionByName"></a></p>
+
+<h3>rawPeFileObject.getSectionByName()</h3>
+
+<p>返回参数 @1 指定名称的 PE 节信息。</p>
+
+<p><a id="rawPeFileObject.imageHeader.timeDate"></a></p>
+
+<h3>rawPeFileObject.imageHeader.timeDate</h3>
+
+<p>PE 文件创建时间，time 对象  </p>
+
+<p><a href="../time/_.html#timeObject" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/time/_.html#timeObject">返回对象:timeObject</a></p>
+
+<p><a id="rawPeFileObject.imageHeader.timeDateStamp"></a></p>
+
+<h3>rawPeFileObject.imageHeader.timeDateStamp</h3>
+
+<p>PE 文件创建时间戳，数值</p>
+
+<p><a id="rawPeFileObject.isImported"></a></p>
+
+<h3>rawPeFileObject.isImported(&quot;字符串参数&quot;)</h3>
+
+<p>检测是否导入了指定的 DLL,名称忽略大小写</p>
+
+<p><a id="rawPeFileObject.isPe32"></a></p>
+
+<h3>rawPeFileObject.isPe32</h3>
+
+<p>是否PE32文件</p>
+
+<p><a id="rawPeFileObject.majorLinkerVersion"></a></p>
+
+<h3>rawPeFileObject.majorLinkerVersion</h3>
+
+<p>链接器主版本号</p>
+
+<p><a id="rawPeFileObject.minorLinkerVersion"></a></p>
+
+<h3>rawPeFileObject.minorLinkerVersion</h3>
+
+<p>链接器副版本号</p>
+
+<p><a id="rawPeFileObject.path"></a></p>
+
+<h3>rawPeFileObject.path</h3>
+
+<p>文件路径</p>
+
+<p><a id="rawPeFileObject.read"></a></p>
+
+<h3>rawPeFileObject.read({int number})</h3>
+
+<p>读取结构体<br>
+不支持多参数</p>
+
+<p><a id="rawPeFileObject.read"></a></p>
+
+<h3>rawPeFileObject.read(字节数)</h3>
+
+<p>读取指定长度的字节<br>
+不支持多参数</p>
+
+<p><a id="rawPeFileObject.sections"></a></p>
+
+<h3>rawPeFileObject.sections</h3>
+
+<p>PE 节信息数组。</p>
+
+<p><a id="rawPeFileObject.seek"></a></p>
+
+<h3>rawPeFileObject.seek(&quot;set&quot;,)</h3>
+
+<p>移动至相对开始处的指定偏移量</p>
+
+<p><a href="pefile.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/raw/pefile.md">Markdown 格式</a></p>
+
+</body> 
+</html>
