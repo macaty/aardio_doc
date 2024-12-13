@@ -1,0 +1,350 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - web.socket.server 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - web.socket.server 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>web.socket.server 库模块帮助文档</h1>
+
+<p><a id="web.socket.server"></a></p>
+
+<h2>web.socket.server 成员列表</h2>
+
+<p>支持单线程异步的WebSocket服务端<br>
+可直接在界面线程中使用，不会阻塞界面，不需要创建多线程<br>
+支持服务端心跳(Ping/Pong帧)，客户端单向心跳(Pong帧)机制,<br>
+可调用close函数断线，并可调用connect函数实现重析连接服务器</p>
+
+<p><a id="web.socket.server.getSecAccept"></a></p>
+
+<h3>web.socket.server.getSecAccept()</h3>
+
+<p>获取WebSocket客户端配对密钥，<br>
+参数指定服务端HTTP头中sec-websocket-accept返回的值</p>
+
+<p><a id="web.socket.server.getSecKey"></a></p>
+
+<h3>web.socket.server.getSecKey()</h3>
+
+<p>获取WebSocket客户端密钥</p>
+
+<p><a id="web.socket.server.sha1"></a></p>
+
+<h3>web.socket.server.sha1()</h3>
+
+<p>使用sha1算法取哈希值，并使用Base64编码为普通文本</p>
+
+<p><a id="web.socket"></a></p>
+
+<h2>web.socket 成员列表</h2>
+
+<p><a id="web.socket.server"></a></p>
+
+<h3>web.socket.server()</h3>
+
+<p><a href="#websocketserverObject">返回对象:websocketserverObject</a></p>
+
+<p><a id="websocketserverObject"></a></p>
+
+<h2>websocketserverObject 成员列表</h2>
+
+<p><a id="websocketserverObject._beforeStop"></a></p>
+
+<h3>websocketserverObject._beforeStop</h3>
+
+<pre><code class="aardio language-aardio">websocketserverObject._beforeStop = function(){
+    /*服务端关闭以前触发  
+此回调函数是标准库保留接口  
+用户不应使用此回调*/
+}
+</code></pre>
+
+<p><a id="websocketserverObject._onClientClosed"></a></p>
+
+<h3>websocketserverObject._onClientClosed</h3>
+
+<pre><code class="aardio language-aardio">websocketserverObject._onClientClosed = function(hSocket){
+    /*客户端连接已经关闭时触发，  
+hSocket 参数为客户端连接套接字句柄，  
+此函数在连接断开后一定会被触发，  
+此回调函数是标准库保留接口，  
+用户不应使用此回调*/
+}
+</code></pre>
+
+<p><a id="websocketserverObject._translateMessage"></a></p>
+
+<h3>websocketserverObject._translateMessage</h3>
+
+<p>此回调函数的参数与onMessage相同,<br>
+如果定义了这个回调函数,<br>
+那么此函数将在调用onMessage之前被调用,<br>
+如果此回调返回true则不再触发onMessage,<br>
+这个函数提供了一个机会用于自动处理客户端消息<br>
+,为其他需要扩展web.socket.server功能的库所预留，<br>
+一旦定义将不能修改</p>
+
+<p><a id="websocketserverObject.beforeStop"></a></p>
+
+<h3>websocketserverObject.beforeStop</h3>
+
+<pre><code class="aardio language-aardio">websocketserverObject.beforeStop = function(){
+    /*服务端关闭以前触发*/
+}
+</code></pre>
+
+<p><a id="websocketserverObject.client"></a></p>
+
+<h3>websocketserverObject.client()</h3>
+
+<p><a href="../../wsock/tcp/asynClient.html#tcpaclientObject" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/wsock/tcp/asynClient.html#tcpaclientObject">返回对象:tcpaclientObject</a></p>
+
+<p><a id="websocketserverObject.client"></a></p>
+
+<h3>websocketserverObject.client(hSocket)</h3>
+
+<p>使用 @hSocket 参数指定的客户端连接套接字句柄<br>
+获取 wsock.tcp.client 对象</p>
+
+<p><a id="websocketserverObject.clientCount"></a></p>
+
+<h3>websocketserverObject.clientCount()</h3>
+
+<p>当前WebSocket客户端数目<br>
+包含正在连接或正在断开连接的客户端<br>
+不含已关闭的客户端</p>
+
+<p><a id="websocketserverObject.close"></a></p>
+
+<h3>websocketserverObject.close(hSocket,code,reason)</h3>
+
+<p>关闭连接,<br>
+@hSocket 参数指定客户端连接套接字句柄</p>
+
+<p><a id="websocketserverObject.getLocalIp"></a></p>
+
+<h3>websocketserverObject.getLocalIp()</h3>
+
+<p>返回当前绑定的 IP,端口号</p>
+
+<p><a id="websocketserverObject.getRemoteIp"></a></p>
+
+<h3>websocketserverObject.getRemoteIp(hSocket)</h3>
+
+<p>返回客户端IP地址,端口,<br>
+@hSocket 参数指定客户端连接套接字句柄</p>
+
+<p><a id="websocketserverObject.getUrl"></a></p>
+
+<h3>websocketserverObject.getUrl()</h3>
+
+<p>获了服务端网址,可选指定目录或文件路径<br>
+注意参数第一个字符不需要指定斜杠<br>
+如果参数@2为true，IP &quot;0.0.0.0&quot;替换为上网卡IP而不是localhost<br>
+如果服务器启动失败不返回任何值</p>
+
+<p><a id="websocketserverObject.heartbeatData"></a></p>
+
+<h3>websocketserverObject.heartbeatData</h3>
+
+<p>心跳帧发送的数据,默认为空数据<br>
+这个值修改以后，只能在下次调用connect函数才会生效</p>
+
+<p><a id="websocketserverObject.heartbeatInterval"></a></p>
+
+<h3>websocketserverObject.heartbeatInterval</h3>
+
+<p>服务端主动发送心跳Ping空帧间隔,默认为30分钟<br>
+设为-1时禁用客户端心跳,一般不建议禁用<br>
+这个值修改以后，只能在下次调用start函数才会生效</p>
+
+<p><a id="websocketserverObject.heartbeatType"></a></p>
+
+<h3>websocketserverObject.heartbeatType</h3>
+
+<p>心跳帧发送的的帧类型,<br>
+默认为9,也就是Ping帧<br>
+这个值修改以后，只能在下次调用start函数才会生效</p>
+
+<p><a id="websocketserverObject.httpServer"></a></p>
+
+<h3>websocketserverObject.httpServer</h3>
+
+<p>单线程异步 HTTP服务端,wsock.tcp.asynHttpServer对象<br>
+浏览器组件发起异步 HTTP 请求支持 wsock.tcp.asynHttpServer。<br>
+请不要用 inet.http 等阻塞请求同一线程创建的 asynHttpServer,<br>
+这会导致 asynHttpServer 没有机会响应请求而导致死锁，<br>
+如果确有这样的需求，可创建线程发起请求，<br>
+或改用基于多线程的 wsock.tcp.simpleHttpServe,  </p>
+
+<p><a href="../../wsock/tcp/asynHttpServer.html#asynHttpServerObject" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/wsock/tcp/asynHttpServer.html#asynHttpServerObject">返回对象:asynHttpServerObject</a></p>
+
+<p><a id="websocketserverObject.isClosed"></a></p>
+
+<h3>websocketserverObject.isClosed(hSocket)</h3>
+
+<p>连接是否已关闭,<br>
+@hSocket 参数指定客户端连接套接字句柄</p>
+
+<p><a id="websocketserverObject.isConnected"></a></p>
+
+<h3>websocketserverObject.isConnected(hSocket)</h3>
+
+<p>是否已连接并准备就绪可以发送数据,<br>
+@hSocket 参数指定客户端连接套接字句柄</p>
+
+<p><a id="websocketserverObject.onClientClosed"></a></p>
+
+<h3>websocketserverObject.onClientClosed</h3>
+
+<pre><code class="aardio language-aardio">websocketserverObject.onClientClosed = function(hSocket){
+    /*客户端连接已经关闭时触发,  
+hSocket 参数为客户端连接套接字句柄,  
+此函数在连接断开后一定会被触发*/
+}
+</code></pre>
+
+<p><a id="websocketserverObject.onClose"></a></p>
+
+<h3>websocketserverObject.onClose</h3>
+
+<pre><code class="aardio language-aardio">websocketserverObject.onClose = function(hSocket,err){
+    /*连接被关闭,  
+hSocket 参数为客户端连接套接字句柄,  
+err.code 为错误代码 err.reason 为错误原因  
+客户端关闭连接并不保证一定会触发此消息  
+但onClientClosed事件在关闭后一定会被触发*/ 
+}
+</code></pre>
+
+<p><a id="websocketserverObject.onError"></a></p>
+
+<h3>websocketserverObject.onError</h3>
+
+<pre><code class="aardio language-aardio">websocketserverObject.onError = function(hSocket,err){
+    /*发生错误,  
+hSocket 参数指定客户端连接套接字句柄,  
+err为错误信息*/
+}
+</code></pre>
+
+<p><a id="websocketserverObject.onFragment"></a></p>
+
+<h3>websocketserverObject.onFragment</h3>
+
+<pre><code class="aardio language-aardio">websocketserverObject.onFragment = function(hSocket,msg){
+   /*收到分片数据,  
+hSocket 参数指定客户端连接套接字句柄,  
+第一个数据包使用msg.type指明类型,参考WebSocket协议规范  
+后续数据包msg.type为0,最后一个数据包msg.fin为1  
+
+如果不指定这个回调函数,则自动并接分片数据后触发onMessage事件*/ 
+}
+</code></pre>
+
+<p><a id="websocketserverObject.onMessage"></a></p>
+
+<h3>websocketserverObject.onMessage</h3>
+
+<pre><code class="aardio language-aardio">websocketserverObject.onMessage = function(hSocket,msg){
+    /*收到服务端数据,  
+hSocket 参数指定客户端连接套接字句柄,  
+msg.type为1时msg.data为文本,  
+否则msg.data为字节数组（buffer类型）*/
+
+}
+</code></pre>
+
+<p><a id="websocketserverObject.onOpen"></a></p>
+
+<h3>websocketserverObject.onOpen</h3>
+
+<pre><code class="aardio language-aardio">websocketserverObject.onOpen = function(hSocket){
+    /*客户端已切换到WebSocket服务，  
+hSocket 参数为客户端连接套接字句柄*/
+}
+</code></pre>
+
+<p><a id="websocketserverObject.onUpgradeToWebsocket"></a></p>
+
+<h3>websocketserverObject.onUpgradeToWebsocket</h3>
+
+<pre><code class="aardio language-aardio">websocketserverObject.onUpgradeToWebsocket = function(hSocket,request,response,protocol,origin){  
+    /*  
+用户发送HTTP请求切换到WebSocket协议,  
+可以在这里修改HTTP响应头中Sec-WebSocket-Protocol的值  
+
+如果要阻止用户切换到WebSocket,用 response.close() 关闭请求，  
+或调用 response.errorStatus() 函数返回错误代码即可，  
+否则退出此函数后会继续切换到WebSocket协议。  
+
+参数说明:  
+hSocket为客户端套接字句柄  
+request为HTTP请求对象  
+response为HTTP应答对象  
+protocol为Sec-WebSocket-Protocol请求头的值*/  
+}
+</code></pre>
+
+<p><a id="websocketserverObject.publish"></a></p>
+
+<h3>websocketserverObject.publish()</h3>
+
+<p>发送数据给所有的客户端,<br>
+支持字符串或 buffer、结构体<br>
+字符串作为UTF8文本类型发送,其他以二进制类型发送，<br>
+成功返回true</p>
+
+<p><a id="websocketserverObject.send"></a></p>
+
+<h3>websocketserverObject.send(hSocket,)</h3>
+
+<p>发送数据,支持字符串或 buffer、结构体<br>
+字符串作为UTF8文本类型发送,其他以二进制类型发送,<br>
+@hSocket 参数指定客户端连接套接字句柄，<br>
+成功返回true</p>
+
+<p><a id="websocketserverObject.sendData"></a></p>
+
+<h3>websocketserverObject.sendData(hSocket,data,opcode,fin,rsv1,rsv2,rsv3)</h3>
+
+<p>发送WebSocket数据包<br>
+参数@1支持支持字符串或 buffer、结构体<br>
+除参数@1以外,所以参数可选<br>
+一般应当调用send函数，而不是调用sendData函数  </p>
+
+<p>如果一定要使用这个函数,请阅读此函数源码,以及 WebSocket 协议相关说明</p>
+
+<p><a id="websocketserverObject.start"></a></p>
+
+<h3>websocketserverObject.start(IP,端口,请求队列大小)</h3>
+
+<p>启动单线程异步 WebSocket 服务端,成功返回 true,失败返回 null,  </p>
+
+<p>如果不写IP，则默认设为&quot;0.0.0.0&quot;也即监听本机所有IP,访问此服务端也不限制IP<br>
+限制仅本机可以访问建议写127.0.0.1  </p>
+
+<p>端口为0或省略则自动查找1025以后的空闲端口<br>
+注意0-1023为系统通用服务保留端口,<br>
+1024-49151为用户服务端口,其中大约%9已由IANA注册分配<br>
+49152-65535为私有或临时端口</p>
+
+<p><a id="websocketserverObject.stop"></a></p>
+
+<h3>websocketserverObject.stop()</h3>
+
+<p>WebSocket服务端</p>
+
+<p><a href="server.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/web/socket/server.md">Markdown 格式</a></p>
+
+</body> 
+</html>

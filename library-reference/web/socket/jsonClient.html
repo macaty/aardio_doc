@@ -1,0 +1,391 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - web.socket.jsonClient 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - web.socket.jsonClient 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>web.socket.jsonClient 库模块帮助文档</h1>
+
+<p><a id="WebSocketJsonClientObject"></a></p>
+
+<h2>WebSocketJsonClientObject 成员列表</h2>
+
+<p><a id="WebSocketJsonClientObject.?"></a></p>
+
+<h3>WebSocketJsonClientObject.?</h3>
+
+<p>远程对象名或远程方法名字,<br>
+作为函数调用时返回一个调用对象,<br>
+通过指定返回调用对象的 end 属性定义调用结束回调函数,例如:<br>
+ret.end=function(result,err){  </p>
+
+<p>}<br>
+回调参数 result 为调用返回值,err 为错误信息,<br>
+如果调和成功,err参数为null  </p>
+
+<p><a href="jsonClient.html#WebSocketJsonClientObject" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/web/socket/jsonClient.html#WebSocketJsonClientObject">返回对象:WebSocketJsonClientObject</a></p>
+
+<p><a id="WebSocketJsonClientObject.done"></a></p>
+
+<h3>WebSocketJsonClientObject.done</h3>
+
+<p>通过远程函数调用返回对象的 done 属性判断调用是否完成。<br>
+注意出错时则 done 可能不会设为 true，应在 rpc.onError 回调中处理这种情况。</p>
+
+<p><a id="WebSocketJsonClientObject.end"></a></p>
+
+<h3>WebSocketJsonClientObject.end</h3>
+
+<pre><code class="aardio language-aardio">WebSocketJsonClientObject.end = function(result,err){
+    /*可通过远程函数调用返回对象的 end 属性指定一个调用完成触发的回调函数。  
+回调参数 result 为远程调用返回值,err 为错误对象,  
+调用成功 err 参数为null*/
+}
+</code></pre>
+
+<p><a id="WebSocketJsonClientObject.rpc"></a></p>
+
+<h3>WebSocketJsonClientObject.rpc</h3>
+
+<p>WebSocket客户端对象<br>
+此对象的成员谨慎改动  </p>
+
+<p><a href="#websocketjsonClientrpcObject">返回对象:websocketjsonClientrpcObject</a></p>
+
+<p><a id="web.socket"></a></p>
+
+<h2>web.socket 成员列表</h2>
+
+<p><a id="web.socket.jsonClient"></a></p>
+
+<h3>web.socket.jsonClient</h3>
+
+<p>WebSocket / JSON-RPC 2.0 单线程异步客户端</p>
+
+<p><a id="web.socket.jsonClient"></a></p>
+
+<h3>web.socket.jsonClient()</h3>
+
+<p><a href="#websocketjsonClientObject">返回对象:websocketjsonClientObject</a></p>
+
+<p><a id="websocketjsonClientObject"></a></p>
+
+<h2>websocketjsonClientObject 成员列表</h2>
+
+<p><a id="websocketjsonClientObject.?"></a></p>
+
+<h3>websocketjsonClientObject.?</h3>
+
+<p>远程对象名或远程方法名字,  </p>
+
+<p><a href="jsonClient.html#WebSocketJsonClientObject" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/web/socket/jsonClient.html#WebSocketJsonClientObject">返回对象:WebSocketJsonClientObject</a></p>
+
+<p><a id="websocketjsonClientObject.connect"></a></p>
+
+<h3>websocketjsonClientObject.connect(&quot;ws://&quot;)</h3>
+
+<p>重新连接到WebSocket服务端<br>
+参数指定WebSocket服务端网址，例如 &quot;ws://localhost:7511&quot;<br>
+如果不指定参数,则获取上次调用此函数指定的网址参数,<br>
+如果之前也没有指定网址则抛出异常</p>
+
+<p><a id="websocketjsonClientObject.on"></a></p>
+
+<h3>websocketjsonClientObject.on(&quot;close&quot;,proc)</h3>
+
+<pre><code class="aardio language-aardio">websocketjsonClientObject.on(&quot;close&quot;,function(e){  
+    /*连接被关闭  
+e.code为错误代码e.reason为错误原因*/  
+})
+</code></pre>
+
+<p><a id="websocketjsonClientObject.on"></a></p>
+
+<h3>websocketjsonClientObject.on(&quot;error&quot;,proc)</h3>
+
+<pre><code class="aardio language-aardio">websocketjsonClientObject.on(&quot;error&quot;,function(errMessage,rpcError){  
+    /*发生错误,errMessage 为错误信息。  
+如果服务端按 jsonrpc 协议返回 error 对象，  
+则 rpcError 有值，包含 messge，code 字段。*/  
+})
+</code></pre>
+
+<p><a id="websocketjsonClientObject.on"></a></p>
+
+<h3>websocketjsonClientObject.on(&quot;fragment&quot;,proc)</h3>
+
+<pre><code class="aardio language-aardio">websocketjsonClientObject.on(&quot;fragment&quot;,function(msg){  
+   /*收到分片数据  
+第一个数据包使用msg.type指明类型,参考WebSocket协议规范  
+后续数据包msg.type为0,最后一个数据包msg.fin为1  
+
+如果不指定这个回调函数,则自动并接分片数据后触发onMessage事件*/   
+})
+</code></pre>
+
+<p><a id="websocketjsonClientObject.on"></a></p>
+
+<h3>websocketjsonClientObject.on(&quot;message&quot;,proc)</h3>
+
+<pre><code class="aardio language-aardio">websocketjsonClientObject.on(&quot;message&quot;,function(msg){  
+    /*收到服务端数据  
+msg.type为1时msg.data为文本,  
+否则msg.data为字节数组（buffer类型）*/  
+})
+</code></pre>
+
+<p><a id="websocketjsonClientObject.on"></a></p>
+
+<h3>websocketjsonClientObject.on(&quot;open&quot;,proc)</h3>
+
+<pre><code class="aardio language-aardio">websocketjsonClientObject.on(&quot;open&quot;,function(){  
+    /*已打开连接*/       
+}
+</code></pre>
+
+<p><a id="websocketjsonClientObject.on"></a></p>
+
+<h3>websocketjsonClientObject.on(method,proc)</h3>
+
+<pre><code class="aardio language-aardio">websocketjsonClientObject.on(&quot;/*需要监听的Rpc通知事件名字*/&quot;,function(param){  
+
+})
+</code></pre>
+
+<p><a id="websocketjsonClientObject.rpc"></a></p>
+
+<h3>websocketjsonClientObject.rpc</h3>
+
+<p>WebSocket客户端对象<br>
+此对象的成员谨慎改动  </p>
+
+<p><a href="#websocketjsonClientrpcObject">返回对象:websocketjsonClientrpcObject</a></p>
+
+<p><a id="websocketjsonClientrpcObject"></a></p>
+
+<h2>websocketjsonClientrpcObject 成员列表</h2>
+
+<p><a id="websocketjsonClientrpcObject.afterJsonStringify"></a></p>
+
+<h3>websocketjsonClientrpcObject.afterJsonStringify</h3>
+
+<pre><code class="aardio language-aardio">websocketjsonClientrpcObject.afterJsonStringify = function(jsonData){
+    /*可以在这里加密客户端JSON,返回null中止本次调用*/
+    return jsonData;
+}
+</code></pre>
+
+<p><a id="websocketjsonClientrpcObject.beforeJsonParse"></a></p>
+
+<h3>websocketjsonClientrpcObject.beforeJsonParse</h3>
+
+<pre><code class="aardio language-aardio">websocketjsonClientrpcObject.beforeJsonParse = function(jsonData){
+    /*可以在这里解密服务端数据,返回null中止本次调用*/
+    return jsonData;
+}
+</code></pre>
+
+<p><a id="websocketjsonClientrpcObject.beforeRequest"></a></p>
+
+<h3>websocketjsonClientrpcObject.beforeRequest(请求数据)</h3>
+
+<pre><code class="aardio language-aardio">websocketjsonClientrpcObject.beforeRequest = function(reqData){
+    /*此回调事件在发送请求前触发  
+reqData.params是即将发送的参数*/
+    return reqData;
+}
+</code></pre>
+
+<p><a id="websocketjsonClientrpcObject.beginTrans"></a></p>
+
+<h3>websocketjsonClientrpcObject.beginTrans()</h3>
+
+<p>开始批量调用<br>
+之后的所有RPC调用不提交服务器,<br>
+直到调用commitTrans函数</p>
+
+<p><a id="websocketjsonClientrpcObject.close"></a></p>
+
+<h3>websocketjsonClientrpcObject.close()</h3>
+
+<p>关闭连接<br>
+可选增加2个参数指定发送给服务器的关闭帧附加数据:<br>
+参数@1为数值类型的错误代码,参数@2为字符串类型错误描述</p>
+
+<p><a id="websocketjsonClientrpcObject.commitTrans"></a></p>
+
+<h3>websocketjsonClientrpcObject.commitTrans()</h3>
+
+<p>完成批量调用并提交到服务器</p>
+
+<p><a id="websocketjsonClientrpcObject.connect"></a></p>
+
+<h3>websocketjsonClientrpcObject.connect(&quot;ws://&quot;)</h3>
+
+<p>重新连接到WebSocket服务端<br>
+参数指定WebSocket服务端网址，例如 &quot;ws://localhost:7511&quot;<br>
+如果不指定参数,则获取上次调用此函数指定的网址参数,<br>
+如果之前也没有指定网址则抛出异常</p>
+
+<p><a id="websocketjsonClientrpcObject.headers"></a></p>
+
+<h3>websocketjsonClientrpcObject.headers</h3>
+
+<p>其他HTTP请求头<br>
+值可以是文本或数组、或键值对组成的表<br>
+请求时会调用 web.joinHeaders()函数拼接并转换HTTP头<br>
+该函数支持的类型和格式这个属性都可以支持</p>
+
+<p><a id="websocketjsonClientrpcObject.heartbeatData"></a></p>
+
+<h3>websocketjsonClientrpcObject.heartbeatData</h3>
+
+<p>单向心跳发送的数据,默认为空数据<br>
+这个值修改以后，只能在下次调用connect函数才会生效</p>
+
+<p><a id="websocketjsonClientrpcObject.heartbeatInterval"></a></p>
+
+<h3>websocketjsonClientrpcObject.heartbeatInterval</h3>
+
+<p>客户端主动发送心跳间隔,默认为30秒,<br>
+设为-1时禁用客户端心跳,注意某些服务端收到心跳包会报错,这时建议关掉心跳,<br>
+此属性值修改以后，只能在下次调用connect函数才会生效</p>
+
+<p><a id="websocketjsonClientrpcObject.heartbeatType"></a></p>
+
+<h3>websocketjsonClientrpcObject.heartbeatType</h3>
+
+<p>单向心跳发送的的帧类型,<br>
+默认为0xA,也就是单向心跳 Pong 帧<br>
+这个值修改以后，只能在下次调用connect函数才会生效</p>
+
+<p><a id="websocketjsonClientrpcObject.isClosed"></a></p>
+
+<h3>websocketjsonClientrpcObject.isClosed()</h3>
+
+<p>套接字是否已关闭</p>
+
+<p><a id="websocketjsonClientrpcObject.isConnected"></a></p>
+
+<h3>websocketjsonClientrpcObject.isConnected()</h3>
+
+<p>套接字是否已连接并准备就绪(已与服务器握手成功)</p>
+
+<p><a id="websocketjsonClientrpcObject.originUrl"></a></p>
+
+<h3>websocketjsonClientrpcObject.originUrl</h3>
+
+<p>浏览器启动WebSocket客户端的网址<br>
+一些WebSocket服务器根据这个判断是不是允许连接,<br>
+所以有时候设置这个很重要<br>
+默认使用WebSocket网址，并把 前面的ws://改为http://</p>
+
+<p><a id="websocketjsonClientrpcObject.protocol"></a></p>
+
+<h3>websocketjsonClientrpcObject.protocol</h3>
+
+<p>应用程序支持的协议列表,默认为&quot;chat&quot;</p>
+
+<p><a id="websocketjsonClientrpcObject.readyState"></a></p>
+
+<h3>websocketjsonClientrpcObject.readyState</h3>
+
+<p>连接状态,<br>
+0为等待连接,1为已连接并准备就绪,2为正在关闭,3为已关闭<br>
+只有成功通过WebSocket协议握手以后readyState才会被置为1<br>
+这与socket.readyState连接成功就会置为1是不同的</p>
+
+<p><a id="websocketjsonClientrpcObject.responseHeaders"></a></p>
+
+<h3>websocketjsonClientrpcObject.responseHeaders</h3>
+
+<p>服务端响应的HTTP头<br>
+这是一个表对象，键名都已转为小写</p>
+
+<p><a id="websocketjsonClientrpcObject.rollbackTrans"></a></p>
+
+<h3>websocketjsonClientrpcObject.rollbackTrans()</h3>
+
+<p>撤消尚未提交的批量调用</p>
+
+<p><a id="websocketjsonClientrpcObject.socket"></a></p>
+
+<h3>websocketjsonClientrpcObject.socket</h3>
+
+<p>异步套接字对象<br>
+在关闭连接状态下此属性的值为null<br>
+应由对象自动打开或删除套接字对象，调用者不可改动此属性的值  </p>
+
+<p><a href="../../wsock/tcp/asynClient.html#tcpaclientObject" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/wsock/tcp/asynClient.html#tcpaclientObject">返回对象:tcpaclientObject</a></p>
+
+<p><a id="websocketjsonClientrpcObject.url"></a></p>
+
+<h3>websocketjsonClientrpcObject.url</h3>
+
+<p>上次成功连接的网址<br>
+也可以用于指定下次连接的默认网址</p>
+
+<p><a id="websocketjsonClientrpcObject.userAgent"></a></p>
+
+<h3>websocketjsonClientrpcObject.userAgent</h3>
+
+<p>客户端应用程序代理头<br>
+默认为&quot;Mozilla/5.0&quot;</p>
+
+<p><a id="websocketjsonClientrpcObject.varargs"></a></p>
+
+<h3>websocketjsonClientrpcObject.varargs</h3>
+
+<p>默认值为true,<br>
+值为true时将不定个数的参数放入数组发送给服务端<br>
+值为false时直接将单个参数发送给服务端  </p>
+
+<p>JSON-RPC 2.0一个会制造混乱的地方：<br>
+如果params是一个数组，并没有规定是展开为一个参数，还是作为一个数组参数。  </p>
+
+<p>目前aardio的RPC服务端会负责展开数组作为多个参数，<br>
+但客户端需要在这里手动设置</p>
+
+<p><a id="websocketjsonClientrpcObject.version"></a></p>
+
+<h3>websocketjsonClientrpcObject.version</h3>
+
+<p>值为JSON-RPC协议版本：&quot;2.0&quot;<br>
+不应该修改这个值</p>
+
+<p><a id="websocketjsonClientrpcObject.waitForConnected"></a></p>
+
+<h3>websocketjsonClientrpcObject.waitForConnected(关联窗口句柄,超时)</h3>
+
+<p>等待连接到WebSocket服务端<br>
+所有参数可选,超时以毫秒为单位,  </p>
+
+<p>连接成功返回true,失败返回false或null</p>
+
+<p><a id="websocketjsonClientrpcObject.xcall"></a></p>
+
+<h3>websocketjsonClientrpcObject.xcall(method,param)</h3>
+
+<pre><code class="aardio language-aardio">websocketjsonClientrpcObject.xcall(&quot;Page.navigate&quot;,{  
+    url = &quot;网址&quot;  
+}).end = function(result,err){  
+    /*调用JSON-RPC服务端的指定方法  
+服务器应答后回调此函数返回值的成员函数:end函数  
+end函数有2个回调参数,参数@1为result，参数@2为err  
+失败err参数非空*/  
+}
+</code></pre>
+
+<p><a href="jsonClient.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/web/socket/jsonClient.md">Markdown 格式</a></p>
+
+</body> 
+</html>

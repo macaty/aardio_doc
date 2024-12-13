@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - 获取磁盘属性'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - 获取磁盘属性</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 获取磁盘属性</h1><pre><code class="aardio language-aardio">//获取磁盘属性
+import console;
+import sys.storage;
+
+//获取所有磁盘分区（硬盘、U 盘），参数 @2 为 true 则仅获取 U 盘信息
+var device = sys.storage.getDevices(true,/*true*/);
+
+// 检测USB设备
+for i,path in device {
+
+    // 获取设备属性
+    var properties = sys.storage.queryProperty(path)
+
+    // 输出设备信息
+    console.log(&quot;设备路径:&quot;, path)
+    console.log(&quot;序列号:&quot;, properties.serialNumber)
+    console.log(&quot;产品版本:&quot;, properties.productRevision)
+    console.log(&quot;产品ID:&quot;, properties.productId)
+    console.log(&quot;厂商ID:&quot;, properties.vendorId)
+    console.log(&quot;设备类型:&quot;, properties.deviceType)
+    console.log(&quot;设备类型修饰符:&quot;, properties.deviceTypeModifier)
+    console.log(&quot;是否可移动:&quot;, properties.removableMedia)
+    console.log(&quot;是否支持命令队列:&quot;, properties.commandQueueing)
+    console.log(&quot;总线类型:&quot;, properties.busType)
+
+    console.more(1);
+}
+
+console.pause(true)
+</code></pre>
+<a href="storage.properties.md" tppabs="https://www.aardio.com/zh-cn/doc/example/File/Storage/storage.properties.md">Markdown 格式</a>
+</body> 
+</html>

@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - 使用WMI监视进程打开关闭事件'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - 使用WMI监视进程打开关闭事件</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 使用WMI监视进程打开关闭事件</h1><pre><code class="aardio language-aardio">//WMI 监视进程
+import win.ui;
+/*DSG{{*/
+var winform = win.form(text=&quot;使用WMI监视进程打开关闭事件&quot;;right=759;bottom=469)
+winform.add(
+edit={cls=&quot;edit&quot;;left=16;top=16;right=744;bottom=448;edge=1;multiline=1;z=1}
+)
+/*}}*/
+
+import com.wmi;
+var wmi = com.wmi();
+
+com.wmi.queryNotificationAsync({
+    OnObjectReady = function(objObject, objAsyncContext) {
+        var target = objObject.TargetInstance ();
+        winform.edit.print(&quot;创建进程. &quot;,target.Name(),&quot;进程ID:&quot; + target.ProcessId) 
+        winform.edit.print(target.CommandLine) 
+    }; 
+    OnCompleted = function(objObject, objAsyncContext) {
+        winform.edit.print(&quot;操作已完成&quot;)
+    };
+    //WITHIN 条件指定轮询间隔（以秒为单位），例如 WITHIN 5 指定 5 秒轮询一次。
+}, &quot;SELECT * FROM __InstanceCreationEvent WITHIN 3 WHERE TargetInstance ISA &#39;Win32_Process&#39;&quot;)
+
+com.wmi.queryNotificationAsync({
+    OnObjectReady = function(objObject, objAsyncContext) {
+        winform.edit.print(&quot;关闭进程. &quot;,objObject.TargetInstance ().Name())
+    }; 
+    OnCompleted = function(objObject, objAsyncContext) {
+        winform.edit.print(&quot;操作已完成&quot;) 
+    }
+} , &quot;SELECT * FROM __InstanceDeletionEvent WITHIN 3 WHERE TargetInstance ISA &#39;Win32_Process&#39;&quot;)
+
+winform.show();
+win.loopMessage();
+</code></pre>
+<a href="SWbemSink.md" tppabs="https://www.aardio.com/zh-cn/doc/example/COM/WMI/SWbemSink.md">Markdown 格式</a>
+</body> 
+</html>

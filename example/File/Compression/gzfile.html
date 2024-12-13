@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - gzip 读写'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - gzip 读写</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: gzip 读写</h1><pre><code class="aardio language-aardio">//gzip 读写
+
+import zlib;
+
+//创建只写gzip文件
+gz = zlib.gzFile(&quot;/路径.gz&quot;,&quot;wb&quot;)
+gz.write( {
+    int data=1234; //可以压缩结构体,并写入gzip文件
+    } ) 
+gz.write(&quot;字符串&quot;)//写入字符串 
+gz.close();//关闭文件句柄
+
+//创建只读gzip文件
+gz = zlib.gzFile(&quot;/路径.gz&quot;,&quot;rb&quot;)
+var struct = gz.read( {
+    int data=1234; //可以自gzip文件解压读取结构体
+    } ) 
+var str = gz.read(-1) //解压并读取所有字符串 
+gz.close();//关闭文件句柄
+
+io.open()
+io.print( struct.data,str )
+execute(&quot;pause&quot;)
+
+</code></pre>
+<a href="gzfile.md" tppabs="https://www.aardio.com/zh-cn/doc/example/File/Compression/gzfile.md">Markdown 格式</a>
+</body> 
+</html>

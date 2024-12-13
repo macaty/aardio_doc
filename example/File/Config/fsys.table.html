@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - fsys.table'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - fsys.table</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: fsys.table</h1><pre><code class="aardio language-aardio">//fsys.table
+import console;
+import fsys.table;
+
+var setting = fsys.table(&quot;/setting.table&quot;) 
+setting.load(); //从文件载入表
+
+//读写成员,象普通table 对象一样使用
+setting.a = 123;
+setting.b = 456; 
+
+//混入成员到配置表
+setting.mixin(
+    c = {a=1;b=2};
+    d = 123;
+    e = raw.buffer(5,&quot;abc&quot;)
+)
+
+//保存配置表
+setting.save()
+
+setting2 = fsys.table(&quot;/setting.table&quot;)
+setting2.load(); //读取
+
+for(k,v in setting2){
+    console.log(k,v ) //象普通table对象一样使用 
+} 
+
+console.log( setting2 ) //转换为字符串
+
+
+execute(&quot;pause&quot;)
+
+</code></pre>
+<a href="fsys.table.md" tppabs="https://www.aardio.com/zh-cn/doc/example/File/Config/fsys.table.md">Markdown 格式</a>
+</body> 
+</html>

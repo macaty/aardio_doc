@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - 文件对话框'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - 文件对话框</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 文件对话框</h1><pre><code class="aardio language-aardio">//文件对话框
+import fonts.fontAwesome;
+import win.ui;
+/*DSG{{*/
+var winform = win.form(text=&quot;文件对话框&quot;;right=652;bottom=195;bgcolor=16777215;border=&quot;dialog frame&quot;;max=false;min=false)
+winform.add(
+btnIFileOpenDir={cls=&quot;plus&quot;;text=&quot;打开目录&quot;;left=459;top=49;right=612;bottom=79;align=&quot;left&quot;;color=3947580;dr=1;dt=1;font=LOGFONT(h=-13);iconStyle={align=&quot;left&quot;;font=LOGFONT(h=-13;name=&#39;FontAwesome&#39;);padding={left=8}};iconText=&#39;\uF07C&#39;;notify=1;textPadding={left=25};z=3};
+btnOpen={cls=&quot;button&quot;;text=&quot;打开文件&quot;;left=145;top=120;right=251;bottom=155;db=1;dl=1;z=1};
+btnSave={cls=&quot;button&quot;;text=&quot;保存文件&quot;;left=270;top=120;right=376;bottom=155;db=1;dl=1;dr=1;z=2};
+editPath={cls=&quot;plus&quot;;left=59;top=49;right=455;bottom=75;align=&quot;right&quot;;border={bottom=1;color=-6908266};dl=1;dr=1;dt=1;editable=1;font=LOGFONT(h=-13);textPadding={top=6;bottom=2};z=4};
+static={cls=&quot;static&quot;;text=&quot;上面的 plus 控件可以在右键菜单中点复制，然后可以粘贴到其他窗体&quot;;left=161;top=92;right=558;bottom=106;color=8421504;transparent=1;z=5}
+)
+/*}}*/
+
+import fsys.dlg;
+winform.btnOpen.oncommand = function(id,event){
+    var path = fsys.dlg.open(&#39;所有文件|*.*|文本文件|*.txt||&#39;,,,winform);
+    if(path){
+        winform.editPath.text = path;
+    }
+}
+
+winform.btnSave.oncommand = function(id,event){
+    var path = fsys.dlg.save(&#39;所有文件|*.*|文本文件|*.txt||&#39;,,,winform);
+    if(path){
+        winform.editPath.text = path;
+    }   
+}
+
+//仅支持 Win7 以及 Win7 以后版本,XP 系统 自动降级为 fsys.dlg.openDir
+import fsys.dlg.dir;
+winform.btnIFileOpenDir.oncommand = function(id,event){
+    var path = fsys.dlg.dir(,winform,&#39;请选择目录&#39;)
+    if(path){
+        winform.editPath.text = path;
+    }   
+}
+winform.btnIFileOpenDir.skin({
+    color={
+        active=0xFF00FF00;
+        default=0xFF3C3C3C;
+        disabled=0xFF6D6D6D;
+        hover=0xFFFF0000
+    }
+})
+
+winform.show();
+win.loopMessage();
+</code></pre>
+<a href="fsys.dlg.md" tppabs="https://www.aardio.com/zh-cn/doc/example/File/Dialog/fsys.dlg.md">Markdown 格式</a>
+</body> 
+</html>

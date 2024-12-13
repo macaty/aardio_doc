@@ -1,0 +1,1059 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - web.kit.view 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - web.kit.view 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>web.kit.view 库模块帮助文档</h1>
+
+<p><a id="global"></a></p>
+
+<h2>全局对象 成员列表</h2>
+
+<p><a id="wkeWebView"></a></p>
+
+<h3>wkeWebView</h3>
+
+<p><a href="#webKitViewObject">返回对象:webKitViewObject</a></p>
+
+<p><a id="web.kit"></a></p>
+
+<h2>web.kit 成员列表</h2>
+
+<p><a id="web.kit.view"></a></p>
+
+<h3>web.kit.view</h3>
+
+<p>webkit视图</p>
+
+<p><a id="web.kit.view"></a></p>
+
+<h3>web.kit.view()</h3>
+
+<p>创建WebKit视图,<br>
+如果不指定参数视图不负责创建显示窗口,<br>
+如果在参数中直接指定一个窗口对象,则创建默认的显示窗口,<br>
+控件创建的窗口句柄可通过hWkeWindow属性获取  </p>
+
+<p><a href="#webKitViewObject">返回对象:webKitViewObject</a></p>
+
+<p><a id="webKitViewObject"></a></p>
+
+<h2>webKitViewObject 成员列表</h2>
+
+<p><a id="webKitViewObject._form"></a></p>
+
+<h3>webKitViewObject._form</h3>
+
+<p>浏览器宿主窗口  </p>
+
+<p><a href="../../win/ui/ctrl/static.html#staticObject" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/win/ui/ctrl/static.html#staticObject">返回对象:staticObject</a></p>
+
+<p><a id="webKitViewObject.addDirtyArea"></a></p>
+
+<h3>webKitViewObject.addDirtyArea(x,y,w,h)</h3>
+
+<p>设置无效区域</p>
+
+<p><a id="webKitViewObject.attach"></a></p>
+
+<h3>webKitViewObject.attach</h3>
+
+<pre><code class="aardio language-aardio">webKitViewObject.attach(  
+    function(event){  
+        io.print(&quot;点击坐标&quot;, event.screenX,event.screenY )  
+        io.print(&quot;触发节点&quot;, event.srcElement.innerText )  
+    }  
+    ,&quot;onclick&quot;,ele/*也可输入getEle()所需参数,省略表示doc*/   
+)
+</code></pre>
+
+<p><a id="webKitViewObject.attachAll"></a></p>
+
+<h3>webKitViewObject.attachAll</h3>
+
+<pre><code class="aardio language-aardio">webKitViewObject.attachAll(    
+    /* html节点ID = 事件触发函数表 */  
+    caption_button_min = {  
+        onclick = function(event){  
+            wb._form.hitmin();    
+        }   
+    }  
+)
+</code></pre>
+
+<p><a id="webKitViewObject.canGoBack"></a></p>
+
+<h3>webKitViewObject.canGoBack()</h3>
+
+<p>能否后退</p>
+
+<p><a id="webKitViewObject.canGoForward"></a></p>
+
+<h3>webKitViewObject.canGoForward()</h3>
+
+<p>能否前进</p>
+
+<p><a id="webKitViewObject.click"></a></p>
+
+<h3>webKitViewObject.click(控件名字,随机延时最小值,延时最大值,框架名)</h3>
+
+<p>模拟点击控件,<br>
+第一个参数也可以是ele对象,<br>
+随机延时值为可选参数,默认为1,500.<br>
+框架名为可选参数</p>
+
+<p><a id="webKitViewObject.contextMenuEvent"></a></p>
+
+<h3>webKitViewObject.contextMenuEvent(x,y,flags)</h3>
+
+<p>转发右键菜单事件到网页<br>
+x,y 参数为相对于窗口左上角的坐标值,  </p>
+
+<p>flags 参数为_WKE_前缀常量,可省略,支持的选项如下<br>
+_WKE_CONTROL 表示按下Ctrl键_WKE_SHIFT 表示按下Shift键<br>
+_WKE_LBUTTON 表示按下鼠标左键<br>
+_WKE_MBUTTON 表示按下鼠标左键<br>
+_WKE_RBUTTON 表示按下鼠标右键<br>
+多个选项以 | 连接<br>
+不指定则默认为_WKE_RBUTTON</p>
+
+<p><a id="webKitViewObject.cookie"></a></p>
+
+<h3>webKitViewObject.cookie</h3>
+
+<p>返回网页cookie，文本</p>
+
+<p><a id="webKitViewObject.cookieClear"></a></p>
+
+<h3>webKitViewObject.cookieClear()</h3>
+
+<p>清空cookie</p>
+
+<p><a id="webKitViewObject.cookieClearSession"></a></p>
+
+<h3>webKitViewObject.cookieClearSession()</h3>
+
+<p>清空会话cookie</p>
+
+<p><a id="webKitViewObject.cookieData"></a></p>
+
+<h3>webKitViewObject.cookieData()</h3>
+
+<p>返回所有cookie,返回值为fsys.cookies对象  </p>
+
+<p><a href="#fsyscookiesObject">返回对象:fsyscookiesObject</a></p>
+
+<p><a id="webKitViewObject.cookieEnabled"></a></p>
+
+<h3>webKitViewObject.cookieEnabled</h3>
+
+<p>是否允许使用cookie</p>
+
+<p><a id="webKitViewObject.cookieReload"></a></p>
+
+<h3>webKitViewObject.cookieReload()</h3>
+
+<p>自文件重新载入cookie</p>
+
+<p><a id="webKitViewObject.cookieSave"></a></p>
+
+<h3>webKitViewObject.cookieSave()</h3>
+
+<p>保存cookie</p>
+
+<p><a id="webKitViewObject.cookieSet"></a></p>
+
+<h3>webKitViewObject.cookieSet()</h3>
+
+<p>设置cookie,<br>
+参数可以是单个cookie的字段键值对组成的表,<br>
+也可以是符合HTTP响应头中设置Cookie格式相同的字符串<br>
+也可以指定fsys.cookies对象<br>
+了解cookie格式的细节，请查看fsys.cookies库</p>
+
+<p><a id="webKitViewObject.copy"></a></p>
+
+<h3>webKitViewObject.copy()</h3>
+
+<p>复制</p>
+
+<p><a id="webKitViewObject.cut"></a></p>
+
+<h3>webKitViewObject.cut()</h3>
+
+<p>剪切</p>
+
+<p><a id="webKitViewObject.delete"></a></p>
+
+<h3>webKitViewObject.delete()</h3>
+
+<p>删除</p>
+
+<p><a id="webKitViewObject.destroy"></a></p>
+
+<h3>webKitViewObject.destroy()</h3>
+
+<p>销毁对象</p>
+
+<p><a id="webKitViewObject.dispatchEvent"></a></p>
+
+<h3>webKitViewObject.dispatchEvent(&quot;字符串参数&quot;,&quot;click&quot;)</h3>
+
+<p>触发事件</p>
+
+<p><a id="webKitViewObject.doScript"></a></p>
+
+<h3>webKitViewObject.doScript(js代码)</h3>
+
+<p>执行JS脚本</p>
+
+<p><a id="webKitViewObject.document"></a></p>
+
+<h3>webKitViewObject.document</h3>
+
+<p>Javascript网页文档对象<br>
+document.</p>
+
+<p><a id="webKitViewObject.enumCookie"></a></p>
+
+<h3>webKitViewObject.enumCookie</h3>
+
+<pre><code class="aardio language-aardio">webKitViewObject.enumCookie(  
+    function(sData,pData){  
+        /*pData为cookie指针,sData为Cookie文本*/  
+    }  
+)
+</code></pre>
+
+<p><a id="webKitViewObject.eval"></a></p>
+
+<h3>webKitViewObject.eval(JS表达式)</h3>
+
+<p>计算JS表达式并返回值</p>
+
+<p><a id="webKitViewObject.external"></a></p>
+
+<h3>webKitViewObject.external</h3>
+
+<pre><code class="aardio language-aardio">webKitViewObject.external = {  
+    /*external的成员函数可在JS中调用*/  
+};
+</code></pre>
+
+<p><a id="webKitViewObject.flash"></a></p>
+
+<h3>webKitViewObject.flash</h3>
+
+<p>获取默认的或 name 属性为 plugin 的 Flash NPAPI 插件对象<br>
+直接打开 *.swf 文件时会自动创建此对象  </p>
+
+<p><a href="#webNpPluginFlashObject">返回对象:webNpPluginFlashObject</a></p>
+
+<p><a id="webKitViewObject.focus"></a></p>
+
+<h3>webKitViewObject.focus()</h3>
+
+<p>设置焦点</p>
+
+<p><a id="webKitViewObject.getContentsHeight"></a></p>
+
+<h3>webKitViewObject.getContentsHeight()</h3>
+
+<p>文档高度</p>
+
+<p><a id="webKitViewObject.getContentsWidth"></a></p>
+
+<h3>webKitViewObject.getContentsWidth()</h3>
+
+<p>文档宽度</p>
+
+<p><a id="webKitViewObject.getForm"></a></p>
+
+<h3>webKitViewObject.getForm()</h3>
+
+<p>返回该视图所在窗体对象  </p>
+
+<p><a href="../../win/ui/_.html#winform" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/win/ui/_.html#winform">返回对象:winform</a></p>
+
+<p><a id="webKitViewObject.getForm"></a></p>
+
+<h3>webKitViewObject.getForm(false)</h3>
+
+<p>返回该视图所在窗口或控件对象</p>
+
+<p><a id="webKitViewObject.getHeight"></a></p>
+
+<h3>webKitViewObject.getHeight()</h3>
+
+<p>视图高度</p>
+
+<p><a id="webKitViewObject.getWidth"></a></p>
+
+<h3>webKitViewObject.getWidth()</h3>
+
+<p>视图宽度</p>
+
+<p><a id="webKitViewObject.go"></a></p>
+
+<h3>webKitViewObject.go(&quot;字符串参数&quot;)</h3>
+
+<p>打开网址<br>
+如果导入 web.npPlugin.flash 则支持输入 swf 文件网址</p>
+
+<p><a id="webKitViewObject.goBack"></a></p>
+
+<h3>webKitViewObject.goBack()</h3>
+
+<p>后退</p>
+
+<p><a id="webKitViewObject.goForward"></a></p>
+
+<h3>webKitViewObject.goForward()</h3>
+
+<p>前进</p>
+
+<p><a id="webKitViewObject.hWkeWindow"></a></p>
+
+<h3>webKitViewObject.hWkeWindow</h3>
+
+<p>如果在创建web.kit.view对象时指定了父窗口参数,并由WKE创建控件显示窗口<br>
+此属性返回WKE创建的窗口句柄</p>
+
+<p><a id="webKitViewObject.html"></a></p>
+
+<h3>webKitViewObject.html</h3>
+
+<pre><code class="aardio language-aardio">webKitViewObject.html = /**  
+&lt;!doctype html&gt;  
+&lt;html&gt;  
+&lt;head&gt;  
+    &lt;style type=&quot;text/css&quot;&gt;  
+    html,body{ height:100%; margin:0; }   
+    &lt;/style&gt;  
+    &lt;script type=&quot;text/javascript&quot;&gt;&lt;/script&gt;  
+&lt;/head&gt;  
+&lt;body&gt;  
+    &lt;div id=&quot;header&quot;&gt;&lt;/div&gt;  
+    &lt;div id=&quot;container&quot;&gt;   
+        &lt;div class=&quot;lside&quot;&gt; &lt;/div&gt;   
+        &lt;div class=&quot;rside&quot;&gt; &lt;/div&gt;    
+    &lt;/div&gt;  
+&lt;/body&gt;  
+&lt;/html&gt;  
+**/
+</code></pre>
+
+<p><a id="webKitViewObject.isAwake"></a></p>
+
+<h3>webKitViewObject.isAwake()</h3>
+
+<p>是否运行</p>
+
+<p><a id="webKitViewObject.isDirty"></a></p>
+
+<h3>webKitViewObject.isDirty()</h3>
+
+<p>是否需要重绘</p>
+
+<p><a id="webKitViewObject.isDocumentReady"></a></p>
+
+<h3>webKitViewObject.isDocumentReady()</h3>
+
+<p>文档对象是否准备就绪</p>
+
+<p><a id="webKitViewObject.isLoadComplete"></a></p>
+
+<h3>webKitViewObject.isLoadComplete()</h3>
+
+<p>是否加载完成<br>
+即isLoaded或isLoadFailed函数返回true</p>
+
+<p><a id="webKitViewObject.isLoadFailed"></a></p>
+
+<h3>webKitViewObject.isLoadFailed()</h3>
+
+<p>是否加载失败</p>
+
+<p><a id="webKitViewObject.isLoaded"></a></p>
+
+<h3>webKitViewObject.isLoaded()</h3>
+
+<p>是否加载成功</p>
+
+<p><a id="webKitViewObject.jQuery"></a></p>
+
+<h3>webKitViewObject.jQuery(&quot;字符串参数&quot;)</h3>
+
+<p>jQuery选择器,并可自动载入jQuery库<br>
+n首次调用按需加载jQuery v1.9:<br>
+ &quot;/res/js/jQuery/jQuery.min.js&quot;<br>
+失败则通过网络CDN服务器下载jquery-1.9.0.min.js</p>
+
+<p><a id="webKitViewObject.jQuery"></a></p>
+
+<h3>webKitViewObject.jQuery()</h3>
+
+<p>无参数时返回jQuery类对象<br>
+首次调用按需加载 jQuery v1.9:<br>
+ &quot;/res/js/jQuery/jQuery.min.js&quot;<br>
+失败则通过网络CDN服务器下载jquery-1.9.0.min.js  </p>
+
+<p><a href="#jQueryObject">返回对象:jQueryObject</a></p>
+
+<p><a id="webKitViewObject.keyDown"></a></p>
+
+<h3>webKitViewObject.keyDown(vkCode,flags,sysKey)</h3>
+
+<p>转发按键释放事件到网页  </p>
+
+<p>vkCode 参数指定虚拟键码,请参考标准库key.VK  </p>
+
+<p>flags 参数可用指定一个或多个以下选项:<br>
+       _WKE_REPEAT表示重复按键,<br>
+       _WKE_EXTENDED表示扩展键,<br>
+       多个选项以 | 连接  </p>
+
+<p>sysKey 参数指定是否同时按下ALT键,</p>
+
+<p><a id="webKitViewObject.keyPress"></a></p>
+
+<h3>webKitViewObject.keyPress(charCode,flags,sysKey)</h3>
+
+<p>转发WM_CHAR事件到网页  </p>
+
+<p>charCode 参数指定字符代码,  </p>
+
+<p>flags 参数可用指定一个或多个以下选项:<br>
+       _WKE_REPEAT表示重复按键,<br>
+       _WKE_EXTENDED表示扩展键,<br>
+       多个选项以 | 连接  </p>
+
+<p>sysKey 参数指定是否同时按下ALT键,</p>
+
+<p><a id="webKitViewObject.keyUp"></a></p>
+
+<h3>webKitViewObject.keyUp(vkCode,flags,sysKey)</h3>
+
+<p>转发按键释放事件到网页  </p>
+
+<p>vkCode 参数指定虚拟键码,请参考标准库key.VK  </p>
+
+<p>flags 参数可用指定一个或多个以下选项:<br>
+       _WKE_REPEAT表示重复按键,<br>
+       _WKE_EXTENDED表示扩展键,<br>
+       多个选项以 | 连接  </p>
+
+<p>sysKey 参数指定是否同时按下ALT键,</p>
+
+<p><a id="webKitViewObject.load"></a></p>
+
+<h3>webKitViewObject.load( filename)</h3>
+
+<p>加载文件</p>
+
+<p><a id="webKitViewObject.loadScript"></a></p>
+
+<h3>webKitViewObject.loadScript(&quot;js地址&quot;,&quot;字符串参数&quot;,&quot;utf-8&quot;)</h3>
+
+<p>动态加载js文件\N可选用第三个参数指定文件编码</p>
+
+<p><a id="webKitViewObject.location"></a></p>
+
+<h3>webKitViewObject.location</h3>
+
+<p>当前网址</p>
+
+<p><a id="webKitViewObject.mediaVolume"></a></p>
+
+<h3>webKitViewObject.mediaVolume</h3>
+
+<p>音量,范微0.0到1.0</p>
+
+<p><a id="webKitViewObject.mouseEvent"></a></p>
+
+<h3>webKitViewObject.mouseEvent(message,x,y,flags)</h3>
+
+<p>转发鼠标事件到网页<br>
+message为_WM_前缀的窗口鼠标消息常量<br>
+x,y 参数为相对于窗口左上角的坐标值,  </p>
+
+<p>flags 参数为_WKE_前缀常量,可省略,支持的选项如下<br>
+_WKE_CONTROL 表示按下Ctrl键_WKE_SHIFT 表示按下Shift键<br>
+_WKE_LBUTTON 表示按下鼠标左键<br>
+_WKE_MBUTTON 表示按下鼠标左键<br>
+_WKE_RBUTTON 表示按下鼠标右键<br>
+多个选项以 | 连接<br>
+不指定则默认为_WKE_LBUTTON</p>
+
+<p><a id="webKitViewObject.mouseWheel"></a></p>
+
+<h3>webKitViewObject.mouseWheel(x,y,delta,flags)</h3>
+
+<p>转发滚轮事件到网页<br>
+x,y 参数为相对于屏幕左上角的坐标值,<br>
+delta为120的倍数,负数向下滚动,正数向上滚动,  </p>
+
+<p>flags 参数为_WKE_前缀常量,可省略,支持的选项如下<br>
+_WKE_CONTROL 表示按下Ctrl键_WKE_SHIFT 表示按下Shift键<br>
+_WKE_LBUTTON 表示按下鼠标左键<br>
+_WKE_MBUTTON 表示按下鼠标左键<br>
+_WKE_RBUTTON 表示按下鼠标右键<br>
+多个选项以 | 连接<br>
+不指定则默认为_WKE_MBUTTON</p>
+
+<p><a id="webKitViewObject.onAlertBox"></a></p>
+
+<h3>webKitViewObject.onAlertBox</h3>
+
+<pre><code class="aardio language-aardio">webKitViewObject.onAlertBox = function(str){
+    /*alert对话框触发此事件,返回true不显示默认对话框*/     
+    return true;   
+}
+</code></pre>
+
+<p><a id="webKitViewObject.onConfirmBox"></a></p>
+
+<h3>webKitViewObject.onConfirmBox</h3>
+
+<pre><code class="aardio language-aardio">webKitViewObject.onConfirmBox = function(str){
+    /*确认对话框触发此事件,  
+定义此事件后不再显示确认对话框,可在这里修改返回值*/ 
+   return result; 
+}
+</code></pre>
+
+<p><a id="webKitViewObject.onDocumentReady"></a></p>
+
+<h3>webKitViewObject.onDocumentReady</h3>
+
+<pre><code class="aardio language-aardio">webKitViewObject.onDocumentReady = function(url,mainFrameJSState,frameJSState){
+    if( mainFrameJSState == frameJSState ){
+        /*主框架加载完成*/
+    }
+}
+</code></pre>
+
+<p><a id="webKitViewObject.onNavigation"></a></p>
+
+<h3>webKitViewObject.onNavigation</h3>
+
+<pre><code class="aardio language-aardio">webKitViewObject.onNavigation = function(url,navigationType){ 
+    if( navigationType == _WKE_NAVIGATION_TYPE ){
+
+    }
+    return true;
+}
+</code></pre>
+
+<p><a id="webKitViewObject.onPromptBox"></a></p>
+
+<h3>webKitViewObject.onPromptBox</h3>
+
+<pre><code class="aardio language-aardio">webKitViewObject.onPromptBox = function(title, default){
+    /*输入对话框,可选返回输入的字符串  
+title为标题,default为默认显示在输入框的文本*/
+    return;
+}
+</code></pre>
+
+<p><a id="webKitViewObject.onTitleChanged"></a></p>
+
+<h3>webKitViewObject.onTitleChanged</h3>
+
+<pre><code class="aardio language-aardio">webKitViewObject.onTitleChanged = function(title){ 
+    owner.getForm().text = title;
+}
+</code></pre>
+
+<p><a id="webKitViewObject.onURLChanged"></a></p>
+
+<h3>webKitViewObject.onURLChanged</h3>
+
+<pre><code class="aardio language-aardio">webKitViewObject.onURLChanged = function(url){ 
+    if(#url) owner.getForm().msgbox( url )
+}
+</code></pre>
+
+<p><a id="webKitViewObject.paint"></a></p>
+
+<h3>webKitViewObject.paint(bits,pitch)</h3>
+
+<p>绘图,参数@1为位图像素数组指针<br>
+关于这个函数的用法请参考web.kit.gdiRender</p>
+
+<p><a id="webKitViewObject.paste"></a></p>
+
+<h3>webKitViewObject.paste()</h3>
+
+<p>复制</p>
+
+<p><a id="webKitViewObject.plugin"></a></p>
+
+<h3>webKitViewObject.plugin</h3>
+
+<p>获取默认的或 name 属性为 plugin 的 NPAPI 插件对象</p>
+
+<p><a id="webKitViewObject.post"></a></p>
+
+<h3>webKitViewObject.post(网址,POST数据)</h3>
+
+<p>POST提交数据</p>
+
+<p><a id="webKitViewObject.print"></a></p>
+
+<h3>webKitViewObject.print(hdc,scale)</h3>
+
+<p>用于GDI打印输出,hdc为打印机设备DC，<br>
+scale指定缩放比例,正数为缩放文档,负数按输出页面缩放<br>
+例如-0.5为缩放至页面的50%</p>
+
+<p><a id="webKitViewObject.queryEles"></a></p>
+
+<h3>webKitViewObject.queryEles</h3>
+
+<p>搜索节点对象,该函数返回的是一个数组,<br>
+但可以通过调用数组的成员函数批量调用节点的同名成员函数,支持click函数,<br>
+即使找不到节点,此函数也会返回一个空数组,</p>
+
+<p><a id="webKitViewObject.queryEles"></a></p>
+
+<h3>webKitViewObject.queryEles()</h3>
+
+<p><a href="#eleObject">返回对象:eleObject</a></p>
+
+<p><a id="webKitViewObject.queryEles"></a></p>
+
+<h3>webKitViewObject.queryEles(CSS选择器,查询参数表,超时值)</h3>
+
+<p>搜索节点对象,该函数返回的是一个数组,<br>
+但可以通过调用数组的成员函数批量调用节点的同名成员函数,支持click函数  </p>
+
+<p>参数@1指定一个表对象，<br>
+该参数表可包含一个或多个键值，用于匹配节点的属性值,<br>
+属性值使用 string.cmpMatch函数进行比对，<br>
+等价于调用string.cmp函数进行忽略大小写的比较,<br>
+并且在失败后调用 string.match函数使用模式匹配语法进行比较。  </p>
+
+<p>注意在匹配节点属性时有几个例外：<br>
+tagName,id,name属性如果匹配值不含标点则使用忽略大小写的完全比对（禁用模式匹配和部分匹配）  </p>
+
+<p>可选使用参数@2指定获取网页文档对象的超时值，单位毫秒，此参数一般不需要指定</p>
+
+<p><a id="webKitViewObject.querySelector"></a></p>
+
+<h3>webKitViewObject.querySelector(&quot;CSS选择器&quot;)</h3>
+
+<p>查询并返回节点</p>
+
+<p><a id="webKitViewObject.querySelector"></a></p>
+
+<h3>webKitViewObject.querySelector()</h3>
+
+<p><a href="#eleObject">返回对象:eleObject</a></p>
+
+<p><a id="webKitViewObject.querySelectorAll"></a></p>
+
+<h3>webKitViewObject.querySelectorAll(&quot;CSS选择器&quot;)</h3>
+
+<p>查询并返回节点集合,length属性获取节点个数</p>
+
+<p><a id="webKitViewObject.querySelectorAll"></a></p>
+
+<h3>webKitViewObject.querySelectorAll()</h3>
+
+<p><a href="#eleObject">返回对象:eleObject</a></p>
+
+<p><a id="webKitViewObject.reload"></a></p>
+
+<h3>webKitViewObject.reload()</h3>
+
+<p>重新载入</p>
+
+<p><a id="webKitViewObject.resize"></a></p>
+
+<h3>webKitViewObject.resize(w,h)</h3>
+
+<p>调整大小</p>
+
+<p><a id="webKitViewObject.script"></a></p>
+
+<h3>webKitViewObject.script</h3>
+
+<p>Javascript全局对象  </p>
+
+<p><a href="#jsGlobalObject">返回对象:jsGlobalObject</a></p>
+
+<p><a id="webKitViewObject.select"></a></p>
+
+<h3>webKitViewObject.select(&quot;控件名字&quot;,/*输入选项索引,或选项值、选项文本*/)</h3>
+
+<p>查找下拉选框的指定选项,选中并返回选项节点<br>
+第一个参数也可以是ele对象</p>
+
+<p><a id="webKitViewObject.selectAll"></a></p>
+
+<h3>webKitViewObject.selectAll()</h3>
+
+<p>全选</p>
+
+<p><a id="webKitViewObject.setDirty"></a></p>
+
+<h3>webKitViewObject.setDirty(dirty)</h3>
+
+<p>设置是否需要重绘</p>
+
+<p><a id="webKitViewObject.setEditable"></a></p>
+
+<h3>webKitViewObject.setEditable(editable)</h3>
+
+<p>设置编辑状态</p>
+
+<p><a id="webKitViewObject.setEle"></a></p>
+
+<h3>webKitViewObject.setEle(控件名字,属性值,属性名)</h3>
+
+<p>更新控件值,成节返回节点,失败返回null空值<br>
+第一个参数也可以是ele对象,<br>
+属性名,框架名为可选参数.<br>
+属性值可以是一个指定多个属性键值对的table对象</p>
+
+<p><a id="webKitViewObject.sleep"></a></p>
+
+<h3>webKitViewObject.sleep()</h3>
+
+<p>休眠</p>
+
+<p><a id="webKitViewObject.stopLoading"></a></p>
+
+<h3>webKitViewObject.stopLoading()</h3>
+
+<p>停止加载</p>
+
+<p><a id="webKitViewObject.translateUrl"></a></p>
+
+<h3>webKitViewObject.translateUrl</h3>
+
+<pre><code class="aardio language-aardio">webKitViewObject.translateUrl = function(url){
+    /*可在此函数中转换 go 函数传入的 URL 参数*/
+    return url;
+}
+</code></pre>
+
+<p><a id="webKitViewObject.transparent"></a></p>
+
+<h3>webKitViewObject.transparent</h3>
+
+<p>背景是否透明<br>
+不透明则使用白色背景</p>
+
+<p><a id="webKitViewObject.unfocus"></a></p>
+
+<h3>webKitViewObject.unfocus()</h3>
+
+<p>取消焦点</p>
+
+<p><a id="webKitViewObject.userAgent"></a></p>
+
+<h3>webKitViewObject.userAgent</h3>
+
+<p>设置User Agent</p>
+
+<p><a id="webKitViewObject.wait"></a></p>
+
+<h3>webKitViewObject.wait</h3>
+
+<p>该函数等待网页完全加载完成,<br>
+因为部份网页遇到问题可能部份内容无法完全加载,<br>
+建议大家尽可能使用等待部份加载的waitEle或waitDoc等函数替代</p>
+
+<p><a id="webKitViewObject.wait"></a></p>
+
+<h3>webKitViewObject.wait(&quot;网址&quot;,超时值)</h3>
+
+<p>等待指定的网页加载完成,所有参数可选,<br>
+等待的网址支持模式语法,参数@2指定最大超时值,单位毫秒</p>
+
+<p><a id="webKitViewObject.waitDoc"></a></p>
+
+<h3>webKitViewObject.waitDoc()</h3>
+
+<p>等待文档对象准备就绪,并返回文档对象<br>
+document.</p>
+
+<p><a id="webKitViewObject.waitEle"></a></p>
+
+<h3>webKitViewObject.waitEle(&quot;ID或名称&quot;,,超时值)</h3>
+
+<p>返回一个节点对象,除参数一以外,其他能数可选<br>
+第三个参数指定超时值(单位为毫秒)<br>
+参数@2必须为空</p>
+
+<p><a id="webKitViewObject.waitQueryEles"></a></p>
+
+<h3>webKitViewObject.waitQueryEles</h3>
+
+<p>函数等待queryEles()返回有效节点,<br>
+即使找不到节点,此函数也会返回一个空数组,<br>
+web窗体关闭或超时返回null空值</p>
+
+<p><a id="webKitViewObject.waitQueryEles"></a></p>
+
+<h3>webKitViewObject.waitQueryEles()</h3>
+
+<p><a href="#eleObject">返回对象:eleObject</a></p>
+
+<p><a id="webKitViewObject.waitQueryEles"></a></p>
+
+<h3>webKitViewObject.waitQueryEles(CSS选择器,查询参数表,超时值,时间间隔,节点完全加载)</h3>
+
+<p>函数等待wb.queryEles()返回有效节点,<br>
+web窗体关闭或超时返回null空值  </p>
+
+<p>该函数返回的是一个数组,但可以通过调用数组的成员函数<br>
+批量调用节点的同名成员函数,支持click函数  </p>
+
+<p>参数@1指定一个表对象，<br>
+该参数表可包含一个或多个键值，用于匹配节点的属性值,<br>
+属性值使用 string.cmpMatch函数进行比对，<br>
+等价于调用string.cmp函数进行忽略大小写的比较。<br>
+并且在失败后调用 string.match函数使用模式匹配语法进行比较。  </p>
+
+<p>注意在匹配节点属性时有几个例外：<br>
+tagName,id,name属性如果匹配值不含标点则使用忽略大小写的完全比对（禁用模式匹配和部分匹配）  </p>
+
+<p>可选使用参数@2指定超时值，单位毫秒，,其他参数可选</p>
+
+<p><a id="webKitViewObject.wake"></a></p>
+
+<h3>webKitViewObject.wake()</h3>
+
+<p>恢复运行</p>
+
+<p><a id="webKitViewObject.window"></a></p>
+
+<h3>webKitViewObject.window</h3>
+
+<p>Javascript全局对象  </p>
+
+<p><a href="#jsGlobalObject">返回对象:jsGlobalObject</a></p>
+
+<p><a id="webKitViewObject.wndproc"></a></p>
+
+<h3>webKitViewObject.wndproc(hwnd,message,wParam,lParam)</h3>
+
+<p>处理窗口消息<br>
+返回值为真表示不再需要后续默认消息处理</p>
+
+<p><a id="webKitViewObject.write"></a></p>
+
+<h3>webKitViewObject.write(html)</h3>
+
+<p>写入HTML,如果参数@1不是字符串、buffer、null 则自动转为字符串</p>
+
+<p><a id="webKitViewObject.zoomFactor"></a></p>
+
+<h3>webKitViewObject.zoomFactor</h3>
+
+<p>缩放百分比<br>
+浮点数,1.0为实际大小</p>
+
+<p><a id="webNpPluginFlashObject"></a></p>
+
+<h2>webNpPluginFlashObject 成员列表</h2>
+
+<p><a id="webNpPluginFlashObject.Back"></a></p>
+
+<h3>webNpPluginFlashObject.Back()</h3>
+
+<p>影片后退一帧并停止播放</p>
+
+<p><a id="webNpPluginFlashObject.CurrentFrame"></a></p>
+
+<h3>webNpPluginFlashObject.CurrentFrame()</h3>
+
+<p>当前帧索引,注意第一帧索引为0</p>
+
+<p><a id="webNpPluginFlashObject.Forward"></a></p>
+
+<h3>webNpPluginFlashObject.Forward()</h3>
+
+<p>影片后退一帧并停止播放</p>
+
+<p><a id="webNpPluginFlashObject.GetVariable"></a></p>
+
+<h3>webNpPluginFlashObject.GetVariable(&quot;$version变量名&quot;)</h3>
+
+<p>获取FLASH变量</p>
+
+<p><a id="webNpPluginFlashObject.GotoFrame"></a></p>
+
+<h3>webNpPluginFlashObject.GotoFrame(索引)</h3>
+
+<p>将影片跳转到指定的帧并停止播放.<br>
+必须首先调用percentLoaded()函数保证影片完全加载</p>
+
+<p><a id="webNpPluginFlashObject.IsPlaying"></a></p>
+
+<h3>webNpPluginFlashObject.IsPlaying()</h3>
+
+<p>是否正在播放动画</p>
+
+<p><a id="webNpPluginFlashObject.LoadMovie"></a></p>
+
+<h3>webNpPluginFlashObject.LoadMovie(layer,url)</h3>
+
+<p>将由url指定的影片载入到由layer指定的层上<br>
+如果url指定了一个资源文件路径,使用临时文件加载,并设置embedMovie属性为 true</p>
+
+<p><a id="webNpPluginFlashObject.Pan"></a></p>
+
+<h3>webNpPluginFlashObject.Pan(x,y,mode)</h3>
+
+<p>将一个放大过的影片平移由x和y指定的距离,x和y均为相对值,<br>
+mode默认值为1,按百分比计算,如果设为0则以像素计算</p>
+
+<p><a id="webNpPluginFlashObject.PercentLoaded"></a></p>
+
+<h3>webNpPluginFlashObject.PercentLoaded()</h3>
+
+<p>返回影片加载的百分比</p>
+
+<p><a id="webNpPluginFlashObject.Play"></a></p>
+
+<h3>webNpPluginFlashObject.Play()</h3>
+
+<p>播放</p>
+
+<p><a id="webNpPluginFlashObject.Rewind"></a></p>
+
+<h3>webNpPluginFlashObject.Rewind()</h3>
+
+<p>返回到影片的第一帧</p>
+
+<p><a id="webNpPluginFlashObject.SetVariable"></a></p>
+
+<h3>webNpPluginFlashObject.SetVariable(&quot;变量名&quot;,值)</h3>
+
+<p>设置FLASH变量</p>
+
+<p><a id="webNpPluginFlashObject.SetZoomRect"></a></p>
+
+<h3>webNpPluginFlashObject.SetZoomRect(left,top,right,buttom)</h3>
+
+<p>放大指定区域</p>
+
+<p><a id="webNpPluginFlashObject.Stop"></a></p>
+
+<h3>webNpPluginFlashObject.Stop()</h3>
+
+<p>暂停</p>
+
+<p><a id="webNpPluginFlashObject.TCallFrame"></a></p>
+
+<h3>webNpPluginFlashObject.TCallFrame(movieClip,frame_number)</h3>
+
+<p>call指定帧上的action</p>
+
+<p><a id="webNpPluginFlashObject.TCallLabel"></a></p>
+
+<h3>webNpPluginFlashObject.TCallLabel(movieClip,label)</h3>
+
+<p>call指定标签上的action</p>
+
+<p><a id="webNpPluginFlashObject.TCurrentFrame"></a></p>
+
+<h3>webNpPluginFlashObject.TCurrentFrame(movieClip)</h3>
+
+<p>回传movieClip当前帧-1</p>
+
+<p><a id="webNpPluginFlashObject.TCurrentLabel"></a></p>
+
+<h3>webNpPluginFlashObject.TCurrentLabel(movieClip)</h3>
+
+<p>回传movieClip当前标签</p>
+
+<p><a id="webNpPluginFlashObject.TGetProperty"></a></p>
+
+<h3>webNpPluginFlashObject.TGetProperty(movieClip,property)</h3>
+
+<p>获取movieClip的指定属性</p>
+
+<p><a id="webNpPluginFlashObject.TGotoLabel"></a></p>
+
+<h3>webNpPluginFlashObject.TGotoLabel(movieClip,label_name)</h3>
+
+<p>movieClip跳转到指定标签</p>
+
+<p><a id="webNpPluginFlashObject.TPlay"></a></p>
+
+<h3>webNpPluginFlashObject.TPlay(movieClip)</h3>
+
+<p>播放movieClip</p>
+
+<p><a id="webNpPluginFlashObject.TSetProperty"></a></p>
+
+<h3>webNpPluginFlashObject.TSetProperty(movieClip,property,number)</h3>
+
+<p>设置movieClip的指定属性</p>
+
+<p><a id="webNpPluginFlashObject.TStopPlay"></a></p>
+
+<h3>webNpPluginFlashObject.TStopPlay(movieClip)</h3>
+
+<p>停止movieClip的播放</p>
+
+<p><a id="webNpPluginFlashObject.TotalFrames"></a></p>
+
+<h3>webNpPluginFlashObject.TotalFrames()</h3>
+
+<p>返回影片总帧数</p>
+
+<p><a id="webNpPluginFlashObject.Zoom"></a></p>
+
+<h3>webNpPluginFlashObject.Zoom(percent)</h3>
+
+<p>改变动画大小</p>
+
+<p><a id="webNpPluginFlashObject.getAttribute"></a></p>
+
+<h3>webNpPluginFlashObject.getAttribute(name)</h3>
+
+<p>获取节点属性</p>
+
+<p><a id="webNpPluginFlashObject.setAttribute"></a></p>
+
+<h3>webNpPluginFlashObject.setAttribute(name,value)</h3>
+
+<p>设置节点属性,<br>
+相当于在HTML里写属性值</p>
+
+<h3>自动完成常量</h3>
+
+<p>_WKE_CONTROL=8<br>
+_WKE_EXTENDED=0x100<br>
+_WKE_LBUTTON=1<br>
+_WKE_MBUTTON=0x10<br>
+_WKE_NAVIGATION_TYPE_BACKFORWARD=2<br>
+_WKE_NAVIGATION_TYPE_FORMRESUBMITT=4<br>
+_WKE_NAVIGATION_TYPE_FORMSUBMITTE=1<br>
+_WKE_NAVIGATION_TYPE_LINKCLICK=0<br>
+_WKE_NAVIGATION_TYPE_OTHER=5<br>
+_WKE_NAVIGATION_TYPE_RELOAD=3<br>
+_WKE_RBUTTON=2<br>
+_WKE_REPEAT=0x4000<br>
+_WKE_SHIFT=4  </p>
+
+<p><a href="view.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/web/kit/view.md">Markdown 格式</a></p>
+
+</body> 
+</html>

@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - aardio 调用 C 语言 - 结构化参数表'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - aardio 调用 C 语言 - 结构化参数表</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 调用 C 语言 - 结构化参数表</h1><pre><code class="aardio language-aardio">//aardio 调用 C 语言 - 结构化参数表
+
+import tcc; 
+var c = tcc();
+c.enableIoPrintf();
+
+c.code = /****
+    #include &lt;stdio.h&gt;
+    #include &lt;stdlib.h&gt; 
+
+    //在C语言中定义 raw.cdeclParameter,注意 aardio 字符串默认为 UTF8 编码
+    typedef struct{ 
+        const char *(__cdecl *getType) (const char * name);
+        void * (__cdecl *getFunction) (const char * name,const char *proto);
+        void (__cdecl *setFunction) (const char * name,const char *proto,void * addr); 
+        const char *(__cdecl *getBinary) (const char * name,unsigned int *size);
+        void (__cdecl *setBinary) (const char * name,char * value,unsigned int size);
+        const char *(__cdecl *getString) (const char * name);
+        void (__cdecl *setString) (const char * name,const char * value);
+        void (__cdecl *getNumber) (const char * name,double * value);
+        void (__cdecl *setNumber) (const char * name,double value);
+        unsigned long long (__cdecl *getSize64) (const char * name);
+        void (__cdecl *setSize64) (const char * name,unsigned long long value);
+        void * (__cdecl *getPointer) (const char * name);
+        void (__cdecl *setPointer) (const char * name,void * value);
+        int (__cdecl *callString) (const char * name,const char * arg);
+        int (__cdecl *callNumber) (const char * name,double arg);
+        int (__cdecl *call) (const char * name);
+        unsigned int(__cdecl *len)(const char * name);
+    } aardioParameter;
+
+    typedef double (*ADDFUNC) (double a,double b);
+
+    int func_c ( aardioParameter * opt )
+    {   
+
+        //取参数中的字段值,字段名可以使用名字空间,例如  x.y.z.字段名
+        const char * s = opt-&gt;getString(&quot;hello&quot;);  
+        io_printf( &quot;Hello! 我是C语言代码\n收到aardio传来的参数:%s\n&quot;, s ); 
+
+        //调用参数中包含的函数名
+        opt-&gt;callString(&quot;func&quot;,&quot;参数&quot;);
+
+        //可以添加C函数为 aardio 函数
+        opt-&gt;setFunction(&quot;test.printf&quot;,&quot;void(string s,int x,int y)&quot;,printf);
+
+        //也以声明aardio中的函数为C函数
+        int (*add) (int a,int b) =  opt-&gt;getFunction(&quot;test.add&quot;,&quot;int(int,int)&quot; );
+        int c = (*add)(12,3);
+
+        unsigned long long  x =  opt-&gt;getSize64(&quot;size&quot; );
+        io_printf( &quot; LONG64: %I64u\n&quot;, x); 
+        return 0; 
+    } 
+
+****/
+
+
+
+//创建结构化参数
+import console;
+import raw.cdeclParameter;
+var cdeclParameter = raw.cdeclParameter(
+    size = ..math.size64(2,1);
+    hello = &quot;测试!&quot;;
+    func = function(参数){
+        ..console.log(&quot;aardio函数被回调了&quot;,参数 ) 
+    } 
+    test = {
+        add  = function(a,b){
+            owner.printf( &#39;在aardio中调用C语言声明的函数 %d %d\n&#39;,12,33 ); 
+            return a+b
+        } 
+    }
+) 
+
+//获取C函数
+func_c = c.getCdecl(&quot;func_c&quot;,&quot;int(struct msg)&quot;)
+
+//调用C函数
+func_c( cdeclParameter )
+
+//关闭C语言编译器
+c.close();
+
+console.pause();
+</code></pre>
+<a href="raw.cdeclParameter.md" tppabs="https://www.aardio.com/zh-cn/doc/example/Languages/C/raw.cdeclParameter.md">Markdown 格式</a>
+</body> 
+</html>

@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - access 库 - 虚表'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - access 库 - 虚表</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: access 库 - 虚表</h1><pre><code class="aardio language-aardio">//access 库 - 虚表
+//相关范例：范例 / Windows 窗口 / 列表视图控件 / 虚表
+//下面listview 控件的类名（cls属性）请改为 &quot;vlistview&quot;
+import win.ui;
+/*DSG{{*/
+winform = win.form(text=&quot;虚表&quot;;right=805;bottom=610)
+winform.add(
+listview={cls=&quot;vlistview&quot;;left=27;top=17;right=778;bottom=564;db=1;dl=1;dr=1;dt=1;edge=1;z=1}
+)
+/*}}*/
+
+winform.listview.insertColumn(&quot;网址&quot;, 200);
+winform.listview.insertColumn(&quot;评论&quot;, 200);
+
+//创建测试数据
+import access;
+var db = access(&quot;/test.mdb&quot;);
+if (!db.existsTable(&quot;homepage2&quot;)) {
+        db.exec(&quot;CREATE TABLE homepage2 (url char(30), comment char(20))&quot;);
+
+        db.connection.BeginTrans();
+        for (i = 1; 1000) {
+                db.exec(&quot;INSERT INTO homepage2(url, comment) VALUES(@url,@comment)&quot;, {
+                        url = &quot;http://www.aardio.com&quot;;
+                        comment = &quot;字符串包含&#39;单引号&#39; &quot; ++ i;
+                });
+        }
+        db.connection.CommitTrans();
+}
+
+//查询数据
+var rs = db.openRecordSet(&quot;SELECT * FROM homepage2&quot;, db.adOpenStatic);
+
+//指定虚表行数
+winform.listview.count =  rs.recordCount;
+
+//数据库缓存表
+var cacheTable = table.cache(
+    function(row) {
+        rs.Move(row - 1, 1/*_adBookmarkFirst*/); 
+
+        //注意返回的数组是先列后行
+        return rs.getRows(1,0/*_adBookmarkCurrent*/)
+        //return rs.getRows(1,0/*_adBookmarkCurrent*/,{&quot;url&quot;,&quot;comment&quot;})
+    }
+);
+
+//获取虚表项
+winform.listview.onGetDispItem = function(item,row,col){
+    return  {text=cacheTable[row][col][[1]]}; 
+} 
+
+winform.listview.onDestroy = function(){
+    db.close();
+}
+
+winform.show();
+win.loopMessage();
+</code></pre>
+<a href="vlistview.md" tppabs="https://www.aardio.com/zh-cn/doc/example/Database/access/vlistview.md">Markdown 格式</a>
+</body> 
+</html>

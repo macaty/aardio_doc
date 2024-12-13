@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - aardio 嵌入 .NET 窗口'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - aardio 嵌入 .NET 窗口</title> 
+<link rel="stylesheet" href="../../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 嵌入 .NET 窗口</h1><pre><code class="aardio language-aardio">//aardio 嵌入 .NET 窗口
+import dotNet;  
+var compiler = dotNet.createCompiler(&quot;C#&quot;);
+compiler.Reference(&quot;System.Drawing.dll&quot;,&quot;System.Data.dll&quot;,&quot;System.Windows.Forms.dll&quot;);
+compiler.addSource(&quot;/0.WindowsFormsApp1.cs&quot;);
+compiler.import(&quot;WindowsFormsApp1&quot;);
+
+import win.ui;
+/*DSG{{*/
+var winform = win.form(text=&quot;aardio form&quot;;right=1047;bottom=634;bgcolor=10789024)
+winform.add(
+custom={cls=&quot;custom&quot;;text=&quot;自定义控件&quot;;left=26;top=23;right=799;bottom=416;bgcolor=16777215;db=1;dl=1;dr=1;dt=1;z=1}
+)
+/*}}*/
+
+var netform = WindowsFormsApp1.Form1();
+
+//下面这一句将 .NET 窗口嵌入 aardio 窗口。
+dotNet.setParent(netform,winform.custom);
+
+//添加 .NET 委托回调
+netform.onButton1Click = function(){
+    winform.msgbox(&quot;点击了 C# 在 aardio 窗口里创建的按钮，在 C# 中调用 aardio 函数。&quot;);
+    netform.button1.Text = &quot;点击了 C# 创建的按钮&quot;;
+}  
+
+winform.show();
+win.loopMessage(); 
+</code></pre>
+<a href="setParent.md" tppabs="https://www.aardio.com/zh-cn/doc/example/Languages/dotNet/Control/setParent.md">Markdown 格式</a>
+</body> 
+</html>

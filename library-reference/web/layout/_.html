@@ -1,0 +1,597 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言文档 - web.layout 库模块帮助文档'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言文档 - web.layout 库模块帮助文档</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>web.layout 库模块帮助文档</h1>
+
+<p><a id="web.layout"></a></p>
+
+<h2>web.layout 成员列表</h2>
+
+<p>创建 HTMLayout 窗口。<br>
+此对象支持多线程界面回调，可传入工作线程使用</p>
+
+<p><a id="web.layout._dll"></a></p>
+
+<h3>web.layout._dll</h3>
+
+<pre><code class="aardio language-aardio">dll;
+</code></pre>
+
+<p><a id="web.layout.appendMasterCss"></a></p>
+
+<h3>web.layout.appendMasterCss(css)</h3>
+
+<p>追加默认CSS,<br>
+必须在创建HTMLayout窗体,以及调用其他函数以前调用</p>
+
+<p><a id="web.layout.appendMasterCssFile"></a></p>
+
+<h3>web.layout.appendMasterCssFile(&quot;/res/master.css&quot;)</h3>
+
+<p>追加默认CSS文件<br>
+CSS文件请使用UTF编码保存,<br>
+必须在创建HTMLayout窗体,以及调用其他函数以前调用</p>
+
+<p><a id="web.layout.createEle"></a></p>
+
+<h3>web.layout.createEle()</h3>
+
+<p><a href="#layoutEleObject">返回对象:layoutEleObject</a></p>
+
+<p><a id="web.layout.createEle"></a></p>
+
+<h3>web.layout.createEle(标签名,节点内容)</h3>
+
+<p>创建节点,<br>
+节点内容可省略</p>
+
+<p><a id="web.layout.declareEle"></a></p>
+
+<h3>web.layout.declareEle( &quot;字符串参数&quot;, <em>HLELM</em> )</h3>
+
+<p>声明标记,<br>
+必须在创建HTMLayout窗体,以及调用其他函数以前调用,<br>
+并且须要早于设置MasterCss的函数调用</p>
+
+<p><a id="web.layout.setMasterCss"></a></p>
+
+<h3>web.layout.setMasterCss(css)</h3>
+
+<p>替换默认CSS<br>
+必须在调用其他函数之前调用</p>
+
+<p><a id="global"></a></p>
+
+<h2>全局对象 成员列表</h2>
+
+<p><a id="_event_subsriptions"></a></p>
+
+<h3>_event_subsriptions</h3>
+
+<p>在HTMLayout中的behavior对象,或eventHandle对象中可添加此成员变量,<br>
+使用一个或多个 <em>HL_HANDLE</em> 前缀的掩码来指定 指定订阅的事件<br>
+如果未显示指定该参数,程序将自动设定为合适的值</p>
+
+<p><a id="web"></a></p>
+
+<h2>web 成员列表</h2>
+
+<p><a id="web.layout"></a></p>
+
+<h3>web.layout(窗口对象,捕获事件)</h3>
+
+<p>从窗口对象创建 HTMLayout 窗口。<br>
+ 参数二默认为 _HL_HANDLE_LITE - 仅允许捕获按钮命令等基本交互事件</p>
+
+<p><a id="weblayoutObject"></a></p>
+
+<h2>weblayoutObject 成员列表</h2>
+
+<p><a id="weblayoutObject.$"></a></p>
+
+<h3>weblayoutObject.$(&quot;标签名[属性名=&#39;属性值&#39;]&quot;)</h3>
+
+<p>使用CSS选择器语法,<br>
+查找所有符合条件节点</p>
+
+<p><a id="weblayoutObject.$"></a></p>
+
+<h3>weblayoutObject.$()</h3>
+
+<p><a href="#layoutEleObject">返回对象:layoutEleObject</a></p>
+
+<p><a id="weblayoutObject.$1"></a></p>
+
+<h3>weblayoutObject.$1(&quot;标签名[属性名=&#39;属性值&#39;]&quot;)</h3>
+
+<p>使用CSS选择器语法,<br>
+查找第一个符合条件节点</p>
+
+<p><a id="weblayoutObject.$1"></a></p>
+
+<h3>weblayoutObject.$1()</h3>
+
+<p><a href="#layoutEleObject">返回对象:layoutEleObject</a></p>
+
+<p><a id="weblayoutObject._contrls.?"></a></p>
+
+<h3>weblayoutObject._contrls.?</h3>
+
+<p>自定义控件  </p>
+
+<p><a href="../../win/ui/ctrl/static.html#staticObject" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/win/ui/ctrl/static.html#staticObject">返回对象:staticObject</a></p>
+
+<p><a id="weblayoutObject.addHeaders"></a></p>
+
+<h3>weblayoutObject.addHeaders</h3>
+
+<pre><code class="aardio language-aardio">weblayoutObject.addHeaders = /**  
+Accept-Language: cn  
+/*设置默认的HTTP请求头  
+多个请求头使用回车换行分隔*/  
+**/
+</code></pre>
+
+<p><a id="weblayoutObject.attachEventHandler"></a></p>
+
+<h3>weblayoutObject.attachEventHandler(eventHandler,subscription)</h3>
+
+<p>添加事件监听对象,参数一不可省略,<br>
+subscription 可选使用 <em>HL_HANDLE</em> 前缀常量指定捕获的事件,<br>
+ 省略该参数则根据定义的回调函数自动设定该值,<br>
+也可以使用对象的 _event_subsriptions 成员指定该值,<br>
+该函数返回事件ID,用于注销监听</p>
+
+<p><a id="weblayoutObject.callback"></a></p>
+
+<h3>weblayoutObject.callback</h3>
+
+<pre><code class="aardio language-aardio">weblayoutObject.callback = function ( message,wParam,lParam,vParam,notifyCode ) {  
+
+}
+</code></pre>
+
+<p><a id="weblayoutObject.combineUrl"></a></p>
+
+<h3>weblayoutObject.combineUrl(URL)</h3>
+
+<p>将URL转换为绝对路径,<br>
+可省略参数返回 baseURL</p>
+
+<p><a id="weblayoutObject.commitUpdates"></a></p>
+
+<h3>weblayoutObject.commitUpdates()</h3>
+
+<p>立即更新所有节点<br>
+因为节点可能会延迟更新,<br>
+需要立即获取节点更新后的位置可调用此函数<br>
+该函数不会调用updateWindow</p>
+
+<p><a id="weblayoutObject.createEle"></a></p>
+
+<h3>weblayoutObject.createEle()</h3>
+
+<p><a href="#layoutEleObject">返回对象:layoutEleObject</a></p>
+
+<p><a id="weblayoutObject.createEle"></a></p>
+
+<h3>weblayoutObject.createEle(标签名,节点内容)</h3>
+
+<p>创建节点,<br>
+节点内容可省略</p>
+
+<p><a id="weblayoutObject.css"></a></p>
+
+<h3>weblayoutObject.css</h3>
+
+<pre><code class="aardio language-aardio">weblayoutObject.css = /**  
+#my-button{   
+    behavior:&quot;my.command&quot;;   
+    active-on!:  
+        /*输入CSS脚本,语句用逗号分隔*/  
+    ;   
+}   
+**/
+</code></pre>
+
+<p><a id="weblayoutObject.debug"></a></p>
+
+<h3>weblayoutObject.debug()</h3>
+
+<pre><code class="aardio language-aardio">import web.layout.debug;  
+weblayoutObject.attachEventHandler( web.layout.debug );
+</code></pre>
+
+<p><a id="weblayoutObject.detachEventHandler"></a></p>
+
+<h3>weblayoutObject.detachEventHandler(事件ID)</h3>
+
+<p>注销事件监听对象,事件ID不可省略</p>
+
+<p><a id="weblayoutObject.documentElement"></a></p>
+
+<h3>weblayoutObject.documentElement</h3>
+
+<p><a href="#layoutEleObject">返回对象:layoutEleObject</a></p>
+
+<p><a id="weblayoutObject.enumQuery"></a></p>
+
+<h3>weblayoutObject.enumQuery(枚举函数,CSS选择器,格式化参数)</h3>
+
+<pre><code class="aardio language-aardio">weblayoutObject.enumQuery(  
+    function(ltEle){  
+         /*返回true停止枚举*/  
+    },&quot;div&quot;  
+)
+</code></pre>
+
+<p><a id="weblayoutObject.enumRes"></a></p>
+
+<h3>weblayoutObject.enumRes(枚举函数)</h3>
+
+<pre><code class="aardio language-aardio">weblayoutObject.enumRes(  
+    function(uri,resType,imgData,size){   
+        /*枚举页面页源*/   
+    }   
+)
+</code></pre>
+
+<p><a id="weblayoutObject.eventsHandler"></a></p>
+
+<h3>weblayoutObject.eventsHandler</h3>
+
+<pre><code class="aardio language-aardio">weblayoutObject.eventsHandler = function (tag,he,evtg,prms) {  
+
+}
+</code></pre>
+
+<p><a id="weblayoutObject.fromPoint"></a></p>
+
+<h3>weblayoutObject.fromPoint()</h3>
+
+<p><a href="#layoutEleObject">返回对象:layoutEleObject</a></p>
+
+<p><a id="weblayoutObject.fromPoint"></a></p>
+
+<h3>weblayoutObject.fromPoint(x坐标,y坐标,是否屏幕坐标)</h3>
+
+<p>参数三可选,默认为窗口客户区坐标<br>
+成功返回节点对象</p>
+
+<p><a id="weblayoutObject.getCtrl"></a></p>
+
+<h3>weblayoutObject.getCtrl(&quot;字符串参数&quot;)</h3>
+
+<p>根据ID或name查找节点,<br>
+并获取在该节点中自定义的控件对象</p>
+
+<p><a id="weblayoutObject.getCtrl"></a></p>
+
+<h3>weblayoutObject.getCtrl()</h3>
+
+<p><a href="../../win/ui/ctrl/static.html#staticObject" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/win/ui/ctrl/static.html#staticObject">返回对象:staticObject</a></p>
+
+<p><a id="weblayoutObject.getEle"></a></p>
+
+<h3>weblayoutObject.getEle(&quot;字符串参数&quot;)</h3>
+
+<p>根据ID查找节点<br>
+如果未找到,尝试使用name查找</p>
+
+<p><a id="weblayoutObject.getEle"></a></p>
+
+<h3>weblayoutObject.getEle()</h3>
+
+<p><a href="#layoutEleObject">返回对象:layoutEleObject</a></p>
+
+<p><a id="weblayoutObject.getEleByUid"></a></p>
+
+<h3>weblayoutObject.getEleByUid()</h3>
+
+<p><a href="#layoutEleObject">返回对象:layoutEleObject</a></p>
+
+<p><a id="weblayoutObject.getEleByUid"></a></p>
+
+<h3>weblayoutObject.getEleByUid(UID)</h3>
+
+<p>根据唯一标志符(数值)返回节点</p>
+
+<p><a id="weblayoutObject.getEles"></a></p>
+
+<h3>weblayoutObject.getEles(&quot;字符串参数&quot;)</h3>
+
+<p>根据name属性查找节点</p>
+
+<p><a id="weblayoutObject.getEles"></a></p>
+
+<h3>weblayoutObject.getEles()</h3>
+
+<p><a href="#layoutEleObject">返回对象:layoutEleObject</a></p>
+
+<p><a id="weblayoutObject.getFocus"></a></p>
+
+<h3>weblayoutObject.getFocus()</h3>
+
+<p>获取当前输入焦点所在节点  </p>
+
+<p><a href="#layoutEleObject">返回对象:layoutEleObject</a></p>
+
+<p><a id="weblayoutObject.go"></a></p>
+
+<h3>weblayoutObject.go(&quot;字符串参数&quot;)</h3>
+
+<p>跳转到指定网址,支持aardio资源文件<br>
+如果参数指定的是aardio文件,参数@2可选用一个表指定request.get对象<br>
+其他文件可用参数@2指定代码页,默认为65001</p>
+
+<p><a id="weblayoutObject.html"></a></p>
+
+<h3>weblayoutObject.html</h3>
+
+<pre><code class="aardio language-aardio">weblayoutObject.html = /**  
+&lt;!doctype html&gt;  
+&lt;html&gt;  
+&lt;head&gt;  
+    &lt;style type=&quot;text/css&quot;&gt;  
+    html,body{ height:100%; margin:0; }   
+    &lt;/style&gt;  
+&lt;/head&gt;  
+&lt;body&gt;  
+    &lt;div id=&quot;header&quot;&gt;&lt;/div&gt;  
+    &lt;div id=&quot;container&quot;&gt;   
+        &lt;div class=&quot;lside&quot;&gt; &lt;/div&gt;   
+        &lt;div class=&quot;rside&quot;&gt; &lt;/div&gt;    
+    &lt;/div&gt;  
+&lt;/body&gt;  
+&lt;/html&gt;  
+**/
+</code></pre>
+
+<p><a id="weblayoutObject.loadcode"></a></p>
+
+<h3>weblayoutObject.loadcode(HTML模板代码)</h3>
+
+<p>使用aardio模板语法加载HTML文件<br>
+可选在第二个参数中传入模板参数,<br>
+模板代码中使用owner参数获取首个模板参数</p>
+
+<p><a id="weblayoutObject.location"></a></p>
+
+<h3>weblayoutObject.location</h3>
+
+<p>当前页面URL,<br>
+只读属性</p>
+
+<p><a id="weblayoutObject.onControlCreated"></a></p>
+
+<h3>weblayoutObject.onControlCreated</h3>
+
+<pre><code class="aardio language-aardio">weblayoutObject.onControlCreated = {
+    节点ID = function( ltEle,ltCtrl ){ 
+        /*onControlCreate也可以是一个函数,在onElementControlCreated之前被触发*/
+    }
+}
+</code></pre>
+
+<p><a id="weblayoutObject.onDataLoaded"></a></p>
+
+<h3>weblayoutObject.onDataLoaded</h3>
+
+<pre><code class="aardio language-aardio">weblayoutObject.onDataLoaded = function(lParam) {
+    var dataLoaded = raw.convert(lParam,{
+        struct hdr = ::NMHDR();
+        ustring  uri; 
+        ptr data;
+        INT dataSize; 
+        INT dataType;
+        INT status; 
+    });
+    /*单个文件数据加载完成后触发*/
+}
+</code></pre>
+
+<p><a id="weblayoutObject.onDocumentComplete"></a></p>
+
+<h3>weblayoutObject.onDocumentComplete</h3>
+
+<pre><code class="aardio language-aardio">weblayoutObject.onDocumentComplete = function() {
+    /*文档已加载*/
+}
+</code></pre>
+
+<p><a id="weblayoutObject.post"></a></p>
+
+<h3>weblayoutObject.post(网址,参数)</h3>
+
+<p>参数可以是字符串或键值对组成的表对象<br>
+该函数可触发onDataArrived事件</p>
+
+<p><a id="weblayoutObject.queryEle"></a></p>
+
+<h3>weblayoutObject.queryEle()</h3>
+
+<p><a href="#layoutEleObject">返回对象:layoutEleObject</a></p>
+
+<p><a id="weblayoutObject.queryEles"></a></p>
+
+<h3>weblayoutObject.queryEles()</h3>
+
+<p><a href="#layoutEleObject">返回对象:layoutEleObject</a></p>
+
+<p><a id="weblayoutObject.querySelector"></a></p>
+
+<h3>weblayoutObject.querySelector(&quot;标签名[属性名=&#39;属性值&#39;]&quot;)</h3>
+
+<p>使用CSS选择器语法,<br>
+查找第一个符合条件节点,<br>
+如果有多个参数则首先调用string.format格式化为CSS文本,<br>
+该函数名可使用&#39;$1&#39;代替,等价于CSS!中的$1函数</p>
+
+<p><a id="weblayoutObject.querySelector"></a></p>
+
+<h3>weblayoutObject.querySelector()</h3>
+
+<p><a href="#layoutEleObject">返回对象:layoutEleObject</a></p>
+
+<p><a id="weblayoutObject.querySelectorAll"></a></p>
+
+<h3>weblayoutObject.querySelectorAll(&quot;标签名[属性名=&#39;属性值&#39;]&quot;)</h3>
+
+<p>使用CSS选择器语法,<br>
+查找所有符合条件节点,<br>
+如果有多个参数则首先调用string.format格式化为CSS文本,<br>
+该函数名可使用&#39;$&#39;代替,等价于CSS!中的$函数</p>
+
+<p><a id="weblayoutObject.querySelectorAll"></a></p>
+
+<h3>weblayoutObject.querySelectorAll()</h3>
+
+<p><a href="#layoutEleObject">返回对象:layoutEleObject</a></p>
+
+<p><a id="weblayoutObject.readyState"></a></p>
+
+<h3>weblayoutObject.readyState</h3>
+
+<p>获取当前状态,可能返回的值:<br>
+&#39;uninitialized&#39;,&#39;loading&#39;,&#39;complete&#39;</p>
+
+<p><a id="weblayoutObject.setCss"></a></p>
+
+<h3>weblayoutObject.setCss(css,mediaType,baseUrl)</h3>
+
+<p>替换CSS</p>
+
+<p><a id="weblayoutObject.setMode"></a></p>
+
+<h3>weblayoutObject.setMode( _HLM )</h3>
+
+<p>设置模式<br>
+ _HLM_SHOW_SELECTION 类似于在body节点应用behavior:htmlarea</p>
+
+<p><a id="weblayoutObject.setOption"></a></p>
+
+<h3>weblayoutObject.setOption(_HL_OPTIONS,1)</h3>
+
+<p>设置选项</p>
+
+<p><a id="weblayoutObject.traverseUiEvent"></a></p>
+
+<h3>weblayoutObject.traverseUiEvent(结构体参数)</h3>
+
+<p>结构体参数是 web.layout.event.MOUSE_PARAMS 或 KEY_PARAMS<br>
+该函数发送事件经过捕获与冒泡过程直到事件被处理</p>
+
+<p><a id="weblayoutObject.updateWindow"></a></p>
+
+<h3>weblayoutObject.updateWindow()</h3>
+
+<p>更新窗口<br>
+如果仅仅需要更新节点位置等,可调用commitUpdates函数</p>
+
+<p><a id="weblayoutObject.wait"></a></p>
+
+<h3>weblayoutObject.wait()</h3>
+
+<p>等待所有资源加载完成</p>
+
+<p><a id="weblayoutObject.write"></a></p>
+
+<h3>weblayoutObject.write(/*HTML 代码*/)</h3>
+
+<p>写入HTML代码到网页</p>
+
+<h3>全局常量</h3>
+
+<p><a id="::HTMLayout"></a></p>
+
+<h3>::HTMLayout</h3>
+
+<p>HTMLayout.dll  </p>
+
+<p><a href="../../raw/_.html#dllModuleObject" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/raw/_.html#dllModuleObject">返回对象:dllModuleObject</a></p>
+
+<h3>自动完成常量</h3>
+
+<p>_BLOCK_BLOCK_ELEMENT=4<br>
+_BLOCK_TEXT_ELEMENT=3<br>
+_DATA_ELEMENT=0<br>
+_HLELMBLOCK_BLOCK_ELEMENT=4<br>
+_HLELMBLOCK_TEXT_ELEMENT=3<br>
+_HLELMDATA_ELEMENT=0<br>
+_HLELMINLINE_BLOCK_ELEMENT=2<br>
+_HLELMINLINE_TEXT_ELEMENT=1<br>
+_HLM_LAYOUT_ONLY=0<br>
+_HLM_SHOW_SELECTION=1<br>
+_HLN_ATTACH_BEHAVIOR=0xB07<br>
+_HLN_CONTROL_CREATED=0xB02<br>
+_HLN_CREATE_CONTROL=0xB00<br>
+_HLN_DATA_LOADED=0xB03<br>
+_HLN_DESTROY_CONTROL=0xB06<br>
+_HLN_DIALOG_CLOSE_RQ=0xB10<br>
+_HLN_DIALOG_CREATED=0xB0F<br>
+_HLN_DOCUMENT_COMPLETE=0xB04<br>
+_HLN_LOAD_DATA=0xB01<br>
+_HLN_UPDATE_UI=0xB05<br>
+_HLRT_DATA_CURSOR=3<br>
+_HLRT_DATA_HTML=0<br>
+_HLRT_DATA_IMAGE=1<br>
+_HLRT_DATA_SCRIPT=4<br>
+_HLRT_DATA_STYLE=2<br>
+_HL_ANIMATION_THREAD=5<br>
+_HL_CONNECTION_TIMEOUT=2<br>
+_HL_DISABLE_INITIALIZATION=0x80000000<br>
+_HL_FONT_SMOOTHING=4<br>
+_HL_HANDLE_ALL=0xFFFF<br>
+_HL_HANDLE_BEHAVIOR_EVENT=0x100<br>
+_HL_HANDLE_DATA_ARRIVED=0x80<br>
+_HL_HANDLE_DRAW=0x40<br>
+_HL_HANDLE_EXCHANGE=0x1000<br>
+_HL_HANDLE_FOCUS=4<br>
+_HL_HANDLE_GESTURE=0x2000<br>
+_HL_HANDLE_INITIALIZATION=0<br>
+_HL_HANDLE_INPUT=0x80000007<br>
+_HL_HANDLE_KEY=2<br>
+_HL_HANDLE_LITE=0x80000100<br>
+_HL_HANDLE_METHOD_CALL=0x200<br>
+_HL_HANDLE_MOUSE=1<br>
+_HL_HANDLE_SCROLL=8<br>
+_HL_HANDLE_SIZE=0x20<br>
+_HL_HANDLE_TIMER=0x10<br>
+_HL_HTTPS_ERROR=3<br>
+_HL_OPTIONS_ANIMATION_THREAD=5<br>
+_HL_OPTIONS_CONNECTION_TIMEOUT=2<br>
+_HL_OPTIONS_FONT_SMOOTHING=4<br>
+_HL_OPTIONS_HTTPS_ERROR=3<br>
+_HL_OPTIONS_SMOOTH_SCROLL=1<br>
+_HL_OPTIONS_TRANSPARENT_WINDOW=6<br>
+_HL_SMOOTH_SCROLL=1<br>
+_HL_TRANSPARENT_WINDOW=6<br>
+_HWND_DISCARD_CREATION=1<br>
+_HWND_TRY_DEFAULT=0<br>
+_INLINE_BLOCK_ELEMENT=2<br>
+_INLINE_TEXT_ELEMENT=1<br>
+_LOAD_DISCARD=1<br>
+_LOAD_OK=0<br>
+_SIH_APPEND_AFTER_LAST=2<br>
+_SIH_INSERT_AT_START=1<br>
+_SIH_REPLACE_CONTENT=0<br>
+_SOH_INSERT_AFTER=5<br>
+_SOH_INSERT_BEFORE=4<br>
+_SOH_REPLACE=3  </p>
+
+<p><a href="_.md" tppabs="https://www.aardio.com/zh-cn/doc/library-reference/web/layout/_.md">Markdown 格式</a></p>
+
+</body> 
+</html>

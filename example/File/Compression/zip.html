@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - zip 压缩'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - zip 压缩</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: zip 压缩</h1><pre><code class="aardio language-aardio">//zip 压缩
+import console;
+import zlib.zip
+
+var zip = zlib.zip(&quot;/测试文件.zip&quot;); 
+zip.compress( io._exedir + &quot;config&quot;,
+    function(len,path){
+        console.log( len,path )
+    }
+)
+
+raw.explore(&quot;/测试文件.zip&quot;,&quot;/select&quot;);
+
+/*
+import System.IO.Compression.ZipFile;
+var ZipFile = System.IO.Compression.ZipFile;
+
+//简单压缩目录也可以调用 Win10 及更新系统自带组件
+ZipFile.CreateFromDirectory (
+    io.fullpath(&quot;/测试文件/&quot;),
+    io.fullpath(&quot;/测试文件.zip&quot;),
+    0,false )
+*/
+</code></pre>
+<a href="zip.md" tppabs="https://www.aardio.com/zh-cn/doc/example/File/Compression/zip.md">Markdown 格式</a>
+</body> 
+</html>

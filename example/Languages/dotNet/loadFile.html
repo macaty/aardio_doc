@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name='description' content='aardio 编程语言范例 - aardio 加载 .NET 程序集（DLL）'>
+<meta http-equiv='content-language' content='zh-cn'>
+<title>aardio 编程语言范例 - aardio 加载 .NET 程序集（DLL）</title> 
+<link rel="stylesheet" href="../../../css/markdown.css" tppabs="https://www.aardio.com/zh-cn/doc/css/markdown.css">
+<script src="../../../js/prism.js" tppabs="https://www.aardio.com/zh-cn/doc/js/prism.js"></script>
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../../../../lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css" tppabs="https://lib.baomitu.com/font-awesome/6.6.0/css/solid.min.css">
+</head>
+<body class="markdown-body"><a id="back-to-home" href="../../../index.htm" tppabs="https://www.aardio.com/zh-cn/doc/" title="aardio 编程语言文档首页"><i class="fas fa-home" id="home-icon"></i><i class="fas fa-robot" id="ai-icon" style="display: none;"></i><span id="aardio-document-home">aardio 文档</span></a>
+<h1>aardio 范例: 加载 .NET 程序集（DLL）</h1><pre><code class="aardio language-aardio">//aardio 加载 .NET 程序集（DLL）
+import console;
+import dotNet;
+
+//查找并导入 .NET 程序集(DLL文件),参数可以是程序集名或者文件路径。
+//默认会搜索系统目录、应用程序目录、或 &quot;/bin/&quot; 目录下的程序集。
+var assembly = dotNet.load(&quot;CSNET2ClassLibrary&quot;);
+console.log(&quot;程序集全名&quot;,assembly.FullName);
+console.log(&quot;程序集路径&quot;,assembly.Location);
+
+//dotNet.load 会调用 dotNet.reference 将参数@1指定的程序集名绑定参数@2指定的内存数据。
+//参数 @2 在文件路径前加 $表示将文件编译到代码中并自内存加载(发布后不再需要该 DLL)
+//这样就可以自内存加载程序集，并且其他 .NET 代码也可以通过程序集名称加载该程序集。 
+var assembly = dotNet.load(&quot;CSNET2ClassLibrary&quot;,$&quot;\CSNET2ClassLibrary.dll&quot;);
+
+//导入程序集中的名字空间或类，
+//记住 .NET 里名字空间或类首字符大写，aardio 名字空间与类名一般小写首字符。
+assembly.import(&quot;CSNET2ClassLibrary&quot;);
+
+//程序集和名字空间相同时，也可以用 dotNet.import 加载程序集 + 导入名字空间。
+dotNet.import(&quot;CSNET2ClassLibrary&quot;);//可选用参数 @2 指定要加载的程序集名称
+
+//用 CSNET2ClassLibrary 名字空间下面的类构造对象实例，对象实例建议首字符小写
+var simpleObject = CSNET2ClassLibrary.CSSimpleObject() 
+
+//修改 .NET 对象的属性值
+simpleObject.FloatProperty = 936;
+
+//获取 .NET 对象的属性值
+console.log(simpleObject.FloatProperty);
+
+//调用对象的静态方法
+console.log( simpleObject.GetStringLength(&quot;HelloWorld&quot;)  ); 
+
+//也可以通过类调用静态方法,效果跟上面一句是一样的
+console.log( CSNET2ClassLibrary.CSSimpleObject.GetStringLength(&quot;HelloWorld&quot;)  ); 
+
+console.pause(); 
+
+/****
+CSNET2ClassLibrary.dll 的 C#源码如下：
+
+using System;
+using System.Runtime.InteropServices;
+namespace CSNET2ClassLibrary
+{
+    public class CSSimpleObject
+    {
+        private float fField = 13456.78f;
+
+        public static int GetStringLength(string str)
+        {
+            return str.Length;
+        }
+
+        public float FloatProperty
+        {
+            get
+            {
+                return this.fField;
+            }
+            set
+            {
+                this.fField = value;
+            }
+        }
+    }
+}
+****/
+</code></pre>
+<a href="loadFile.md" tppabs="https://www.aardio.com/zh-cn/doc/example/Languages/dotNet/loadFile.md">Markdown 格式</a>
+</body> 
+</html>
