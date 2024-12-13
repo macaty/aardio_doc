@@ -1,9 +1,0 @@
-# aardio 范例: .NET 反编译工具
-
-```aardio
-//.NET 反编译工具
-import fsys.dlg;
-import dotNet.ilSpy;
-
-dotNet.ilSpy( fsys.dlg.open(".Net 程序(*.dll,*.exe)|*.dll;*.exe","反编译 .Net 程序") );
-```
